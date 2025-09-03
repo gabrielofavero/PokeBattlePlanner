@@ -1,0 +1,8338 @@
+[
+  {
+    "name": "10,000,000 Volt Thunderbolt",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "195",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Absorb",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Accelerock",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Acid",
+    "type": "POISON",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "10"
+  },
+  {
+    "name": "Acid Armor",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Acid Downpour",
+    "type": "POISON",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Acid Spray",
+    "type": "POISON",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Acrobatics",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "55",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Acupressure",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Aerial Ace",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Aeroblast",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "After You",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Agility",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Air Cutter",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "95",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Air Slash",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "All-Out Pummeling",
+    "type": "FIGHTING",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Alluring Voice",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Ally Switch",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Amnesia",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Anchor Shot",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Ancient Power",
+    "type": "ROCK",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Apple Acid",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Aqua Cutter",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Aqua Jet",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Aqua Ring",
+    "type": "WATER",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Aqua Step",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Aqua Tail",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Arm Thrust",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Armor Cannon",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Aromatherapy",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Aromatic Mist",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Assist",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Assurance",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Astonish",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Astral Barrage",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Attack Order",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Attract",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Aura Sphere",
+    "type": "FIGHTING",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Aura Wheel",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "110",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Aurora Beam",
+    "type": "ICE",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Aurora Veil",
+    "type": "ICE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Autotomize",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Avalanche",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Axe Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Baby-Doll Eyes",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Baddy Bad",
+    "type": "DARK",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Baneful Bunker",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Barb Barrage",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Barrage",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Barrier",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Baton Pass",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Beak Blast",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Beat Up",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Behemoth Bash",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Behemoth Blade",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Belch",
+    "type": "POISON",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Belly Drum",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bestow",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Bide",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bind",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Bite",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "30"
+  },
+  {
+    "name": "Bitter Blade",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bitter Malice",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Black Hole Eclipse",
+    "type": "DARK",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Blast Burn",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Blaze Kick",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Blazing Torque",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bleakwind Storm",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "80",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Blizzard",
+    "type": "ICE",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "70",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Block",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Blood Moon",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Bloom Doom",
+    "type": "GRASS",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Blue Flare",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "85",
+    "pp": "5",
+    "probability": "20"
+  },
+  {
+    "name": "Body Press",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Body Slam",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Bolt Beak",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bolt Strike",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "130",
+    "accuracy": "85",
+    "pp": "5",
+    "probability": "20"
+  },
+  {
+    "name": "Bone Club",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Bone Rush",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bonemerang",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Boomburst",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Bounce",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "85",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Bouncy Bubble",
+    "type": "WATER",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Branch Poke",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Brave Bird",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Breaking Swipe",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Breakneck Blitz",
+    "type": "NORMAL",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Brick Break",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Brine",
+    "type": "WATER",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Brutal Swing",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Bubble",
+    "type": "WATER",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "10"
+  },
+  {
+    "name": "Bubble Beam",
+    "type": "WATER",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Bug Bite",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Bug Buzz",
+    "type": "BUG",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Bulk Up",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Bulldoze",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Bullet Punch",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Bullet Seed",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Burn Up",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Burning Bulwark",
+    "type": "FIRE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Burning Jealousy",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Buzzy Buzz",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Calm Mind",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Camouflage",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Captivate",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Catastropika",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "210",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Ceaseless Edge",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Celebrate",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Charge",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Charge Beam",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "70"
+  },
+  {
+    "name": "Charm",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Chatter",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Chilling Water",
+    "type": "WATER",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Chilly Reception",
+    "type": "ICE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Chip Away",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Chloroblast",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Circle Throw",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Clamp",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "35",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Clanging Scales",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Clangorous Soul",
+    "type": "DRAGON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Clangorous Soulblaze",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "185",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Clear Smog",
+    "type": "POISON",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Close Combat",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Coaching",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Coil",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Collision Course",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Combat Torque",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Comet Punch",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "18",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Comeuppance",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Confide",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Confuse Ray",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Confusion",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "10"
+  },
+  {
+    "name": "Constrict",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "10",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "10"
+  },
+  {
+    "name": "Continental Crush",
+    "type": "ROCK",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Conversion",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Conversion 2",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Copycat",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Core Enforcer",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Corkscrew Crash",
+    "type": "STEEL",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Corrosive Gas",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Cosmic Power",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Cotton Guard",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Cotton Spore",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Counter",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Court Change",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Covet",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Crabhammer",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Crafty Shield",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Cross Chop",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "80",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Cross Poison",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Crunch",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "20"
+  },
+  {
+    "name": "Crush Claw",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "50"
+  },
+  {
+    "name": "Crush Grip",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Curse",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Cut",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "95",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Dark Pulse",
+    "type": "DARK",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "20"
+  },
+  {
+    "name": "Dark Void",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "50",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Darkest Lariat",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dazzling Gleam",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Decorate",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Defend Order",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Defense Curl",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Defog",
+    "type": "FLYING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Destiny Bond",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Detect",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Devastating Drake",
+    "type": "DRAGON",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Diamond Storm",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "50"
+  },
+  {
+    "name": "Dig",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dire Claw",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Disable",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Disarming Voice",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "∞",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Discharge",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Dive",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dizzy Punch",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Doodle",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Doom Desire",
+    "type": "STEEL",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Double Hit",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "35",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Double Iron Bash",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Double Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Double Shock",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Double Slap",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Double Team",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Double-Edge",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Draco Meteor",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Dragon Ascent",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Dragon Breath",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Dragon Cheer",
+    "type": "DRAGON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Claw",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Dance",
+    "type": "DRAGON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Darts",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Energy",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Hammer",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Pulse",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Rage",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dragon Rush",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "75",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Dragon Tail",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Drain Punch",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Draining Kiss",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dream Eater",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Drill Peck",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Drill Run",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Drum Beating",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Dual Chop",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Dual Wingbeat",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Dynamax Cannon",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Dynamic Punch",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "50",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Earth Power",
+    "type": "GROUND",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Earthquake",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Echoed Voice",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Eerie Impulse",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Eerie Spell",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Egg Bomb",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "75",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Electric Terrain",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Electrify",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Electro Ball",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Electro Drift",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Electro Shot",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Electroweb",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "55",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Embargo",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Ember",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "10"
+  },
+  {
+    "name": "Encore",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Endeavor",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Endure",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Energy Ball",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Entrainment",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Eruption",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Esper Wing",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Eternabeam",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "160",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Expanding Force",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Explosion",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "250",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Extrasensory",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Extreme Evoboost",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "100"
+  },
+  {
+    "name": "Extreme Speed",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Facade",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Fairy Lock",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Fairy Wind",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Fake Out",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Fake Tears",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "False Surrender",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "False Swipe",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Feather Dance",
+    "type": "FLYING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Feint",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Feint Attack",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Fell Stinger",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Fickle Beam",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Fiery Dance",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "50"
+  },
+  {
+    "name": "Fiery Wrath",
+    "type": "DARK",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Fillet Away",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Final Gambit",
+    "type": "FIGHTING",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Fire Blast",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "85",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Fire Fang",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Fire Lash",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Fire Pledge",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Fire Punch",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Fire Spin",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "35",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "First Impression",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Fishious Rend",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Fissure",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "30",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Flail",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Flame Burst",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Flame Charge",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Flame Wheel",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "10"
+  },
+  {
+    "name": "Flamethrower",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Flare Blitz",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Flash",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Flash Cannon",
+    "type": "STEEL",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Flatter",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Fleur Cannon",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Fling",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Flip Turn",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Floaty Fall",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Floral Healing",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Flower Shield",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Flower Trick",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Fly",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Flying Press",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Focus Blast",
+    "type": "FIGHTING",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "70",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Focus Energy",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Focus Punch",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Follow Me",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Force Palm",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Foresight",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Forest's Curse",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Foul Play",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "95",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Freeze Shock",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "140",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Freeze-Dry",
+    "type": "ICE",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Freezing Glare",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Freezy Frost",
+    "type": "ICE",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Frenzy Plant",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Frost Breath",
+    "type": "ICE",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Frustration",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Fury Attack",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Fury Cutter",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "95",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Fury Swipes",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "18",
+    "accuracy": "80",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Fusion Bolt",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Fusion Flare",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Future Sight",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Befuddle",
+    "type": "BUG",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Cannonade",
+    "type": "WATER",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Centiferno",
+    "type": "FIRE",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Chi Strike",
+    "type": "FIGHTING",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Cuddle",
+    "type": "NORMAL",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Depletion",
+    "type": "DRAGON",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Drum Solo",
+    "type": "GRASS",
+    "power": "160",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Finale",
+    "type": "FAIRY",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Fireball",
+    "type": "FIRE",
+    "power": "160",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Foam Burst",
+    "type": "WATER",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Gold Rush",
+    "type": "NORMAL",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Gravitas",
+    "type": "PSYCHIC",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Hydrosnipe",
+    "type": "WATER",
+    "power": "160",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Malodor",
+    "type": "POISON",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Meltdown",
+    "type": "STEEL",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max One Blow",
+    "type": "DARK",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Rapid Flow",
+    "type": "WATER",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Replenish",
+    "type": "NORMAL",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Resonance",
+    "type": "ICE",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Sandblast",
+    "type": "GROUND",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Smite",
+    "type": "FAIRY",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Snooze",
+    "type": "DARK",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Steelsurge",
+    "type": "STEEL",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Stonesurge",
+    "type": "WATER",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Stun Shock",
+    "type": "ELECTRIC",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Sweetness",
+    "type": "GRASS",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Tartness",
+    "type": "GRASS",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Terror",
+    "type": "GHOST",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Vine Lash",
+    "type": "GRASS",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "G-Max Volcalith",
+    "type": "ROCK",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Volt Crash",
+    "type": "ELECTRIC",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Wildfire",
+    "type": "FIRE",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "G-Max Wind Rage",
+    "type": "FLYING",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Gastro Acid",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Gear Grind",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Gear Up",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Genesis Supernova",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "185",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Geomancy",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Giga Drain",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Giga Impact",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Gigaton Hammer",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "160",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Gigavolt Havoc",
+    "type": "ELECTRIC",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Glacial Lance",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Glaciate",
+    "type": "ICE",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Glaive Rush",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Glare",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Glitzy Glow",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Grass Knot",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Grass Pledge",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Grass Whistle",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "55",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Grassy Glide",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "55",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Grassy Terrain",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Grav Apple",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Gravity",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Growl",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Growth",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Grudge",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Guard Split",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Guard Swap",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Guardian of Alola",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Guillotine",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "30",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Gunk Shot",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "80",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Gust",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Gyro Ball",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Hail",
+    "type": "ICE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Hammer Arm",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Happy Hour",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Hard Press",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Harden",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Haze",
+    "type": "ICE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Head Charge",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Head Smash",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "150",
+    "accuracy": "80",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Headbutt",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Headlong Rush",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Heal Bell",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Heal Block",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Heal Order",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Heal Pulse",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Healing Wish",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Heart Stamp",
+    "type": "PSYCHIC",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "30"
+  },
+  {
+    "name": "Heart Swap",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Heat Crash",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Heat Wave",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "95",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Heavy Slam",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Helping Hand",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Hex",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Hidden Power",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "High Horsepower",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "95",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "High Jump Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "130",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Hold Back",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Hold Hands",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Hone Claws",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Horn Attack",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Horn Drill",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "30",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Horn Leech",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Howl",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Hurricane",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "70",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Hydro Cannon",
+    "type": "WATER",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Hydro Pump",
+    "type": "WATER",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "80",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Hydro Steam",
+    "type": "WATER",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Hydro Vortex",
+    "type": "WATER",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Hyper Beam",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Hyper Drill",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Hyper Fang",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Hyper Voice",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Hyperspace Fury",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Hyperspace Hole",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Hypnosis",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "60",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Ice Ball",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "90",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Ice Beam",
+    "type": "ICE",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Ice Burn",
+    "type": "ICE",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Ice Fang",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Ice Hammer",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Ice Punch",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Ice Shard",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Ice Spinner",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Icicle Crash",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Icicle Spear",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Icy Wind",
+    "type": "ICE",
+    "category": "Special",
+    "power": "55",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Imprison",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Incinerate",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Infernal Parade",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Inferno",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "50",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Inferno Overdrive",
+    "type": "FIRE",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Infestation",
+    "type": "BUG",
+    "category": "Special",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Ingrain",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Instruct",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Ion Deluge",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Iron Defense",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Iron Head",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Iron Tail",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "75",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Ivy Cudgel",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Jaw Lock",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Jet Punch",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Judgment",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Jump Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Jungle Healing",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Karate Chop",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Kinesis",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "80",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "King's Shield",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Knock Off",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Kowtow Cleave",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Land's Wrath",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Laser Focus",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Lash Out",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Last Resort",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "140",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Last Respects",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Lava Plume",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Leaf Blade",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Leaf Storm",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Leaf Tornado",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "50"
+  },
+  {
+    "name": "Leafage",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Leech Life",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Leech Seed",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Leer",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "100"
+  },
+  {
+    "name": "Let's Snuggle Forever",
+    "type": "FAIRY",
+    "category": "Physical",
+    "power": "190",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Lick",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "30"
+  },
+  {
+    "name": "Life Dew",
+    "type": "WATER",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Light of Ruin",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Light Screen",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Light That Burns the Sky",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "200",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Liquidation",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Lock-On",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Lovely Kiss",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "75",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Low Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Low Sweep",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Lucky Chant",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Lumina Crash",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Lunar Blessing",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Lunar Dance",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Lunge",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Luster Purge",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "95",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "50"
+  },
+  {
+    "name": "Mach Punch",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Magic Coat",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Magic Powder",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Magic Room",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Magical Leaf",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Magical Torque",
+    "type": "FAIRY",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Magma Storm",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "75",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Magnet Bomb",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Magnet Rise",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Magnetic Flux",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Magnitude",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Make It Rain",
+    "type": "STEEL",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Malicious Moonsault",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "180",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Malignant Chain",
+    "type": "POISON",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Mat Block",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Matcha Gotcha",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "20"
+  },
+  {
+    "name": "Max Airstream",
+    "type": "FLYING",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Darkness",
+    "type": "DARK",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Flare",
+    "type": "FIRE",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Flutterby",
+    "type": "BUG",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Geyser",
+    "type": "WATER",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Guard",
+    "type": "NORMAL",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Hailstorm",
+    "type": "ICE",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Knuckle",
+    "type": "FIGHTING",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Lightning",
+    "type": "ELECTRIC",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Mindstorm",
+    "type": "PSYCHIC",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Ooze",
+    "type": "POISON",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Overgrowth",
+    "type": "GRASS",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Phantasm",
+    "type": "GHOST",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Quake",
+    "type": "GROUND",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Rockfall",
+    "type": "ROCK",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Starfall",
+    "type": "FAIRY",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Max Steelspike",
+    "type": "STEEL",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Strike",
+    "type": "NORMAL",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Max Wyrmwind",
+    "type": "DRAGON",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "100"
+  },
+  {
+    "name": "Me First",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Mean Look",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Meditate",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Mega Drain",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Mega Kick",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "75",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Mega Punch",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Megahorn",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Memento",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Menacing Moonraze Maelstrom",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "200",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Metal Burst",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Metal Claw",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "95",
+    "pp": "35",
+    "probability": "10"
+  },
+  {
+    "name": "Metal Sound",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "85",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Meteor Assault",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Meteor Beam",
+    "type": "ROCK",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Meteor Mash",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Metronome",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Mighty Cleave",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "95",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Milk Drink",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Mimic",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Mind Blown",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Mind Reader",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Minimize",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Miracle Eye",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Mirror Coat",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Mirror Move",
+    "type": "FLYING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Mirror Shot",
+    "type": "STEEL",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Mist",
+    "type": "ICE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Mist Ball",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "95",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "50"
+  },
+  {
+    "name": "Misty Explosion",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Misty Terrain",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Moonblast",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "95",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Moongeist Beam",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Moonlight",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Morning Sun",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Mortal Spin",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Mountain Gale",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Mud Bomb",
+    "type": "GROUND",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Mud Shot",
+    "type": "GROUND",
+    "category": "Special",
+    "power": "55",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Mud Sport",
+    "type": "GROUND",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Mud-Slap",
+    "type": "GROUND",
+    "category": "Special",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Muddy Water",
+    "type": "WATER",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Multi-Attack",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Mystical Fire",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Mystical Power",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Nasty Plot",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Natural Gift",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Nature Power",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Nature's Madness",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Needle Arm",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Never-Ending Nightmare",
+    "type": "GHOST",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Night Daze",
+    "type": "DARK",
+    "category": "Special",
+    "power": "85",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "40"
+  },
+  {
+    "name": "Night Shade",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Night Slash",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Nightmare",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "No Retreat",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Noble Roar",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "100"
+  },
+  {
+    "name": "Noxious Torque",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Nuzzle",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Oblivion Wing",
+    "type": "FLYING",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Obstruct",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Oceanic Operetta",
+    "type": "WATER",
+    "category": "Special",
+    "power": "195",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Octazooka",
+    "type": "WATER",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "50"
+  },
+  {
+    "name": "Octolock",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Odor Sleuth",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Ominous Wind",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Order Up",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Origin Pulse",
+    "type": "WATER",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Outrage",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Overdrive",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Overheat",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "130",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Pain Split",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Parabolic Charge",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Parting Shot",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Pay Day",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Payback",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Peck",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "35",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Perish Song",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Petal Blizzard",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Petal Dance",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Phantom Force",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Photon Geyser",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Pika Papow",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Pin Missile",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "95",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Plasma Fists",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Play Nice",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Play Rough",
+    "type": "FAIRY",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Pluck",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Poison Fang",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "50"
+  },
+  {
+    "name": "Poison Gas",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Poison Jab",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Poison Powder",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "75",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Poison Sting",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "30"
+  },
+  {
+    "name": "Poison Tail",
+    "type": "POISON",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "10"
+  },
+  {
+    "name": "Pollen Puff",
+    "type": "BUG",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Poltergeist",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "110",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Population Bomb",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "20",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Pounce",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Pound",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Powder",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Powder Snow",
+    "type": "ICE",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "10"
+  },
+  {
+    "name": "Power Gem",
+    "type": "ROCK",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Power Shift",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Power Split",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Power Swap",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Power Trick",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Power Trip",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Power Whip",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Power-Up Punch",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Precipice Blades",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Present",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Prismatic Laser",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "160",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Protect",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psybeam",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "10"
+  },
+  {
+    "name": "Psyblade",
+    "type": "PSYCHIC",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Psych Up",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psychic",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Psychic Fangs",
+    "type": "PSYCHIC",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psychic Noise",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psychic Terrain",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psycho Boost",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Psycho Cut",
+    "type": "PSYCHIC",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Psycho Shift",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psyshield Bash",
+    "type": "PSYCHIC",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psyshock",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psystrike",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Psywave",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Pulverizing Pancake",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "210",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Punishment",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Purify",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Pursuit",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Pyro Ball",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Quash",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Quick Attack",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Quick Guard",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Quiver Dance",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Rage",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Rage Fist",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Rage Powder",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Raging Bull",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Raging Fury",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Rain Dance",
+    "type": "WATER",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Rapid Spin",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "40",
+    "probability": "100"
+  },
+  {
+    "name": "Razor Leaf",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "55",
+    "accuracy": "95",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Razor Shell",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "50"
+  },
+  {
+    "name": "Razor Wind",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Recover",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Recycle",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Reflect",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Reflect Type",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Refresh",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Relic Song",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Rest",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Retaliate",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Return",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Revelation Dance",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Revenge",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Reversal",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Revival Blessing",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Rising Voltage",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Roar",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Roar of Time",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Rock Blast",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Rock Climb",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "20"
+  },
+  {
+    "name": "Rock Polish",
+    "type": "ROCK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Rock Slide",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Rock Smash",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "50"
+  },
+  {
+    "name": "Rock Throw",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Rock Tomb",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Rock Wrecker",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "150",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Role Play",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Rolling Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Rollout",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "90",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Roost",
+    "type": "FLYING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Rototiller",
+    "type": "GROUND",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Round",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Ruination",
+    "type": "DARK",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sacred Fire",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "50"
+  },
+  {
+    "name": "Sacred Sword",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Safeguard",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Salt Cure",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Sand Attack",
+    "type": "GROUND",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Sand Tomb",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "35",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Sandsear Storm",
+    "type": "GROUND",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "80",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sandstorm",
+    "type": "ROCK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sappy Seed",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Savage Spin-Out",
+    "type": "BUG",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Scald",
+    "type": "WATER",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Scale Shot",
+    "type": "DRAGON",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "90",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Scary Face",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Scorching Sands",
+    "type": "GROUND",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Scratch",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Screech",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "85",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Searing Shot",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Searing Sunraze Smash",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "200",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Secret Power",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Secret Sword",
+    "type": "FIGHTING",
+    "category": "Special",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Seed Bomb",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Seed Flare",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "85",
+    "pp": "5",
+    "probability": "40"
+  },
+  {
+    "name": "Seismic Toss",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Self-Destruct",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "200",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Shadow Ball",
+    "type": "GHOST",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "20"
+  },
+  {
+    "name": "Shadow Bone",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Shadow Claw",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Shadow Force",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Shadow Punch",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Shadow Sneak",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Sharpen",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Shattered Psyche",
+    "type": "PSYCHIC",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Shed Tail",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sheer Cold",
+    "type": "ICE",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "30",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Shell Side Arm",
+    "type": "POISON",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Shell Smash",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Shell Trap",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Shelter",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Shift Gear",
+    "type": "STEEL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Shock Wave",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Shore Up",
+    "type": "GROUND",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Signal Beam",
+    "type": "BUG",
+    "category": "Special",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Silk Trap",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Silver Wind",
+    "type": "BUG",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "10"
+  },
+  {
+    "name": "Simple Beam",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Sing",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "55",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Sinister Arrow Raid",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "180",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Sizzly Slide",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Sketch",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Skill Swap",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Skitter Smack",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Skull Bash",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "130",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Sky Attack",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "140",
+    "accuracy": "90",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Sky Drop",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sky Uppercut",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "85",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Slack Off",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Slam",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "75",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Slash",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Sleep Powder",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "75",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Sleep Talk",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sludge",
+    "type": "POISON",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Sludge Bomb",
+    "type": "POISON",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Sludge Wave",
+    "type": "POISON",
+    "category": "Special",
+    "power": "95",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "10"
+  },
+  {
+    "name": "Smack Down",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Smart Strike",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Smelling Salts",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Smog",
+    "type": "POISON",
+    "category": "Special",
+    "power": "30",
+    "accuracy": "70",
+    "pp": "20",
+    "probability": "40"
+  },
+  {
+    "name": "Smokescreen",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Snap Trap",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "35",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Snarl",
+    "type": "DARK",
+    "category": "Special",
+    "power": "55",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Snatch",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Snipe Shot",
+    "type": "WATER",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Snore",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Snowscape",
+    "type": "ICE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Soak",
+    "type": "WATER",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Soft-Boiled",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Solar Beam",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Solar Blade",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "125",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sonic Boom",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Soul-Stealing 7-Star Strike",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "195",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Spacial Rend",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Spark",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Sparkling Aria",
+    "type": "WATER",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sparkly Swirl",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Spectral Thief",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Speed Swap",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Spicy Extract",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Spider Web",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Spike Cannon",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Spikes",
+    "type": "GROUND",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Spiky Shield",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Spin Out",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Spirit Break",
+    "type": "FAIRY",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Spirit Shackle",
+    "type": "GHOST",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Spit Up",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Spite",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Splash",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Splintered Stormshards",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "190",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Splishy Splash",
+    "type": "WATER",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "30"
+  },
+  {
+    "name": "Spore",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Spotlight",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Springtide Storm",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "80",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Stealth Rock",
+    "type": "ROCK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Steam Eruption",
+    "type": "WATER",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "30"
+  },
+  {
+    "name": "Steamroller",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Steel Beam",
+    "type": "STEEL",
+    "category": "Special",
+    "power": "140",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Steel Roller",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "130",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Steel Wing",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "90",
+    "pp": "25",
+    "probability": "10"
+  },
+  {
+    "name": "Sticky Web",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Stockpile",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Stoked Sparksurfer",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "175",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "100"
+  },
+  {
+    "name": "Stomp",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "30"
+  },
+  {
+    "name": "Stomping Tantrum",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Stone Axe",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Stone Edge",
+    "type": "ROCK",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "80",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Stored Power",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "20",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Storm Throw",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Strange Steam",
+    "type": "FAIRY",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Strength",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Strength Sap",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "String Shot",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "95",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Struggle",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "—",
+    "pp": "—",
+    "probability": "—"
+  },
+  {
+    "name": "Struggle Bug",
+    "type": "BUG",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Stuff Cheeks",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Stun Spore",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "75",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Submission",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "80",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Substitute",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Subzero Slammer",
+    "type": "ICE",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Sucker Punch",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Sunny Day",
+    "type": "FIRE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Sunsteel Strike",
+    "type": "STEEL",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Super Fang",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Supercell Slam",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "100",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Superpower",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Supersonic",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "55",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Supersonic Skystrike",
+    "type": "FLYING",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Surf",
+    "type": "WATER",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Surging Strikes",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Swagger",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Swallow",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sweet Kiss",
+    "type": "FAIRY",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "75",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Sweet Scent",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Swift",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Switcheroo",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Swords Dance",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Synchronoise",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Synthesis",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Syrup Bomb",
+    "type": "GRASS",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tachyon Cutter",
+    "type": "STEEL",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tackle",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Tail Glow",
+    "type": "BUG",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Tail Slap",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "85",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tail Whip",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Tailwind",
+    "type": "FLYING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Take Down",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "85",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Take Heart",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tar Shot",
+    "type": "ROCK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Taunt",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Tearful Look",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Teatime",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Techno Blast",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Tectonic Rage",
+    "type": "GROUND",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Teeter Dance",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Telekinesis",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Teleport",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Temper Flare",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tera Blast",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tera Starstorm",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Terrain Pulse",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Thief",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Thousand Arrows",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Thousand Waves",
+    "type": "GROUND",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Thrash",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Throat Chop",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Thunder",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "110",
+    "accuracy": "70",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Thunder Cage",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Thunder Fang",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "95",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Thunder Punch",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Thunder Shock",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "10"
+  },
+  {
+    "name": "Thunder Wave",
+    "type": "ELECTRIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Thunderbolt",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Thunderclap",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Thunderous Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "100"
+  },
+  {
+    "name": "Tickle",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Tidy Up",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Topsy-Turvy",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Torch Song",
+    "type": "FIRE",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Torment",
+    "type": "DARK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Toxic",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Toxic Spikes",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Toxic Thread",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Trailblaze",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Transform",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Tri Attack",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "20"
+  },
+  {
+    "name": "Trick",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Trick Room",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Trick-or-Treat",
+    "type": "GHOST",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Triple Arrows",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Triple Axel",
+    "type": "ICE",
+    "category": "Physical",
+    "power": "20",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Triple Dive",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "30",
+    "accuracy": "95",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Triple Kick",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "10",
+    "accuracy": "90",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Trop Kick",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Trump Card",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Twin Beam",
+    "type": "PSYCHIC",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Twineedle",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "25",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "20"
+  },
+  {
+    "name": "Twinkle Tackle",
+    "type": "FAIRY",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "1",
+    "probability": "—"
+  },
+  {
+    "name": "Twister",
+    "type": "DRAGON",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "20"
+  },
+  {
+    "name": "U-turn",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Upper Hand",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Uproar",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "V-create",
+    "type": "FIRE",
+    "category": "Physical",
+    "power": "180",
+    "accuracy": "95",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Vacuum Wave",
+    "type": "FIGHTING",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Veevee Volley",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "—",
+    "accuracy": "∞",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Venom Drench",
+    "type": "POISON",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Venoshock",
+    "type": "POISON",
+    "category": "Special",
+    "power": "65",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Victory Dance",
+    "type": "FIGHTING",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Vine Whip",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "45",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Vise Grip",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "55",
+    "accuracy": "100",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Vital Throw",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "∞",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Volt Switch",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Volt Tackle",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "10"
+  },
+  {
+    "name": "Wake-Up Slap",
+    "type": "FIGHTING",
+    "category": "Physical",
+    "power": "70",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Water Gun",
+    "type": "WATER",
+    "category": "Special",
+    "power": "40",
+    "accuracy": "100",
+    "pp": "25",
+    "probability": "—"
+  },
+  {
+    "name": "Water Pledge",
+    "type": "WATER",
+    "category": "Special",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Water Pulse",
+    "type": "WATER",
+    "category": "Special",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "20"
+  },
+  {
+    "name": "Water Shuriken",
+    "type": "WATER",
+    "category": "Special",
+    "power": "15",
+    "accuracy": "100",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Water Sport",
+    "type": "WATER",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Water Spout",
+    "type": "WATER",
+    "category": "Special",
+    "power": "150",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Waterfall",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "20"
+  },
+  {
+    "name": "Wave Crash",
+    "type": "WATER",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Weather Ball",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Whirlpool",
+    "type": "WATER",
+    "category": "Special",
+    "power": "35",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "100"
+  },
+  {
+    "name": "Whirlwind",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "20",
+    "probability": "—"
+  },
+  {
+    "name": "Wicked Blow",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "75",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "Wicked Torque",
+    "type": "DARK",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Wide Guard",
+    "type": "ROCK",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Wild Charge",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "90",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Wildbolt Storm",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "100",
+    "accuracy": "80",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Will-O-Wisp",
+    "type": "FIRE",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "85",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Wing Attack",
+    "type": "FLYING",
+    "category": "Physical",
+    "power": "60",
+    "accuracy": "100",
+    "pp": "35",
+    "probability": "—"
+  },
+  {
+    "name": "Wish",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Withdraw",
+    "type": "WATER",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "40",
+    "probability": "—"
+  },
+  {
+    "name": "Wonder Room",
+    "type": "PSYCHIC",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Wood Hammer",
+    "type": "GRASS",
+    "category": "Physical",
+    "power": "120",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Work Up",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "30",
+    "probability": "—"
+  },
+  {
+    "name": "Worry Seed",
+    "type": "GRASS",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Wrap",
+    "type": "NORMAL",
+    "category": "Physical",
+    "power": "15",
+    "accuracy": "90",
+    "pp": "20",
+    "probability": "100"
+  },
+  {
+    "name": "Wring Out",
+    "type": "NORMAL",
+    "category": "Special",
+    "power": "—",
+    "accuracy": "100",
+    "pp": "5",
+    "probability": "—"
+  },
+  {
+    "name": "X-Scissor",
+    "type": "BUG",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "—"
+  },
+  {
+    "name": "Yawn",
+    "type": "NORMAL",
+    "category": "Status",
+    "power": "—",
+    "accuracy": "—",
+    "pp": "10",
+    "probability": "—"
+  },
+  {
+    "name": "Zap Cannon",
+    "type": "ELECTRIC",
+    "category": "Special",
+    "power": "120",
+    "accuracy": "50",
+    "pp": "5",
+    "probability": "100"
+  },
+  {
+    "name": "Zen Headbutt",
+    "type": "PSYCHIC",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "90",
+    "pp": "15",
+    "probability": "20"
+  },
+  {
+    "name": "Zing Zap",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "80",
+    "accuracy": "100",
+    "pp": "10",
+    "probability": "30"
+  },
+  {
+    "name": "Zippy Zap",
+    "type": "ELECTRIC",
+    "category": "Physical",
+    "power": "50",
+    "accuracy": "100",
+    "pp": "15",
+    "probability": "100"
+  }
+]

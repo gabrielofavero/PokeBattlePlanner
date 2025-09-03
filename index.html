@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimum-scale=1">
+
+  <title>Battle Planner</title>
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Rated!" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Metadata -->
+  <meta property="og:title" content="PokéBattlePlanner" />
+  <meta content="" name="description">
+  <meta property="og:description" content="A quick way to find the best ">
+  <meta property="og:url" content="https://gabrielofavero.github.io/PokeBattlePlanner/" />
+  <meta property="og:type" content="website" />
+
+  <!-- X Metadata -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PokéBattlePlanner" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:image" content="https://gabrielofavero.github.io/RatedByBibs/" />
+
+  <!-- Mobile Metadata -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="PokéBattlePlanner" />
+  <meta name="theme-color" content="#1A1A1A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Stylesheets -->
+  <link href="assets/css/app.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="header" style="display: none">
+    <div class="top-bar">
+      <div class="icon-box">
+        <div class="controller-icon">X</div>
+      </div>
+      <div class="top-bar-item selected">Battle Planner</div>
+      <div class="top-bar-item disabled" id="current-party">Current Party</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="column">
+      <div id="party-box" style="display: none">
+        <div class="pill-button">
+          <div class="button-item"></div>
+          <div class="button-item">Current Party</div>
+        </div>
+        <div class="party-pokemons">
+          <div class="party-pokemon"></div>
+          <div class="party-pokemon"></div>
+          <div class="party-pokemon"></div>
+          <div class="party-pokemon"></div>
+          <div class="party-pokemon"></div>
+          <div class="party-pokemon"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <button id="search-box">
+        <div class="icon-box">
+          <svg class="icon">
+            <use href="#search-icon" />
+          </svg>
+        </div>
+        <input id="search" type="text" class="clear-input" placeholder="Search Pokémon">
+      </button>
+      <div class="search-suggestions" id="search-suggestions"></div>
+      <div id="result-box"></div>
+    </div>
+
+
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/vendor/pixi.min.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+
+  <!-- Symbols -->
+  <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="app-icon" viewBox="0 0 24 24"><path d="M14.5 12a2.5 2.5 0 0 1-5 0a2.5 2.5 0 0 1 5 0m7.5 0c0 5.52-4.48 10-10 10S2 17.52 2 12S6.48 2 12 2s10 4.48 10 10m-2 0h-4c0-2.21-1.79-4-4-4s-4 1.79-4 4H4c0 4.41 3.59 8 8 8s8-3.59 8-8"/></symbol>
+    <symbol id="app-icon-alt" viewBox="0 0 24 24"><path d="M12 4c4.08 0 7.45 3.05 7.94 7h-4.06c-.45-1.73-2.02-3-3.88-3s-3.43 1.27-3.87 3H4.06C4.55 7.05 7.92 4 12 4" opacity="0.3"/><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 2c4.08 0 7.45 3.05 7.94 7h-4.06c-.45-1.73-2.02-3-3.88-3s-3.43 1.27-3.87 3H4.06C4.55 7.05 7.92 4 12 4m2 8c0 1.1-.9 2-2 2s-2-.9-2-2s.9-2 2-2s2 .9 2 2m-2 8c-4.08 0-7.45-3.05-7.94-7h4.06c.44 1.73 2.01 3 3.87 3s3.43-1.27 3.87-3h4.06c-.47 3.95-3.84 7-7.92 7"/></symbol>
+    <symbol id="search-icon" viewBox="0 0 24 24"><path d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/></symbol>
+  </svg>
+</body>
+
+</html>

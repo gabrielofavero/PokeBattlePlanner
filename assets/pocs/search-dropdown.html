@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Dropdown</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .search-container {
+      position: relative;
+      width: 300px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-top: none;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: none;
+      z-index: 1000;
+    }
+
+    .result-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .result-item:hover {
+      background: #f0f0f0;
+    }
+
+    .result-item img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="search-container">
+    <input type="text" class="search-input" placeholder="Type to search...">
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    const search = document.querySelector('.search-input');
+    const suggestions = document.getElementById('results');
+
+    // Mock data
+    const options = [
+      { img: "https://via.placeholder.com/32", text: "Apple" },
+      { img: "https://via.placeholder.com/32", text: "Banana" },
+      { img: "https://via.placeholder.com/32", text: "Cherry" },
+      { img: "https://via.placeholder.com/32", text: "Date" },
+      { img: "https://via.placeholder.com/32", text: "Elderberry" },
+      { img: "https://via.placeholder.com/32", text: "Fig" },
+      { img: "https://via.placeholder.com/32", text: "Grape" }
+    ];
+
+    search.addEventListener('input', () => {
+      const value = search.value.trim().toLowerCase();
+
+      if (value.length >= 1) {
+        const filtered = options.filter(opt =>
+          opt.text.toLowerCase().includes(value)
+        ).slice(0, 5); // limit to 5 results
+
+        suggestions.innerHTML = "";
+
+        if (filtered.length > 0) {
+          filtered.forEach(opt => {
+            const item = document.createElement('div');
+            item.className = 'result-item';
+            item.innerHTML = `<img src="${opt.img}" alt=""><span>${opt.text}</span>`;
+            item.onclick = () => {
+              search.value = opt.text;
+              suggestions.style.display = 'none';
+            };
+            suggestions.appendChild(item);
+          });
+          suggestions.style.display = 'block';
+        } else {
+          suggestions.style.display = 'none';
+        }
+      } else {
+        suggestions.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
