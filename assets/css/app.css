@@ -40,7 +40,7 @@ canvas {
 .top-bar {
   padding: 0.5em 1em 0 1em;
   display: flex;
-  width: 500px;
+  width: 550px;
   background: var(--header-overlay);
   clip-path: polygon(0 0, 100% 0, 91% 100%, 0 100%);
 }
@@ -49,6 +49,7 @@ canvas {
   position: relative;
   padding-right: 16px;
   margin-right: 16px;
+  padding-top: 2px;
 }
 
 .icon-box .icon {
@@ -63,7 +64,7 @@ canvas {
   top: 0;
   right: 0;
   width: 1.5px; /* thickness of the line */
-  height: 27px;
+  height: 29px;
   background-color: var(--disabled-color-rgba);
 }
 
