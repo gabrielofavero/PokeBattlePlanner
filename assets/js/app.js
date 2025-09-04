@@ -17,21 +17,40 @@ function loadEventListeners() {
 
     search.addEventListener('input', () => {
         const value = search.value.trim().toLowerCase();
+        suggestions.innerHTML = "";
 
         if (value.length >= 2) {
-            const filtered = POKEMONS.filter(opt =>
-                opt.name.toLowerCase().includes(value)
-            ).slice(0, 3);
+            // Filter by title OR subtitle
+            const filtered = POKEMONS.filter(opt => {
+                return opt.title.toLowerCase().includes(value) || opt.subtitle.toLowerCase().includes(value);
+            });
 
-            suggestions.innerHTML = "";
+            // Sort exact matches first
+            filtered.sort((a, b) => {
+                const aTitle = a.title.toLowerCase();
+                const bTitle = b.title.toLowerCase();
+
+                if (aTitle === value) return -1;
+                if (bTitle === value) return 1;
+
+                // optionally prioritize subtitle match
+                const aSub = a.subtitle.toLowerCase();
+                const bSub = b.subtitle.toLowerCase();
+                if (aSub === value) return -1;
+                if (bSub === value) return 1;
+
+                return 0;
+            });
 
             if (filtered.length > 0) {
                 filtered.forEach(opt => {
                     const item = document.createElement('div');
+                    const titleBox = `<div class="flex-column"><span>${opt.title}</span><span class="pokemon-variant">${opt.subtitle}</span></div>`;
                     item.className = 'search-suggestion-item';
-                    item.innerHTML = `<img class="pokemon-small" src="./assets/img/pokemons/${opt.hrefId}.png" alt=""><span>${opt.name}</span>`;
+                    item.innerHTML = `<img class="${!opt.subtitle ? 'pokemon-small' : ''}" src="./assets/img/pokemons/${opt.hrefIcon}.png" alt=""> ${titleBox}`;
+
                     item.onclick = () => {
-                        search.value = opt.name;
+                        search.value = opt.title;
                         suggestions.style.display = 'none';
                     };
                     suggestions.appendChild(item);

@@ -1,0 +1,1 @@
+!function(){let t;const e=elQS(".table-filters");e&&(t=new SV.Filtable(elQS(".data-table"),e));const l=elClass("data-table");for(let t of l){let e=new SV.Sortable(t,{initialSort:0});onEvent(t,"sv.sortable.before",(function(l){t.style.opacity=.5,sortableSetBlankValues(e,t,l.detail)})),onEvent(t,"sv.sortable.after",(function(e){t.style.opacity=1}))}}();

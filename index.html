@@ -18,7 +18,7 @@
   <!-- Metadata -->
   <meta property="og:title" content="PokéBattlePlanner" />
   <meta content="" name="description">
-  <meta property="og:description" content="A quick way to find the best ">
+  <meta property="og:description" content="">
   <meta property="og:url" content="https://gabrielofavero.github.io/PokeBattlePlanner/" />
   <meta property="og:type" content="website" />
 
@@ -48,22 +48,28 @@
 
 <body>
 
-  <div class="header" style="display: none">
+  <div class="header">
     <div class="top-bar">
       <div class="icon-box">
-        <div class="controller-icon">X</div>
+        <svg class="icon">
+          <use href="#x-button-icon" />
+        </svg>
       </div>
-      <div class="top-bar-item selected">Battle Planner</div>
-      <div class="top-bar-item disabled" id="current-party">Current Party</div>
+      <div class="top-bar-item selected">Type Chart</div>
+      <div class="top-bar-item" id="current-party">Party Planner</div>
     </div>
   </div>
 
   <div class="content">
     <div class="column">
-      <div id="party-box" style="display: none">
-        <div class="pill-button">
-          <div class="button-item"></div>
-          <div class="button-item">Current Party</div>
+      <div id="party-box">
+        <div class="pill-container">
+          <div class="icon-box">
+            <svg class="icon">
+              <use href="#app-icon-alt" />
+            </svg>
+          </div>
+          <div class="button-item"><div id="current-party">Current Party</div></div>
         </div>
         <div class="party-pokemons">
           <div class="party-pokemon"></div>
@@ -77,21 +83,24 @@
     </div>
 
     <div class="column">
-      <button id="search-box">
+      <div class="search-box">
         <div class="icon-box">
           <svg class="icon">
             <use href="#search-icon" />
           </svg>
         </div>
         <input id="search" type="text" class="clear-input" placeholder="Search Pokémon">
-      </button>
+      </div>
       <div class="search-suggestions" id="search-suggestions"></div>
       <div id="result-box"></div>
     </div>
 
 
-
   </div>
+
+  <footer class="footer">
+    
+  </footer>
 
   <!-- Scripts -->
   <script src="assets/js/vendor/pixi.min.js"></script>
@@ -101,7 +110,13 @@
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
     <symbol id="app-icon" viewBox="0 0 24 24"><path d="M14.5 12a2.5 2.5 0 0 1-5 0a2.5 2.5 0 0 1 5 0m7.5 0c0 5.52-4.48 10-10 10S2 17.52 2 12S6.48 2 12 2s10 4.48 10 10m-2 0h-4c0-2.21-1.79-4-4-4s-4 1.79-4 4H4c0 4.41 3.59 8 8 8s8-3.59 8-8"/></symbol>
     <symbol id="app-icon-alt" viewBox="0 0 24 24"><path d="M12 4c4.08 0 7.45 3.05 7.94 7h-4.06c-.45-1.73-2.02-3-3.88-3s-3.43 1.27-3.87 3H4.06C4.55 7.05 7.92 4 12 4" opacity="0.3"/><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 2c4.08 0 7.45 3.05 7.94 7h-4.06c-.45-1.73-2.02-3-3.88-3s-3.43 1.27-3.87 3H4.06C4.55 7.05 7.92 4 12 4m2 8c0 1.1-.9 2-2 2s-2-.9-2-2s.9-2 2-2s2 .9 2 2m-2 8c-4.08 0-7.45-3.05-7.94-7h4.06c.44 1.73 2.01 3 3.87 3s3.43-1.27 3.87-3h4.06c-.47 3.95-3.84 7-7.92 7"/></symbol>
-    <symbol id="search-icon" viewBox="0 0 24 24"><path d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/></symbol>
+    <symbol id="search-icon" viewBox="0 0 12 12"><path d="M5 1a4 4 0 1 0 2.248 7.31l2.472 2.47a.75.75 0 1 0 1.06-1.06L8.31 7.248A4 4 0 0 0 5 1M2.5 5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0"/></symbol>
+    
+    <symbol id="a-button-icon" viewBox="0 0 149.8 149.7"><g><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8c41.4,0,74.9-33.5,74.9-74.8S116.3,0,74.9,0z M99.1,117.8l-7.5-19.5H57.3 l-7.1,19.5H31.8l33.5-85.9h18.3l34.4,85.9H99.1z"/><polygon points="62.6,83.8 86.1,83.8 74.2,51.9 "/></g></symbol>
+    <symbol id="b-button-icon" viewBox="0 0 149.8 149.7"><g><path d="M87.5,81.6c-2.4-0.8-7.5-1.2-15.4-1.2h-14v23h16.1c6.2,0,10.2-0.2,11.9-0.5c2.6-0.5,4.7-1.6,6.3-3.4s2.4-4.2,2.4-7.3 c0-2.6-0.6-4.8-1.9-6.6C91.6,83.7,89.8,82.4,87.5,81.6z"/><path d="M82,65.8c3-0.4,5.3-1.4,7-3.1s2.5-3.9,2.5-6.7c0-2.7-0.7-4.8-2.2-6.5c-1.5-1.7-3.6-2.7-6.5-3c-1.7-0.2-6.7-0.3-14.8-0.3 h-10V66h11.4C76.2,66,80.4,66,82,65.8z"/><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8s74.9-33.5,74.9-74.8S116.3,0,74.9,0z M110,104.3 c-1.8,3.7-4.3,6.6-7.4,8.8c-3.1,2.2-7,3.6-11.6,4.1c-2.9,0.3-9.9,0.5-20.9,0.6H40.7V31.9h34.3c6.8,0,11.9,0.3,15.2,0.8 c3.3,0.6,6.3,1.7,9,3.5c2.6,1.8,4.8,4.2,6.6,7.2s2.6,6.3,2.6,10c0,4-1.1,7.7-3.3,11.1c-2.2,3.4-5.1,5.9-8.8,7.6 c5.2,1.5,9.3,4.1,12.1,7.8c2.8,3.7,4.2,8,4.2,12.9C112.7,96.8,111.8,100.6,110,104.3z"/></g></symbol>
+    <symbol id="x-button-icon" viewBox="0 0 149.8 149.7"><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8c41.4,0,74.9-33.5,74.9-74.8S116.3,0,74.9,0z M94.2,117.8l-19-29.7	l-19.1,29.7H35.3L64.6,73L38,31.9h20.3l17.2,27.6l16.9-27.6h20.1L85.8,73.6l29.4,44.2H94.2z"/></symbol>
+    <symbol id="y-button-icon" viewBox="0 0 149.8 149.7"><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8c41.4,0,74.9-33.5,74.9-74.8S116.3,0,74.9,0z M83.8,86.4v36H66.5V86.2	L35.1,36.5h20.3l20.2,34l19.8-34h20L83.8,86.4z"/></symbol>
+
   </svg>
 </body>
 

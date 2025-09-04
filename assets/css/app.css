@@ -1,10 +1,10 @@
-
 :root {
   --header-overlay: rgba(0, 0, 0, 0.6);
   --content-overlay: rgba(0, 0, 0, 0.35);
-  --content-overlay: rgba(0, 0, 0, 0.35);
   --default-border-radius: 6px;
-  --seach-bar-width: 350px;
+  --disabled-color: #729b99;
+  --disabled-color-rgba: rgba(114, 155, 153, 0.5);
+  --selected-color: #eed02a
 }
 
 body {
@@ -14,7 +14,9 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 canvas {
@@ -28,48 +30,148 @@ canvas {
   z-index: -1;
 }
 
-.top-bar {
-  padding: 0.8em;
+.flex-column {
   display: flex;
-  gap: 1em;
-  background: rgba(0, 0, 0, 0.6)
+  flex-direction: column;
 }
+
+/* Header */
+
+.top-bar {
+  padding: 0.5em 1em 0 1em;
+  display: flex;
+  width: 500px;
+  background: var(--header-overlay);
+  clip-path: polygon(0 0, 100% 0, 91% 100%, 0 100%);
+}
+
+.icon-box {
+  position: relative;
+  padding-right: 16px;
+  margin-right: 16px;
+}
+
+.icon-box .icon {
+  fill: white;
+  width: 24px;
+  height: 24px;
+}
+
+.icon-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5px; /* thickness of the line */
+  height: 27px;
+  background-color: var(--disabled-color-rgba);
+}
+
+.top-bar-item {
+  margin-right: 2em;
+  color: var(--disabled-color);
+  position: relative;
+  padding-bottom: 0.5em;
+  cursor: pointer;
+}
+
+.top-bar-item.selected {
+  color: white;
+  font-weight: 500;
+}
+
+.top-bar-item.selected::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 6px; /* thickness of the line */
+  background-color: var(--selected-color);
+  border-radius: 2px;
+}
+
+
+/* Content */
 
 .content {
-  padding-top: 2em;
   display: flex;
+  justify-content: center;
+  align-items: flex-start;
   gap: 2em;
-  align-items: center;
+  padding-top: 1.5em;
+  flex: 1
 }
 
-.column{
+.column {
   display: flex;
   flex-direction: column;
   gap: 1em;
   align-items: center;
 }
 
-button {
+/* Content: Current Party */
+
+.pill-container {
+  padding: 0.5em 1em;
+  background: var(--content-overlay);
+  border-radius: 9999px;
+  display: flex;
+  white-space: nowrap;
+}
+
+#current-party {
+  width: 200px !important;
+  text-align: center;
+}
+
+.party-pokemons {
+  margin-top: 1em;
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.party-pokemon {
+  width: 304px;
+  height: 100px;
+  background: var(--content-overlay);
+  border-radius: var(--default-border-radius);
+}
+
+button,
+.search-box {
   padding: 0.5em 1em;
   background: var(--content-overlay);
   border: none;
   border-radius: var(--default-border-radius);
   display: flex;
-  gap: 1em;
+  height: 53.83px;
+  align-items: center; 
+  justify-content: center; 
 }
 
-#search-box {
-  width: var(--seach-bar-width);
+.search-box {
+  height: auto;
 }
 
-.icon {
-  fill: white;
-  width: 32px;
-  height: 32px;
+.search-box .icon-box {
+  margin-right: none;
 }
 
 input {
   font-size: 24px;
+  width: auto;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-box input {
+  width: 250px;
 }
 
 .clear-input {
@@ -81,7 +183,7 @@ input {
 #result-box {
   background: var(--content-overlay);
   width: 600px;
-  height: 600px;
+  height: 547px;
   border-radius: var(--default-border-radius);
 }
 
@@ -89,11 +191,13 @@ input {
   position: absolute;
   border-top: none;
   background: var(--content-overlay);
-  width: var(--seach-bar-width);
-  transform: translateY(55px);
+  width: 358px;
+  transform: translateY(65px);
   border-radius: var(--default-border-radius);
   display: none;
   z-index: 1000;
+  max-height: 280px;
+  overflow-y: auto;
 }
 
 .search-suggestions.open {
@@ -107,7 +211,7 @@ input {
   padding: 8px;
   cursor: pointer;
   transition: background 0.2s;
-  height: 80px;
+  height: 76px;
 }
 
 .search-suggestion-item img {
@@ -116,6 +220,24 @@ input {
   object-position: center -20px;
 }
 
+.pokemon-variant {
+  color: var(--disabled-color);
+  font-size: 18px;
+}
+
 .pokemon-small {
-  height: 80px;
+  height: 60px !important;
+  object-position: center -10px !important;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: var(--header-overlay);
+  height: 50px;
+  width: 100%;
+  border-bottom: 4px solid var(--selected-color);
 }
