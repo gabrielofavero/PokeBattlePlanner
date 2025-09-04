@@ -48,19 +48,17 @@
 
 <body>
 
-  <div class="header">
-    <div class="top-bar">
-      <div class="icon-box">
-        <svg class="icon">
-          <use href="#x-button-icon" />
-        </svg>
-      </div>
-      <div class="top-bar-item selected">Type Chart</div>
-      <div class="top-bar-item" id="current-party">Party Planner</div>
+  <div class="top-bar">
+    <div class="icon-box">
+      <svg class="icon">
+        <use href="#x-button-icon" />
+      </svg>
     </div>
+    <div class="top-bar-item selected" to-show="pokemon-search">Pokémon Search</div>
+    <div class="top-bar-item" to-show="type-search">Type Search</div>
   </div>
 
-  <div class="content">
+  <div id="pokemon-search" class="content">
     <div class="column">
       <div id="party-box">
         <div class="pill-container">
@@ -97,6 +95,8 @@
 
 
   </div>
+
+  <div id="type-search" class="content"></div>
 
   <footer class="footer">
     
