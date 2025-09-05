@@ -307,7 +307,7 @@ input::placeholder {
 }
 
 .grid-item.positive {
-  background: #ecfade;
+  background: #E6F8D4;
 }
 
 .grid-item.negative {
@@ -378,7 +378,7 @@ input::placeholder {
   font-size: 32px;
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
-  min-width: 348px;
+  min-width: 280px;
   padding: 8px;
   align-items: center; 
   justify-content: center;

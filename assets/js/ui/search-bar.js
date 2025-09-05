@@ -7,6 +7,7 @@ import { firstCharToUppercase } from "../support/text-formatter.js";
 const SEARCH_POKEMON = {
     bar: document.getElementById('search-pokemon'),
     suggestions: document.getElementById('search-suggestions-pokemon'),
+    results: document.getElementById('pokemon-results'),
     options: getPokemonOptions,
     option: getPokemonOption,
     action: loadPokemonSearch,
@@ -15,6 +16,7 @@ const SEARCH_POKEMON = {
 const SEARCH_SINGLE_TYPE = {
     bar: document.getElementById('search-single-type'),
     suggestions: document.getElementById('search-suggestions-single-type'),
+    results: document.getElementById('single-type-results'),
     options: getTypeOptions,
     option: getTypeOption,
     action: loadSingleTypeSearch
@@ -23,6 +25,7 @@ const SEARCH_SINGLE_TYPE = {
 const SEARCH_MULTI_TYPE_1 = {
     bar: document.getElementById('search-multi-type-1'),
     suggestions: document.getElementById('search-suggestions-multi-type-1'),
+    results: document.getElementById('multi-type-results'),
     options: getType1Options,
     option: getTypeOption,
     action: loadMultiTypeSearch
@@ -31,6 +34,7 @@ const SEARCH_MULTI_TYPE_1 = {
 const SEARCH_MULTI_TYPE_2 = {
     bar: document.getElementById('search-multi-type-2'),
     suggestions: document.getElementById('search-suggestions-multi-type-2'),
+    results: document.getElementById('multi-type-results'),
     options: getType2Options,
     option: getTypeOption,
     action: loadMultiTypeSearch
@@ -53,6 +57,7 @@ export function resetSearchBars() {
 function loadSearchBar(search) {
     const value = search.bar.value.trim().toLowerCase();
     search.suggestions.innerHTML = "";
+    search.results.classList.add('hidden');
 
     if (value.length >= 2) {
         const options = search.options(value);
