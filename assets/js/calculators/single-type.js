@@ -1,5 +1,5 @@
 import { TYPES, SINGLE_TYPES } from "../app.js";
-import { getTypeBannerElement } from "../ui/banners.js";
+import { loadTypeContentBanners, loadTypeTitleBanner } from "../ui/banners.js";
 
 export function loadSingleTypeSearch() {
     const search = document.getElementById('search-single-type');
@@ -13,6 +13,13 @@ export function loadSingleTypeSearch() {
         return;
     }
 
+    loadTypeTitleBanner('single-type-result-title', type);
+    loadSingleTypeResults(type)
+
+    results.classList.remove('hidden');
+}
+
+function loadSingleTypeResults(type) {
     const data = [
         SINGLE_TYPES?.[type]?.to?.['2'],
         SINGLE_TYPES?.[type]?.from?.['0.5'],
@@ -25,23 +32,6 @@ export function loadSingleTypeSearch() {
     ]
 
     for (let i = 0; i < data.length; i++) {
-        loadSingleTypeResult(i+1, data[i])
-    }
-    results.classList.remove('hidden');
-}
-
-function loadSingleTypeResult(j, types) {
-    const target = document.getElementById(`single-type-result-${j}`);
-    target.innerHTML = '';
-
-    if (types.length == 0 ) {
-        const div = getTypeBannerElement('N/A');
-        target.append(div);
-    }
-
-    for (const type of types) {
-        const div = getTypeBannerElement(type);
-        target.append(div);
+        loadTypeContentBanners(`single-type-result-${i + 1}`, data[i])
     }
 }
-

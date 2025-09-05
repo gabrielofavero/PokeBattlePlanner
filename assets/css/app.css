@@ -275,16 +275,18 @@ input::placeholder {
 
 .grid-container {
   display: grid;
+  background: rgba(255, 255, 255, 0.95);
+  color: black;
   grid-template-columns: repeat(2, 1fr);  /* 2 columns */
+  border-radius: var(--default-border-radius);
   gap: 1em;
+  padding: 1em;
 }
 
 .grid-item {
-  background: var(--content-overlay);
   width: 350px;
-  height: 150px;
-  border-radius: var(--default-border-radius);
   padding: 1em;
+  border-radius: var(--default-border-radius);
 }
 
 .grid-item.full {
@@ -292,17 +294,54 @@ input::placeholder {
   width: auto; 
 }
 
+.grid-item.full.title {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  height: auto;
+  padding: 0px;
+}
+
+.grid-item.full.title .icon {
+  height: 38px;
+}
+
+.grid-item.positive {
+  background: #ecfade;
+}
+
+.grid-item.negative {
+  background: #ffe5e5;
+}
+
+.grid-item.highlight {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  background: #323232;
+  color: white;
+  height: auto;
+  gap: 8px;
+  padding: 0.5em 1em;
+}
+
+.grid-item.result {
+  background: #F2F2F2;
+  height: auto;
+}
+
 .result-title {
   font-weight: var(--bold-font-weight);
+  text-align: center;
 }
 
-.negative {
-  color: rgb(255, 160, 160);
+.result-title .negative {
+  color: #FF0000;
   font-weight: var(--bold-font-weight);
 }
 
-.positive {
-  color: rgb(134, 240, 134);
+.result-title .positive {
+  color: #00B050;
   font-weight: var(--bold-font-weight);
 }
 
@@ -313,6 +352,16 @@ input::placeholder {
   text-transform: uppercase;
   flex-wrap: wrap;
   font-weight: var(--bold-font-weight);
+  align-items: center; 
+  justify-content: center; 
+}
+
+.grid-item.highlight .result-types {
+  margin-top: 0px;
+}
+
+.grid-item.highlight .result-title {
+  white-space: nowrap;
 }
 
 .type-banner {
@@ -324,75 +373,105 @@ input::placeholder {
   padding: 2px 20px
 }
 
-.type-banner.bug {
+.type-banner.title {
+  display: flex;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: var(--bold-font-weight);
+  min-width: 348px;
+  padding: 8px;
+  align-items: center; 
+  justify-content: center;
+  gap: 8px;
+}
+
+.type-banner.bug,
+.grid-item.bug {
   background: #91A11A;
 }
 
-.type-banner.dark {
+.type-banner.dark,
+.grid-item.dark {
   background: #50413E;
 }
 
-.type-banner.dragon {
+.type-banner.dragon,
+.grid-item.dragon {
   background: #5160E1;
 }
 
-.type-banner.electric {
+.type-banner.electric,
+.grid-item.electric {
   background: #FABF00;
 }
 
-.type-banner.fairy {
+.type-banner.fairy,
+.grid-item.fairy {
   background: #EE70EE;
 }
 
-.type-banner.fighting {
+.type-banner.fighting,
+.grid-item.fighting {
   background: #FF7F00;
 }
 
-.type-banner.fire {
+.type-banner.fire,
+.grid-item.fire {
   background: #E62828;
 }
 
-.type-banner.flying {
+.type-banner.flying,
+.grid-item.flying {
   background: #81B8EE;
 }
 
-.type-banner.ghost {
+.type-banner.ghost,
+.grid-item.ghost {
   background: #704070;
 }
 
-.type-banner.grass {
+.type-banner.grass,
+.grid-item.grass {
   background: #3FA12A;
 }
 
-.type-banner.ground {
+.type-banner.ground,
+.grid-item.ground {
   background: #915121;
 }
 
-.type-banner.ice {
+.type-banner.ice,
+.grid-item.ice {
   background: #3FD9FF;
 }
 
-.type-banner.normal {
+.type-banner.normal,
+.grid-item.normal {
   background: #9FA19E;
 }
 
-.type-banner.poison {
+.type-banner.poison,
+.grid-item.poison {
   background: #9241CC;
 }
 
-.type-banner.psychic {
+.type-banner.psychic,
+.grid-item.psychic {
   background: #EE4179;
 }
 
-.type-banner.rock {
+.type-banner.rock,
+.grid-item.rock {
   background: #AEA981;
 }
 
-.type-banner.steel {
+.type-banner.steel,
+.grid-item.steel {
   background: #60A1B7;
 }
 
-.type-banner.water {
+.type-banner.water,
+.grid-item.water {
   background: #2981EF;
 }
 
