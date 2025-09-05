@@ -1,10 +1,13 @@
+/* Main */
+
 :root {
   --header-overlay: rgba(0, 0, 0, 0.6);
   --content-overlay: rgba(0, 0, 0, 0.35);
   --default-border-radius: 6px;
   --disabled-color: #729b99;
   --disabled-color-rgba: rgba(114, 155, 153, 0.5);
-  --selected-color: #eed02a
+  --selected-color: #eed02a;
+  --bold-font-weight: 600
 }
 
 body {
@@ -33,6 +36,16 @@ canvas {
 .flex-column {
   display: flex;
   flex-direction: column;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.fade.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Header */
@@ -78,7 +91,7 @@ canvas {
 
 .top-bar-item.selected {
   color: white;
-  font-weight: 500;
+  font-weight: var(--bold-font-weight);
 }
 
 .top-bar-item.selected::after {
@@ -150,10 +163,20 @@ button,
   height: 53.83px;
   align-items: center; 
   justify-content: center; 
+  width: 300px;
 }
 
 .search-box {
   height: auto;
+}
+
+.multi-search-box {
+  display: flex;
+  gap: 1em;
+}
+
+.multi-search-box .search-box {
+  width: 300px;
 }
 
 .search-box .icon-box {
@@ -171,6 +194,10 @@ input:focus {
   box-shadow: none;
 }
 
+input::placeholder {
+  color: #96cdc0;
+}
+
 .search-box input {
   width: 250px;
 }
@@ -181,24 +208,21 @@ input:focus {
   color: white;
 }
 
-#result-box {
-  background: var(--content-overlay);
-  width: 600px;
-  height: 547px;
-  border-radius: var(--default-border-radius);
-}
-
 .search-suggestions {
   position: absolute;
   border-top: none;
   background: var(--content-overlay);
-  width: 358px;
-  transform: translateY(65px);
+  width: 348px;
+  transform: translateY(66px);
   border-radius: var(--default-border-radius);
   display: none;
   z-index: 1000;
   max-height: 280px;
   overflow-y: auto;
+}
+
+.search-suggestions.type-2 {
+  transform: translate(372px, 66px);
 }
 
 .search-suggestions.open {
@@ -215,10 +239,23 @@ input:focus {
   height: 76px;
 }
 
-.search-suggestion-item img {
+.search-suggestion-item.pokemon {
+  height: 76px;
+}
+
+.search-suggestion-item.type {
+  height: 50px;
+}
+
+.search-suggestion-item.pokemon img {
   height: 80px;
   object-fit: cover;
   object-position: center -20px;
+}
+
+.search-suggestion-item.type img {
+  height: 35px;
+  margin-right: 8px;
 }
 
 .pokemon-variant {
@@ -233,6 +270,133 @@ input:focus {
   margin-right: 10px;
 }
 
+
+/* Search Results */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 2 columns */
+  gap: 1em;
+}
+
+.grid-item {
+  background: var(--content-overlay);
+  width: 350px;
+  height: 150px;
+  border-radius: var(--default-border-radius);
+  padding: 1em;
+}
+
+.grid-item.full {
+  grid-column: span 2;
+  width: auto; 
+}
+
+.result-title {
+  font-weight: var(--bold-font-weight);
+}
+
+.negative {
+  color: rgb(255, 160, 160);
+  font-weight: var(--bold-font-weight);
+}
+
+.positive {
+  color: rgb(134, 240, 134);
+  font-weight: var(--bold-font-weight);
+}
+
+.result-types {
+  display: flex;
+  gap: 8px;
+  margin-top: 0.5em;
+  text-transform: uppercase;
+  flex-wrap: wrap;
+  font-weight: var(--bold-font-weight);
+}
+
+.type-banner {
+  background: black;
+  color: white;
+  border-radius: 9999px;
+  text-align: center;
+  font-size: 20px;
+  padding: 2px 20px
+}
+
+.type-banner.bug {
+  background: #91A11A;
+}
+
+.type-banner.dark {
+  background: #50413E;
+}
+
+.type-banner.dragon {
+  background: #5160E1;
+}
+
+.type-banner.electric {
+  background: #FABF00;
+}
+
+.type-banner.fairy {
+  background: #EE70EE;
+}
+
+.type-banner.fighting {
+  background: #FF7F00;
+}
+
+.type-banner.fire {
+  background: #E62828;
+}
+
+.type-banner.flying {
+  background: #81B8EE;
+}
+
+.type-banner.ghost {
+  background: #704070;
+}
+
+.type-banner.grass {
+  background: #3FA12A;
+}
+
+.type-banner.ground {
+  background: #915121;
+}
+
+.type-banner.ice {
+  background: #3FD9FF;
+}
+
+.type-banner.normal {
+  background: #9FA19E;
+}
+
+.type-banner.poison {
+  background: #9241CC;
+}
+
+.type-banner.psychic {
+  background: #EE4179;
+}
+
+.type-banner.rock {
+  background: #AEA981;
+}
+
+.type-banner.steel {
+  background: #60A1B7;
+}
+
+.type-banner.water {
+  background: #2981EF;
+}
+
+/* Footer */
 .footer {
   position: fixed;
   bottom: 0;

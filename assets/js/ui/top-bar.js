@@ -1,38 +1,40 @@
 const items = document.querySelectorAll(".top-bar-item");
 
 export function loadTopBar() {
-    // Add mouse click support
+    // Mouse Support
     items.forEach(item => {
-        item.addEventListener("click", () => activateItem(item));
+        item.addEventListener("click", () => selectTopBarItem(item));
     });
 
-    // Add keyboard support (press "x" or "X")
+    // Keyboard Support
     document.addEventListener("keydown", e => {
-        if (e.key.toLowerCase() === "x") {
-            const active = document.activeElement;
-            const isTyping =
-                active && (
-                    active.tagName === "INPUT" ||
-                    active.tagName === "TEXTAREA" ||
-                    active.isContentEditable
-                );
-    
-            if (isTyping) return; // don't trigger if user is typing
-    
-            const selected = document.querySelector(".top-bar-item.selected");
-            let next = selected?.nextElementSibling;
-            if (!next || !next.classList.contains("top-bar-item")) {
-                next = items[0]; // loop back to first
-            }
-            activateItem(next);
+        if (isTyping()) return;
+        switch (e.key.toLowerCase()) {
+            case "x":
+                loadNextTopBarItem();
         }
     });
-
-    // Add gamepad support (polls every frame)
-    requestAnimationFrame(pollGamepad);
 }
 
-function activateItem(item) {
+export function loadNextTopBarItem() {
+    const selected = document.querySelector(".top-bar-item.selected");
+    let next = selected?.nextElementSibling;
+    if (!next || !next.classList.contains("top-bar-item")) {
+        next = items[0]; // loop back to first
+    }
+    selectTopBarItem(next);
+}
+
+function isTyping() {
+    const active = document.activeElement;
+    return active && (
+            active.tagName === "INPUT" ||
+            active.tagName === "TEXTAREA" ||
+            active.isContentEditable
+        );
+}
+
+function selectTopBarItem(item) {
     if (!item) return;
 
     // 1. Remove selected from all items
@@ -52,21 +54,4 @@ function activateItem(item) {
     const targetId = item.getAttribute("to-show");
     const target = document.getElementById(targetId);
     if (target) target.style.display = "flex";
-}
-
-function pollGamepad() {
-    const gamepads = navigator.getGamepads();
-    if (gamepads[0]) {
-        const gp = gamepads[0];
-        // Button 2 is usually "X" on Xbox-style controllers
-        if (gp.buttons[2].pressed) {
-            const selected = document.querySelector(".top-bar-item.selected");
-            let next = selected?.nextElementSibling;
-            if (!next || !next.classList.contains("top-bar-item")) {
-                next = items[0];
-            }
-            activateItem(next);
-        }
-    }
-    requestAnimationFrame(pollGamepad);
 }

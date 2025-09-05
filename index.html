@@ -50,7 +50,7 @@
 
   <div class="top-bar">
     <div class="icon-box">
-      <svg class="icon">
+      <svg class="icon x-button">
         <use href="#x-button-icon" />
       </svg>
     </div>
@@ -65,18 +65,18 @@
         <div class="pill-container">
           <div class="icon-box">
             <svg class="icon">
-              <use href="#app-icon-alt" />
+              <use href="#pokeball-icon" />
             </svg>
           </div>
           <div class="button-item"><div id="current-party">Current Party</div></div>
         </div>
         <div class="party-pokemons">
-          <div class="party-pokemon"></div>
-          <div class="party-pokemon"></div>
-          <div class="party-pokemon"></div>
-          <div class="party-pokemon"></div>
-          <div class="party-pokemon"></div>
-          <div class="party-pokemon"></div>
+          <div class="party-pokemon fade"></div>
+          <div class="party-pokemon fade hidden"></div>
+          <div class="party-pokemon fade hidden"></div>
+          <div class="party-pokemon fade hidden"></div>
+          <div class="party-pokemon fade hidden"></div>
+          <div class="party-pokemon fade hidden"></div>
         </div>
       </div>
     </div>
@@ -88,18 +88,121 @@
             <use href="#search-icon" />
           </svg>
         </div>
-        <input id="search-pokemon" type="text" class="clear-input" placeholder="Search Pokémon">
+        <input id="search-pokemon" type="text" class="clear-input" placeholder="Enemy Pokémon">
       </div>
-      <div class="search-suggestions" id="search-suggestions"></div>
-      <div id="result-box"></div>
+      <div class="search-suggestions" id="search-suggestions-pokemon"></div>
+
+      <div id="search-pokemon-results" class="grid-container fade hidden">
+        <div class="grid-item">
+          <div class="result-title"><span class="positive">2x</span> damage from:</div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="positive">4x</span> damage from:</div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="negative">1/2</span> damage from:</div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="negative">1/4</span> damage from:</div>
+        </div>
+        <div class="grid-item full">
+          <div class="result-title">Immune to:</div>
+        </div>
+      </div>
     </div>
-
-
   </div>
 
-  <div id="single-type-search" class="content"></div>
+  <div id="single-type-search" class="content" style="display: none">
+    <div class="column">
+      <div class="search-box">
+        <div class="icon-box">
+          <svg class="icon">
+            <use href="#search-icon" />
+          </svg>
+        </div>
+        <input id="search-single-type" type="text" class="clear-input" placeholder="Search Type">
+      </div>
+      <div class="search-suggestions" id="search-suggestions-single-type"></div>
+      <div id="single-type-results" class="grid-container fade hidden">
+        <div class="grid-item">
+          <div class="result-title"><span class="positive">2x</span> damage to:</div>
+          <div class="result-types" id="single-type-result-1"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="positive">1/2</span> damage from:</div>
+          <div class="result-types" id="single-type-result-2"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="negative">1/2</span> damage to:</div>
+          <div class="result-types" id="single-type-result-3"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="negative">2x</span> damage from:</div>
+          <div class="result-types" id="single-type-result-4"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title">Can't damage:</div>
+          <div class="result-types" id="single-type-result-5"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title">Immune to:</div>
+          <div class="result-types" id="single-type-result-6"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title">Best against:</div>
+          <div class="result-types" id="single-type-result-7"></div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title">Worst against:</div>
+          <div class="result-types" id="single-type-result-8"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div id="multi-type-search" class="content"></div>
+  <div id="multi-type-search" class="content" style="display: none">
+    <div class="column">
+      <div class="multi-search-box">
+        <div class="search-box">
+          <div class="icon-box">
+            <svg class="icon">
+              <use href="#search-icon" />
+            </svg>
+          </div>
+          <input id="search-multi-type-1" type="text" class="clear-input" placeholder="Search Type 1">
+        </div>
+        <div class="search-suggestions" id="search-suggestions-multi-type-1"></div>
+  
+        <div class="search-box">
+          <div class="icon-box">
+            <svg class="icon">
+              <use href="#search-icon" />
+            </svg>
+          </div>
+          <input id="search-multi-type-2" type="text" class="clear-input" placeholder="Search Type 2">
+        </div>
+        <div class="search-suggestions type-2" id="search-suggestions-multi-type-2"></div>
+      </div>
+      
+      <div class="grid-container fade hidden">
+        <div class="grid-item">
+          <div class="result-title"><span class="positive">2x</span> damage from:</div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="positive">4x</span> damage from:</div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="negative">1/2</span> damage from:</div>
+        </div>
+        <div class="grid-item">
+          <div class="result-title"><span class="negative">1/4</span> damage from:</div>
+        </div>
+        <div class="grid-item full">
+          <div class="result-title">Immune to:</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     
@@ -111,14 +214,19 @@
 
   <!-- Symbols -->
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
-    <symbol id="app-icon" viewBox="0 0 24 24"><path d="M14.5 12a2.5 2.5 0 0 1-5 0a2.5 2.5 0 0 1 5 0m7.5 0c0 5.52-4.48 10-10 10S2 17.52 2 12S6.48 2 12 2s10 4.48 10 10m-2 0h-4c0-2.21-1.79-4-4-4s-4 1.79-4 4H4c0 4.41 3.59 8 8 8s8-3.59 8-8"/></symbol>
-    <symbol id="app-icon-alt" viewBox="0 0 24 24"><path d="M12 4c4.08 0 7.45 3.05 7.94 7h-4.06c-.45-1.73-2.02-3-3.88-3s-3.43 1.27-3.87 3H4.06C4.55 7.05 7.92 4 12 4" opacity="0.3"/><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 2c4.08 0 7.45 3.05 7.94 7h-4.06c-.45-1.73-2.02-3-3.88-3s-3.43 1.27-3.87 3H4.06C4.55 7.05 7.92 4 12 4m2 8c0 1.1-.9 2-2 2s-2-.9-2-2s.9-2 2-2s2 .9 2 2m-2 8c-4.08 0-7.45-3.05-7.94-7h4.06c.44 1.73 2.01 3 3.87 3s3.43-1.27 3.87-3h4.06c-.47 3.95-3.84 7-7.92 7"/></symbol>
+    <symbol id="pokeball-icon" viewBox="0 0 663.4 666.7"><path d="M663.4,366.7H495c-15.4,76-82.7,133.3-163.3,133.3s-147.9-57.3-163.3-133.3H0c16.7,168.4,158.8,300,331.7,300	C504.5,666.7,646.6,535.1,663.4,366.7z"/><path d="M663.4,300C646.6,131.6,504.5,0,331.7,0C158.8,0,16.7,131.6,0,300h168.4c15.4-76.1,82.7-133.3,163.3-133.3	S479.6,224,495,300H663.4z"/><circle class="st0" cx="331.7" cy="333.3" r="100"/></symbol>
+    <symbol id="pokeball-colored-icon" viewBox="0 0 663.4 666.7"><style type="text/css">	.st0{fill:#FFFFFF;}	.st1{fill:#C6030B;}	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}</style><path class="st0" d="M663.4,366.7H495c-15.4,76-82.7,133.3-163.3,133.3s-147.9-57.3-163.3-133.3H0c16.7,168.4,158.8,300,331.7,300	C504.5,666.7,646.6,535.1,663.4,366.7z"/><path class="st1" d="M663.4,300C646.6,131.6,504.5,0,331.7,0C158.8,0,16.7,131.6,0,300h168.4c15.4-76.1,82.7-133.3,163.3-133.3	S479.6,224,495,300H663.4z"/><circle class="st2" cx="331.7" cy="333.3" r="100"/></symbol>
     <symbol id="search-icon" viewBox="0 0 12 12"><path d="M5 1a4 4 0 1 0 2.248 7.31l2.472 2.47a.75.75 0 1 0 1.06-1.06L8.31 7.248A4 4 0 0 0 5 1M2.5 5a2.5 2.5 0 1 1 5 0a2.5 2.5 0 0 1-5 0"/></symbol>
     
     <symbol id="a-button-icon" viewBox="0 0 149.8 149.7"><g><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8c41.4,0,74.9-33.5,74.9-74.8S116.3,0,74.9,0z M99.1,117.8l-7.5-19.5H57.3 l-7.1,19.5H31.8l33.5-85.9h18.3l34.4,85.9H99.1z"/><polygon points="62.6,83.8 86.1,83.8 74.2,51.9 "/></g></symbol>
     <symbol id="b-button-icon" viewBox="0 0 149.8 149.7"><g><path d="M87.5,81.6c-2.4-0.8-7.5-1.2-15.4-1.2h-14v23h16.1c6.2,0,10.2-0.2,11.9-0.5c2.6-0.5,4.7-1.6,6.3-3.4s2.4-4.2,2.4-7.3 c0-2.6-0.6-4.8-1.9-6.6C91.6,83.7,89.8,82.4,87.5,81.6z"/><path d="M82,65.8c3-0.4,5.3-1.4,7-3.1s2.5-3.9,2.5-6.7c0-2.7-0.7-4.8-2.2-6.5c-1.5-1.7-3.6-2.7-6.5-3c-1.7-0.2-6.7-0.3-14.8-0.3 h-10V66h11.4C76.2,66,80.4,66,82,65.8z"/><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8s74.9-33.5,74.9-74.8S116.3,0,74.9,0z M110,104.3 c-1.8,3.7-4.3,6.6-7.4,8.8c-3.1,2.2-7,3.6-11.6,4.1c-2.9,0.3-9.9,0.5-20.9,0.6H40.7V31.9h34.3c6.8,0,11.9,0.3,15.2,0.8 c3.3,0.6,6.3,1.7,9,3.5c2.6,1.8,4.8,4.2,6.6,7.2s2.6,6.3,2.6,10c0,4-1.1,7.7-3.3,11.1c-2.2,3.4-5.1,5.9-8.8,7.6 c5.2,1.5,9.3,4.1,12.1,7.8c2.8,3.7,4.2,8,4.2,12.9C112.7,96.8,111.8,100.6,110,104.3z"/></g></symbol>
     <symbol id="x-button-icon" viewBox="0 0 149.8 149.7"><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8c41.4,0,74.9-33.5,74.9-74.8S116.3,0,74.9,0z M94.2,117.8l-19-29.7	l-19.1,29.7H35.3L64.6,73L38,31.9h20.3l17.2,27.6l16.9-27.6h20.1L85.8,73.6l29.4,44.2H94.2z"/></symbol>
     <symbol id="y-button-icon" viewBox="0 0 149.8 149.7"><path d="M74.9,0C33.5,0,0,33.5,0,74.8s33.5,74.8,74.9,74.8c41.4,0,74.9-33.5,74.9-74.8S116.3,0,74.9,0z M83.8,86.4v36H66.5V86.2	L35.1,36.5h20.3l20.2,34l19.8-34h20L83.8,86.4z"/></symbol>
+
+    <symbol id="cross-button-icon" viewBox="0 0 20.1 20.1"><path d="M10.1,0C4.5,0,0,4.5,0,10.1c0,5.6,4.5,10.1,10.1,10.1c5.6,0,10.1-4.5,10.1-10.1C20.1,4.5,15.6,0,10.1,0z M16.1,14.5	l-1.6,1.6l-4.5-4.5l-4.5,4.5L4,14.5l4.5-4.5L4,5.6L5.6,4l4.5,4.5L14.5,4l1.6,1.6l-4.5,4.5L16.1,14.5z"/></symbol>
+    <symbol id="circle-button-icon" viewBox="0 0 20 20"><g class="st0"><path class="st1" d="M158.1,70.9c23.7,0,42.9,19.3,42.9,42.9c0,23.7-19.3,42.9-42.9,42.9s-42.9-19.3-42.9-42.9 C115.2,90.2,134.5,70.9,158.1,70.9 M158.1,56.9c-31.4,0-56.9,25.5-56.9,56.9c0,31.4,25.5,56.9,56.9,56.9s56.9-25.5,56.9-56.9 C215.1,82.4,189.6,56.9,158.1,56.9L158.1,56.9z"/></g><g><path d="M10,5.2c-2.7,0-4.8,2.2-4.8,4.8c0,2.7,2.2,4.8,4.8,4.8c2.7,0,4.8-2.2,4.8-4.8C14.8,7.3,12.7,5.2,10,5.2z"/><path d="M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z M10,16.7c-3.7,0-6.7-3-6.7-6.7s3-6.7,6.7-6.7 c3.7,0,6.7,3,6.7,6.7S13.7,16.7,10,16.7z"/></g></symbol>
+    <symbol id="square-button-icon" viewBox="0 0 20 20"><g><rect x="5.9" y="5.9" width="8.2" height="8.2"/><path d="M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z M16,16H4V4h12V16z"/></g></symbol>
+    <symbol id="triangle-button-icon" viewBox="0 0 20.1 20.1"><g><polygon points="10,5.9 8.1,9.2 6.2,12.6 10,12.6 13.9,12.6 12,9.2 "/><path d="M10,0C4.5,0,0,4.5,0,10c0,5.5,4.5,10,10,10c5.5,0,10-4.5,10-10C20.1,4.5,15.6,0,10,0z M10,14.3H3.1l3.5-6l3.5-6l3.5,6 l3.5,6H10z"/></g></symbol>
 
   </svg>
 </body>
