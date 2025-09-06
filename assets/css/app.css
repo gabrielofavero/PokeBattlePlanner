@@ -275,7 +275,7 @@ input::placeholder {
 
 .grid-container {
   display: grid;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.6);
   color: black;
   grid-template-columns: repeat(2, 1fr);  /* 2 columns */
   border-radius: var(--default-border-radius);
@@ -307,18 +307,18 @@ input::placeholder {
 }
 
 .grid-item.positive {
-  background: #E6F8D4;
+  background: #cef0d5;
 }
 
 .grid-item.negative {
-  background: #ffe5e5;
+  background: #f0e2e0;
 }
 
 .grid-item.highlight {
   display: flex;
   align-items: center; 
   justify-content: center; 
-  background: #323232;
+  background: #646464;
   color: white;
   height: auto;
   gap: 8px;
@@ -326,7 +326,7 @@ input::placeholder {
 }
 
 .grid-item.result {
-  background: #F2F2F2;
+  background: rgb(222, 229, 247);
   height: auto;
 }
 
