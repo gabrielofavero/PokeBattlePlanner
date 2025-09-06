@@ -25,24 +25,33 @@ Here are some task that I plan to do (at some time!) in future versions of this 
 
 | Type            | Latest | Done | Pending |
 | --------------- |--------|------|---------|
-| ⚔️: Epic        | E009   | 7    | 2       |
-| 🐞: Bug         | B008   | 8    | 0       |
-| 🏆: Feature     | F033   | 25   | 8       |
-| 📈: Improvement | I005   | 5    | 0       |
+| ⚔️: Epic        | E006   | 2    | 4       |
+| 🐞: Bug         | B000   | 0    | 0       |
+| 🏆: Feature     | F013   | 5    | 8       |
+| 📈: Improvement | I003   | 0    | 3       |
 
 ### Pending
-*[I001]:* Make search boxes adapt according to the selected type / Pokémon + Fade animation
-*[I002]:* Add blur to drop-down elements
-*[F006]:* Add yellow hover and active styling to all buttons
-*[I003]:* Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
-*[E003]:* Implement Multi Type Calculator
-*[E004]:* Implement Pokémon Type Calculator
-*[F006]:* [E004] Implement type calculator
-*[F007]:* [E004] Implement Pokémon + Moves registration
-*[F008]:* [E004] Implement Pokémon + Move calculator
-*[F009]:* Add dynamic colors to lava background (similar to Pokémon Violet)
-*[F010]:* Add full controller support
-*[F011]:* Add cursor (similar to Pokémon Violet)
-*[F012]:* Add floating elements (Pokémon, cursor)
-*[E005]:* Add mobile responsiveness (+ swiper) 
-*[E006]:* Add theme support + Legends ZA theme
+- 📈 *I001:*  Make search boxes adapt according to the selected type / Pokémon + Fade 
+- 📈 *I002:* Add blur to drop-down elements
+- 🏆 *F006:* Add yellow hover and active styling to all buttons
+- 📈 *I003:* Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
+- ⚔️ *E003:* Implement Multi Type Calculator
+- ⚔️ *E004:* Implement Pokémon Type Calculator
+    - 🏆 *F007:* [E004] Implement type calculator
+    - 🏆 *F008:* [E004] Implement Pokémon + Moves registration
+    - 🏆 *F009:* [E004] Implement Pokémon + Move calculator
+- 🏆 *F010:* Add dynamic colors to lava background (similar to Pokémon Violet)
+- 🏆 *F011:* Add full controller support
+- 🏆 *F012:* Add cursor (similar to Pokémon Violet)
+- 🏆 *F013:* Add floating elements (Pokémon, cursor)
+- ⚔️ *E005:* Add mobile responsiveness (+ 
+- ⚔️ *E006:* Add theme support + Legends ZA theme
+
+### Done
+- ⚔️ *E001:* Project start
+    - 🏆 *F001:* [E001] Create initial HTML structure
+    - 🏆 *F002:* [E001] Scrappe Pokémon, types and moves data
+    - 🏆 *F003:* [E001] Create initial layout
+    - 🏆 *F004:* [E001] Create initial dynamic elements (JavaScript)
+    - 🏆 *F005:* [E001] Get initial icons and images
+- ⚔️ *E002:* Implement Single Type Calculator
