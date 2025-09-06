@@ -275,12 +275,9 @@ input::placeholder {
 
 .grid-container {
   display: grid;
-  background: rgba(255, 255, 255, 0.6);
-  color: black;
   grid-template-columns: repeat(2, 1fr);  /* 2 columns */
   border-radius: var(--default-border-radius);
   gap: 1em;
-  padding: 1em;
 }
 
 .grid-item {
@@ -307,18 +304,18 @@ input::placeholder {
 }
 
 .grid-item.positive {
-  background: #cef0d5;
+  background: var(--content-overlay);
 }
 
 .grid-item.negative {
-  background: #f0e2e0;
+  background: var(--content-overlay);
 }
 
 .grid-item.highlight {
   display: flex;
   align-items: center; 
   justify-content: center; 
-  background: #646464;
+  background: var(--content-overlay);
   color: white;
   height: auto;
   gap: 8px;
@@ -326,7 +323,7 @@ input::placeholder {
 }
 
 .grid-item.result {
-  background: rgb(222, 229, 247);
+  background: var(--content-overlay);
   height: auto;
 }
 
@@ -336,12 +333,12 @@ input::placeholder {
 }
 
 .result-title .negative {
-  color: #FF0000;
+  color: #ff9393;
   font-weight: var(--bold-font-weight);
 }
 
 .result-title .positive {
-  color: #00B050;
+  color: #98ffc6;
   font-weight: var(--bold-font-weight);
 }
 
