@@ -1,10 +1,3 @@
-export function loadTypeTitleBanner(id, type) {
-    const title = document.getElementById(id);
-    title.innerHTML = '';
-    const span = getTitleBanner(type);
-    title.append(span);
-}
-
 export function loadTypeContentBanners(id, types) {
     const target = document.getElementById(id);
     target.innerHTML = '';

@@ -170,12 +170,23 @@ button,
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
   border-radius: 9999px;
-  padding: 0.5em 1em;
-    display: flex;
-  align-items: center; 
-  justify-content: center; 
-  height: auto;
-  padding: 0px;
+  width: auto;
+}
+
+.search-box.type .icon-box {
+  padding-right: 0px;
+  margin-right: 0px;
+  padding-top: 2px;
+}
+
+.search-box.type .icon-box::after {
+  width: 0px;
+}
+
+.search-box,
+.search-box input,
+.search-box .icon {
+  transition: all 0.3s ease-in-out;
 }
 
 .search-box .icon.type {
@@ -383,6 +394,10 @@ input::placeholder {
 .clear-input.title  {
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
+}
+
+.clear-input.title  {
+  width: 150px;
 }
 
 .type-banner.title {

@@ -1,5 +1,5 @@
 import { TYPES, SINGLE_TYPES } from "../app.js";
-import { loadTypeContentBanners, loadTypeTitleBanner } from "../ui/banners.js";
+import { loadTypeContentBanners } from "../ui/banners.js";
 import { addTypeToSearchBox } from "../ui/search-bar.js";
 
 export function loadSingleTypeSearch() {
@@ -15,7 +15,6 @@ export function loadSingleTypeSearch() {
     }
 
     addTypeToSearchBox(searchBox, type);
-    loadTypeTitleBanner('single-type-result-title', type);
     loadSingleTypeResults(type)
 
     results.classList.remove('hidden');

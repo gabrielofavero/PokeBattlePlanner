@@ -160,7 +160,7 @@ export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
     input.value = type;
-    input.classList = 'clear-input title'
+    input.classList.add('title');
     icon.setAttribute('class', `icon type ${type}`);
     icon.innerHTML = `<use href="#type-${type}-icon"/>`;
     searchBox.classList = `search-box type ${type}`;
