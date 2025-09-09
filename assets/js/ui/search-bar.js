@@ -6,6 +6,7 @@ import { firstCharToUppercase } from "../support/text-formatter.js";
 
 const SEARCH_POKEMON = {
     bar: document.getElementById('search-pokemon'),
+    box: document.getElementById('search-box-pokemon'),
     suggestions: document.getElementById('search-suggestions-pokemon'),
     results: document.getElementById('pokemon-results'),
     options: getPokemonOptions,
@@ -15,6 +16,7 @@ const SEARCH_POKEMON = {
 
 const SEARCH_SINGLE_TYPE = {
     bar: document.getElementById('search-single-type'),
+    box: document.getElementById('search-box-single-type'),
     suggestions: document.getElementById('search-suggestions-single-type'),
     results: document.getElementById('single-type-results'),
     options: getTypeOptions,
@@ -24,6 +26,7 @@ const SEARCH_SINGLE_TYPE = {
 
 const SEARCH_MULTI_TYPE_1 = {
     bar: document.getElementById('search-multi-type-1'),
+    box: document.getElementById('search-box-multi-type-1'),
     suggestions: document.getElementById('search-suggestions-multi-type-1'),
     results: document.getElementById('multi-type-results'),
     options: getType1Options,
@@ -33,6 +36,7 @@ const SEARCH_MULTI_TYPE_1 = {
 
 const SEARCH_MULTI_TYPE_2 = {
     bar: document.getElementById('search-multi-type-2'),
+    box: document.getElementById('search-box-multi-type-2'),
     suggestions: document.getElementById('search-suggestions-multi-type-2'),
     results: document.getElementById('multi-type-results'),
     options: getType2Options,
@@ -58,6 +62,7 @@ function loadSearchBar(search) {
     const value = search.bar.value.trim().toLowerCase();
     search.suggestions.innerHTML = "";
     search.results.classList.add('hidden');
+    clearSearchBox(search.box);
 
     if (value.length >= 2) {
         const options = search.options(value);
@@ -147,24 +152,25 @@ function getType2Options(value) {
 function getTypeOption(type) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item type';
-    item.innerHTML = `<img src="./assets/img/types/${type}.svg" alt=""> ${firstCharToUppercase(type)}`;
+    item.innerHTML = `<svg class="icon ${type}"><use href="#type-${type}-icon" /></svg> ${firstCharToUppercase(type)}`;
     return item;
 }
 
-export function addTypeToSearchBar(searchBox, type) {
+export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
     input.value = type;
-    icon.setAttribute('class', `icon ${type}`);
-    icon.innerHTML = `<use href="#${type}-icon"/>`;
-    searchBox.classList = type;
+    input.classList = 'clear-input title'
+    icon.setAttribute('class', `icon type ${type}`);
+    icon.innerHTML = `<use href="#type-${type}-icon"/>`;
+    searchBox.classList = `search-box type ${type}`;
 }
 
-export function clearSearchBar(searchBox) {
+export function clearSearchBox(searchBox) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
-    input.value = '';
+    input.classList = 'clear-input'
     icon.setAttribute('class', 'icon');
     icon.innerHTML = `<use href="#search-icon"/>`;
-    searchBox.classList = '';
+    searchBox.classList = 'search-box';
 }
