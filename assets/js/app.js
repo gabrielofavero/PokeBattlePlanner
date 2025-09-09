@@ -5,7 +5,11 @@ import { loadTopBar } from "./ui/top-bar.js";
 
 export var POKEMONS;
 export var MOVES;
-export var TYPES;
+export const TYPES = [
+    'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting',
+    'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost',
+    'dragon', 'dark', 'steel', 'fairy'
+];
 
 export var SINGLE_TYPES;
 export var MULTI_TYPES;
@@ -23,17 +27,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 async function loadExternalData() {
     try {
-      const [pokemons, moves, types, single, multi] = await Promise.all([
+      const [pokemons, moves, single, multi] = await Promise.all([
         getJson('./assets/data/pokemons.json'),
         getJson('./assets/data/moves.json'),
-        getJson('./assets/data/types.json'),
         getJson('./assets/data/charts/single-types.json'),
         getJson('./assets/data/charts/multi-types.json')
       ]);
   
       POKEMONS = pokemons;
       MOVES = moves;
-      TYPES = types;
       SINGLE_TYPES = single;
       MULTI_TYPES = multi;
   

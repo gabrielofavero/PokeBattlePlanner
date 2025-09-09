@@ -412,63 +412,51 @@ input::placeholder {
   background: #FF7F00;
 }
 
-.type-banner.fire,
-.grid-item.fire {
+.fire {
   background: #E62828;
 }
 
-.type-banner.flying,
-.grid-item.flying {
+.flying {
   background: #81B8EE;
 }
 
-.type-banner.ghost,
-.grid-item.ghost {
+.ghost {
   background: #704070;
 }
 
-.type-banner.grass,
-.grid-item.grass {
+.grass {
   background: #3FA12A;
 }
 
-.type-banner.ground,
-.grid-item.ground {
+.ground {
   background: #915121;
 }
 
-.type-banner.ice,
-.grid-item.ice {
+.ice {
   background: #3FD9FF;
 }
 
-.type-banner.normal,
-.grid-item.normal {
+.normal {
   background: #9FA19E;
 }
 
-.type-banner.poison,
-.grid-item.poison {
+.poison {
   background: #9241CC;
 }
 
-.type-banner.psychic,
-.grid-item.psychic {
+.psychic {
   background: #EE4179;
 }
 
-.type-banner.rock,
-.grid-item.rock {
+.rock {
   background: #AEA981;
 }
 
-.type-banner.steel,
-.grid-item.steel {
+.steel {
   background: #60A1B7;
 }
 
-.type-banner.water,
-.grid-item.water {
+.water {
   background: #2981EF;
 }
 

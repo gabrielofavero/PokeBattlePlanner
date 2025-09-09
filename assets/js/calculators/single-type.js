@@ -1,22 +1,25 @@
 import { TYPES, SINGLE_TYPES } from "../app.js";
-import { loadTypeContentBanners, loadTypeTitleBanner } from "../ui/banners.js";
+import { loadTypeBannerToSearchBar, loadTypeContentBanners, loadTypeTitleBanner } from "../ui/banners.js";
+import { addTypeToSearchBar, clearSearchBar } from "../ui/search-bar.js";
 
 export function loadSingleTypeSearch() {
-    const search = document.getElementById('search-single-type');
-    const types = Object.values(TYPES); 
+    const searchBox = document.getElementById('search-box-single-type');
+    const input = searchBox.querySelector('input');
     const results = document.getElementById('single-type-results');
-    const type = search.value.toLowerCase();
+    const type = input.value.toLowerCase();
 
-    if (!types.includes(type)) {
-        search.value = '';
+    if (!TYPES.includes(type)) {
+        clearSearchBar(searchBox);
         results.classList.add('hidden');
         return;
     }
 
+    addTypeToSearchBar(searchBox, type);
     loadTypeTitleBanner('single-type-result-title', type);
     loadSingleTypeResults(type)
 
     results.classList.remove('hidden');
+    loadTypeBannerToSearchBar('search-single-type', 'search-single-type-icon');
 }
 
 function loadSingleTypeResults(type) {

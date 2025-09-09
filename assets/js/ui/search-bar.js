@@ -10,7 +10,7 @@ const SEARCH_POKEMON = {
     results: document.getElementById('pokemon-results'),
     options: getPokemonOptions,
     option: getPokemonOption,
-    action: loadPokemonSearch,
+    action: loadPokemonSearch
 }
 
 const SEARCH_SINGLE_TYPE = {
@@ -122,9 +122,7 @@ function getPokemonOption(option) {
 
 // Search Type
 function getTypeOptions(value) {
-    const typeValues = Object.values(TYPES);
-
-    const options = typeValues.filter(type =>
+    const options = TYPES.filter(type =>
         type.toLowerCase().includes(value.toLowerCase())
     );
 
@@ -151,4 +149,22 @@ function getTypeOption(type) {
     item.className = 'search-suggestion-item type';
     item.innerHTML = `<img src="./assets/img/types/${type}.svg" alt=""> ${firstCharToUppercase(type)}`;
     return item;
+}
+
+export function addTypeToSearchBar(searchBox, type) {
+    const icon = searchBox.querySelector('.icon');
+    const input = searchBox.querySelector('input');
+    input.value = type;
+    icon.setAttribute('class', `icon ${type}`);
+    icon.innerHTML = `<use href="#${type}-icon"/>`;
+    searchBox.classList = type;
+}
+
+export function clearSearchBar(searchBox) {
+    const icon = searchBox.querySelector('.icon');
+    const input = searchBox.querySelector('input');
+    input.value = '';
+    icon.setAttribute('class', 'icon');
+    icon.innerHTML = `<use href="#search-icon"/>`;
+    searchBox.classList = '';
 }

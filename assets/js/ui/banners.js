@@ -9,7 +9,7 @@ export function loadTypeContentBanners(id, types) {
     const target = document.getElementById(id);
     target.innerHTML = '';
 
-    if (types.length == 0 ) {
+    if (types.length == 0) {
         const div = getTypeBannerElement('N/A');
         target.append(div);
     }
@@ -27,7 +27,7 @@ function getTypeBannerElement(type) {
     div.classList.add('type-banner', classType);
     div.textContent = type;
     return div;
-  }
+}
 
 function getTitleBanner(type) {
     const div = document.createElement('div');
@@ -44,4 +44,4 @@ function getTitleBanner(type) {
     div.append(span);
 
     return div
-  }
+}
