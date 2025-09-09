@@ -29,10 +29,9 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | ⚔️: Epic        | E006   | 2    | 4       |
 | 🐞: Bug         | B000   | 0    | 0       |
 | 🏆: Feature     | F013   | 5    | 8       |
-| 📈: Improvement | I003   | 0    | 3       |
+| 📈: Improvement | I003   | 1    | 2       |
 
 ### Pending
-- 📈 **I001:**  Make search boxes adapt according to the selected type / Pokémon + Fade 
 - 📈 **I002:** Add blur to drop-down elements
 - 🏆 **F006:** Add yellow hover and active styling to all buttons
 - 📈 **I003:** Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
@@ -56,3 +55,4 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
     - 🏆 **F004:** [E001] Create initial dynamic elements (JavaScript)
     - 🏆 **F005:** [E001] Get initial icons and images
 - ⚔️ **E002:** Implement Single Type Calculator
+- 📈 **I001:**  Make search boxes adapt according to the selected type / Pokémon + Fade 
