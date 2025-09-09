@@ -243,6 +243,8 @@ input::placeholder {
   z-index: 1000;
   max-height: 280px;
   overflow-y: auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .search-suggestions.type-2 {
@@ -287,15 +289,7 @@ input::placeholder {
 }
 
 .pokemon-variant {
-  color: var(--disabled-color);
   font-size: 18px;
-}
-
-.pokemon-small {
-  height: 60px !important;
-  object-position: center -10px !important;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 

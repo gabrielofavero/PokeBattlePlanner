@@ -29,10 +29,9 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | ⚔️: Epic        | E006   | 2    | 4       |
 | 🐞: Bug         | B000   | 0    | 0       |
 | 🏆: Feature     | F013   | 5    | 8       |
-| 📈: Improvement | I003   | 1    | 2       |
+| 📈: Improvement | I003   | 2    | 1       |
 
 ### Pending
-- 📈 **I002:** Add blur to drop-down elements
 - 🏆 **F006:** Add yellow hover and active styling to all buttons
 - 📈 **I003:** Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
 - ⚔️ **E003:** Implement Multi Type Calculator
@@ -44,7 +43,7 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - 🏆 **F011:** Add full controller support
 - 🏆 **F012:** Add cursor (similar to Pokémon Violet)
 - 🏆 **F013:** Add floating elements (Pokémon, cursor)
-- ⚔️ **E005:** Add mobile responsiveness (+ 
+- ⚔️ **E005:** Add mobile responsiveness
 - ⚔️ **E006:** Add theme support + Legends ZA theme
 
 ### Done
@@ -55,4 +54,5 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
     - 🏆 **F004:** [E001] Create initial dynamic elements (JavaScript)
     - 🏆 **F005:** [E001] Get initial icons and images
 - ⚔️ **E002:** Implement Single Type Calculator
-- 📈 **I001:**  Make search boxes adapt according to the selected type / Pokémon + Fade 
+- 📈 **I001:**  Make search boxes adapt according to the selected type / Pokémon + Fade
+- 📈 **I002:** Add blur to drop-down elements

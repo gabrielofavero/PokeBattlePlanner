@@ -121,7 +121,7 @@ function getPokemonOption(option) {
     const item = document.createElement('div');
     const titleBox = `<div class="flex-column"><span>${option.title}</span><span class="pokemon-variant">${option.subtitle}</span></div>`;
     item.className = 'search-suggestion-item pokemon';
-    item.innerHTML = `<img class="${!option.subtitle ? 'pokemon-small' : ''}" src="./assets/img/pokemons/${option.hrefIcon}.png" alt=""> ${titleBox}`;
+    item.innerHTML = `<img src="./assets/img/pokemons/${option.hrefIcon}.png" alt=""> ${titleBox}`;
     return item;
 }
 
