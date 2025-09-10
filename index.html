@@ -97,22 +97,35 @@
       <div id="pokemon-results" class="grid-container fade hidden">
         <div class="grid-item flex">
           <div class="positive">2x</div>
-          <div class="result-title">Damage from:</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="pokemon-result-1"></div>
+          </div>
         </div>
         <div class="grid-item flex">
           <div class="positive">4x</div>
-          <div class="result-title">Damage from:</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="pokemon-result-2"></div>
+          </div>
         </div>
         <div class="grid-item flex">
-          <div class="negative">½</div>
-          <div class="result-title">Damage from:</div>
+          <div class="negative fraction">½</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="pokemon-result-3"></div>
+          </div>
         </div>
         <div class="grid-item flex">
-          <div class="result-title">Damage from:</div>
-          <div class="negative">¼</div>
+          <div class="negative fraction">¼</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="pokemon-result-4"></div>
+          </div>
         </div>
-        <div class="grid-item full">
+        <div class="grid-item highlight full">
           <div class="result-title">Immune to:</div>
+          <div class="result-types" id="pokemon-result-5"></div>
         </div>
       </div>
     </div>
@@ -132,27 +145,28 @@
       <div id="single-type-results" class="grid-container fade hidden">
         <div class="grid-item flex">
           <div class="positive">2x</div>
-          <div>
+          <div class="types">
             <div class="result-title">Damage to:</div>
             <div class="result-types" id="single-type-result-1"></div>
           </div>
         </div>
         <div class="grid-item flex">
-          <div class="negative">½</div>
-          <div>
+          <div class="negative fraction">½</div>
+          <div class="types">
             <div class="result-title">Damage from:</div>
             <div class="result-types" id="single-type-result-2"></div>
           </div>
         </div>
         <div class="grid-item flex">
-          <div class="negative">½</div>
-          <div><div class="result-title">Damage to:</div>
-          <div class="result-types" id="single-type-result-3"></div></div>
-          
+          <div class="negative fraction">½</div>
+          <div class="types">
+            <div class="result-title">Damage to:</div>
+            <div class="result-types" id="single-type-result-3"></div>
+          </div>
         </div>
         <div class="grid-item flex">
           <div class="negative">2x</div>
-          <div>
+          <div class="types">
             <div class="result-title">Damage from:</div>
             <div class="result-types" id="single-type-result-4"></div>
           </div>
@@ -202,20 +216,37 @@
       </div>
       
       <div id="multi-type-results" class="grid-container fade hidden">
-        <div class="grid-item">
-          <div class="result-title"><span class="positive">2x</span> damage from:</div>
+        <div class="grid-item flex">
+          <div class="positive">2x</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="multi-type-result-1"></div>
+          </div>
         </div>
-        <div class="grid-item">
-          <div class="result-title"><span class="positive">4x</span> damage from:</div>
+        <div class="grid-item flex">
+          <div class="positive">4x</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="multi-type-result-2"></div>
+          </div>
         </div>
-        <div class="grid-item">
-          <div class="result-title"><span class="negative">½</span> damage from:</div>
+        <div class="grid-item flex">
+          <div class="negative fraction">½</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="multi-type-result-3"></div>
+          </div>
         </div>
-        <div class="grid-item">
-          <div class="result-title"><span class="negative">¼</span> damage from:</div>
+        <div class="grid-item flex">
+          <div class="negative fraction">¼</div>
+          <div class="types">
+            <div class="result-title">Damage from:</div>
+            <div class="result-types" id="multi-type-result-4"></div>
+          </div>
         </div>
-        <div class="grid-item full">
+        <div class="grid-item highlight full">
           <div class="result-title">Immune to:</div>
+          <div class="result-types" id="multi-type-result-5"></div>
         </div>
       </div>
     </div>

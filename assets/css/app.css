@@ -39,10 +39,6 @@ canvas {
   flex-direction: column;
 }
 
-.flex {
-  display: flex;
-}
-
 .fade {
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -334,7 +330,7 @@ input::placeholder {
 }
 
 .grid-item {
-  width: 350px;
+  width: 420px;
   padding: 1em;
   border-radius: var(--default-border-radius);
 }
@@ -373,6 +369,13 @@ input::placeholder {
   text-align: center;
 }
 
+.grid-item.flex {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  gap: 8px;
+}
+
 .grid-item.flex .negative,
 .grid-item.flex .positive {
   display: flex;
@@ -380,19 +383,27 @@ input::placeholder {
   justify-content: center;
   font-weight: var(--bold-font-weight);
   border-radius: 100%;
-  height: 105px;
-  width: 105px !important;
+  height: 75px;
+  width: 75px;
   text-align: center;
+  font-size: 24px;
+  color: rgb(34, 34, 34);
+}
+
+.grid-item.flex .fraction {
   font-size: 32px;
-  color: black;
+}
+
+.grid-item .types {
+  width: 350px;
 }
 
 .grid-item.flex .negative {
-  background: #ff9393;
+  background: #fcb4b4;
 }
 
 .grid-item.flex .positive {
-  background-color: #98ffc6;
+  background-color: #a2ffcc;
 }
 
 .result-types {

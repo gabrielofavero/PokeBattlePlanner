@@ -28,20 +28,20 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | --------------- |--------|------|---------|
 | ⚔️: Epic        | E006   | 2    | 4       |
 | 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F013   | 6    | 7       |
-| 📈: Improvement | I003   | 2    | 1       |
+| 🏆: Feature     | F014   | 6    | 8       |
+| 📈: Improvement | I003   | 3    | 0       |
 
 ### Pending
-- 📈 **I003:** Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
 - ⚔️ **E003:** Implement Multi Type Calculator
 - ⚔️ **E004:** Implement Pokémon Type Calculator
     - 🏆 **F007:** [E004] Implement type calculator
     - 🏆 **F008:** [E004] Implement Pokémon + Moves registration
     - 🏆 **F009:** [E004] Implement Pokémon + Move calculator
 - 🏆 **F010:** Add dynamic colors to lava background (similar to Pokémon Violet)
-- 🏆 **F011:** Add full controller support
-- 🏆 **F012:** Add cursor (similar to Pokémon Violet)
-- 🏆 **F013:** Add floating elements (Pokémon, cursor)
+- 🏆 **F011:** Add full keyboard support
+- 🏆 **F012:** Add full controller support
+- 🏆 **F013:** Add cursor (similar to Pokémon Violet)
+- 🏆 **F014:** Add floating elements (Pokémon, cursor)
 - ⚔️ **E005:** Add mobile responsiveness
 - ⚔️ **E006:** Add theme support + Legends ZA theme
 
@@ -56,3 +56,4 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - 📈 **I001:**  Make search boxes adapt according to the selected type / Pokémon + Fade
 - 📈 **I002:** Add blur to drop-down elements
 - 🏆 **F006:** Add yellow hover and active styling to all buttons
+- 📈 **I003:** Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
