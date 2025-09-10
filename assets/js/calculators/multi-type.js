@@ -1,24 +1,62 @@
-const HEADER = {
-    normal: 0,
-    fire: 1,
-    water: 2,
-    electric: 3,
-    grass: 4,
-    ice: 5,
-    fighting: 6,
-    poison: 7,
-    ground: 8,
-    flying: 9,
-    psychic: 10,
-    bug: 11,
-    rock: 12,
-    ghost: 13,
-    dragon: 14,
-    dark: 15,
-    steel: 16,
-    fairy: 17
-};
+import { MULTI_TYPES, TYPES } from "../app.js";
+import { loadTypeContentBanners } from "../ui/banners.js";
+import { addTypeToSearchBox } from "../ui/search-bar.js";
 
-export function loadMultiTypeSearch() {
-    
+const SEARCH = ['', '']
+
+export function loadMultiTypeSearch(j) {
+    const searchBox = document.getElementById(`search-box-multi-type-${j}`);
+    const input = searchBox.querySelector('input');
+    const results = document.getElementById('multi-type-results');
+    const type = input.value.toLowerCase();
+
+
+    if (!TYPES.includes(type)) {
+        SEARCH[j - 1] = '';
+        input.value = '';
+        results.classList.add('hidden');
+        return;
+    }
+    SEARCH[j - 1] = type;
+    addTypeToSearchBox(searchBox, type);
+
+    if (SEARCH[0] && SEARCH[1]) {
+        loadMultiTypeResults();
+        results.classList.remove('hidden');
+    }
+}
+
+export function loadMultiTypeResults(search = SEARCH, idPrefix = 'multi-type-result') {
+    const multiType = search.join('_');
+    const rawData = MULTI_TYPES?.[multiType];
+
+    if (!rawData) {
+        console.log(`Data could not be found for types "${search.join(' and ')}"`)
+    }
+
+    const data = getMultiData(rawData);
+
+    for (let i = 0; i < data.length; i++) {
+        loadTypeContentBanners(`${idPrefix}-${i + 1}`, data[i])
+    }
+}
+
+function getMultiData(rawData) {
+    const multiDataMap = getMultiDataMap(rawData);
+    return [
+        multiDataMap['2'] || [],
+        multiDataMap['4'] || [],
+        multiDataMap['½'] || [],
+        multiDataMap['¼'] || [],
+        multiDataMap['0'] || [],
+    ]
+}
+
+function getMultiDataMap(rawData) {
+    return rawData.reduce((accumulator, value, i) => {
+        const key = String(value);
+        if (!accumulator[key]) accumulator[key] = [];
+        accumulator[key].push(TYPES[i]);
+        return accumulator;
+    }, {});
 }

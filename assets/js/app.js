@@ -5,11 +5,7 @@ import { loadTopBar } from "./ui/top-bar.js";
 
 export var POKEMONS;
 export var MOVES;
-export const TYPES = [
-    'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting',
-    'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost',
-    'dragon', 'dark', 'steel', 'fairy'
-];
+export const TYPES = ["normal", "fire", "water", "electric", "grass", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"];
 
 export var SINGLE_TYPES;
 export var MULTI_TYPES;

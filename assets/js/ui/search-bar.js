@@ -31,7 +31,7 @@ const SEARCH_MULTI_TYPE_1 = {
     results: document.getElementById('multi-type-results'),
     options: getType1Options,
     option: getTypeOption,
-    action: loadMultiTypeSearch
+    action: () => loadMultiTypeSearch(1)
 }
 
 const SEARCH_MULTI_TYPE_2 = {
@@ -41,7 +41,7 @@ const SEARCH_MULTI_TYPE_2 = {
     results: document.getElementById('multi-type-results'),
     options: getType2Options,
     option: getTypeOption,
-    action: loadMultiTypeSearch
+    action: () => loadMultiTypeSearch(2)
 }
 
 export function loadSearchBars() {
