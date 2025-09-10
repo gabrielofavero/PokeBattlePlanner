@@ -3,6 +3,7 @@
 :root {
   --header-overlay: rgba(0, 0, 0, 0.6);
   --content-overlay: rgba(0, 0, 0, 0.35);
+  --content-overlay-selected: rgba(48, 42, 9, 0.35);
   --default-border-radius: 6px;
   --disabled-color: #729b99;
   --disabled-color-rgba: rgba(114, 155, 153, 0.5);
@@ -46,6 +47,14 @@ canvas {
 .fade.hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+button,
+.search-box,
+.search-box input,
+.search-box .icon,
+.party-pokemon {
+  transition: all 0.3s ease-in-out;
 }
 
 /* Header */
@@ -153,6 +162,10 @@ canvas {
   border-radius: var(--default-border-radius);
 }
 
+.party-pokemon:hover {
+  background: var(--content-overlay-selected);
+}
+
 button,
 .search-box {
   padding: 0.5em 1em;
@@ -164,6 +177,15 @@ button,
   align-items: center; 
   justify-content: center; 
   width: 300px;
+}
+
+button:hover {
+  background: var(--content-overlay-selected);
+}
+
+button:active {
+  background: var(--selected-color);
+  color: black;
 }
 
 .search-box.type {
@@ -185,7 +207,8 @@ button,
 
 .search-box,
 .search-box input,
-.search-box .icon {
+.search-box .icon,
+.party-pokemon {
   transition: all 0.3s ease-in-out;
 }
 
@@ -263,6 +286,10 @@ input::placeholder {
   cursor: pointer;
   transition: background 0.2s;
   height: 76px;
+}
+
+.search-suggestion-item:hover {
+  background: rgba(238, 209, 43, 0.1)
 }
 
 .search-suggestion-item.pokemon {

@@ -28,11 +28,10 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | --------------- |--------|------|---------|
 | ⚔️: Epic        | E006   | 2    | 4       |
 | 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F013   | 5    | 8       |
+| 🏆: Feature     | F013   | 6    | 7       |
 | 📈: Improvement | I003   | 2    | 1       |
 
 ### Pending
-- 🏆 **F006:** Add yellow hover and active styling to all buttons
 - 📈 **I003:** Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
 - ⚔️ **E003:** Implement Multi Type Calculator
 - ⚔️ **E004:** Implement Pokémon Type Calculator
@@ -56,3 +55,4 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - ⚔️ **E002:** Implement Single Type Calculator
 - 📈 **I001:**  Make search boxes adapt according to the selected type / Pokémon + Fade
 - 📈 **I002:** Add blur to drop-down elements
+- 🏆 **F006:** Add yellow hover and active styling to all buttons
