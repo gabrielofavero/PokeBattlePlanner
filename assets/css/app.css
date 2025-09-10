@@ -39,6 +39,10 @@ canvas {
   flex-direction: column;
 }
 
+.flex {
+  display: flex;
+}
+
 .fade {
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -344,11 +348,7 @@ input::placeholder {
   height: 38px;
 }
 
-.grid-item.positive {
-  background: var(--content-overlay);
-}
-
-.grid-item.negative {
+.grid-item {
   background: var(--content-overlay);
 }
 
@@ -373,14 +373,26 @@ input::placeholder {
   text-align: center;
 }
 
-.result-title .negative {
-  color: #ff9393;
+.grid-item.flex .negative,
+.grid-item.flex .positive {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
   font-weight: var(--bold-font-weight);
+  border-radius: 100%;
+  height: 105px;
+  width: 105px !important;
+  text-align: center;
+  font-size: 32px;
+  color: black;
 }
 
-.result-title .positive {
-  color: #98ffc6;
-  font-weight: var(--bold-font-weight);
+.grid-item.flex .negative {
+  background: #ff9393;
+}
+
+.grid-item.flex .positive {
+  background-color: #98ffc6;
 }
 
 .result-types {
