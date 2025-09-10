@@ -56,12 +56,12 @@
         <use href="#x-button-icon" />
       </svg>
     </div>
-    <div class="top-bar-item selected" to-show="pokemon-search">Pokémon</div>
-    <div class="top-bar-item" to-show="single-type-search">Single Type</div>
-    <div class="top-bar-item" to-show="multi-type-search">Multi Type</div>
+    <div class="top-bar-item selected" to-show="pokemon-search-container">Pokémon</div>
+    <div class="top-bar-item" to-show="single-type-search-container">Single Type</div>
+    <div class="top-bar-item" to-show="multi-type-search-container">Multi Type</div>
   </div>
 
-  <div id="pokemon-search" class="content">
+  <div id="pokemon-search-container" class="content">
     <div class="column">
       <div id="party-box">
         <div class="pill-container">
@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <div class="column">
+    <div class="column" id="pokemon-search-content">
       <div class="search-box" id="search-box-pokemon">
         <div class="icon-box">
           <svg class="icon">
@@ -94,7 +94,7 @@
       </div>
       <div class="search-suggestions" id="search-suggestions-pokemon"></div>
 
-      <div id="pokemon-results" class="grid-container fade hidden">
+      <div id="pokemon-results" class="search-result grid-container fade hidden">
         <div class="grid-item flex">
           <div class="positive">2x</div>
           <div class="types">
@@ -131,8 +131,8 @@
     </div>
   </div>
 
-  <div id="single-type-search" class="content" style="display: none">
-    <div class="column">
+  <div id="single-type-search-container" class="content" style="display: none">
+    <div class="column" id="single-type-search-content">
       <div class="search-box" id="search-box-single-type">
         <div class="icon-box">
           <svg class="icon">
@@ -142,7 +142,7 @@
         <input id="search-single-type" type="text" class="clear-input" placeholder="Search Type">
       </div>
       <div class="search-suggestions" id="search-suggestions-single-type"></div>
-      <div id="single-type-results" class="grid-container fade hidden">
+      <div id="single-type-results" class="search-result grid-container fade hidden">
         <div class="grid-item flex">
           <div class="positive">2x</div>
           <div class="types">
@@ -151,7 +151,7 @@
           </div>
         </div>
         <div class="grid-item flex">
-          <div class="negative fraction">½</div>
+          <div class="positive fraction">½</div>
           <div class="types">
             <div class="result-title">Damage from:</div>
             <div class="result-types" id="single-type-result-2"></div>
@@ -191,8 +191,8 @@
     </div>
   </div>
 
-  <div id="multi-type-search" class="content" style="display: none">
-    <div class="column">
+  <div id="multi-type-search-container" class="content" style="display: none">
+    <div class="column" id="multi-type-search-content">
       <div class="multi-search-box">
         <div class="search-box" id="search-box-multi-type-1">
           <div class="icon-box">
@@ -215,7 +215,7 @@
         <div class="search-suggestions type-2" id="search-suggestions-multi-type-2"></div>
       </div>
       
-      <div id="multi-type-results" class="grid-container fade hidden">
+      <div id="multi-type-results" class="search-result grid-container fade hidden">
         <div class="grid-item flex">
           <div class="positive">2x</div>
           <div class="types">

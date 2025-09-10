@@ -5,64 +5,62 @@ import { loadSingleTypeSearch } from "../calculators/single-type.js";
 import { firstCharToUppercase } from "../support/text-formatter.js";
 
 const SEARCH_POKEMON = {
-    bar: document.getElementById('search-pokemon'),
-    box: document.getElementById('search-box-pokemon'),
-    suggestions: document.getElementById('search-suggestions-pokemon'),
-    results: document.getElementById('pokemon-results'),
+    content: document.getElementById('pokemon-search-content'),
     options: getPokemonOptions,
     option: getPokemonOption,
     action: loadPokemonSearch
 }
 
 const SEARCH_SINGLE_TYPE = {
-    bar: document.getElementById('search-single-type'),
-    box: document.getElementById('search-box-single-type'),
-    suggestions: document.getElementById('search-suggestions-single-type'),
-    results: document.getElementById('single-type-results'),
+    content: document.getElementById('single-type-search-content'),
     options: getTypeOptions,
     option: getTypeOption,
     action: loadSingleTypeSearch
 }
 
 const SEARCH_MULTI_TYPE_1 = {
-    bar: document.getElementById('search-multi-type-1'),
-    box: document.getElementById('search-box-multi-type-1'),
-    suggestions: document.getElementById('search-suggestions-multi-type-1'),
-    results: document.getElementById('multi-type-results'),
+    content: document.getElementById('multi-type-search-content'),
     options: getType1Options,
     option: getTypeOption,
     action: () => loadMultiTypeSearch(1)
 }
 
 const SEARCH_MULTI_TYPE_2 = {
-    bar: document.getElementById('search-multi-type-2'),
-    box: document.getElementById('search-box-multi-type-2'),
-    suggestions: document.getElementById('search-suggestions-multi-type-2'),
-    results: document.getElementById('multi-type-results'),
+    content: document.getElementById('multi-type-search-content'),
     options: getType2Options,
     option: getTypeOption,
     action: () => loadMultiTypeSearch(2)
 }
 
 export function loadSearchBars() {
-    SEARCH_POKEMON.bar.addEventListener('input', () => loadSearchBar(SEARCH_POKEMON));
-    SEARCH_SINGLE_TYPE.bar.addEventListener('input', () => loadSearchBar(SEARCH_SINGLE_TYPE));
-    SEARCH_MULTI_TYPE_1.bar.addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_1));
-    SEARCH_MULTI_TYPE_2.bar.addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_2));
+    const pokemon = SEARCH_POKEMON.content.querySelector('input');
+    const singleType = SEARCH_SINGLE_TYPE.content.querySelector('input');
+    const multiType1 = SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0];
+    const multiType2 = SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1];
+
+    pokemon.addEventListener('input', () => loadSearchBar(SEARCH_POKEMON));
+    singleType.addEventListener('input', () => loadSearchBar(SEARCH_SINGLE_TYPE));
+    multiType1.addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_1, 1));
+    multiType2.addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_2, 2));
 }
 
 export function resetSearchBars() {
-    SEARCH_POKEMON.bar.value = '';
-    SEARCH_SINGLE_TYPE.bar.value = '';
-    SEARCH_MULTI_TYPE_1.bar.value = '';
-    SEARCH_MULTI_TYPE_2.bar.value = '';
+    SEARCH_POKEMON.content.querySelector('input').value = '';
+    SEARCH_SINGLE_TYPE.content.querySelector('input').value = '';
+    SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value = '';
+    SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value = '';
 }
 
-function loadSearchBar(search) {
-    const value = search.bar.value.trim().toLowerCase();
-    search.suggestions.innerHTML = "";
-    search.results.classList.add('hidden');
-    clearSearchBox(search.box);
+function loadSearchBar(search, j=1) {
+    const input = search.content.querySelectorAll('input')[j-1];
+    const suggestions = search.content.getElementsByClassName("search-suggestions")[j-1];
+    const searchBox = search.content.getElementsByClassName("search-box")[j-1];
+    const results = search.content.querySelector('.search-result');
+
+    const value = input.value.trim().toLowerCase();
+    suggestions.innerHTML = "";
+    results.classList.add('hidden');
+    clearSearchBox(searchBox);
 
     if (value.length >= 2) {
         const options = search.options(value);
@@ -70,24 +68,24 @@ function loadSearchBar(search) {
             options.forEach(option => {
                 const item = search.option(option);
                 item.onclick = () => {
-                    search.bar.value = option?.title || firstCharToUppercase(option);
-                    search.suggestions.style.display = 'none';
+                    input.value = option?.title || firstCharToUppercase(option);
+                    suggestions.style.display = 'none';
                     search.action();
                 };
-                search.suggestions.appendChild(item);
+                suggestions.appendChild(item);
             });
-            search.suggestions.style.display = 'block';
+            suggestions.style.display = 'block';
         } else {
-            search.suggestions.style.display = 'none';
+            suggestions.style.display = 'none';
         }
     } else {
-        search.suggestions.style.display = 'none';
+        suggestions.style.display = 'none';
     }
 
     // Hide when clicking outside
     document.addEventListener("click", function hideOnClickOutside(e) {
-        if (!search.bar.contains(e.target) && !search.suggestions.contains(e.target)) {
-            search.suggestions.style.display = 'none';
+        if (!input.contains(e.target) && !suggestions.contains(e.target)) {
+            suggestions.style.display = 'none';
             document.removeEventListener("click", hideOnClickOutside); // cleanup
         }
     });
@@ -142,11 +140,11 @@ function getFilteredTypeOptions(value, exclude) {
 }
 
 function getType1Options(value) {
-    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_2.bar.value)
+    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value)
 }
 
 function getType2Options(value) {
-    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_1.bar.value)
+    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value)
 }
 
 function getTypeOption(type) {

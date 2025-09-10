@@ -2,7 +2,7 @@ import { MULTI_TYPES, TYPES } from "../app.js";
 import { loadTypeContentBanners } from "../ui/banners.js";
 import { addTypeToSearchBox } from "../ui/search-bar.js";
 
-const SEARCH = ['', '']
+const SEARCH_TYPES = ['', '']
 
 export function loadMultiTypeSearch(j) {
     const searchBox = document.getElementById(`search-box-multi-type-${j}`);
@@ -10,28 +10,27 @@ export function loadMultiTypeSearch(j) {
     const results = document.getElementById('multi-type-results');
     const type = input.value.toLowerCase();
 
-
     if (!TYPES.includes(type)) {
-        SEARCH[j - 1] = '';
+        SEARCH_TYPES[j - 1] = '';
         input.value = '';
         results.classList.add('hidden');
         return;
     }
-    SEARCH[j - 1] = type;
+    SEARCH_TYPES[j - 1] = type;
     addTypeToSearchBox(searchBox, type);
 
-    if (SEARCH[0] && SEARCH[1]) {
+    if (SEARCH_TYPES[0] && SEARCH_TYPES[1]) {
         loadMultiTypeResults();
         results.classList.remove('hidden');
     }
 }
 
-export function loadMultiTypeResults(search = SEARCH, idPrefix = 'multi-type-result') {
-    const multiType = search.join('_');
+export function loadMultiTypeResults(searchTypes = SEARCH_TYPES, idPrefix = 'multi-type-result') {
+    const multiType = searchTypes.join('_');
     const rawData = MULTI_TYPES?.[multiType];
 
     if (!rawData) {
-        console.log(`Data could not be found for types "${search.join(' and ')}"`)
+        console.log(`Data could not be found for types "${searchTypes.join(' and ')}"`)
     }
 
     const data = getMultiData(rawData);
