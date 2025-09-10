@@ -3,9 +3,10 @@ import { loadTypeContentBanners } from "../ui/banners.js";
 import { addTypeToSearchBox } from "../ui/search-bar.js";
 
 export function loadSingleTypeSearch() {
-    const searchBox = document.getElementById('search-box-single-type');
+    const content = document.getElementById('single-type-search-content');
+    const searchBox = content.querySelector(".search-box");
     const input = searchBox.querySelector('input');
-    const results = document.getElementById('single-type-results');
+    const results = content.querySelector('.search-result');
     const type = input.value.toLowerCase();
 
     if (!TYPES.includes(type)) {

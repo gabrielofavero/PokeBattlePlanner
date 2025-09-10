@@ -5,9 +5,10 @@ import { addTypeToSearchBox } from "../ui/search-bar.js";
 const SEARCH_TYPES = ['', '']
 
 export function loadMultiTypeSearch(j) {
-    const searchBox = document.getElementById(`search-box-multi-type-${j}`);
+    const content = document.getElementById('multi-type-search-content');
+    const searchBox = content.getElementsByClassName("search-box")[j-1];
     const input = searchBox.querySelector('input');
-    const results = document.getElementById('multi-type-results');
+    const results = content.querySelector('.search-result');
     const type = input.value.toLowerCase();
 
     if (!TYPES.includes(type)) {

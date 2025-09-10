@@ -260,7 +260,7 @@ input::placeholder {
   border-top: none;
   background: var(--content-overlay);
   width: 348px;
-  transform: translateY(66px);
+  transform: translateY(75px);
   border-radius: var(--default-border-radius);
   display: none;
   z-index: 1000;
@@ -271,7 +271,7 @@ input::placeholder {
 }
 
 .search-suggestions.type-2 {
-  transform: translate(372px, 66px);
+  transform: translate(372px, 75px);
 }
 
 .search-suggestions.open {

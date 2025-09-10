@@ -2,9 +2,10 @@ import { POKEMONS } from "../app.js";
 import { loadMultiTypeResults } from "./multi-type.js";
 
 export function loadPokemonSearch() {
-    const searchBox = document.getElementById('search-box-pokemon');
+    const content = document.getElementById('pokemon-search-content');
+    const searchBox = content.querySelector(".search-box");
     const input = searchBox.querySelector('input');
-    const results = document.getElementById('pokemon-results');
+    const results = content.querySelector('.search-result');
     const value = input.value.toLowerCase();
 
     const pokemon = getPokemon(value);

@@ -52,9 +52,9 @@ export function resetSearchBars() {
 }
 
 function loadSearchBar(search, j=1) {
-    const input = search.content.querySelectorAll('input')[j-1];
-    const suggestions = search.content.getElementsByClassName("search-suggestions")[j-1];
     const searchBox = search.content.getElementsByClassName("search-box")[j-1];
+    const input = searchBox.querySelector('input');
+    const suggestions = search.content.getElementsByClassName("search-suggestions")[j-1];
     const results = search.content.querySelector('.search-result');
 
     const value = input.value.trim().toLowerCase();
