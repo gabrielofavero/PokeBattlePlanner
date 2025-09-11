@@ -34,6 +34,7 @@ function loadSingleTypeResults(type) {
     ]
 
     for (let i = 0; i < data.length; i++) {
-        loadTypeContentBanners(`single-type-result-${i + 1}`, data[i])
+        const target = document.getElementById(`single-type-result-${i + 1}`);
+        loadTypeContentBanners(target, data[i])
     }
 }

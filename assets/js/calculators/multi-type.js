@@ -37,7 +37,8 @@ export function loadMultiTypeResults(searchTypes = SEARCH_TYPES, idPrefix = 'mul
     const data = getMultiData(rawData);
 
     for (let i = 0; i < data.length; i++) {
-        loadTypeContentBanners(`${idPrefix}-${i + 1}`, data[i])
+        const target = document.getElementById(`${idPrefix}-${i + 1}`);
+        loadTypeContentBanners(target, data[i])
     }
 }
 

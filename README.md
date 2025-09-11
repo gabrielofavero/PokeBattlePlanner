@@ -28,12 +28,11 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | --------------- |--------|------|---------|
 | ⚔️: Epic        | E006   | 3    | 3       |
 | 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F014   | 6    | 8       |
-| 📈: Improvement | I003   | 3    | 0       |
+| 🏆: Feature     | F014   | 7    | 7       |
+| 📈: Improvement | I004   | 3    | 1       |
 
 ### Pending
 - ⚔️ **E004:** Implement Pokémon Type Calculator
-    - 🏆 **F007:** [E004] Implement type calculator
     - 🏆 **F008:** [E004] Implement Pokémon + Moves registration
     - 🏆 **F009:** [E004] Implement Pokémon + Move calculator
 - 🏆 **F010:** Add dynamic colors to lava background (similar to Pokémon Violet)
@@ -43,6 +42,7 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - 🏆 **F014:** Add floating elements (Pokémon, cursor)
 - ⚔️ **E005:** Add mobile responsiveness
 - ⚔️ **E006:** Add theme support + Legends ZA theme
+- 📈 **I004:** Animations overhaul
 
 ### Done
 - ⚔️ **E001:** Project start
@@ -57,3 +57,5 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - 🏆 **F006:** Add yellow hover and active styling to all buttons
 - 📈 **I003:** Improve visibility of chart multipliers (colored circles for 2x, 4x, ½, ¼)
 - ⚔️ **E003:** Implement Multi Type Calculator
+- ⚔️ **E004:** Implement Pokémon Type Calculator
+    - 🏆 **F007:** [E004] Implement type calculator

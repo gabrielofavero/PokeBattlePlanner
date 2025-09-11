@@ -1,35 +1,40 @@
 import { POKEMONS, TYPES } from "../app.js";
 import { loadMultiTypeSearch } from "../calculators/multi-type.js";
-import { loadPokemonSearch } from "../calculators/pokemon.js";
+import { getPokemonSpriteAlt, getPokemonSpriteSrc, loadPokemonSearch, storePokemonSearchResult } from "../calculators/pokemon.js";
 import { loadSingleTypeSearch } from "../calculators/single-type.js";
 import { firstCharToUppercase } from "../support/text-formatter.js";
+import { loadTypeContentBanners } from "./banners.js";
 
 const SEARCH_POKEMON = {
     content: document.getElementById('pokemon-search-content'),
     options: getPokemonOptions,
     option: getPokemonOption,
-    action: loadPokemonSearch
+    action: loadPokemonSearch,
+    storeAction: storePokemonSearchResult
 }
 
 const SEARCH_SINGLE_TYPE = {
     content: document.getElementById('single-type-search-content'),
     options: getTypeOptions,
     option: getTypeOption,
-    action: loadSingleTypeSearch
+    action: loadSingleTypeSearch,
+    storeAction: storeTypeSearchResult
 }
 
 const SEARCH_MULTI_TYPE_1 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType1Options,
     option: getTypeOption,
-    action: () => loadMultiTypeSearch(1)
+    action: () => loadMultiTypeSearch(1),
+    storeAction: storeTypeSearchResult
 }
 
 const SEARCH_MULTI_TYPE_2 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType2Options,
     option: getTypeOption,
-    action: () => loadMultiTypeSearch(2)
+    action: () => loadMultiTypeSearch(2),
+    storeAction: storeTypeSearchResult
 }
 
 export function loadSearchBars() {
@@ -66,13 +71,13 @@ function loadSearchBar(search, j=1) {
         const options = search.options(value);
         if (options.length > 0) {
             options.forEach(option => {
-                const item = search.option(option);
-                item.onclick = () => {
-                    input.value = option?.title || firstCharToUppercase(option);
+                const div = search.option(option);
+                div.onclick = () => {
+                    search.storeAction(option, input);
                     suggestions.style.display = 'none';
                     search.action();
                 };
-                suggestions.appendChild(item);
+                suggestions.appendChild(div);
             });
             suggestions.style.display = 'block';
         } else {
@@ -115,15 +120,19 @@ function getPokemonOptions(value) {
     return options;
 }
 
-function getPokemonOption(option) {
+function getPokemonOption(pokemon) {
     const item = document.createElement('div');
-    const titleBox = `<div class="flex-column"><span>${option.title}</span><span class="pokemon-variant">${option.subtitle}</span></div>`;
+    const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
     item.className = 'search-suggestion-item pokemon';
-    item.innerHTML = `<img src="./assets/img/pokemons/${option.hrefIcon}.png" alt=""> ${titleBox}`;
+    item.innerHTML = `<img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"> ${titleBox}`;
     return item;
 }
 
 // Search Type
+function storeTypeSearchResult(option, input) {
+    input.value = firstCharToUppercase(option);
+}
+
 function getTypeOptions(value) {
     const options = TYPES.filter(type =>
         type.toLowerCase().includes(value.toLowerCase())
@@ -164,11 +173,44 @@ export function addTypeToSearchBox(searchBox, type) {
     searchBox.classList = `search-box type ${type}`;
 }
 
+export function addPokemonToSearchBox(searchBox, pokemon) {
+    const icon = searchBox.querySelector('.icon');
+    const img = searchBox.querySelector('img');
+
+    const subtitle = searchBox.querySelector('.pokemon-variant');
+    const types = searchBox.querySelector('.result-types');
+    
+    icon.style.display = 'none';
+
+    img.src = getPokemonSpriteSrc(pokemon);
+    img.alt = getPokemonSpriteAlt(pokemon);
+    img.style.display = ''
+
+    searchBox.classList = `search-box pokemon`;
+    
+    subtitle.textContent = pokemon.subtitle;
+    subtitle.style.display = '';
+
+    loadTypeContentBanners(types, pokemon.types);
+    types.style.display = '';
+}
+
 export function clearSearchBox(searchBox) {
     const icon = searchBox.querySelector('.icon');
+    const img = searchBox.querySelector('img');
     const input = searchBox.querySelector('input');
+
     input.classList = 'clear-input'
     icon.setAttribute('class', 'icon');
     icon.innerHTML = `<use href="#search-icon"/>`;
     searchBox.classList = 'search-box';
+
+    if (img) {
+        img.style.display = 'none'
+        icon.style.display = '';
+        img.src = '';
+        img.alt = '';
+        searchBox.querySelector('.pokemon-variant').style.display = 'none';
+        searchBox.querySelector('.result-types').style.display = 'none';
+    }
 }
