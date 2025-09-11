@@ -6,6 +6,7 @@
   --content-overlay-selected: rgba(48, 42, 9, 0.35);
   --default-border-radius: 6px;
   --disabled-color: #729b99;
+  --disabled-color-alt: rgb(214, 214, 214, 0.5);
   --disabled-color-rgba: rgba(114, 155, 153, 0.5);
   --selected-color: #eed02a;
   --bold-font-weight: 600
@@ -160,10 +161,28 @@ button,
   height: 100px;
   background: var(--content-overlay);
   border-radius: var(--default-border-radius);
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
 }
 
 .party-pokemon:hover {
   background: var(--content-overlay-selected);
+}
+
+.party-pokemon .icon {
+  fill: var(--disabled-color-alt);
+  height: 50px;
+  width: 50px;
+}
+
+.party-pokemon.selected {
+  background: var(--selected-color);
+  color: black;
+}
+
+.party-pokemon.selected .icon {
+  fill: black;
 }
 
 button,

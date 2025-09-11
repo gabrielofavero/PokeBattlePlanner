@@ -1,7 +1,8 @@
 import { loadLavaBackground } from "./support/lava-background.js";
+import { loadPokemonPartiesListeners } from "./ui/edit-pokemon.js";
 import { loadGamepadListeners } from "./ui/gamepad.js";
 import { loadSearchBars, resetSearchBars } from "./ui/search-bar.js";
-import { loadTopBar } from "./ui/top-bar.js";
+import { loadTopBar } from "./ui/navigation.js";
 
 export var POKEMONS;
 export var MOVES;
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadTopBar();
     loadSearchBars();
     loadGamepadListeners();
+    loadPokemonPartiesListeners();
 });
 
 async function loadExternalData() {

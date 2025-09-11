@@ -1,40 +1,27 @@
-
-
-// PIXI Crawling Orbs / Lava Lamp
-// Author: Nathan Long - https://codepen.io/nathanlong
-// Adapted By: Gabriel Fávero
-
-
-// Create a PixiJS application of type cavas with specify background color and make it resizes to the iframe window
 const PIXI_APP = new PIXI.Application({
   background: "#12a8b8",
   resizeTo: window
 });
 
-const BACKGROUND_COLORS = ["0x27e0b6"];
+const ORBS_COLORS = ["0x27e0b6"];
+const ORBS_QUANTITY = 20;
 
 export function loadLavaBackground() {
-  // Adding the application's view to the DOM
   document.body.appendChild(PIXI_APP.view);
 
-  // Basic settings
   PIXI_APP.stage.eventMode = "dynamic";
   PIXI_APP.stage.hitArea = PIXI_APP.screen;
 
-  // Create container for orbs
   const container = new PIXI.Container();
   PIXI_APP.stage.addChild(container);
 
-  // Make a nice color pallete for our random orbs
   const blurFilter2 = new PIXI.BlurFilter();
-
-  // Helper Functions
 
   function randomCircle() {
     const circle = new PIXI.Graphics();
     // create random circle
-    const randomColor = Math.floor(Math.random() * BACKGROUND_COLORS.length);
-    circle.beginFill(BACKGROUND_COLORS[randomColor]);
+    const randomColor = Math.floor(Math.random() * ORBS_COLORS.length);
+    circle.beginFill(ORBS_COLORS[randomColor]);
     circle.drawCircle(0, 0, (Math.random() * PIXI_APP.screen.width) / 4);
     circle.endFill();
     // generateTexture converts a graphic to a texture, which can be used to
@@ -45,14 +32,8 @@ export function loadLavaBackground() {
     };
   }
 
-  // Orbs
   const orbs = [];
 
-  // orb vars
-  let trackSpeed = 0.03;
-  let rotationSpeed = 0.01;
-
-  // set wrapping boundaries (invisible rectangle) to be roughly equal to orb size
   const padding = PIXI_APP.screen.width / 4;
   const bounds = new PIXI.Rectangle(
     -padding,
@@ -61,8 +42,8 @@ export function loadLavaBackground() {
     PIXI_APP.screen.height + padding * 2
   );
 
-  // create 20 orbs with randomized variables
-  for (let i = 0; i < 20; i++) {
+
+  for (let i = 0; i < ORBS_QUANTITY; i++) {
     const orb = PIXI.Sprite.from(randomCircle().texture);
 
     orb.anchor.set(0.5);
@@ -81,15 +62,11 @@ export function loadLavaBackground() {
 
     orbs.push(orb);
   }
-
-  // Blur the orbs
-  // This seems like it could get pretty heavy pretty fast, low quality is fast but not very smooth
+  
   container.filters = [blurFilter2];
   blurFilter2.blur = 300;
   blurFilter2.quality = 35;
 
-  // Events
-  // store cursor coords
   let mouseX;
   let mouseY;
 
@@ -98,14 +75,11 @@ export function loadLavaBackground() {
     mouseY = event.global.y;
   });
 
-  // Ticker variables
   let count = 0;
 
-  // Listen for animate update
   PIXI_APP.ticker.add((delta) => {
     count += 0.02;
 
-    // animate orbs
     for (let i = 0; i < orbs.length; i++) {
       const orb = orbs[i];
 
@@ -132,4 +106,65 @@ export function loadLavaBackground() {
   });
 }
 
+function hexToRgb(hex) {
+  if (typeof hex === "string" && hex.startsWith("#")) {
+    hex = parseInt(hex.slice(1), 16);
+  } else if (typeof hex === "string") {
+    hex = parseInt(hex, 16);
+  }
+  return [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255];
+}
+
+function lerpColor(c1, c2, t) {
+  return [
+    Math.round(c1[0] + (c2[0] - c1[0]) * t),
+    Math.round(c1[1] + (c2[1] - c1[1]) * t),
+    Math.round(c1[2] + (c2[2] - c1[2]) * t),
+  ];
+}
+
+function rgbToHex([r, g, b]) {
+  return (r << 16) + (g << 8) + b;
+}
+
+export function changeBackgroundAndOrbs(newBackground, newColors, fadeDuration = 200) {
+  const startBackground = PIXI_APP.renderer.backgroundColor;
+  const startBgRgb = hexToRgb(startBackground);
+  const endBgRgb = hexToRgb(newBackground);
+
+  const startColors = ORBS_COLORS.map(c => hexToRgb(c));
+  const endColors = newColors.map(c => hexToRgb(c));
+
+  const orbs = PIXI_APP.stage.children[0].children; // container.children
+
+  const startTime = performance.now();
+
+  function animate() {
+    const now = performance.now();
+    const t = Math.min(1, (now - startTime) / fadeDuration);
+
+    const bgRgb = lerpColor(startBgRgb, endBgRgb, t);
+    PIXI_APP.renderer.backgroundColor = rgbToHex(bgRgb);
+
+    ORBS_COLORS.length = 0;
+    for (let i = 0; i < endColors.length; i++) {
+      const start = startColors[i % startColors.length];
+      const end = endColors[i];
+      const rgb = lerpColor(start, end, t);
+      ORBS_COLORS.push(rgbToHex(rgb));
+    }
+
+    // actually recolor current orbs
+    for (let i = 0; i < orbs.length; i++) {
+      const start = startColors[i % startColors.length];
+      const end = endColors[i % endColors.length];
+      const rgb = lerpColor(start, end, t);
+      orbs[i].tint = rgbToHex(rgb);
+    }
+
+    if (t < 1) requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
 

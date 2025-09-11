@@ -1,8 +1,8 @@
-const items = document.querySelectorAll(".top-bar-item");
+const PAGES = document.querySelectorAll('.content');
 
 export function loadTopBar() {
     // Mouse Support
-    items.forEach(item => {
+    document.querySelectorAll(".top-bar-item").forEach(item => {
         item.addEventListener("click", () => selectTopBarItem(item));
     });
 
@@ -37,21 +37,16 @@ function isTyping() {
 function selectTopBarItem(item) {
     if (!item) return;
 
-    // 1. Remove selected from all items
-    items.forEach(i => i.classList.remove("selected"));
-
-    // 2. Add selected to clicked one
+    document.querySelectorAll(".top-bar-item").forEach(i => i.classList.remove("selected"));
     item.classList.add("selected");
 
-    // 3. Hide all content sections
-    items.forEach(i => {
-        const sectionId = i.getAttribute("to-show");
-        const section = document.getElementById(sectionId);
-        if (section) section.style.display = "none";
-    });
+    goToPage(document.getElementById(item.getAttribute("to-show")));
+}
 
-    // 4. Show the clicked one’s content
-    const targetId = item.getAttribute("to-show");
-    const target = document.getElementById(targetId);
-    if (target) target.style.display = "flex";
+
+export function goToPage(page) {
+    for (const content of PAGES) {
+        content.style.display = "none";
+    }
+    page.style.display = 'flex';
 }

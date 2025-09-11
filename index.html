@@ -62,7 +62,7 @@
   </div>
 
   <div id="pokemon-search-container" class="content">
-    <div class="column" style="display: none">
+    <div class="column">
       <div id="party-box">
         <div class="pill-container">
           <div class="icon-box">
@@ -73,7 +73,11 @@
           <div class="button-item"><div id="current-party">Current Party</div></div>
         </div>
         <div class="party-pokemons">
-          <div class="party-pokemon fade"></div>
+          <div class="party-pokemon fade">
+            <svg class="icon">
+              <use href="#add-icon" />
+            </svg>
+          </div>
           <div class="party-pokemon fade hidden"></div>
           <div class="party-pokemon fade hidden"></div>
           <div class="party-pokemon fade hidden"></div>
@@ -256,6 +260,8 @@
       </div>
     </div>
   </div>
+
+  <div id="edit-pokemon-container" class="content" style="display: none"></div>
 
   <footer class="footer">
     
