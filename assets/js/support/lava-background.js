@@ -1,9 +1,9 @@
 const PIXI_APP = new PIXI.Application({
-  background: "#12a8b8",
+  background: 0x12a8b8,
   resizeTo: window
 });
 
-const ORBS_COLORS = ["0x27e0b6"];
+const ORBS_COLORS = [0x27e0b6];
 const ORBS_QUANTITY = 20;
 
 export function loadLavaBackground() {
@@ -19,13 +19,10 @@ export function loadLavaBackground() {
 
   function randomCircle() {
     const circle = new PIXI.Graphics();
-    // create random circle
     const randomColor = Math.floor(Math.random() * ORBS_COLORS.length);
     circle.beginFill(ORBS_COLORS[randomColor]);
     circle.drawCircle(0, 0, (Math.random() * PIXI_APP.screen.width) / 4);
     circle.endFill();
-    // generateTexture converts a graphic to a texture, which can be used to
-    // create a sprite
     const texture = PIXI_APP.renderer.generateTexture(circle);
     return {
       texture
@@ -90,7 +87,6 @@ export function loadLavaBackground() {
       orb.rotation = -orb.direction - Math.PI / 2;
       orb.scale.x = orb.original.x + Math.sin(count) * 0.2;
 
-      // wrap the orbs around as they hit the bounds
       if (orb.x < bounds.x) {
         orb.x += bounds.width;
       } else if (orb.x > bounds.x + bounds.width) {
@@ -106,12 +102,15 @@ export function loadLavaBackground() {
   });
 }
 
+export function loadDefaultBackgroundColor(fadeDuration) {
+  changeBackgroundAndOrbs(0x12a8b8, [0x27e0b6], fadeDuration);
+}
+
+export function loadBlueBackgroundColor(fadeDuration) {
+  changeBackgroundAndOrbs(0x84a8ff, [0x687fff], fadeDuration);
+}
+
 function hexToRgb(hex) {
-  if (typeof hex === "string" && hex.startsWith("#")) {
-    hex = parseInt(hex.slice(1), 16);
-  } else if (typeof hex === "string") {
-    hex = parseInt(hex, 16);
-  }
   return [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255];
 }
 
@@ -127,15 +126,15 @@ function rgbToHex([r, g, b]) {
   return (r << 16) + (g << 8) + b;
 }
 
-export function changeBackgroundAndOrbs(newBackground, newColors, fadeDuration = 200) {
+function changeBackgroundAndOrbs(newBackground, newColors, fadeDuration = 200) {
   const startBackground = PIXI_APP.renderer.backgroundColor;
   const startBgRgb = hexToRgb(startBackground);
   const endBgRgb = hexToRgb(newBackground);
 
-  const startColors = ORBS_COLORS.map(c => hexToRgb(c));
-  const endColors = newColors.map(c => hexToRgb(c));
+  const orbs = PIXI_APP.stage.children[0].children;
 
-  const orbs = PIXI_APP.stage.children[0].children; // container.children
+  const startColors = orbs.map(o => hexToRgb(o.tint || ORBS_COLORS[0]));
+  const endColors = newColors.map(c => hexToRgb(c));
 
   const startTime = performance.now();
 
@@ -146,15 +145,6 @@ export function changeBackgroundAndOrbs(newBackground, newColors, fadeDuration =
     const bgRgb = lerpColor(startBgRgb, endBgRgb, t);
     PIXI_APP.renderer.backgroundColor = rgbToHex(bgRgb);
 
-    ORBS_COLORS.length = 0;
-    for (let i = 0; i < endColors.length; i++) {
-      const start = startColors[i % startColors.length];
-      const end = endColors[i];
-      const rgb = lerpColor(start, end, t);
-      ORBS_COLORS.push(rgbToHex(rgb));
-    }
-
-    // actually recolor current orbs
     for (let i = 0; i < orbs.length; i++) {
       const start = startColors[i % startColors.length];
       const end = endColors[i % endColors.length];
@@ -167,4 +157,5 @@ export function changeBackgroundAndOrbs(newBackground, newColors, fadeDuration =
 
   requestAnimationFrame(animate);
 }
+
 

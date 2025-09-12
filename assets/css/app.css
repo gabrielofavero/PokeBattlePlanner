@@ -35,6 +35,11 @@ canvas {
   z-index: -1;
 }
 
+.flex {
+  display: flex;
+  gap: 8px;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -50,10 +55,9 @@ canvas {
   pointer-events: none;
 }
 
-button,
-.search-box,
-.search-box input,
-.search-box .icon,
+.button-box,
+.button-box input,
+.button-box .icon,
 .party-pokemon {
   transition: all 0.3s ease-in-out;
 }
@@ -86,8 +90,13 @@ button,
   position: absolute;
   top: 0;
   right: 0;
-  width: 1.5px; /* thickness of the line */
+  width: 1.5px;
+  /* thickness of the line */
   height: 29px;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.top-bar .icon-box::after {
   background-color: var(--disabled-color-rgba);
 }
 
@@ -110,7 +119,8 @@ button,
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 6px; /* thickness of the line */
+  height: 6px;
+  /* thickness of the line */
   background-color: var(--selected-color);
   border-radius: 2px;
 }
@@ -124,6 +134,7 @@ button,
   align-items: flex-start;
   gap: 2em;
   padding-top: 1.5em;
+  padding-bottom: calc(54px + 1.5em);
   flex: 1
 }
 
@@ -162,18 +173,12 @@ button,
   background: var(--content-overlay);
   border-radius: var(--default-border-radius);
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
 
 .party-pokemon:hover {
   background: var(--content-overlay-selected);
-}
-
-.party-pokemon .icon {
-  fill: var(--disabled-color-alt);
-  height: 50px;
-  width: 50px;
 }
 
 .party-pokemon.selected {
@@ -185,55 +190,69 @@ button,
   fill: black;
 }
 
-button,
-.search-box {
+.button-box {
   padding: 0.5em 1em;
   background: var(--content-overlay);
   border: none;
   border-radius: var(--default-border-radius);
   display: flex;
   height: auto;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   width: 300px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
 }
 
-.search-box {
+.button-box {
   height: 30px;
 }
 
-button:hover {
-  background: var(--content-overlay-selected);
+.button-box.large {
+  width: 500px;
 }
 
-button:active {
-  background: var(--selected-color);
-  color: black;
+.button-box.large input {
+  text-align: start;
 }
 
-.search-box.type {
+.button-box.small {
+  width: 222px;
+}
+
+.button-box.small .icon {
+  width: 30px;
+}
+
+.button-box.small .button-text {
+  width: 200px;
+  text-align: center;
+}
+
+.button-box.type {
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
   border-radius: 9999px;
   width: auto;
 }
 
-.search-box.type .icon-box {
+.button-box.type .icon-box {
   padding-right: 0px;
   margin-right: 0px;
   padding-top: 2px;
 }
 
-.search-box.type .icon-box::after {
+.button-box.type .icon-box::after {
   width: 0px;
 }
 
-.search-box.pokemon {
+.button-box.pokemon {
   width: auto;
   height: 100px;
 }
 
-.search-box.pokemon .icon-box::after {
+.button-box.pokemon .icon-box::after {
   height: 90px;
 }
 
@@ -243,29 +262,39 @@ button:active {
   text-align: center;
 }
 
-.search-box,
-.search-box input,
-.search-box .icon,
+.button-box,
+.button-box input,
+.button-box .icon,
 .party-pokemon {
   transition: all 0.3s ease-in-out;
 }
 
-.search-box .icon.type {
+.button-box.clickable:hover {
+  background: var(--content-overlay-selected);
+  cursor: pointer;
+}
+
+.button-box .icon.type {
   width: 38px;
   height: 38px;
 }
 
-.multi-search-box {
+.multi-button-box {
   display: flex;
   gap: 1em;
 }
 
-.multi-search-box .search-box {
+.multi-button-box .button-box {
   width: 300px;
 }
 
-.search-box .icon-box {
+.button-box .icon-box {
   margin-right: none;
+}
+
+.button-box .icon-box .search-text {
+  width: 200px;
+  text-align: start;
 }
 
 input {
@@ -283,8 +312,12 @@ input::placeholder {
   color: #96cdc0;
 }
 
-.search-box input {
+.button-box input {
   width: 250px;
+}
+
+.button-box.large input {
+  width: 300px;
 }
 
 .clear-input {
@@ -310,6 +343,11 @@ input::placeholder {
 
 .search-suggestions.type-2 {
   transform: translate(372px, 75px);
+}
+
+.search-suggestions.large {
+  transform: translate(228px, 10px);
+  width: 320px;
 }
 
 .search-suggestions.open {
@@ -345,13 +383,13 @@ input::placeholder {
   object-position: center -15px;
 }
 
-.search-suggestion-item .icon{
+.search-suggestion-item .icon {
   fill: white;
   height: 35px;
   width: 35px;
   margin-left: 8px;
   margin-right: 16px;
-  border-radius: 100%;
+  border-radius: 8px;
 }
 
 .pokemon-variant {
@@ -363,7 +401,8 @@ input::placeholder {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);  /* 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+  /* 2 columns */
   border-radius: var(--default-border-radius);
   gap: 1em;
 }
@@ -376,7 +415,7 @@ input::placeholder {
 
 .grid-item.full {
   grid-column: span 2;
-  width: auto; 
+  width: auto;
 }
 
 .grid-item.full.title .icon {
@@ -389,8 +428,8 @@ input::placeholder {
 
 .grid-item.highlight {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   background: var(--content-overlay);
   color: white;
   height: auto;
@@ -410,7 +449,7 @@ input::placeholder {
 
 .grid-item.flex {
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   gap: 8px;
 }
@@ -418,7 +457,7 @@ input::placeholder {
 .grid-item.flex .negative,
 .grid-item.flex .positive {
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   font-weight: var(--bold-font-weight);
   border-radius: 100%;
@@ -452,8 +491,8 @@ input::placeholder {
   text-transform: uppercase;
   flex-wrap: wrap;
   font-weight: var(--bold-font-weight);
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
 }
 
 .grid-item.highlight .result-types {
@@ -474,12 +513,12 @@ input::placeholder {
 }
 
 .type-banner.title,
-.clear-input.title  {
+.clear-input.title {
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
 }
 
-.clear-input.title  {
+.clear-input.title {
   width: 150px;
 }
 
@@ -488,7 +527,7 @@ input::placeholder {
   font-size: 32px;
   min-width: 280px;
   padding: 8px;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   gap: 8px;
 }

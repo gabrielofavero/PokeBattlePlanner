@@ -1,70 +1,47 @@
-import { POKEMONS, TYPES } from "../app.js";
-import { loadMultiTypeSearch } from "../calculators/multi-type.js";
-import { getPokemonSpriteAlt, getPokemonSpriteSrc, loadPokemonSearch, storePokemonSearchResult } from "../calculators/pokemon.js";
-import { loadSingleTypeSearch } from "../calculators/single-type.js";
+import { MOVES, POKEMONS, TYPES } from "../app.js";
+import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.js";
+import { SEARCH_PARTY_MOVE_1, SEARCH_PARTY_MOVE_2, SEARCH_PARTY_MOVE_3, SEARCH_PARTY_MOVE_4, SEARCH_PARTY_POKEMON } from "../pages/party.js";
+import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc} from "../pages/pokemon.js";
+import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
 import { firstCharToUppercase } from "../support/text-formatter.js";
 import { loadTypeContentBanners } from "./banners.js";
 
-const SEARCH_POKEMON = {
-    content: document.getElementById('pokemon-search-content'),
-    options: getPokemonOptions,
-    option: getPokemonOption,
-    action: loadPokemonSearch,
-    storeAction: storePokemonSearchResult
-}
-
-const SEARCH_SINGLE_TYPE = {
-    content: document.getElementById('single-type-search-content'),
-    options: getTypeOptions,
-    option: getTypeOption,
-    action: loadSingleTypeSearch,
-    storeAction: storeTypeSearchResult
-}
-
-const SEARCH_MULTI_TYPE_1 = {
-    content: document.getElementById('multi-type-search-content'),
-    options: getType1Options,
-    option: getTypeOption,
-    action: () => loadMultiTypeSearch(1),
-    storeAction: storeTypeSearchResult
-}
-
-const SEARCH_MULTI_TYPE_2 = {
-    content: document.getElementById('multi-type-search-content'),
-    options: getType2Options,
-    option: getTypeOption,
-    action: () => loadMultiTypeSearch(2),
-    storeAction: storeTypeSearchResult
-}
-
 export function loadSearchBars() {
-    const pokemon = SEARCH_POKEMON.content.querySelector('input');
-    const singleType = SEARCH_SINGLE_TYPE.content.querySelector('input');
-    const multiType1 = SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0];
-    const multiType2 = SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1];
+    getInput(SEARCH_POKEMON).addEventListener('input', () => loadSearchBar(SEARCH_POKEMON));
+    getInput(SEARCH_SINGLE_TYPE).addEventListener('input', () => loadSearchBar(SEARCH_SINGLE_TYPE));
+    getInput(SEARCH_MULTI_TYPE_1).addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_1, 1));
+    getInput(SEARCH_MULTI_TYPE_2, 1).addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_2, 2));
 
-    pokemon.addEventListener('input', () => loadSearchBar(SEARCH_POKEMON));
-    singleType.addEventListener('input', () => loadSearchBar(SEARCH_SINGLE_TYPE));
-    multiType1.addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_1, 1));
-    multiType2.addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_2, 2));
+    getInput(SEARCH_PARTY_POKEMON).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_POKEMON));
+    getInput(SEARCH_PARTY_MOVE_1).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_1));
+    getInput(SEARCH_PARTY_MOVE_2).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_2));
+    getInput(SEARCH_PARTY_MOVE_3).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_3));
+    getInput(SEARCH_PARTY_MOVE_4).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_4));
 }
 
 export function resetSearchBars() {
-    SEARCH_POKEMON.content.querySelector('input').value = '';
-    SEARCH_SINGLE_TYPE.content.querySelector('input').value = '';
-    SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value = '';
-    SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value = '';
+    getInput(SEARCH_POKEMON).value = '';
+    getInput(SEARCH_SINGLE_TYPE).value = '';
+    getInput(SEARCH_MULTI_TYPE_1).value = '';
+    getInput(SEARCH_MULTI_TYPE_2, 1).value = '';
+}
+
+function getInput(searchBar, index = 0) {
+    return searchBar.content.querySelectorAll('input')[index]
 }
 
 function loadSearchBar(search, j=1) {
-    const searchBox = search.content.getElementsByClassName("search-box")[j-1];
+    const searchBox = search.content.getElementsByClassName("button-box")[j-1];
     const input = searchBox.querySelector('input');
     const suggestions = search.content.getElementsByClassName("search-suggestions")[j-1];
     const results = search.content.querySelector('.search-result');
 
+    if (results) {
+        results.classList.add('hidden');
+    }
+
     const value = input.value.trim().toLowerCase();
     suggestions.innerHTML = "";
-    results.classList.add('hidden');
     clearSearchBox(searchBox);
 
     if (value.length >= 2) {
@@ -96,9 +73,40 @@ function loadSearchBar(search, j=1) {
     });
 }
 
+export function clearSearchBox(searchBox) {
+    const icon = searchBox.querySelector('.icon');
+    const img = searchBox.querySelector('img');
+    const input = searchBox.querySelector('input');
+
+    if (icon) {
+        icon.setAttribute('class', 'icon');
+        icon.innerHTML = `<use href="#search-icon"/>`;
+    }
+
+    input.classList = 'clear-input'
+
+    searchBox.classList.remove('pokemon')
+    searchBox.classList.remove('type')
+    for (const type of TYPES) {
+        searchBox.classList.remove(type);
+    }
+
+    if (img) {
+        img.style.display = 'none'
+        img.src = '';
+        img.alt = '';
+
+        if (icon) {
+            icon.style.display = '';
+        }
+
+        searchBox.querySelector('.pokemon-variant').style.display = 'none';
+        searchBox.querySelector('.result-types').style.display = 'none';
+    }
+}
 
 // Search Pokémon
-function getPokemonOptions(value) {
+export function getPokemonOptions(value) {
     const options = POKEMONS.filter(opt => {
         return opt.title.toLowerCase().includes(value) || opt.subtitle.toLowerCase().includes(value);
     });
@@ -120,57 +128,12 @@ function getPokemonOptions(value) {
     return options;
 }
 
-function getPokemonOption(pokemon) {
+export function getPokemonOption(pokemon) {
     const item = document.createElement('div');
     const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
     item.className = 'search-suggestion-item pokemon';
     item.innerHTML = `<img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"> ${titleBox}`;
     return item;
-}
-
-// Search Type
-function storeTypeSearchResult(option, input) {
-    input.value = firstCharToUppercase(option);
-}
-
-function getTypeOptions(value) {
-    const options = TYPES.filter(type =>
-        type.toLowerCase().includes(value.toLowerCase())
-    );
-
-    options.sort((a, b) => a.localeCompare(b));
-    return options;
-}
-
-function getFilteredTypeOptions(value, exclude) {
-    return getTypeOptions(value).filter(type =>
-        type.toLowerCase() !== (exclude?.toLowerCase() ?? "")
-    );
-}
-
-function getType1Options(value) {
-    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value)
-}
-
-function getType2Options(value) {
-    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value)
-}
-
-function getTypeOption(type) {
-    const item = document.createElement('div');
-    item.className = 'search-suggestion-item type';
-    item.innerHTML = `<svg class="icon ${type}"><use href="#type-${type}-icon" /></svg> ${firstCharToUppercase(type)}`;
-    return item;
-}
-
-export function addTypeToSearchBox(searchBox, type) {
-    const icon = searchBox.querySelector('.icon');
-    const input = searchBox.querySelector('input');
-    input.value = type;
-    input.classList.add('title');
-    icon.setAttribute('class', `icon type ${type}`);
-    icon.innerHTML = `<use href="#type-${type}-icon"/>`;
-    searchBox.classList = `search-box type ${type}`;
 }
 
 export function addPokemonToSearchBox(searchBox, pokemon) {
@@ -186,7 +149,7 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
     img.alt = getPokemonSpriteAlt(pokemon);
     img.style.display = ''
 
-    searchBox.classList = `search-box pokemon`;
+    searchBox.classList = `button-box pokemon`;
     
     subtitle.textContent = pokemon.subtitle;
     subtitle.style.display = '';
@@ -195,22 +158,56 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
     types.style.display = '';
 }
 
-export function clearSearchBox(searchBox) {
+// Search Type
+export function storeTypeSearchResult(option, input) {
+    input.value = firstCharToUppercase(option);
+}
+
+export function getTypeOptions(value) {
+    const options = TYPES.filter(type =>
+        type.toLowerCase().includes(value.toLowerCase())
+    );
+
+    options.sort((a, b) => a.localeCompare(b));
+    return options;
+}
+
+export function getFilteredTypeOptions(value, exclude) {
+    return getTypeOptions(value).filter(type =>
+        type.toLowerCase() !== (exclude?.toLowerCase() ?? "")
+    );
+}
+
+export function getTypeOption(type) {
+    const item = document.createElement('div');
+    item.className = 'search-suggestion-item type';
+    item.innerHTML = `<svg class="icon ${type}"><use href="#type-${type}-icon" /></svg> ${firstCharToUppercase(type)}`;
+    return item;
+}
+
+export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
-    const img = searchBox.querySelector('img');
     const input = searchBox.querySelector('input');
+    input.value = type;
+    input.classList.add('title');
+    icon.setAttribute('class', `icon type ${type}`);
+    icon.innerHTML = `<use href="#type-${type}-icon"/>`;
+    searchBox.classList = `button-box type ${type}`;
+}
 
-    input.classList = 'clear-input'
-    icon.setAttribute('class', 'icon');
-    icon.innerHTML = `<use href="#search-icon"/>`;
-    searchBox.classList = 'search-box';
+// Search Move
+export function getMoveOptions(value) {
+    const options = MOVES.filter(move => {
+        return move.name.toLowerCase().includes(value);
+    });
 
-    if (img) {
-        img.style.display = 'none'
-        icon.style.display = '';
-        img.src = '';
-        img.alt = '';
-        searchBox.querySelector('.pokemon-variant').style.display = 'none';
-        searchBox.querySelector('.result-types').style.display = 'none';
-    }
+    options.sort((a, b) => a.name.localeCompare(b.name));
+    return options;
+}
+
+export function getMoveOption(move) {
+    const item = document.createElement('div');
+    item.className = 'search-suggestion-item type';
+    item.innerHTML = `<svg class="icon ${move.type}"><use href="#type-${move.type}-icon" /></svg> ${move.name}`;
+    return item;
 }

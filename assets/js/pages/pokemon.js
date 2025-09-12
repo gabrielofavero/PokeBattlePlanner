@@ -1,11 +1,19 @@
-import { addPokemonToSearchBox } from "../ui/search-bar.js";
-import { loadMultiTypeResults } from "./multi-type.js";
+import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../ui/search-bar.js";
+import { loadMultiTypeResults } from "./multi-types.js";
 
 var POKEMON;
 
+export const SEARCH_POKEMON = {
+    content: document.getElementById('pokemon-search-content'),
+    options: getPokemonOptions,
+    option: getPokemonOption,
+    action: loadPokemonSearch,
+    storeAction: storePokemonSearchResult
+}
+
 export function loadPokemonSearch() {
     const content = document.getElementById('pokemon-search-content');
-    const searchBox = content.querySelector(".search-box");
+    const searchBox = content.querySelector(".button-box");
     const input = searchBox.querySelector('input');
     const results = content.querySelector('.search-result');
 

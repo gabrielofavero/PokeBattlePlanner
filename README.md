@@ -31,19 +31,20 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic      | E006   | 3    | 3       |
 | 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F014   | 7    | 7       |
+| 🏆: Feature     | F015   | 7    | 8       |
 | 📈: Improvement | I004   | 3    | 1       |
 
 ### Pending
 
 - ⚔️ **E004:** Implement Pokémon Type Calculator
   - 🏆 **F008:** [E004] Implement Pokémon + Moves registration
-  - 🏆 **F009:** [E004] Implement Pokémon + Move calculator
-- 🏆 **F010:** Add dynamic colors to lava background (similar to Pokémon Violet)
-- 🏆 **F011:** Add full keyboard support
-- 🏆 **F012:** Add full controller support
-- 🏆 **F013:** Add cursor (similar to Pokémon Violet)
-- 🏆 **F014:** Add floating elements (Pokémon, cursor)
+  - 🏆 **F009:** [E004] Create HTML+CSS elements for party view
+  - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
+- 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
+- 🏆 **F012:** Add full keyboard support
+- 🏆 **F013:** Add full controller support
+- 🏆 **F014:** Add cursor (similar to Pokémon Violet)
+- 🏆 **F015:** Add floating elements (Pokémon, cursor)
 - ⚔️ **E005:** Add mobile responsiveness
 - ⚔️ **E006:** Add theme support + Legends ZA theme
 - 📈 **I004:** Animations overhaul

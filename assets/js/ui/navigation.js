@@ -40,6 +40,7 @@ function selectTopBarItem(item) {
     document.querySelectorAll(".top-bar-item").forEach(i => i.classList.remove("selected"));
     item.classList.add("selected");
 
+    // loadDefaultBackgroundColor();
     goToPage(document.getElementById(item.getAttribute("to-show")));
 }
 
@@ -49,4 +50,9 @@ export function goToPage(page) {
         content.style.display = "none";
     }
     page.style.display = 'flex';
+}
+
+export function goToPageWithId(id) {
+    const page = document.getElementById(id);
+    goToPage(page);
 }

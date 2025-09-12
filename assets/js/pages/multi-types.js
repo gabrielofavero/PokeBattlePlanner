@@ -1,12 +1,28 @@
 import { MULTI_TYPES, TYPES } from "../app.js";
 import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox } from "../ui/search-bar.js";
+import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption, storeTypeSearchResult } from "../ui/search-bar.js";
 
 const SEARCH_TYPES = ['', '']
 
+export const SEARCH_MULTI_TYPE_1 = {
+    content: document.getElementById('multi-type-search-content'),
+    options: getType1Options,
+    option: getTypeOption,
+    action: () => loadMultiTypeSearch(1),
+    storeAction: storeTypeSearchResult
+}
+
+export const SEARCH_MULTI_TYPE_2 = {
+    content: document.getElementById('multi-type-search-content'),
+    options: getType2Options,
+    option: getTypeOption,
+    action: () => loadMultiTypeSearch(2),
+    storeAction: storeTypeSearchResult
+}
+
 export function loadMultiTypeSearch(j) {
     const content = document.getElementById('multi-type-search-content');
-    const searchBox = content.getElementsByClassName("search-box")[j-1];
+    const searchBox = content.getElementsByClassName("button-box")[j-1];
     const input = searchBox.querySelector('input');
     const results = content.querySelector('.search-result');
     const type = input.value.toLowerCase();
@@ -60,4 +76,12 @@ function getMultiDataMap(rawData) {
         accumulator[key].push(TYPES[i]);
         return accumulator;
     }, {});
+}
+
+function getType1Options(value) {
+    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value)
+}
+
+function getType2Options(value) {
+    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value)
 }

@@ -1,5 +1,5 @@
 import { loadLavaBackground } from "./support/lava-background.js";
-import { loadPokemonPartiesListeners } from "./ui/edit-pokemon.js";
+import { loadPokemonPartiesListeners } from "./pages/party.js";
 import { loadGamepadListeners } from "./ui/gamepad.js";
 import { loadSearchBars, resetSearchBars } from "./ui/search-bar.js";
 import { loadTopBar } from "./ui/navigation.js";
