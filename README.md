@@ -31,11 +31,12 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic        | E006   | 3    | 3       |
 | 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F015   | 8    | 7       |
+| 🏆: Feature     | F016   | 8    | 6       |
 | 📈: Improvement | I004   | 3    | 1       |
 
 ### Pending
 
+- 🏆 **F016:** Trim sprites + add alt pokemon image
 - ⚔️ **E004:** Implement Pokémon Type Calculator
   - 🏆 **F009:** [E004] Create HTML+CSS elements for party view
   - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
