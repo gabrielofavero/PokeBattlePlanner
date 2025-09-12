@@ -7,18 +7,17 @@ export const SEARCH_POKEMON = {
     content: document.getElementById('pokemon-search-content'),
     options: getPokemonOptions,
     option: getPokemonOption,
-    action: loadPokemonSearch,
-    storeAction: storePokemonSearchResult
+    action: loadPokemonSearch
 }
 
-export function loadPokemonSearch() {
+function loadPokemonSearch(pokemon, input) {
+    POKEMON = pokemon;
+    input.value = POKEMON?.title || '';
     const content = document.getElementById('pokemon-search-content');
     const searchBox = content.querySelector(".button-box");
-    const input = searchBox.querySelector('input');
     const results = content.querySelector('.search-result');
 
     if (POKEMON == null) {
-        input.value = '';
         results.classList.add('hidden');
         return;
     }
@@ -26,11 +25,6 @@ export function loadPokemonSearch() {
     addPokemonToSearchBox(searchBox, POKEMON)
     loadMultiTypeResults(POKEMON.types, 'pokemon-result');
     results.classList.remove('hidden');
-}
-
-export function storePokemonSearchResult(pokemon, input) {
-    POKEMON = pokemon;
-    input.value = POKEMON.title;
 }
 
 export function getPokemonSpriteSrc(pokemon) {

@@ -1,8 +1,9 @@
 import { loadLavaBackground } from "./support/lava-background.js";
-import { loadPokemonPartiesListeners } from "./pages/party.js";
+import { loadPokemonParty } from "./pages/party.js";
 import { loadGamepadListeners } from "./ui/gamepad.js";
 import { loadSearchBars, resetSearchBars } from "./ui/search-bar.js";
 import { loadTopBar } from "./ui/navigation.js";
+import { getJson } from "./support/data.js";
 
 export var POKEMONS;
 export var MOVES;
@@ -20,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadTopBar();
     loadSearchBars();
     loadGamepadListeners();
-    loadPokemonPartiesListeners();
+    loadPokemonParty();
 });
 
 async function loadExternalData() {
@@ -43,11 +44,3 @@ async function loadExternalData() {
       return false;
     }
   }
-
-export async function getJson(path) {
-    const response = await fetch(path);
-    if (!response.ok) {
-        throw new Error("Network response was not ok");
-    }
-    return response.json();
-}

@@ -1,3 +1,5 @@
+import { hexToRgb, lerpColor, rgbToHex } from "./data.js";
+
 const PIXI_APP = new PIXI.Application({
   background: 0x12a8b8,
   resizeTo: window
@@ -108,22 +110,6 @@ export function loadDefaultBackgroundColor(fadeDuration) {
 
 export function loadBlueBackgroundColor(fadeDuration) {
   changeBackgroundAndOrbs(0x84a8ff, [0x687fff], fadeDuration);
-}
-
-function hexToRgb(hex) {
-  return [(hex >> 16) & 255, (hex >> 8) & 255, hex & 255];
-}
-
-function lerpColor(c1, c2, t) {
-  return [
-    Math.round(c1[0] + (c2[0] - c1[0]) * t),
-    Math.round(c1[1] + (c2[1] - c1[1]) * t),
-    Math.round(c1[2] + (c2[2] - c1[2]) * t),
-  ];
-}
-
-function rgbToHex([r, g, b]) {
-  return (r << 16) + (g << 8) + b;
 }
 
 function changeBackgroundAndOrbs(newBackground, newColors, fadeDuration = 200) {

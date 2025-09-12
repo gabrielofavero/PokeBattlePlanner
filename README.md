@@ -29,15 +29,14 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 
 | Type            | Latest | Done | Pending |
 | --------------- | ------ | ---- | ------- |
-| ⚔️: Epic      | E006   | 3    | 3       |
+| ⚔️: Epic        | E006   | 3    | 3       |
 | 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F015   | 7    | 8       |
+| 🏆: Feature     | F015   | 8    | 7       |
 | 📈: Improvement | I004   | 3    | 1       |
 
 ### Pending
 
 - ⚔️ **E004:** Implement Pokémon Type Calculator
-  - 🏆 **F008:** [E004] Implement Pokémon + Moves registration
   - 🏆 **F009:** [E004] Create HTML+CSS elements for party view
   - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
 - 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
@@ -65,3 +64,4 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - ⚔️ **E003:** Implement Multi Type Calculator
 - ⚔️ **E004:** Implement Pokémon Type Calculator
   - 🏆 **F007:** [E004] Implement type calculator
+  - 🏆 **F008:** [E004] Implement Pokémon + Moves registration

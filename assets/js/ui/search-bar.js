@@ -3,7 +3,7 @@ import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.j
 import { SEARCH_PARTY_MOVE_1, SEARCH_PARTY_MOVE_2, SEARCH_PARTY_MOVE_3, SEARCH_PARTY_MOVE_4, SEARCH_PARTY_POKEMON } from "../pages/party.js";
 import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc} from "../pages/pokemon.js";
 import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
-import { firstCharToUppercase } from "../support/text-formatter.js";
+import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "./banners.js";
 
 export function loadSearchBars() {
@@ -24,6 +24,12 @@ export function resetSearchBars() {
     getInput(SEARCH_SINGLE_TYPE).value = '';
     getInput(SEARCH_MULTI_TYPE_1).value = '';
     getInput(SEARCH_MULTI_TYPE_2, 1).value = '';
+
+    getInput(SEARCH_PARTY_POKEMON).value = '';
+    getInput(SEARCH_PARTY_MOVE_1).value = '';
+    getInput(SEARCH_PARTY_MOVE_2).value = '';
+    getInput(SEARCH_PARTY_MOVE_3).value = '';
+    getInput(SEARCH_PARTY_MOVE_4).value = '';
 }
 
 function getInput(searchBar, index = 0) {
@@ -50,9 +56,8 @@ function loadSearchBar(search, j=1) {
             options.forEach(option => {
                 const div = search.option(option);
                 div.onclick = () => {
-                    search.storeAction(option, input);
+                    search.action(option, input);
                     suggestions.style.display = 'none';
-                    search.action();
                 };
                 suggestions.appendChild(div);
             });
@@ -159,10 +164,6 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
 }
 
 // Search Type
-export function storeTypeSearchResult(option, input) {
-    input.value = firstCharToUppercase(option);
-}
-
 export function getTypeOptions(value) {
     const options = TYPES.filter(type =>
         type.toLowerCase().includes(value.toLowerCase())

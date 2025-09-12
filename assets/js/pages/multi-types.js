@@ -1,6 +1,7 @@
 import { MULTI_TYPES, TYPES } from "../app.js";
+import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption, storeTypeSearchResult } from "../ui/search-bar.js";
+import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../ui/search-bar.js";
 
 const SEARCH_TYPES = ['', '']
 
@@ -8,24 +9,21 @@ export const SEARCH_MULTI_TYPE_1 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType1Options,
     option: getTypeOption,
-    action: () => loadMultiTypeSearch(1),
-    storeAction: storeTypeSearchResult
+    action: () => loadMultiTypeSearch(1)
 }
 
 export const SEARCH_MULTI_TYPE_2 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType2Options,
     option: getTypeOption,
-    action: () => loadMultiTypeSearch(2),
-    storeAction: storeTypeSearchResult
+    action: () => loadMultiTypeSearch(2)
 }
 
-export function loadMultiTypeSearch(j) {
+export function loadMultiTypeSearch(type, input) {
+    input.value = firstCharToUppercase(type);
     const content = document.getElementById('multi-type-search-content');
     const searchBox = content.getElementsByClassName("button-box")[j-1];
-    const input = searchBox.querySelector('input');
     const results = content.querySelector('.search-result');
-    const type = input.value.toLowerCase();
 
     if (!TYPES.includes(type)) {
         SEARCH_TYPES[j - 1] = '';
@@ -33,6 +31,7 @@ export function loadMultiTypeSearch(j) {
         results.classList.add('hidden');
         return;
     }
+
     SEARCH_TYPES[j - 1] = type;
     addTypeToSearchBox(searchBox, type);
 
