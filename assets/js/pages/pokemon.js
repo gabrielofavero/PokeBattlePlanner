@@ -28,7 +28,7 @@ function loadPokemonSearch(pokemon, input) {
 }
 
 export function getPokemonSpriteSrc(pokemon) {
-    return `./assets/img/pokemons/${pokemon.hrefIcon}.png`
+    return `./assets/img/pokemons/sprites/${pokemon.hrefIcon}.png`
 }
 
 export function getPokemonSpriteAlt(pokemon) {

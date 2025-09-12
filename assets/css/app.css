@@ -368,19 +368,14 @@ input::placeholder {
   background: rgba(238, 209, 43, 0.1)
 }
 
-.search-suggestion-item.pokemon {
-  height: 76px;
-}
-
 .search-suggestion-item.type {
   height: 50px;
 }
 
 .search-suggestion-item.pokemon img,
 .icon-box img {
-  height: 80px;
-  object-fit: cover;
-  object-position: center -15px;
+  height: 50px;
+  margin: 0px 16px;
 }
 
 .search-suggestion-item .icon {
