@@ -12,14 +12,13 @@ This web app was developed by Gabriel Fávero (that’s me!). You can find my Li
 
 Of course, I didn’t do everything on my own. Here's a list of the assets I used to bring this project to life:
 
-- Pokémon / Moves / Chart data: [pokemondb](https://pokemondb.net/)
-- **Lava Background**: [Nathan Long](https://codepen.io/nathanlong)
-- Pokémon images: Official Pokémon assets.
-- Pokéball icon:
-- ABXY icons:
-- **Type Icons:** [Elginive](https://github.com/Elginive/pokemon-type-icons/tree/main)
-- Playstation icons:
-- Vendor Libraries:
+- **Data**: [pokemondb](https://pokemondb.net/)
+- **Lava background**: [Nathan Long](https://codepen.io/nathanlong)
+- **Pokémon images**: [Official Pokémon assets](https://www.pokemon.com/us/pokedex)
+- **Xbox / Switch icons**: [Wikimedia](https://commons.wikimedia.org/wiki/File:Xbox_Certified_controller.svg)
+- **Type Icons**: [Elginive](https://github.com/Elginive/pokemon-type-icons/tree/main)
+- **Playstation icons**: [Wikimedias](https://www.wikimedia.org/) (Adapted [C](https://upload.wikimedia.org/wikipedia/commons/6/6b/PlayStation_button_C.svg), [S](https://upload.wikimedia.org/wikipedia/commons/4/49/PlayStation_button_S.svg), [X](https://upload.wikimedia.org/wikipedia/commons/8/8f/PlayStation_button_X.svg), [T](https://upload.wikimedia.org/wikipedia/commons/6/69/PlayStation_button_T.svg))
+- **Vendor Libraries**: [PixiJS](https://pixijs.com/)
 
 ## Usage
 
@@ -29,7 +28,7 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 
 | Type            | Latest | Done | Pending |
 | --------------- | ------ | ---- | ------- |
-| ⚔️: Epic        | E006   | 3    | 3       |
+| ⚔️: Epic      | E006   | 3    | 3       |
 | 🐞: Bug         | B000   | 0    | 0       |
 | 🏆: Feature     | F016   | 8    | 6       |
 | 📈: Improvement | I004   | 3    | 1       |
