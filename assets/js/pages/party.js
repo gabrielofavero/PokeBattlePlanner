@@ -6,7 +6,9 @@ var PARTY = [];
 var CURRENT_PARTY = 0;
 var CURRENT_POKEMON = {};
 var CURRENT_MOVES = [];
+const PARTY_BOXES = document.getElementsByClassName('party-pokemon');
 
+export const SEARCH_PARTY_MOVES = [getSearchPartyMove(1), getSearchPartyMove(2), getSearchPartyMove(3), getSearchPartyMove(4)]
 export const SEARCH_PARTY_POKEMON = {
     content: document.getElementById('party-pokemon-content'),
     options: getPokemonOptions,
@@ -14,67 +16,48 @@ export const SEARCH_PARTY_POKEMON = {
     action: loadPartyPokemonSearch
 }
 
-export const SEARCH_PARTY_MOVE_1 = getSearchPartyMove(1);
-export const SEARCH_PARTY_MOVE_2 = getSearchPartyMove(2);
-export const SEARCH_PARTY_MOVE_3 = getSearchPartyMove(3);
-export const SEARCH_PARTY_MOVE_4 = getSearchPartyMove(4);
 
-
+// Loaders
 export function loadPokemonParty() {
     const data = localStorage.getItem('party');
     if (data) {
         PARTY = JSON.parse(data);
     }
     loadPokemonPartiesListeners();
-    loadPartyPokemonSearch();
+    loadPartyPokemonsHTML();
 }
 
 function loadPokemonPartiesListeners() {
+    document.getElementById('edit-pokemon').addEventListener('click', editPokemon);
+    document.getElementById('check-summary').addEventListener('click', checkSummary);
+    document.getElementById('release-pokemon').addEventListener('click', () => savePokemon(true));
+    document.getElementById('never-mind').addEventListener('click', closeContextMenu);
+
     document.getElementById('cancel-edit-pokemon').addEventListener('click', returnToPokemonSearch);
-    document.getElementById('save-edit-pokemon').addEventListener('click', saveParty);
+    document.getElementById('save-edit-pokemon').addEventListener('click', savePokemon);
     document.getElementById('delete-edit-pokemon').addEventListener('click', deletePartyInputs);
 
-    const partyPokemons = document.querySelectorAll(".party-pokemon");
-    partyPokemons.forEach(partyBox => {
-      partyBox.addEventListener("click", () => {
-        CURRENT_PARTY = partyBox.getAttribute('party-number');
-        loadPartyData();
-        goToPageWithId('edit-party-container');
-      });
-    });
-}
 
-function loadPartyData() {
-    const i = CURRENT_PARTY - 1;
-
-    if (!PARTY[i]) {
-        clearParty();
-        return;
-    }
-
-    const pokemonContent = document.getElementById('party-pokemon-content');
-    pokemonContent.querySelector('input').value = PARTY[i]?.pokemon?.title || '';
-    for (let j = 1; j <= 4; j++) {
-        const moveContent = document.getElementById(`party-move-${j}-content`);
-        const move = PARTY[i]?.moves[j-1];
-        moveContent.querySelector('input').value = move?.name || '';
+    for (const partyBox of PARTY_BOXES) {
+        partyBox.addEventListener("click", () => {
+            CURRENT_PARTY = parseInt(partyBox.getAttribute("party-number"));
+            partyBoxClickAction();
+        });
     }
 }
 
-function loadPartyPokemonSearch() {
-    const partyMembers = document.getElementsByClassName('party-pokemon');
-
+function loadPartyPokemonsHTML() {
     for (let i = 0; i < 6; i++) {
-        const partyMember = partyMembers[i];
+        const partyMember = PARTY_BOXES[i];
         const partyText = partyMember.querySelector('.party-text');
         const partyPill = partyText.querySelector('.party-pill');
         const partyName = partyText.querySelector('.party-name');
         const partyImg = partyMember.querySelector('.party-img');
 
-        const isEmpty = !PARTY[i];
+        const isEmpty = isPartyEmpty(i);
 
-        partyText.style.display = isEmpty ? 'none': '';
-        partyImg.style.display = isEmpty ? 'none': '';
+        partyText.style.display = isEmpty ? 'none' : '';
+        partyImg.style.display = isEmpty ? 'none' : '';
 
         partyName.textContent = isEmpty ? '' : PARTY[i].pokemon.title;
 
@@ -90,10 +73,40 @@ function loadPartyPokemonSearch() {
     }
 }
 
+function partyBoxClickAction() {
+    if (isPartyEmpty()) editPokemon()
+    else openContextMenu();
+}
+
+function isPartyEmpty(i = CURRENT_PARTY - 1) {
+    const party = PARTY[i];
+    return (!party || (party.moves.length == 0 && Object.keys(party.pokemon) == 0));
+}
+
+function loadPartyData() {
+    if (isPartyEmpty()) {
+        clearParty();
+        return;
+    }
+    const i = CURRENT_PARTY - 1;
+    const pokemonContent = document.getElementById('party-pokemon-content');
+    pokemonContent.querySelector('input').value = PARTY[i]?.pokemon?.title || '';
+    for (let j = 1; j <= 4; j++) {
+        const moveContent = document.getElementById(`party-move-${j}-content`);
+        const move = PARTY[i]?.moves[j - 1];
+        moveContent.querySelector('input').value = move?.name || '';
+    }
+}
+
+function loadPartyPokemonSearch(pokemon, input) {
+    CURRENT_POKEMON = pokemon;
+    input.value = CURRENT_POKEMON.title;
+}
+
 function loadPartyMoveSearch(move, input) {
     const j = input.getAttribute('data-move');
-    CURRENT_MOVES[j-1] = move;
-    input.value = CURRENT_MOVES[j-1].name;
+    CURRENT_MOVES[j - 1] = move;
+    input.value = CURRENT_MOVES[j - 1].name;
 }
 
 function getSearchPartyMove(j) {
@@ -106,32 +119,36 @@ function getSearchPartyMove(j) {
 }
 
 function clearParty() {
-    CURRENT_PARTY = 0;
     CURRENT_POKEMON = {};
     CURRENT_MOVES = [];
     deletePartyInputs();
 }
 
 function returnToPokemonSearch() {
+    closeContextMenu();
     clearParty();
+    CURRENT_PARTY = 0;
     goToPageWithId('pokemon-search-container');
 }
 
-function saveParty() {
+function savePokemon(deletion = false) {
     const i = CURRENT_PARTY - 1;
+    const isEmpty = deletion || (!CURRENT_POKEMON && CURRENT_MOVES.length == 0);
 
-    if (!CURRENT_POKEMON && CURRENT_MOVES.length == 0) {
-        PARTY[i] = undefined;
-        return;
+    if (isEmpty) {
+        if (!confirm("Do you really want to release this Pokémon?")) {
+            return;
+        }
     }
 
     PARTY[i] = {
-        pokemon: CURRENT_POKEMON,
-        moves: CURRENT_MOVES
+        pokemon: isEmpty ? {} : CURRENT_POKEMON,
+        moves: isEmpty ? [] : CURRENT_MOVES
     }
+
     localStorage.setItem('party', JSON.stringify(PARTY));
 
-    loadPartyPokemonSearch();
+    loadPartyPokemonsHTML();
     returnToPokemonSearch();
 }
 
@@ -139,4 +156,35 @@ function deletePartyInputs() {
     for (const input of document.getElementById('edit-party-container').querySelectorAll('input')) {
         input.value = '';
     }
+}
+
+// Context Menu
+function loadContextMenu(display) {
+    const partyBox = document.getElementById('party-box');
+    const contextMenu = partyBox.querySelector('.context-menu');
+    contextMenu.style.display = display;
+}
+
+function editPokemon() {
+    loadPartyData();
+    goToPageWithId('edit-party-container');
+    closeContextMenu();
+}
+
+function openContextMenu() {
+    PARTY_BOXES[CURRENT_PARTY - 1].classList.add('selected');
+    loadContextMenu('');
+}
+
+function closeContextMenu() {
+    if (!PARTY_BOXES[CURRENT_PARTY - 1]) {
+        return;
+    }
+
+    PARTY_BOXES[CURRENT_PARTY - 1].classList.remove('selected');
+    loadContextMenu('none');
+}
+
+function checkSummary() {
+
 }

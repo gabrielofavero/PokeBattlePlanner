@@ -1,7 +1,7 @@
 import { MOVES, POKEMONS, TYPES } from "../app.js";
 import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.js";
-import { SEARCH_PARTY_MOVE_1, SEARCH_PARTY_MOVE_2, SEARCH_PARTY_MOVE_3, SEARCH_PARTY_MOVE_4, SEARCH_PARTY_POKEMON } from "../pages/party.js";
-import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc} from "../pages/pokemon.js";
+import { SEARCH_PARTY_MOVES, SEARCH_PARTY_POKEMON } from "../pages/party.js";
+import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
 import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
 import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "./banners.js";
@@ -11,12 +11,11 @@ export function loadSearchBars() {
     getInput(SEARCH_SINGLE_TYPE).addEventListener('input', () => loadSearchBar(SEARCH_SINGLE_TYPE));
     getInput(SEARCH_MULTI_TYPE_1).addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_1, 1));
     getInput(SEARCH_MULTI_TYPE_2, 1).addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_2, 2));
-
     getInput(SEARCH_PARTY_POKEMON).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_POKEMON));
-    getInput(SEARCH_PARTY_MOVE_1).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_1));
-    getInput(SEARCH_PARTY_MOVE_2).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_2));
-    getInput(SEARCH_PARTY_MOVE_3).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_3));
-    getInput(SEARCH_PARTY_MOVE_4).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_MOVE_4));
+
+    for (const move of SEARCH_PARTY_MOVES) {
+        getInput(move).addEventListener('input', () => loadSearchBar(move));
+    }
 }
 
 export function resetSearchBars() {
@@ -24,22 +23,21 @@ export function resetSearchBars() {
     getInput(SEARCH_SINGLE_TYPE).value = '';
     getInput(SEARCH_MULTI_TYPE_1).value = '';
     getInput(SEARCH_MULTI_TYPE_2, 1).value = '';
-
     getInput(SEARCH_PARTY_POKEMON).value = '';
-    getInput(SEARCH_PARTY_MOVE_1).value = '';
-    getInput(SEARCH_PARTY_MOVE_2).value = '';
-    getInput(SEARCH_PARTY_MOVE_3).value = '';
-    getInput(SEARCH_PARTY_MOVE_4).value = '';
+
+    for (const move of SEARCH_PARTY_MOVES) {
+        getInput(move).value = '';
+    }
 }
 
 function getInput(searchBar, index = 0) {
     return searchBar.content.querySelectorAll('input')[index]
 }
 
-function loadSearchBar(search, j=1) {
-    const searchBox = search.content.getElementsByClassName("button-box")[j-1];
+function loadSearchBar(search, j = 1) {
+    const searchBox = search.content.getElementsByClassName("button-box")[j - 1];
     const input = searchBox.querySelector('input');
-    const suggestions = search.content.getElementsByClassName("search-suggestions")[j-1];
+    const suggestions = search.content.getElementsByClassName("search-suggestions")[j - 1];
     const results = search.content.querySelector('.search-result');
 
     if (results) {
@@ -147,7 +145,7 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
 
     const subtitle = searchBox.querySelector('.pokemon-variant');
     const types = searchBox.querySelector('.result-types');
-    
+
     icon.style.display = 'none';
 
     img.src = getPokemonSpriteSrc(pokemon);
@@ -155,7 +153,7 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
     img.style.display = ''
 
     searchBox.classList = `button-box pokemon`;
-    
+
     subtitle.textContent = pokemon.subtitle;
     subtitle.style.display = '';
 

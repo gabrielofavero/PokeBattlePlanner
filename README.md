@@ -37,7 +37,7 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 
 - 🏆 **F016:** Trim sprites + add alt pokemon image
 - ⚔️ **E004:** Implement Pokémon Type Calculator
-  - 🏆 **F009:** [E004] Create HTML+CSS elements for party view
+  - 🏆 **F009:** [E004] Create elements for party view
   - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
 - 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
 - 🏆 **F012:** Add full keyboard support
