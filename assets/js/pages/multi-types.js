@@ -1,7 +1,7 @@
 import { MULTI_TYPES, TYPES } from "../app.js";
 import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption, onClick } from "../ui/search-bar.js";
+import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../ui/search-bar.js";
 
 const SEARCH_TYPES = ['', '']
 
@@ -9,18 +9,18 @@ export const SEARCH_MULTI_TYPE_1 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType1Options,
     option: getTypeOption,
-    onClick: onClick,
-    onChange: onChange
+    action: searchBarAction
 }
 
 export const SEARCH_MULTI_TYPE_2 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType2Options,
     option: getTypeOption,
-    onChange: onChange
+    action: searchBarAction
 }
 
-export function onChange(input) {
+function searchBarAction(input, option) {
+    input.value = firstCharToUppercase(option);
     const idSplit = input.id.split("-");
     const j = parseInt(idSplit[idSplit.length-1]);
 

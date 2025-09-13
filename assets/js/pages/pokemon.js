@@ -24,16 +24,12 @@ export const SEARCH_POKEMON = {
     content: document.getElementById('pokemon-search-content'),
     options: getPokemonOptions,
     option: getPokemonOption,
-    onClick: onClick,
-    onChange: onChange
+    action: searchBarAction
 }
 
-function onClick(pokemon, input) {
-    POKEMON = pokemon;
+function searchBarAction(input, option) {
+    POKEMON = option;
     input.value = POKEMON?.title || '';
-}
-
-function onChange(input) {
     const title = input.value;
 
     if (!POKEMON || title != POKEMON.title) {
