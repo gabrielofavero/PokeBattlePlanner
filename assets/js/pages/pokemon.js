@@ -3,6 +3,22 @@ import { loadMultiTypeResults } from "./multi-types.js";
 
 var POKEMON;
 
+export const RATINGS = {
+    "very-strong": "Very Strong",
+    "strong": "Strong",
+    "neutral": "Neutral",
+    "weak": "Weak",
+    "very-weak": "Very Weak",
+}
+
+export const EFFECTIVINESS = {
+    "4": "very-strong",
+    "2": "strong",
+    "1": "neutral",
+    "½": "weak",
+    "¼": "very-weak"
+}
+
 export const SEARCH_POKEMON = {
     content: document.getElementById('pokemon-search-content'),
     options: getPokemonOptions,

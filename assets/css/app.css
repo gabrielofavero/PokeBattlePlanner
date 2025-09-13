@@ -5,11 +5,12 @@
   --content-overlay: rgba(0, 0, 0, 0.35);
   --content-overlay-selected: rgba(48, 42, 9, 0.35);
   --default-border-radius: 6px;
+  --pill-border-radius: 9999px;
   --disabled-color: #729b99;
   --disabled-color-alt: rgb(214, 214, 214, 0.5);
   --disabled-color-rgba: rgba(114, 155, 153, 0.5);
   --selected-color: #eed02a;
-  --bold-font-weight: 600
+  --bold-font-weight: 600;
 }
 
 body {
@@ -150,7 +151,7 @@ canvas {
 .pill-container {
   padding: 0.5em 1em;
   background: var(--content-overlay);
-  border-radius: 9999px;
+  border-radius: var(--pill-border-radius);
   display: flex;
   white-space: nowrap;
 }
@@ -175,6 +176,7 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1em;
 }
 
 .party-pokemon:hover {
@@ -189,6 +191,44 @@ canvas {
 .party-pokemon.selected .icon {
   fill: black;
 }
+
+.party-pokemon .party-text {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.party-pokemon .party-text .party-pill {
+  font-size: 18px;
+  background: rgba(22, 58, 78, 0.8);
+  width: 120px;
+  text-align: center;
+  padding: 2px;
+  border-radius: var(--pill-border-radius);
+}
+
+.party-pokemon .party-text .party-name {
+  font-weight: var(--bold-font-weight);
+}
+
+.party-pokemon .party-text .very-strong {
+  background: rgba(22, 78, 25, 0.8);
+}
+
+.party-pokemon .party-text .strong {
+  background: rgba(20, 66, 51, 0.8);
+}
+
+.party-pokemon .party-text .weak {
+  background: rgba(87, 39, 71, 0.8);
+}
+
+.party-pokemon .party-text .very-weak {
+  background: rgba(121, 32, 32, 0.8);
+}
+
+/* To-Do: Categorize */
 
 .button-box {
   padding: 0.5em 1em;
@@ -233,7 +273,7 @@ canvas {
 .button-box.type {
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
-  border-radius: 9999px;
+  border-radius: var(--pill-border-radius);
   width: auto;
 }
 
