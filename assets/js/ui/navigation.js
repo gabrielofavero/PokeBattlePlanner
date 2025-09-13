@@ -6,6 +6,8 @@ export function loadTopBar() {
         item.addEventListener("click", () => selectTopBarItem(item));
     });
 
+    document.getElementById('next-top-bar-item').addEventListener("click", loadNextTopBarItem);
+
     // Keyboard Support
     document.addEventListener("keydown", e => {
         if (isTyping()) return;
@@ -20,7 +22,7 @@ export function loadNextTopBarItem() {
     const selected = document.querySelector(".top-bar-item.selected");
     let next = selected?.nextElementSibling;
     if (!next || !next.classList.contains("top-bar-item")) {
-        next = items[0]; // loop back to first
+        next = document.querySelectorAll('.top-bar-item')[0];
     }
     selectTopBarItem(next);
 }

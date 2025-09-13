@@ -126,6 +126,10 @@ canvas {
   border-radius: 2px;
 }
 
+#next-top-bar-item {
+  cursor: pointer;
+}
+
 
 /* Content */
 
