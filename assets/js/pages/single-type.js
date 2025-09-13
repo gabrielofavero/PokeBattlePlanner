@@ -1,21 +1,24 @@
 import { TYPES, SINGLE_TYPES } from "../app.js";
-import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../ui/search-bar.js";
+import { addTypeToSearchBox, getTypeOption, getTypeOptions, onClick } from "../ui/search-bar.js";
 
 export const SEARCH_SINGLE_TYPE = {
     content: document.getElementById('single-type-search-content'),
     options: getTypeOptions,
     option: getTypeOption,
-    action: loadSingleTypeSearch
+    onClick: onClick,
+    onChange: onChange
 }
 
-function loadSingleTypeSearch(type, input) {
-    input.value = firstCharToUppercase(type);
+function onChange(input) {
+    const type = input.value.toLowerCase();
     const content = document.getElementById('single-type-search-content');
     const searchBox = content.querySelector(".button-box");
     const results = content.querySelector('.search-result');
-
+    const suggestions = content.querySelector(".search-suggestions");
+    
+    suggestions.style.display = 'none';
+    
     if (!TYPES.includes(type)) {
         input.value = '';
         results.classList.add('hidden');

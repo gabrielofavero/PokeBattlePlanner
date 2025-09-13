@@ -1,7 +1,7 @@
 import { MULTI_TYPES, TYPES } from "../app.js";
 import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../ui/search-bar.js";
+import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption, onClick } from "../ui/search-bar.js";
 
 const SEARCH_TYPES = ['', '']
 
@@ -9,21 +9,28 @@ export const SEARCH_MULTI_TYPE_1 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType1Options,
     option: getTypeOption,
-    action: () => loadMultiTypeSearch(1)
+    onClick: onClick,
+    onChange: onChange
 }
 
 export const SEARCH_MULTI_TYPE_2 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType2Options,
     option: getTypeOption,
-    action: () => loadMultiTypeSearch(2)
+    onChange: onChange
 }
 
-export function loadMultiTypeSearch(type, input) {
-    input.value = firstCharToUppercase(type);
+export function onChange(input) {
+    const idSplit = input.id.split("-");
+    const j = parseInt(idSplit[idSplit.length-1]);
+
+    const type = input.value.toLowerCase();
     const content = document.getElementById('multi-type-search-content');
     const searchBox = content.getElementsByClassName("button-box")[j-1];
     const results = content.querySelector('.search-result');
+    const suggestions = content.querySelector(`.search-suggestions.type-${j}`);
+    
+    suggestions.style.display = 'none';
 
     if (!TYPES.includes(type)) {
         SEARCH_TYPES[j - 1] = '';

@@ -1,3 +1,4 @@
+import { POKEMONS } from "../app.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../ui/search-bar.js";
 import { loadMultiTypeResults } from "./multi-types.js";
 
@@ -23,15 +24,29 @@ export const SEARCH_POKEMON = {
     content: document.getElementById('pokemon-search-content'),
     options: getPokemonOptions,
     option: getPokemonOption,
-    action: loadPokemonSearch
+    onClick: onClick,
+    onChange: onChange
 }
 
-function loadPokemonSearch(pokemon, input) {
+function onClick(pokemon, input) {
     POKEMON = pokemon;
     input.value = POKEMON?.title || '';
+}
+
+function onChange(input) {
+    const title = input.value;
+
+    if (!POKEMON || title != POKEMON.title) {
+        POKEMON = findPokemonByTitle(title);
+        input.value = POKEMON.title
+    }
+
     const content = document.getElementById('pokemon-search-content');
     const searchBox = content.querySelector(".button-box");
     const results = content.querySelector('.search-result');
+    const suggestions = content.querySelector(".search-suggestions");
+
+    suggestions.style.display = 'none';
 
     if (POKEMON == null) {
         results.classList.add('hidden');
@@ -49,4 +64,8 @@ export function getPokemonSpriteSrc(pokemon) {
 
 export function getPokemonSpriteAlt(pokemon) {
     return `${pokemon.title}: ${pokemon.subtitle}`
+}
+
+function findPokemonByTitle(title) {
+    return POKEMONS.find(pokemon => pokemon.title.toLowerCase() === title.toLowerCase()) || null;
 }

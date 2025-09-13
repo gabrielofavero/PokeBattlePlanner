@@ -12,22 +12,26 @@ const MULTI_SEARCH_BARS = [[SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2]]
 // Loaders
 export function loadSearchBars() {
     for (const searchBar of SINGLE_SEARCH_BARS) {
-        getInput(searchBar).addEventListener('input', () => loadSearchBar(searchBar));
+        const input = getInput(searchBar);
+        input.addEventListener('input', () => loadSuggestions(searchBar));
+        input.addEventListener('change', () => searchBar.onChange(input));
     }
 
     for (const multiBar of MULTI_SEARCH_BARS) {
         for (let j = 1; j <= multiBar.length; j++) {
             const searchBar = multiBar[j - 1];
-            getInput(searchBar, j-1).addEventListener('input', () => loadSearchBar(searchBar, j));
+            const input = getInput(searchBar, j-1);
+            input.addEventListener('input', () => loadSuggestions(searchBar, j));
+            input.addEventListener('change', () => searchBar.onChange(input));
         }
     }
 }
 
-function loadSearchBar(search, j = 1) {
-    const searchBox = search.content.getElementsByClassName("button-box")[j - 1];
+function loadSuggestions(searchBar, j = 1) {
+    const searchBox = searchBar.content.getElementsByClassName("button-box")[j - 1];
     const input = searchBox.querySelector('input');
-    const suggestions = search.content.getElementsByClassName("search-suggestions")[j - 1];
-    const results = search.content.querySelector('.search-result');
+    const suggestions = searchBar.content.getElementsByClassName("search-suggestions")[j - 1];
+    const results = searchBar.content.querySelector('.search-result');
 
     if (results) {
         results.classList.add('hidden');
@@ -38,13 +42,14 @@ function loadSearchBar(search, j = 1) {
     clearSearchBox(searchBox);
 
     if (value.length >= 2) {
-        const options = search.options(value);
+        const options = searchBar.options(value);
         if (options.length > 0) {
             options.forEach(option => {
-                const div = search.option(option);
+                const div = searchBar.option(option);
                 div.onclick = () => {
-                    search.action(option, input);
+                    searchBar.onClick(option, input);
                     suggestions.style.display = 'none';
+                    searchBar.onChange(input);
                 };
                 suggestions.appendChild(div);
             });
@@ -63,6 +68,10 @@ function loadSearchBar(search, j = 1) {
             document.removeEventListener("click", hideOnClickOutside); // cleanup
         }
     });
+}
+
+export function onClick(value, input){
+    input.value = firstCharToUppercase(value);
 }
 
 // Getters
@@ -96,7 +105,7 @@ export function getPokemonOption(pokemon) {
     const item = document.createElement('div');
     const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
     item.className = 'search-suggestion-item pokemon';
-    item.innerHTML = `<img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"> ${titleBox}`;
+    item.innerHTML = `<div class="img-container"><img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div> ${titleBox}`;
     return item;
 }
 
@@ -218,4 +227,11 @@ export function addTypeToSearchBox(searchBox, type) {
     icon.setAttribute('class', `icon type ${type}`);
     icon.innerHTML = `<use href="#type-${type}-icon"/>`;
     searchBox.classList = `button-box type ${type}`;
+}
+
+export function onChangeWithResults(searchBar) {
+    const results = searchBar.content.querySelector('.search-result');
+    if (!results.classList.contains('hidden')) {
+        return;
+    }
 }
