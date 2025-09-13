@@ -14,7 +14,6 @@ export function loadSearchBars() {
     for (const searchBar of SINGLE_SEARCH_BARS) {
         const input = getInput(searchBar);
         input.addEventListener('input', () => loadSuggestions(searchBar));
-        input.addEventListener('change', () => searchBar.onChange(input));
     }
 
     for (const multiBar of MULTI_SEARCH_BARS) {
@@ -22,7 +21,6 @@ export function loadSearchBars() {
             const searchBar = multiBar[j - 1];
             const input = getInput(searchBar, j-1);
             input.addEventListener('input', () => loadSuggestions(searchBar, j));
-            input.addEventListener('change', () => searchBar.onChange(input));
         }
     }
 }
