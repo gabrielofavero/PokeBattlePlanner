@@ -5,10 +5,9 @@ import { RATINGS, getPokemonSpriteSrc } from "./pokemon.js";
 var PARTY = [];
 var CURRENT_PARTY = 0;
 var CURRENT_POKEMON = {};
-var CURRENT_MOVES = [];
+export var CURRENT_MOVES = [];
 const PARTY_BOXES = document.getElementsByClassName('party-pokemon');
 
-export const SEARCH_PARTY_MOVES = [getSearchPartyMove(1), getSearchPartyMove(2), getSearchPartyMove(3), getSearchPartyMove(4)]
 export const SEARCH_PARTY_POKEMON = {
     content: document.getElementById('party-pokemon-content'),
     options: getPokemonOptions,
@@ -41,7 +40,8 @@ function loadPokemonPartiesListeners() {
     for (const partyBox of PARTY_BOXES) {
         partyBox.addEventListener("click", () => {
             CURRENT_PARTY = parseInt(partyBox.getAttribute("party-number"));
-            partyBoxClickAction();
+            if (isPartyEmpty()) editPokemon()
+            else openContextMenu();
         });
     }
 }
@@ -73,10 +73,19 @@ function loadPartyPokemonsHTML() {
     }
 }
 
-function partyBoxClickAction() {
-    if (isPartyEmpty()) editPokemon()
-    else openContextMenu();
+// Getters
+export function getSearchPartyMoves() {
+    return [
+        getSearchPartyMove(1),
+        getSearchPartyMove(2),
+        getSearchPartyMove(3),
+        getSearchPartyMove(4)
+    ];
 }
+
+// Setters
+
+// Validators
 
 function isPartyEmpty(i = CURRENT_PARTY - 1) {
     const party = PARTY[i];
@@ -188,3 +197,4 @@ function closeContextMenu() {
 function checkSummary() {
 
 }
+

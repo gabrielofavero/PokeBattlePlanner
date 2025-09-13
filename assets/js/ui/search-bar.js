@@ -1,37 +1,26 @@
 import { MOVES, POKEMONS, TYPES } from "../app.js";
 import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.js";
-import { SEARCH_PARTY_MOVES, SEARCH_PARTY_POKEMON } from "../pages/party.js";
+import { CURRENT_MOVES, getSearchPartyMoves } from "../pages/party.js";
 import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
 import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
 import { firstCharToUppercase } from "../support/data.js";
 import { loadTypeContentBanners } from "./banners.js";
 
+const SINGLE_SEARCH_BARS = [SEARCH_POKEMON, SEARCH_SINGLE_TYPE, ...getSearchPartyMoves()];
+const MULTI_SEARCH_BARS = [[SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2]]
+
+// Loaders
 export function loadSearchBars() {
-    getInput(SEARCH_POKEMON).addEventListener('input', () => loadSearchBar(SEARCH_POKEMON));
-    getInput(SEARCH_SINGLE_TYPE).addEventListener('input', () => loadSearchBar(SEARCH_SINGLE_TYPE));
-    getInput(SEARCH_MULTI_TYPE_1).addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_1, 1));
-    getInput(SEARCH_MULTI_TYPE_2, 1).addEventListener('input', () => loadSearchBar(SEARCH_MULTI_TYPE_2, 2));
-    getInput(SEARCH_PARTY_POKEMON).addEventListener('input', () => loadSearchBar(SEARCH_PARTY_POKEMON));
-
-    for (const move of SEARCH_PARTY_MOVES) {
-        getInput(move).addEventListener('input', () => loadSearchBar(move));
+    for (const searchBar of SINGLE_SEARCH_BARS) {
+        getInput(searchBar).addEventListener('input', () => loadSearchBar(searchBar));
     }
-}
 
-export function resetSearchBars() {
-    getInput(SEARCH_POKEMON).value = '';
-    getInput(SEARCH_SINGLE_TYPE).value = '';
-    getInput(SEARCH_MULTI_TYPE_1).value = '';
-    getInput(SEARCH_MULTI_TYPE_2, 1).value = '';
-    getInput(SEARCH_PARTY_POKEMON).value = '';
-
-    for (const move of SEARCH_PARTY_MOVES) {
-        getInput(move).value = '';
+    for (const multiBar of MULTI_SEARCH_BARS) {
+        for (let j = 1; j <= multiBar.length; j++) {
+            const searchBar = multiBar[j - 1];
+            getInput(searchBar, j-1).addEventListener('input', () => loadSearchBar(searchBar, j));
+        }
     }
-}
-
-function getInput(searchBar, index = 0) {
-    return searchBar.content.querySelectorAll('input')[index]
 }
 
 function loadSearchBar(search, j = 1) {
@@ -76,6 +65,97 @@ function loadSearchBar(search, j = 1) {
     });
 }
 
+// Getters
+function getInput(searchBar, index = 0) {
+    return searchBar.content.querySelectorAll('input')[index]
+}
+
+export function getPokemonOptions(value) {
+    const options = POKEMONS.filter(opt => {
+        return opt.title.toLowerCase().includes(value) || opt.subtitle.toLowerCase().includes(value);
+    });
+
+    options.sort((a, b) => {
+        const aTitle = a.title.toLowerCase();
+        const bTitle = b.title.toLowerCase();
+
+        if (aTitle === value) return -1;
+        if (bTitle === value) return 1;
+
+        const aSub = a.subtitle.toLowerCase();
+        const bSub = b.subtitle.toLowerCase();
+        if (aSub === value) return -1;
+        if (bSub === value) return 1;
+
+        return 0;
+    });
+    return options;
+}
+
+export function getPokemonOption(pokemon) {
+    const item = document.createElement('div');
+    const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
+    item.className = 'search-suggestion-item pokemon';
+    item.innerHTML = `<img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"> ${titleBox}`;
+    return item;
+}
+
+export function getTypeOptions(value) {
+    const options = TYPES.filter(type =>
+        type.toLowerCase().includes(value.toLowerCase())
+    );
+
+    options.sort((a, b) => a.localeCompare(b));
+    return options;
+}
+
+export function getFilteredTypeOptions(value, exclude) {
+    return getTypeOptions(value).filter(type =>
+        type.toLowerCase() !== (exclude?.toLowerCase() ?? "")
+    );
+}
+
+export function getTypeOption(type) {
+    const item = document.createElement('div');
+    item.className = 'search-suggestion-item type';
+    item.innerHTML = `<svg class="icon ${type}"><use href="#type-${type}-icon" /></svg> ${firstCharToUppercase(type)}`;
+    return item;
+}
+
+export function getMoveOptions(value) {
+    const exclude = CURRENT_MOVES.map(move => move?.name).filter(Boolean);
+
+    const options = MOVES.filter(move => {
+        return (
+            move.name.toLowerCase().includes(value.toLowerCase()) &&
+            !exclude.map(e => e.toLowerCase()).includes(move.name.toLowerCase())
+        );
+    });
+
+    options.sort((a, b) => a.name.localeCompare(b.name));
+    return options;
+}
+
+export function getMoveOption(move) {
+    const item = document.createElement('div');
+    item.className = 'search-suggestion-item type';
+    item.innerHTML = `<svg class="icon ${move.type}"><use href="#type-${move.type}-icon" /></svg> ${move.name}`;
+    return item;
+}
+
+// Setters
+export function resetSearchBars() {
+    for (const searchBar of SINGLE_SEARCH_BARS) {
+        getInput(searchBar).value = '';
+    }
+
+    for (const multiBar of MULTI_SEARCH_BARS) {
+        for (let i = 0; i < multiBar.length; i++) {
+            getInput(multiBar[i], i).value = '';
+        }
+    }
+}
+
 export function clearSearchBox(searchBox) {
     const icon = searchBox.querySelector('.icon');
     const img = searchBox.querySelector('img');
@@ -108,37 +188,6 @@ export function clearSearchBox(searchBox) {
     }
 }
 
-// Search Pokémon
-export function getPokemonOptions(value) {
-    const options = POKEMONS.filter(opt => {
-        return opt.title.toLowerCase().includes(value) || opt.subtitle.toLowerCase().includes(value);
-    });
-
-    options.sort((a, b) => {
-        const aTitle = a.title.toLowerCase();
-        const bTitle = b.title.toLowerCase();
-
-        if (aTitle === value) return -1;
-        if (bTitle === value) return 1;
-
-        const aSub = a.subtitle.toLowerCase();
-        const bSub = b.subtitle.toLowerCase();
-        if (aSub === value) return -1;
-        if (bSub === value) return 1;
-
-        return 0;
-    });
-    return options;
-}
-
-export function getPokemonOption(pokemon) {
-    const item = document.createElement('div');
-    const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
-    item.className = 'search-suggestion-item pokemon';
-    item.innerHTML = `<img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"> ${titleBox}`;
-    return item;
-}
-
 export function addPokemonToSearchBox(searchBox, pokemon) {
     const icon = searchBox.querySelector('.icon');
     const img = searchBox.querySelector('img');
@@ -161,29 +210,6 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
     types.style.display = '';
 }
 
-// Search Type
-export function getTypeOptions(value) {
-    const options = TYPES.filter(type =>
-        type.toLowerCase().includes(value.toLowerCase())
-    );
-
-    options.sort((a, b) => a.localeCompare(b));
-    return options;
-}
-
-export function getFilteredTypeOptions(value, exclude) {
-    return getTypeOptions(value).filter(type =>
-        type.toLowerCase() !== (exclude?.toLowerCase() ?? "")
-    );
-}
-
-export function getTypeOption(type) {
-    const item = document.createElement('div');
-    item.className = 'search-suggestion-item type';
-    item.innerHTML = `<svg class="icon ${type}"><use href="#type-${type}-icon" /></svg> ${firstCharToUppercase(type)}`;
-    return item;
-}
-
 export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
@@ -192,21 +218,4 @@ export function addTypeToSearchBox(searchBox, type) {
     icon.setAttribute('class', `icon type ${type}`);
     icon.innerHTML = `<use href="#type-${type}-icon"/>`;
     searchBox.classList = `button-box type ${type}`;
-}
-
-// Search Move
-export function getMoveOptions(value) {
-    const options = MOVES.filter(move => {
-        return move.name.toLowerCase().includes(value);
-    });
-
-    options.sort((a, b) => a.name.localeCompare(b.name));
-    return options;
-}
-
-export function getMoveOption(move) {
-    const item = document.createElement('div');
-    item.className = 'search-suggestion-item type';
-    item.innerHTML = `<svg class="icon ${move.type}"><use href="#type-${move.type}-icon" /></svg> ${move.name}`;
-    return item;
 }
