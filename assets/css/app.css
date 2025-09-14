@@ -12,6 +12,8 @@
   --selected-color: #eed02a;
   --bold-font-weight: 600;
   --dark-text-color: #132544;
+
+  --summary-primary-color: #6c2fc8;
 }
 
 body {
@@ -402,6 +404,9 @@ input::placeholder {
   color: white;
 }
 
+
+/* Search Suggestions */
+
 .search-suggestions {
   position: absolute;
   border-top: none;
@@ -580,6 +585,8 @@ input::placeholder {
   white-space: nowrap;
 }
 
+/* Type Banner */
+
 .type-banner {
   background: black;
   color: white;
@@ -690,4 +697,68 @@ input::placeholder {
   height: 50px;
   width: 100%;
   border-bottom: 4px solid var(--selected-color);
+}
+
+/* Summary Page */
+
+#summary-page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.footer.summary {
+  background: var(--summary-primary-color);
+}
+
+
+.summary-header,
+.summary-top-menu {
+  padding: 0.5em 1em;
+  width: 100%;
+}
+
+.summary-header {
+  background: var(--summary-primary-color);
+  text-transform: uppercase;
+  font-weight: var(--bold-font-weight);
+}
+
+.summary-top-menu {
+ background: #162947 
+}
+
+.summary-content {
+  flex: 1;
+  background: linear-gradient(to top right, #015dba, #002c59);
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  padding-bottom: 54px;
+  overflow-y: auto;
+}
+
+.summary-party-pokemons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.summary-party-pokemon {
+  background: rgb(17, 49, 88, 0.9);
+  height: 100px;
+  width: 100px;
+  border-radius: var(--default-border-radius);
+}
+
+.summary-content-box {
+  height: 720px;
+  width: 600px;
+  background: rgb(17, 49, 88, 0.6);
+  border-radius: var(--default-border-radius);
+}
+
+.summary-remaining-area {
+  flex: 1;
 }

@@ -85,8 +85,8 @@ export function loadDefaultBackground() {
 }
 
 export function loadBlueBackground() {
-  changeBackground(0x687fff);
-  changeOrbColor(0x84a8ff);
+  changeBackground(0x002c5b);
+  changeOrbColor(0x005ab8);
 }
 
 function changeBackground(hex) {

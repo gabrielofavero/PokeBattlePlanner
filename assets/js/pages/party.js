@@ -2,6 +2,7 @@ import { closeContextMenu, openContextMenu } from "../ui/context-menu.js";
 import { goToPageWithId } from "../ui/navigation.js";
 import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../ui/search-bar.js";
 import { RATINGS, getPokemonSpriteSrc } from "./pokemon.js";
+import { loadSummaryPage } from "./summary.js";
 
 var PARTY = [];
 var CURRENT_PARTY = 0;
@@ -23,7 +24,7 @@ export function loadPokemonParty() {
 
 function loadPokemonPartiesListeners() {
     document.getElementById('edit-pokemon').addEventListener('click', editPokemon);
-    document.getElementById('check-summary').addEventListener('click', checkSummary);
+    document.getElementById('check-summary').addEventListener('click', loadSummaryPage);
     document.getElementById('release-pokemon').addEventListener('click', () => savePokemon(true));
     document.getElementById('never-mind').addEventListener('click', () => closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY - 1]));
 
@@ -94,10 +95,6 @@ function editPokemon() {
     loadPartyData();
     goToPageWithId('edit-party-container');
     closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY - 1]);
-}
-
-function checkSummary() {
-
 }
 
 

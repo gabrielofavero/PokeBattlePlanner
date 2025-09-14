@@ -50,351 +50,372 @@
 </head>
 
 <body>
-
-  <div class="top-bar">
-    <div class="icon-box">
-      <svg class="icon x-button" id="next-top-bar-item">
-        <use href="#x-button-icon" />
-      </svg>
+  <div class="page" id="main-page">
+    <div class="top-bar">
+      <div class="icon-box">
+        <svg class="icon x-button" id="next-top-bar-item">
+          <use href="#x-button-icon" />
+        </svg>
+      </div>
+      <div class="top-bar-item selected" to-show="pokemon-search-container">Pokémon</div>
+      <div class="top-bar-item" to-show="single-type-search-container">Single Type</div>
+      <div class="top-bar-item" to-show="multi-type-search-container">Multi Type</div>
     </div>
-    <div class="top-bar-item selected" to-show="pokemon-search-container">Pokémon</div>
-    <div class="top-bar-item" to-show="single-type-search-container">Single Type</div>
-    <div class="top-bar-item" to-show="multi-type-search-container">Multi Type</div>
-  </div>
 
-  <div id="pokemon-search-container" class="content">
-    <div class="column">
-      <div id="party-box">
-        <div class="pill-container">
+    <div id="pokemon-search-container" class="content">
+      <div class="column">
+        <div id="party-box">
+          <div class="pill-container">
+            <div class="icon-box">
+              <svg class="icon">
+                <use href="#pokeball-icon" />
+              </svg>
+            </div>
+            <div class="button-item">
+              <div id="current-party">Current Party</div>
+            </div>
+          </div>
+          <div class="party-pokemons">
+            <div class="party-pokemon fade" party-number="1">
+              <div class="party-text" style="display: none">
+                <div class="party-pill weak"></div>
+                <div class="party-name"></div>
+              </div>
+              <div class="party-img" style="display: none">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="party-pokemon fade" party-number="2">
+              <div class="party-text" style="display: none">
+                <div class="party-pill weak"></div>
+                <div class="party-name"></div>
+              </div>
+              <div class="party-img" style="display: none">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="party-pokemon fade" party-number="3">
+              <div class="party-text" style="display: none">
+                <div class="party-pill weak"></div>
+                <div class="party-name"></div>
+              </div>
+              <div class="party-img" style="display: none">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="party-pokemon fade" party-number="4">
+              <div class="party-text" style="display: none">
+                <div class="party-pill weak"></div>
+                <div class="party-name"></div>
+              </div>
+              <div class="party-img" style="display: none">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="party-pokemon fade" party-number="5">
+              <div class="party-text" style="display: none">
+                <div class="party-pill weak"></div>
+                <div class="party-name"></div>
+              </div>
+              <div class="party-img" style="display: none">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="party-pokemon fade" party-number="6">
+              <div class="party-text" style="display: none">
+                <div class="party-pill weak"></div>
+                <div class="party-name"></div>
+              </div>
+              <div class="party-img" style="display: none">
+                <img src="" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="context-menu" style="display: none">
+            <div class="context-menu-item" id="edit-pokemon">Edit</div>
+            <div class="context-menu-item" id="check-summary">Check summary</div>
+            <div class="context-menu-item" id="release-pokemon">Release</div>
+            <div class="context-menu-item" id="never-mind">Never mind</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column" id="pokemon-search-content">
+        <div class="button-box">
           <div class="icon-box">
             <svg class="icon">
-              <use href="#pokeball-icon" />
+              <use href="#search-icon" />
             </svg>
+            <img src="" alt="" style="display: none">
           </div>
-          <div class="button-item">
-            <div id="current-party">Current Party</div>
-          </div>
-        </div>
-        <div class="party-pokemons">
-          <div class="party-pokemon fade" party-number="1">
-            <div class="party-text" style="display: none">
-              <div class="party-pill weak"></div>
-              <div class="party-name"></div>
-            </div>
-            <div class="party-img" style="display: none">
-              <img src="" alt="">
-            </div>
-          </div>
-          <div class="party-pokemon fade" party-number="2">
-            <div class="party-text" style="display: none">
-              <div class="party-pill weak"></div>
-              <div class="party-name"></div>
-            </div>
-            <div class="party-img" style="display: none">
-              <img src="" alt="">
-            </div>
-          </div>
-          <div class="party-pokemon fade" party-number="3">
-            <div class="party-text" style="display: none">
-              <div class="party-pill weak"></div>
-              <div class="party-name"></div>
-            </div>
-            <div class="party-img" style="display: none">
-              <img src="" alt="">
-            </div>
-          </div>
-          <div class="party-pokemon fade" party-number="4">
-            <div class="party-text" style="display: none">
-              <div class="party-pill weak"></div>
-              <div class="party-name"></div>
-            </div>
-            <div class="party-img" style="display: none">
-              <img src="" alt="">
-            </div>
-          </div>
-          <div class="party-pokemon fade" party-number="5">
-            <div class="party-text" style="display: none">
-              <div class="party-pill weak"></div>
-              <div class="party-name"></div>
-            </div>
-            <div class="party-img" style="display: none">
-              <img src="" alt="">
-            </div>
-          </div>
-          <div class="party-pokemon fade" party-number="6">
-            <div class="party-text" style="display: none">
-              <div class="party-pill weak"></div>
-              <div class="party-name"></div>
-            </div>
-            <div class="party-img" style="display: none">
-              <img src="" alt="">
-            </div>
+          <div class="search-pokemon-container">
+            <input id="search-pokemon" type="text" class="clear-input" placeholder="Enemy Pokémon">
+            <div class="pokemon-variant" style="display: none"></div>
+            <div class="result-types" style="display: none"></div>
           </div>
         </div>
-        <div class="context-menu" style="display: none">
-          <div class="context-menu-item" id="edit-pokemon">Edit</div>
-          <div class="context-menu-item" id="check-summary">Check summary</div>
-          <div class="context-menu-item" id="release-pokemon">Release</div>
-          <div class="context-menu-item" id="never-mind">Never mind</div>
+        <div class="search-suggestions"></div>
+
+        <div class="search-result grid-container fade hidden">
+          <div class="grid-item flex">
+            <div class="positive">2x</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="pokemon-result-1"></div>
+            </div>
+          </div>
+          <div class="grid-item flex">
+            <div class="positive">4x</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="pokemon-result-2"></div>
+            </div>
+          </div>
+          <div class="grid-item flex">
+            <div class="negative fraction">½</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="pokemon-result-3"></div>
+            </div>
+          </div>
+          <div class="grid-item flex">
+            <div class="negative fraction">¼</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="pokemon-result-4"></div>
+            </div>
+          </div>
+          <div class="grid-item highlight full">
+            <div class="result-title">Immune to:</div>
+            <div class="result-types" id="pokemon-result-5"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="column" id="pokemon-search-content">
-      <div class="button-box">
-        <div class="icon-box">
-          <svg class="icon">
-            <use href="#search-icon" />
-          </svg>
-          <img src="" alt="" style="display: none">
-        </div>
-        <div class="search-pokemon-container">
-          <input id="search-pokemon" type="text" class="clear-input" placeholder="Enemy Pokémon">
-          <div class="pokemon-variant" style="display: none"></div>
-          <div class="result-types" style="display: none"></div>
-        </div>
-      </div>
-      <div class="search-suggestions"></div>
-
-      <div class="search-result grid-container fade hidden">
-        <div class="grid-item flex">
-          <div class="positive">2x</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="pokemon-result-1"></div>
-          </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="positive">4x</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="pokemon-result-2"></div>
-          </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="negative fraction">½</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="pokemon-result-3"></div>
-          </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="negative fraction">¼</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="pokemon-result-4"></div>
-          </div>
-        </div>
-        <div class="grid-item highlight full">
-          <div class="result-title">Immune to:</div>
-          <div class="result-types" id="pokemon-result-5"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="single-type-search-container" class="content" style="display: none">
-    <div class="column" id="single-type-search-content">
-      <div class="button-box">
-        <div class="icon-box">
-          <svg class="icon">
-            <use href="#search-icon" />
-          </svg>
-        </div>
-        <input id="search-single-type" type="text" class="clear-input" placeholder="Search Type">
-      </div>
-      <div class="search-suggestions"></div>
-      <div class="search-result grid-container fade hidden">
-        <div class="grid-item flex">
-          <div class="positive">2x</div>
-          <div class="types">
-            <div class="result-title">Damage to:</div>
-            <div class="result-types" id="single-type-result-1"></div>
-          </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="positive fraction">½</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="single-type-result-2"></div>
-          </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="negative fraction">½</div>
-          <div class="types">
-            <div class="result-title">Damage to:</div>
-            <div class="result-types" id="single-type-result-3"></div>
-          </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="negative">2x</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="single-type-result-4"></div>
-          </div>
-        </div>
-        <div class="grid-item highlight">
-          <div class="result-title">Can't damage:</div>
-          <div class="result-types" id="single-type-result-5"></div>
-        </div>
-        <div class="grid-item highlight">
-          <div class="result-title">Immune to:</div>
-          <div class="result-types" id="single-type-result-6"></div>
-        </div>
-        <div class="grid-item result">
-          <div class="result-title">Best against:</div>
-          <div class="result-types" id="single-type-result-7"></div>
-        </div>
-        <div class="grid-item result">
-          <div class="result-title">Worst against:</div>
-          <div class="result-types" id="single-type-result-8"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="multi-type-search-container" class="content" style="display: none">
-    <div class="column" id="multi-type-search-content">
-      <div class="multi-button-box">
+    <div id="single-type-search-container" class="content" style="display: none">
+      <div class="column" id="single-type-search-content">
         <div class="button-box">
           <div class="icon-box">
             <svg class="icon">
               <use href="#search-icon" />
             </svg>
           </div>
-          <input id="search-multi-type-1" type="text" class="clear-input" placeholder="Search Type 1">
+          <input id="search-single-type" type="text" class="clear-input" placeholder="Search Type">
         </div>
-        <div class="search-suggestions type-1"></div>
-
-        <div class="button-box">
-          <div class="icon-box">
-            <svg class="icon">
-              <use href="#search-icon" />
-            </svg>
+        <div class="search-suggestions"></div>
+        <div class="search-result grid-container fade hidden">
+          <div class="grid-item flex">
+            <div class="positive">2x</div>
+            <div class="types">
+              <div class="result-title">Damage to:</div>
+              <div class="result-types" id="single-type-result-1"></div>
+            </div>
           </div>
-          <input id="search-multi-type-2" type="text" class="clear-input" placeholder="Search Type 2">
+          <div class="grid-item flex">
+            <div class="positive fraction">½</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="single-type-result-2"></div>
+            </div>
+          </div>
+          <div class="grid-item flex">
+            <div class="negative fraction">½</div>
+            <div class="types">
+              <div class="result-title">Damage to:</div>
+              <div class="result-types" id="single-type-result-3"></div>
+            </div>
+          </div>
+          <div class="grid-item flex">
+            <div class="negative">2x</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="single-type-result-4"></div>
+            </div>
+          </div>
+          <div class="grid-item highlight">
+            <div class="result-title">Can't damage:</div>
+            <div class="result-types" id="single-type-result-5"></div>
+          </div>
+          <div class="grid-item highlight">
+            <div class="result-title">Immune to:</div>
+            <div class="result-types" id="single-type-result-6"></div>
+          </div>
+          <div class="grid-item result">
+            <div class="result-title">Best against:</div>
+            <div class="result-types" id="single-type-result-7"></div>
+          </div>
+          <div class="grid-item result">
+            <div class="result-title">Worst against:</div>
+            <div class="result-types" id="single-type-result-8"></div>
+          </div>
         </div>
-        <div class="search-suggestions type-2"></div>
       </div>
+    </div>
 
-      <div class="search-result grid-container fade hidden">
-        <div class="grid-item flex">
-          <div class="positive">2x</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="multi-type-result-1"></div>
+    <div id="multi-type-search-container" class="content" style="display: none">
+      <div class="column" id="multi-type-search-content">
+        <div class="multi-button-box">
+          <div class="button-box">
+            <div class="icon-box">
+              <svg class="icon">
+                <use href="#search-icon" />
+              </svg>
+            </div>
+            <input id="search-multi-type-1" type="text" class="clear-input" placeholder="Search Type 1">
           </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="positive">4x</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="multi-type-result-2"></div>
+          <div class="search-suggestions type-1"></div>
+
+          <div class="button-box">
+            <div class="icon-box">
+              <svg class="icon">
+                <use href="#search-icon" />
+              </svg>
+            </div>
+            <input id="search-multi-type-2" type="text" class="clear-input" placeholder="Search Type 2">
           </div>
+          <div class="search-suggestions type-2"></div>
         </div>
-        <div class="grid-item flex">
-          <div class="negative fraction">½</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="multi-type-result-3"></div>
+
+        <div class="search-result grid-container fade hidden">
+          <div class="grid-item flex">
+            <div class="positive">2x</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="multi-type-result-1"></div>
+            </div>
           </div>
-        </div>
-        <div class="grid-item flex">
-          <div class="negative fraction">¼</div>
-          <div class="types">
-            <div class="result-title">Damage from:</div>
-            <div class="result-types" id="multi-type-result-4"></div>
+          <div class="grid-item flex">
+            <div class="positive">4x</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="multi-type-result-2"></div>
+            </div>
           </div>
-        </div>
-        <div class="grid-item highlight full">
-          <div class="result-title">Immune to:</div>
-          <div class="result-types" id="multi-type-result-5"></div>
+          <div class="grid-item flex">
+            <div class="negative fraction">½</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="multi-type-result-3"></div>
+            </div>
+          </div>
+          <div class="grid-item flex">
+            <div class="negative fraction">¼</div>
+            <div class="types">
+              <div class="result-title">Damage from:</div>
+              <div class="result-types" id="multi-type-result-4"></div>
+            </div>
+          </div>
+          <div class="grid-item highlight full">
+            <div class="result-title">Immune to:</div>
+            <div class="result-types" id="multi-type-result-5"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div id="edit-party-container" class="content" style="display: none">
-    <div class="column">
-      <div id="party-pokemon-content">
-        <div class="button-box large">
-          <div class="icon-box">
-            <div class="search-text">Pokémon Species</div>
+    <div id="edit-party-container" class="content" style="display: none">
+      <div class="column">
+        <div id="party-pokemon-content">
+          <div class="button-box large">
+            <div class="icon-box">
+              <div class="search-text">Pokémon Species</div>
+            </div>
+            <input type="text" class="clear-input" placeholder="-">
           </div>
-          <input type="text" class="clear-input" placeholder="-">
+          <div class="search-suggestions large"></div>
         </div>
-        <div class="search-suggestions large"></div>
-      </div>
-      <div id="party-move-1-content">
-        <div class="button-box large">
-          <div class="icon-box">
-            <div class="search-text" move="1">Move 1</div>
+        <div id="party-move-1-content">
+          <div class="button-box large">
+            <div class="icon-box">
+              <div class="search-text" move="1">Move 1</div>
+            </div>
+            <input type="text" class="clear-input" data-move="1" placeholder="-">
           </div>
-          <input type="text" class="clear-input" data-move="1" placeholder="-">
+          <div class="search-suggestions large"></div>
         </div>
-        <div class="search-suggestions large"></div>
-      </div>
-      <div id="party-move-2-content">
-        <div class="button-box large">
-          <div class="icon-box">
-            <div class="search-text">Move 2</div>
+        <div id="party-move-2-content">
+          <div class="button-box large">
+            <div class="icon-box">
+              <div class="search-text">Move 2</div>
+            </div>
+            <input type="text" class="clear-input" data-move="2" placeholder="-">
           </div>
-          <input type="text" class="clear-input" data-move="2" placeholder="-">
+          <div class="search-suggestions large"></div>
         </div>
-        <div class="search-suggestions large"></div>
-      </div>
-      <div id="party-move-3-content">
-        <div class="button-box large">
-          <div class="icon-box">
-            <div class="search-text">Move 3</div>
+        <div id="party-move-3-content">
+          <div class="button-box large">
+            <div class="icon-box">
+              <div class="search-text">Move 3</div>
+            </div>
+            <input type="text" class="clear-input" data-move="3" placeholder="-">
           </div>
-          <input type="text" class="clear-input" data-move="3" placeholder="-">
+          <div class="search-suggestions large"></div>
         </div>
-        <div class="search-suggestions large"></div>
-      </div>
-      <div id="party-move-4-content">
-        <div class="button-box large">
-          <div class="icon-box">
-            <div class="search-text">Move 4</div>
+        <div id="party-move-4-content">
+          <div class="button-box large">
+            <div class="icon-box">
+              <div class="search-text">Move 4</div>
+            </div>
+            <input type="text" class="clear-input" data-move="4" placeholder="-">
           </div>
-          <input type="text" class="clear-input" data-move="4" placeholder="-">
+          <div class="search-suggestions large"></div>
         </div>
-        <div class="search-suggestions large"></div>
-      </div>
 
-      <div class="flex">
-        <div class="button-box small clickable" id="cancel-edit-pokemon">
+        <div class="flex">
+          <div class="button-box small clickable" id="cancel-edit-pokemon">
+            <div class="icon-box">
+              <svg class="icon">
+                <use href="#cancel-icon" />
+              </svg>
+            </div>
+            <div class="button-text">Cancel</div>
+          </div>
+          <div class="button-box small clickable" id="delete-edit-pokemon">
+            <div class="icon-box">
+              <svg class="icon">
+                <use href="#delete-icon" />
+              </svg>
+            </div>
+            <div class="button-text">Clear Results</div>
+          </div>
+        </div>
+
+        <div class="button-box small clickable" id="save-edit-pokemon">
           <div class="icon-box">
             <svg class="icon">
-              <use href="#cancel-icon" />
+              <use href="#save-icon" />
             </svg>
           </div>
-          <div class="button-text">Cancel</div>
-        </div>
-        <div class="button-box small clickable" id="delete-edit-pokemon">
-          <div class="icon-box">
-            <svg class="icon">
-              <use href="#delete-icon" />
-            </svg>
-          </div>
-          <div class="button-text">Clear Results</div>
+          <div class="button-text">Save</div>
         </div>
       </div>
+    </div>
 
-      <div class="button-box small clickable" id="save-edit-pokemon">
-        <div class="icon-box">
-          <svg class="icon">
-            <use href="#save-icon" />
-          </svg>
-        </div>
-        <div class="button-text">Save</div>
-      </div>
+    <div class="footer">
+
     </div>
   </div>
 
-  <footer class="footer">
+  <div class="page" id="summary-page" style="display:none">
+    <div class="summary-header">Pokémon Status Summary</div>
+    <div class="summary-top-menu">Summary</div>
+    <div class="summary-top-menu-items"></div>
+    <div class="summary-content">
+      <div class="summary-party-pokemons">
+        <div class="summary-party-pokemon"></div>
+        <div class="summary-party-pokemon"></div>
+        <div class="summary-party-pokemon"></div>
+        <div class="summary-party-pokemon"></div>
+        <div class="summary-party-pokemon"></div>
+        <div class="summary-party-pokemon"></div>
+      </div>
+      <div class="summary-content-box"></div>
+      <div class="summary-remaining-area"></div>
+    </div>
+    <div class="footer summary"></div>
+  </div>
 
-  </footer>
 
   <!-- Scripts -->
   <script src="assets/js/vendor/pixi.min.js"></script>
