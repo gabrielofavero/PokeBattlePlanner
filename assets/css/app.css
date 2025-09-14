@@ -13,8 +13,8 @@
   --bold-font-weight: 600;
   --dark-text-color: #132544;
   --damage-banner-text-color: rgb(34, 34, 34);
-
   --summary-primary-color: #6c2fc8;
+  --animation-distance: 900px;
 }
 
 body {
@@ -725,20 +725,17 @@ input::placeholder {
   background: var(--summary-primary-color);
 }
 
-
-.summary-header,
-.summary-top-menu {
-  padding: 0.5em 1em;
-  width: 100%;
-}
-
 .summary-header {
   background: var(--summary-primary-color);
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
   display: flex;
+  align-items: center;
   gap: 1em;
   border-top: 4px solid var(--selected-color);
+  width: 100%;
+  padding: 0em 1em;
+  height: 60px;
 }
 
 .summary-header .icon {
@@ -748,7 +745,9 @@ input::placeholder {
 }
 
 .summary-top-menu {
-  background: #162947
+  background: #162947;
+  padding: 0.5em 1em;
+  width: 100%;
 }
 
 .summary-top-menu .title {
@@ -830,7 +829,8 @@ input::placeholder {
 .summary-info-row-title {
   width: 150px;
   color: var(--selected-color);
-  border-right: 2px solid #19518c;;
+  border-right: 2px solid #19518c;
+  ;
 }
 
 .summary-info-row-description {
@@ -844,8 +844,58 @@ input::placeholder {
   align-items: center;
 }
 
-.summary-type-icon{
+.summary-type-icon {
   fill: white;
   height: 29px;
   width: 29px;
+}
+
+/* Patterns */
+
+@keyframes moveUp {
+  from {
+    background-position: 0 var(--animation-distance);
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes moveDiagonal {
+  from {
+    background-position: var(--animation-distance) 0;
+  }
+
+  to {
+    background-position: 0 var(--animation-distance);
+  }
+}
+
+.summary-pattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  will-change: background-position;
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-size: auto;
+  filter: saturate(0.95) contrast(0.95);
+}
+
+.summary-pattern.header {
+  background-image: url('/assets/img/patterns/header-pattern.png');
+  animation: moveUp linear infinite;
+  animation-duration: 36s;
+  height: 64px;
+  opacity: 0.05;
+}
+
+.summary-pattern.content {
+  background-image: url('/assets/img/patterns/content-pattern.svg');
+  animation: moveDiagonal linear infinite;
+  animation-duration: 60s;
+  opacity: 0.03;
+  top: 117px
 }
