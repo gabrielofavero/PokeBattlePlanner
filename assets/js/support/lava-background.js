@@ -98,3 +98,13 @@ function changeOrbColor(hex) {
     orb.tint = hex;
   }
 }
+
+export function stopPixiApp() {
+  if (PIXI_APP.view && PIXI_APP.view.parentNode) {
+    PIXI_APP.view.parentNode.removeChild(PIXI_APP.view);
+  }
+  PIXI_APP.ticker.stop();
+  PIXI_APP.stage.removeChildren();
+  PIXI_APP.destroy(true, { children: true, texture: true, baseTexture: true });
+  orbs.length = 0;
+}
