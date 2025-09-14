@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Summary Content</title>
+    <style>
+        :root {
+            --bg-color: linear-gradient(to top right, #015dba, #002c59);;
+            --pattern-url: url('/assets/img/patterns/content-pattern.svg');
+            --pattern-opacity: 0.05;
+            --pattern-scale: auto;
+            --animation-duration: 60s;
+            --animation-distance: 900px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .pattern-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            will-change: background-position;
+            background-image: var(--pattern-url);
+            background-repeat: repeat;
+            background-position: 0 0;
+            background-size: var(--pattern-scale);
+            filter: saturate(0.95) contrast(0.95);
+            opacity: var(--pattern-opacity);
+            animation: moveDiagonal linear infinite;
+            animation-duration: var(--animation-duration);
+        }
+
+        @keyframes moveDiagonal {
+            from {
+                background-position: var(--animation-distance) 0;
+            }
+
+            to {
+                background-position: 0 var(--animation-distance);
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            box-sizing: border-box;
+        }
+
+        .card {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px) saturate(1.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: clamp(1.25rem, 2.6vw, 2rem);
+            letter-spacing: -0.01em;
+        }
+
+        p.lead {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        @media (max-width:600px) {
+            :root {
+                --animation-distance: 450px;
+                --animation-duration: 24s;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pattern-layer" aria-hidden="true"></div>
+    <main class="content">
+        <div class="card">
+            <h1>Summary Pattern Animation Test</h1>
+            <p class="lead">Content</p>
+        </div>
+    </main>
+</body>
+
+</html>
