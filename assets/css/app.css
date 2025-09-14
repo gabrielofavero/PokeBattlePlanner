@@ -12,6 +12,7 @@
   --selected-color: #eed02a;
   --bold-font-weight: 600;
   --dark-text-color: #132544;
+  --damage-banner-text-color: rgb(34, 34, 34);
 
   --summary-primary-color: #6c2fc8;
 }
@@ -547,7 +548,6 @@ input::placeholder {
   width: 75px;
   text-align: center;
   font-size: 24px;
-  color: rgb(34, 34, 34);
 }
 
 .grid-item.flex .fraction {
@@ -558,12 +558,16 @@ input::placeholder {
   width: 350px;
 }
 
-.grid-item.flex .negative {
+.grid-item.flex .negative,
+.damage-banner.negative {
   background: #fcb4b4;
+  color: var(--damage-banner-text-color);
 }
 
-.grid-item.flex .positive {
-  background-color: #a2ffcc;
+.grid-item.flex .positive,
+.damage-banner.positive {
+  background: #a2ffcc;
+  color: var(--damage-banner-text-color);
 }
 
 .result-types {
@@ -585,25 +589,32 @@ input::placeholder {
   white-space: nowrap;
 }
 
-/* Type Banner */
+/* Type/Damage Banner */
 
-.type-banner {
-  background: black;
-  color: white;
+.type-banner,
+.damage-banner {
   border-radius: 9999px;
   text-align: center;
   font-size: 20px;
-  padding: 2px 20px
+  padding: 2px 20px;
+  font-weight: var(--bold-font-weight);
 }
 
-.type-banner.title,
-.clear-input.title {
+.type-banner {
   text-transform: uppercase;
-  font-weight: var(--bold-font-weight);
+  background: black;
+  color: white;
+}
+
+.damage-banner {
+  background: rgb(194, 194, 194);
+  color: var(--damage-banner-text-color);
 }
 
 .clear-input.title {
   width: 150px;
+  text-transform: uppercase;
+  font-weight: var(--bold-font-weight);
 }
 
 .type-banner.title {
@@ -704,8 +715,10 @@ input::placeholder {
 #summary-page {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: auto;
   height: 100vh;
+  align-items: stretch;
+  background: linear-gradient(to top right, #015dba, #002c59);
 }
 
 .footer.summary {
@@ -723,18 +736,32 @@ input::placeholder {
   background: var(--summary-primary-color);
   text-transform: uppercase;
   font-weight: var(--bold-font-weight);
+  display: flex;
+  gap: 1em;
+}
+
+.summary-header .icon {
+  fill: white;
+  height: 29px;
+  width: 29px;
 }
 
 .summary-top-menu {
- background: #162947 
+  background: #162947
+}
+
+.summary-top-menu .title {
+  width: 120px;
+  text-align: center;
+  border-left: 5px solid var(--selected-color);
 }
 
 .summary-content {
   flex: 1;
-  background: linear-gradient(to top right, #015dba, #002c59);
   display: flex;
   gap: 2em;
   align-items: center;
+  justify-content: center;
   padding-bottom: 54px;
   overflow-y: auto;
 }
@@ -747,18 +774,77 @@ input::placeholder {
 
 .summary-party-pokemon {
   background: rgb(17, 49, 88, 0.9);
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   border-radius: var(--default-border-radius);
 }
 
 .summary-content-box {
+  display: flex;
+  flex-direction: column;
   height: 720px;
   width: 600px;
   background: rgb(17, 49, 88, 0.6);
   border-radius: var(--default-border-radius);
 }
 
-.summary-remaining-area {
+.summary-content-box-top-bar {
+  height: 50px;
+  background: rgba(14, 41, 73, 0.8);
+  border-top-left-radius: var(--default-border-radius);
+  border-top-right-radius: var(--default-border-radius);
+}
+
+.summary-content-box-title {
+  height: 50px;
+  background: rgba(14, 41, 73, 0.8);
+}
+
+.summary-content-box-pokemon {
   flex: 1;
+  background: url('/assets/img/pokeballs/pokeball.svg') no-repeat center/contain;
+  background-size: 200px auto;
+  filter: opacity(0.25);
+}
+
+.summary-content-box-type {
+  height: 50px;
+  background: rgba(14, 41, 73, 0.5);
+  border-bottom-left-radius: var(--default-border-radius);
+  border-bottom-right-radius: var(--default-border-radius);
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  height: 720px;
+}
+
+.summary-info-row {
+  display: flex;
+  gap: 1em;
+}
+
+.summary-info-row-title {
+  width: 150px;
+  color: var(--selected-color);
+  border-right: 2px solid #19518c;;
+}
+
+.summary-info-row-description {
+  display: flex;
+  gap: 8px;
+}
+
+.summary-info-row-description .type-banner {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.summary-type-icon{
+  fill: white;
+  height: 29px;
+  width: 29px;
 }
