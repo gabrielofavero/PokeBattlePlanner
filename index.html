@@ -407,73 +407,95 @@
     </div>
     <div class="summary-top-menu">
       <div class="title">Summary</div>
+      <div class="icons">
+        <svg class="summary-icon arrow left">
+          <use href="#arrow-icon" />
+        </svg>
+        <svg class="summary-icon">
+          <use href="#info-icon" />
+        </svg>
+        <svg class="summary-icon">
+          <use href="#moves-and-stats-icon" />
+        </svg>
+        <svg class="summary-icon arrow right">
+          <use href="#arrow-icon" />
+        </svg>
+      </div>
     </div>
-    <div class="summary-top-menu-items"></div>
     <div class="summary-content">
       <div class="summary-pattern content" aria-hidden="true"></div>
       <div class="summary-party-pokemons">
+        <div class="flex-center">
+          <svg class="summary-icon arrow up">
+            <use href="#arrow-icon" />
+          </svg>
+        </div>
         <div class="summary-party-pokemon"></div>
         <div class="summary-party-pokemon"></div>
         <div class="summary-party-pokemon"></div>
         <div class="summary-party-pokemon"></div>
         <div class="summary-party-pokemon"></div>
         <div class="summary-party-pokemon"></div>
+        <div class="flex-center">
+          <svg class="summary-icon arrow down">
+            <use href="#arrow-icon" />
+          </svg>
+        </div>
       </div>
       <div class="summary-content-box">
-      <div class="summary-pokemon-preview">
-        <div class="summary-pokemon-preview-top-bar"></div>
-        <div class="summary-pokemon-preview-pokemon"></div>
-        <div class="summary-pokemon-preview-title"></div>
-        <div class="summary-pokemon-preview-type"></div>
-      </div>
-      <div class="summary-info">
-        <div class="summary-info-row">
-          <div class="summary-info-row-title">
-            Name
-          </div>
-          <div class="summary-info-row-description">Slowpoke</div>
+        <div class="summary-pokemon-preview">
+          <div class="summary-pokemon-preview-top-bar"></div>
+          <div class="summary-pokemon-preview-pokemon"></div>
+          <div class="summary-pokemon-preview-title"></div>
+          <div class="summary-pokemon-preview-type"></div>
         </div>
-        <div class="summary-info-row">
-          <div class="summary-info-row-title">
-            Type
-          </div>
-          <div class="summary-info-row-description">
-            <div class="type-banner water">
-              <svg class="summary-type-icon">
-                <use href="#type-water-icon" />
-              </svg>
-              <div class="summary-type-title">water</div>
+        <div class="summary-info">
+          <div class="summary-info-row">
+            <div class="summary-info-row-title">
+              Name
             </div>
-            <div class="type-banner water">
-              <svg class="summary-type-icon">
-                <use href="#type-water-icon" />
-              </svg>
-              <div class="summary-type-title">water</div>
+            <div class="summary-info-row-description">Slowpoke</div>
+          </div>
+          <div class="summary-info-row">
+            <div class="summary-info-row-title">
+              Type
+            </div>
+            <div class="summary-info-row-description">
+              <div class="type-banner water">
+                <svg class="summary-type-icon">
+                  <use href="#type-water-icon" />
+                </svg>
+                <div class="summary-type-title">water</div>
+              </div>
+              <div class="type-banner water">
+                <svg class="summary-type-icon">
+                  <use href="#type-water-icon" />
+                </svg>
+                <div class="summary-type-title">water</div>
+              </div>
+            </div>
+          </div>
+          <div class="summary-info-row">
+            <div class="summary-info-row-title">
+              Attack
+            </div>
+            <div class="summary-info-row-description">
+              <div class="damage-banner positive">2x Damage</div>
+            </div>
+          </div>
+          <div class="summary-info-row">
+            <div class="summary-info-row-title">
+              Defense
+            </div>
+            <div class="summary-info-row-description">
+              <div class="damage-banner neutral">2x Damage</div>
             </div>
           </div>
         </div>
-        <div class="summary-info-row">
-          <div class="summary-info-row-title">
-            Attack
-          </div>
-          <div class="summary-info-row-description">
-            <div class="damage-banner positive">2x Damage</div>
-          </div>
-        </div>
-        <div class="summary-info-row">
-          <div class="summary-info-row-title">
-            Defense
-          </div>
-          <div class="summary-info-row-description">
-            <div class="damage-banner neutral">2x Damage</div>
-          </div>
-        </div>
-      </div>
       </div>
     </div>
     <div class="footer summary"></div>
   </div>
-
 
   <!-- Scripts -->
   <script src="assets/js/vendor/pixi.min.js"></script>

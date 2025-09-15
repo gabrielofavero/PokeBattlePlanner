@@ -7,13 +7,14 @@
   --default-border-radius: 6px;
   --pill-border-radius: 9999px;
   --disabled-color: #729b99;
-  --disabled-color-alt: rgb(214, 214, 214, 0.5);
+  --disabled-color-alt: rgba(214, 214, 214, 0.5);
   --disabled-color-rgba: rgba(114, 155, 153, 0.5);
   --selected-color: #eed02a;
+  --hover-color: #FCF6D4;
   --bold-font-weight: 600;
   --dark-text-color: #132544;
   --damage-banner-text-color: rgb(34, 34, 34);
-  --summary-primary-color: rgb(108, 47, 200);
+  --summary-primary-color: #6c2fc8;
   --animation-distance: 900px;
 }
 
@@ -40,9 +41,15 @@ canvas {
   z-index: -1;
 }
 
-.flex {
+.flex,
+.flex-center {
   display: flex;
   gap: 8px;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-column {
@@ -60,10 +67,13 @@ canvas {
   pointer-events: none;
 }
 
+/* Animations */
+
 .button-box,
 .button-box input,
 .button-box .icon,
-.party-pokemon {
+.party-pokemon,
+.summary-icon {
   transition: all 0.3s ease-in-out;
 }
 
@@ -752,6 +762,13 @@ input::placeholder {
   border-left: 5px solid var(--selected-color);
 }
 
+.summary-top-menu .icons {
+  position: absolute;
+  display: flex;
+  gap: 1em;
+  margin: auto;
+}
+
 .summary-content {
   display: flex;
   gap: 2em;
@@ -826,7 +843,6 @@ input::placeholder {
   width: 150px;
   color: var(--selected-color);
   border-right: 2px solid #19518c;
-  ;
 }
 
 .summary-info-row-description {
@@ -894,4 +910,31 @@ input::placeholder {
   animation-duration: 60s;
   opacity: 0.03;
   top: 117px
+}
+
+.summary-icon {
+  fill: white;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.summary-icon:hover {
+  fill: var(--hover-color);
+}
+
+.summary-icon.selected {
+  fill: var(--selected-color);
+}
+
+.summary-icon.arrow.right {
+  transform: rotate(90deg);
+}
+
+.summary-icon.arrow.down {
+  transform: rotate(180deg);
+}
+
+.summary-icon.arrow.left {
+  transform: rotate(270deg);
 }
