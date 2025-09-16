@@ -4,6 +4,7 @@ import { loadGamepadListeners } from "./ui/gamepad.js";
 import { loadSearchBars, resetSearchBars } from "./ui/search-bar.js";
 import { loadTopBar } from "./ui/navigation.js";
 import { getJson } from "./support/data.js";
+import { loadSummary } from "./pages/summary.js";
 
 export var POKEMONS;
 export var MOVES;
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     loadSearchBars();
     loadGamepadListeners();
     loadPokemonParty();
+    loadSummary()
 });
 
 async function loadExternalData() {

@@ -836,6 +836,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   gap: 0.8em;
+  width: 500px;
 }
 
 .summary-info-row {
@@ -858,6 +859,10 @@ input::placeholder {
   display: flex;
   gap: 4px;
   align-items: center;
+}
+
+.summary-moves {
+  width: 500px;
 }
 
 .summary-type-icon {
