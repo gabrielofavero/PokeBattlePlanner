@@ -1,6 +1,14 @@
+import { ACTIVE_PAGE } from "../../app.js";
+import { summaryMoveDown, summaryMoveLeft, summaryMoveRight, summaryMoveUp } from "../../pages/summary.js";
 import { loadNextTopBarItem } from "./keyboard-mouse.js";
 
 var GAMEPAD_MAP = ['A', 'B', 'X', 'Y'];
+const DPAD_MAP = {
+    12: "UP",
+    13: "DOWN",
+    14: "LEFT",
+    15: "RIGHT"
+};
 
 export function loadGamepadListeners() {
     window.addEventListener("gamepadconnected", (e) => {
@@ -15,23 +23,52 @@ export function loadGamepadListeners() {
 }
 
 function listenToGamepad(index) {
-    // Store the last state of buttons
     let prevButtons = [];
+    let prevAxes = [0, 0];
 
     function update() {
         const gamepad = navigator.getGamepads()[index];
         if (gamepad) {
+            // Handle buttons
             gamepad.buttons.forEach((btn, i) => {
                 const prev = prevButtons[i]?.pressed || false;
                 const curr = btn.pressed;
 
                 if (curr && !prev) {
-                    console.debug("Button pressed:", GAMEPAD_MAP[i]);
-                    loadGamepadType(gamepad.id);
-                    loadGamepadButtonPressing(GAMEPAD_MAP[i]);
+                    let buttonName;
+
+                    if (i < GAMEPAD_MAP.length) {
+                        buttonName = GAMEPAD_MAP[i];
+                    } else if (DPAD_MAP[i]) {
+                        buttonName = DPAD_MAP[i];
+                    }
+
+                    if (buttonName) {
+                        console.debug("Button pressed:", buttonName);
+                        loadGamepadType(gamepad.id);
+                        loadGamepadButtonPressing(buttonName);
+                    }
                 }
             });
 
+            // Handle left analog stick (axes[0], axes[1])
+            const DEADZONE = 0.3;
+            const [x, y] = gamepad.axes;
+
+            const dirX = Math.abs(x) > DEADZONE ? (x < 0 ? "LEFT" : "RIGHT") : null;
+            const dirY = Math.abs(y) > DEADZONE ? (y < 0 ? "UP" : "DOWN") : null;
+
+            // Trigger only on change (avoid constant spam)
+            if (dirX && dirX !== prevAxes[0]) {
+                console.debug("Analog moved:", dirX);
+                loadGamepadButtonPressing(dirX);
+            }
+            if (dirY && dirY !== prevAxes[1]) {
+                console.debug("Analog moved:", dirY);
+                loadGamepadButtonPressing(dirY);
+            }
+
+            prevAxes = [dirX, dirY];
             prevButtons = gamepad.buttons.map(b => ({ pressed: b.pressed }));
         }
 
@@ -39,7 +76,6 @@ function listenToGamepad(index) {
     }
     update();
 }
-
 function detectController(id) {
     id = id.toLowerCase();
     if (id.includes("xbox")) return "Xbox";
@@ -53,9 +89,21 @@ function loadGamepadButtonPressing(button) {
     switch (button) {
         case "X":
         case "SQUARE":
-            loadNextTopBarItem();
+            if (ACTIVE_PAGE == 'main') loadNextTopBarItem();
+            break;
+        case "UP":
+            if (ACTIVE_PAGE == 'summary') summaryMoveUp();
+            break;
+        case "DOWN":
+            if (ACTIVE_PAGE == 'summary') summaryMoveDown();
+            break;
+        case "LEFT":
+            if (ACTIVE_PAGE == 'summary') summaryMoveLeft();
+            break;
+        case "RIGHT":
+            if (ACTIVE_PAGE == 'summary') summaryMoveRight();
+            break;
     }
-
 }
 
 function loadGamepadType(id) {
@@ -65,7 +113,7 @@ function loadGamepadType(id) {
 }
 
 function loadGamepadMapping(type) {
-    switch (type) {            
+    switch (type) {
         case "Nintendo":
             GAMEPAD_MAP = ['B', 'A', 'Y', 'X'];
             break;
@@ -78,7 +126,7 @@ function loadGamepadMapping(type) {
 }
 
 function loadGamepadIcons(type) {
-    switch (type) {            
+    switch (type) {
         case "Playstation":
             replaceButtonIcon('a', 'cross');
             replaceButtonIcon('b', 'circle');
@@ -94,8 +142,8 @@ function loadGamepadIcons(type) {
 
     function replaceButtonIcon(id, icon) {
         document.querySelectorAll(`svg.${id}-button use`).forEach(useEl => {
-          useEl.setAttribute("href", `#${icon}-button-icon`);
+            useEl.setAttribute("href", `#${icon}-button-icon`);
         });
-      }
+    }
 }
 

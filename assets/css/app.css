@@ -617,6 +617,13 @@ input::placeholder {
   color: white;
 }
 
+.type-banner.mini {
+  width: 30px;
+  height: 30px;
+  padding: 0px 0px;
+  border-radius: var(--default-border-radius);
+}
+
 .damage-banner {
   background: rgb(194, 194, 194);
   color: var(--damage-banner-text-color);
@@ -833,6 +840,16 @@ input::placeholder {
 .summary-pokemon-preview-title {
   height: 50px;
   background: rgba(14, 41, 73, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 8px;
+  gap: 8px;
+  font-weight: var(--bold-font-weight);
+}
+
+.summary-pokemon-preview-title img{
+  height: 32px;
 }
 
 .summary-pokemon-preview-pokemon {
@@ -860,10 +877,14 @@ input::placeholder {
 }
 
 .summary-pokemon-preview-type {
-  height: 50px;
+  height: 40px;
   background: rgba(14, 41, 73, 0.5);
   border-bottom-left-radius: var(--default-border-radius);
   border-bottom-right-radius: var(--default-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0px 8px;
 }
 
 .summary-info {
