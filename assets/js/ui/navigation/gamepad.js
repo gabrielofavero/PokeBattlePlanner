@@ -1,4 +1,4 @@
-import { loadNextTopBarItem } from "./navigation.js";
+import { loadNextTopBarItem } from "./keyboard-mouse.js";
 
 var GAMEPAD_MAP = ['A', 'B', 'X', 'Y'];
 

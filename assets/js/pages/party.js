@@ -1,11 +1,12 @@
 import { closeContextMenu, openContextMenu } from "../ui/context-menu.js";
-import { goToPageWithId } from "../ui/navigation.js";
+import { goToPageWithId } from "../ui/navigation/keyboard-mouse.js";
+import { selectItem } from "../ui/navigation/navigation.js";
 import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../ui/search-bar.js";
 import { RATINGS, getPokemonSpriteSrc } from "./pokemon.js";
-import { loadSummaryPage } from "./summary.js";
+import { openSummary } from "./summary.js";
 
-var PARTY = [];
-var CURRENT_PARTY = 0;
+export var PARTY = [];
+var CURRENT_PARTY_INDEX = -1;
 var CURRENT_POKEMON = {};
 export var CURRENT_MOVES = [];
 
@@ -14,6 +15,7 @@ const CONTEXT_MENU = document.getElementById('party-box').querySelector('.contex
 
 // Loaders
 export function loadPokemonParty() {
+    initParty();
     const data = localStorage.getItem('party');
     if (data) {
         PARTY = JSON.parse(data);
@@ -24,9 +26,9 @@ export function loadPokemonParty() {
 
 function loadPokemonPartiesListeners() {
     document.getElementById('edit-pokemon').addEventListener('click', editPokemon);
-    document.getElementById('check-summary').addEventListener('click', loadSummaryPage);
+    document.getElementById('check-summary').addEventListener('click', () => openSummary(CURRENT_PARTY_INDEX));
     document.getElementById('release-pokemon').addEventListener('click', () => savePokemon(true));
-    document.getElementById('never-mind').addEventListener('click', () => closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY - 1]));
+    document.getElementById('never-mind').addEventListener('click', () => closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]));
 
     document.getElementById('cancel-edit-pokemon').addEventListener('click', returnToPokemonSearch);
     document.getElementById('save-edit-pokemon').addEventListener('click', () => savePokemon(false));
@@ -35,9 +37,10 @@ function loadPokemonPartiesListeners() {
 
     for (const partyBox of PARTY_BOXES) {
         partyBox.addEventListener("click", () => {
-            CURRENT_PARTY = parseInt(partyBox.getAttribute("party-number"));
+            CURRENT_PARTY_INDEX = parseInt(partyBox.getAttribute("party-number")) - 1;
+            selectItem(CURRENT_PARTY_INDEX, PARTY_BOXES);
             if (isPartyEmpty()) editPokemon()
-            else openContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY - 1]);
+            else openContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
         });
     }
 }
@@ -74,27 +77,26 @@ function loadPartyData() {
         clearParty();
         return;
     }
-    const i = CURRENT_PARTY - 1;
     const pokemonContent = document.getElementById('party-pokemon-content');
     pokemonContent.querySelector('input').value = PARTY[i]?.pokemon?.title || '';
     for (let j = 1; j <= 4; j++) {
         const moveContent = document.getElementById(`party-move-${j}-content`);
-        const move = PARTY[i]?.moves[j - 1];
+        const move = PARTY[CURRENT_PARTY_INDEX]?.moves[j - 1];
         moveContent.querySelector('input').value = move?.name || '';
     }
 }
 
 function returnToPokemonSearch() {
-    closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY - 1]);
+    closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
     clearParty();
-    CURRENT_PARTY = 0;
+    CURRENT_PARTY_INDEX = -1;
     goToPageWithId('pokemon-search-container');
 }
 
 function editPokemon() {
     loadPartyData();
     goToPageWithId('edit-party-container');
-    closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY - 1]);
+    closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
 }
 
 
@@ -129,6 +131,15 @@ function getSearchPartyMove(j) {
 
 
 // Setters
+function initParty() {
+    for (let i = 1; i <= 6; i++) {
+        PARTY.push({
+            pokemon: {},
+            moves: CURRENT_MOVES
+        });
+    }
+}
+
 function searchBarPokemonAction(input, pokemon) {
     CURRENT_POKEMON = pokemon;
     input.value = CURRENT_POKEMON.title;
@@ -147,7 +158,6 @@ function clearParty() {
 }
 
 function savePokemon(toDelete = false) {
-    const i = CURRENT_PARTY - 1;
     const isEmpty = toDelete || (Object.keys(CURRENT_POKEMON).length == 0 && CURRENT_MOVES.length == 0);
 
     if (isEmpty) {
@@ -156,7 +166,7 @@ function savePokemon(toDelete = false) {
         }
     }
 
-    PARTY[i] = {
+    PARTY[CURRENT_PARTY_INDEX] = {
         pokemon: isEmpty ? {} : CURRENT_POKEMON,
         moves: isEmpty ? [] : CURRENT_MOVES
     }
@@ -175,7 +185,7 @@ function deletePartyInputs() {
 
 
 // Validators
-function isPartyEmpty(i = CURRENT_PARTY - 1) {
+function isPartyEmpty(i = CURRENT_PARTY_INDEX) {
     const party = PARTY[i];
     return (!party || (party.moves.length == 0 && Object.keys(party.pokemon).length == 0));
 }

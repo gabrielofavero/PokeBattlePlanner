@@ -794,6 +794,14 @@ input::placeholder {
   height: 85px;
   width: 85px;
   border-radius: var(--default-border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-party-pokemon img {
+  height: 60px;
+  width: auto;
 }
 
 .summary-party-pokemon:hover {
@@ -848,6 +856,7 @@ input::placeholder {
 .summary-pokemon-preview-pokemon img {
   position: relative;
   z-index: 1;
+  height: 400px;
 }
 
 .summary-pokemon-preview-type {
@@ -909,12 +918,14 @@ input::placeholder {
   max-height: 500px;
 }
 
-.summary-moves-overview {
+.summary-moves-overview,
+.summary-info-overview {
   border-top: 2px solid #4372a9;
   padding-top: 1em;
 }
 
-.summary-moves-overview .highlight {
+.summary-moves-overview .highlight,
+.summary-info-overview .highlight {
   color: var(--selected-color);
 }
 

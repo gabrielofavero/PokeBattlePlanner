@@ -3,11 +3,16 @@ const SELECTED_AREA_COLOR = 'rgba(135, 179, 255, 0.7)';
 const OUTER_LINE_COLOR = 'rgba(255,255,255,0.3)';
 const RADAR_BACKGROUND_COLOR = 'rgba(0,0,0,0.1)';
 
+var MOVES_RADAR;
 const LABELS = ['Move 1', 'Move 2', 'Move 3', 'Move 4'];
 const DATA = [2, 1, 1, 0.5];
 
 export function loadMovesRadar(labels = LABELS, data = DATA, id = 'moves-radar') {
-    new Chart(document.getElementById(id), getRadarConfig(labels, data));
+    if (MOVES_RADAR) {
+        MOVES_RADAR.destroy();
+    }
+
+    MOVES_RADAR = new Chart(document.getElementById(id), getRadarConfig(labels, data));
 }
 
 function getRadarData(labels, data) {
