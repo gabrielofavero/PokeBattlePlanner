@@ -3,7 +3,7 @@ const SELECTED_AREA_COLOR = 'rgba(135, 179, 255, 0.7)';
 const OUTER_LINE_COLOR = 'rgba(255,255,255,0.3)';
 const RADAR_BACKGROUND_COLOR = 'rgba(0,0,0,0.1)';
 
-const LABELS = ['Move with a lot of chars', 'Move with a lot of chars', 'Move with a lot of chars', 'Move with a lot of chars'];
+const LABELS = ['Move 1', 'Move 2', 'Move 3', 'Move 4'];
 const DATA = [2, 1, 1, 0.5];
 
 export function loadMovesRadar(labels = LABELS, data = DATA, id = 'moves-radar') {

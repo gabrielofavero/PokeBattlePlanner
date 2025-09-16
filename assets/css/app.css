@@ -10,7 +10,7 @@
   --disabled-color-alt: rgba(214, 214, 214, 0.5);
   --disabled-color-rgba: rgba(114, 155, 153, 0.5);
   --selected-color: #eed02a;
-  --hover-color: #FCF6D4;
+  --hover-color: #fcf6d4;
   --bold-font-weight: 600;
   --dark-text-color: #132544;
   --damage-banner-text-color: rgb(34, 34, 34);
@@ -73,6 +73,7 @@ canvas {
 .button-box input,
 .button-box .icon,
 .party-pokemon,
+.summary-party-pokemon,
 .summary-icon {
   transition: all 0.3s ease-in-out;
 }
@@ -795,6 +796,14 @@ input::placeholder {
   border-radius: var(--default-border-radius);
 }
 
+.summary-party-pokemon:hover {
+  background: rgba(30, 62, 83, 0.9)
+}
+
+.summary-party-pokemon.selected {
+  background: var(--selected-color);
+}
+
 .summary-content-box {
   display: flex;
   gap: 2em;
@@ -822,7 +831,7 @@ input::placeholder {
   height: 450px;
   background: url('/assets/img/pokeballs/pokeball.svg') no-repeat center/contain;
   background-size: 200px auto;
-  filter: opacity(0.25);
+  filter: opacity(0.20);
 }
 
 .summary-pokemon-preview-type {
@@ -862,18 +871,35 @@ input::placeholder {
 }
 
 .summary-moves {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
   width: 500px;
-  height: 500px;
+}
+
+.summary-moves-radar-box {
+  width: 400px;
+  height: 400px;
   position: relative;
 }
 
-.summary-moves canvas {
+.summary-moves-radar-box canvas {
   position: absolute; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 500px;
   max-height: 500px;
+}
+
+.summary-moves-overview {
+  border-top: 2px solid #4372a9;
+  padding-top: 1em;
+}
+
+.summary-moves-overview .highlight {
+  color: var(--selected-color);
 }
 
 .summary-type-icon {
@@ -941,6 +967,10 @@ input::placeholder {
 
 .summary-icon:hover {
   fill: var(--hover-color);
+}
+
+.summary-icon.selectable {
+  fill: #516075;
 }
 
 .summary-icon.selected {
