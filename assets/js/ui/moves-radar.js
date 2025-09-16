@@ -3,7 +3,7 @@ const SELECTED_AREA_COLOR = 'rgba(135, 179, 255, 0.7)';
 const OUTER_LINE_COLOR = 'rgba(255,255,255,0.3)';
 const RADAR_BACKGROUND_COLOR = 'rgba(0,0,0,0.1)';
 
-const LABELS = ['Move 1', 'Move 2', 'Move 2', 'Move 2'];
+const LABELS = ['Move with a lot of chars', 'Move with a lot of chars', 'Move with a lot of chars', 'Move with a lot of chars'];
 const DATA = [2, 1, 1, 0.5];
 
 export function loadMovesRadar(labels = LABELS, data = DATA, id = 'moves-radar') {
@@ -41,9 +41,10 @@ function getRadarConfig(labels, data) {
                     },
                     pointLabels: {
                         display: true,
-                        font: { size: 18, weight: 'bold' },
+                        font: { family: 'Roboto, sans-serif', size: 18, weight: 'bold' },
                         color: '#eed02a',
                         padding: 30,
+                        callback: formatPointLabels
                     },
                     grid: {
                         circular: false,
@@ -61,6 +62,20 @@ function getRadarConfig(labels, data) {
         },
         plugins: [getRadarBackgroundPlugin(), loadRadarAxesPlugin(), getPointCirclePlugin()]
     };
+}
+
+function formatPointLabels(label, index) {
+    if (index === 1 || index === 3) {
+        const maxLength = 9;
+        if (label.length > maxLength) {
+            let lines = [];
+            for (let i = 0; i < label.length; i += maxLength) {
+                lines.push(label.substring(i, i + maxLength));
+            }
+            return lines;
+        }
+    }
+    return label;
 }
 
 function getRadarBackgroundPlugin() {
