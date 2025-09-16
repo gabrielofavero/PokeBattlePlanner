@@ -754,6 +754,7 @@ input::placeholder {
 .summary-top-menu {
   background: #162947;
   padding: 0.5em 1em;
+  position: relative;
 }
 
 .summary-top-menu .title {
@@ -764,9 +765,12 @@ input::placeholder {
 
 .summary-top-menu .icons {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: 1em;
-  margin: auto;
+  align-items: center;
 }
 
 .summary-content {
