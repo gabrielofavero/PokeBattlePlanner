@@ -1,310 +1,108 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pokémon-style Stats Radar</title>
-    <style>
-        :root {
-            --bg: #083a63;
-            --panel: #0f4f74;
-            --accent: #ffcd00;
-            --grid: #cfe8f7;
-            --outline: #ffffff;
-            --fill: #bfe7ff;
-            font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, var(--bg), #0b3a59 80%);
-            color: var(--outline);
-        }
-
-        .card {
-            width: 360px;
-            padding: 18px;
-            border-radius: 12px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.6);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .stat-header {
-            text-align: center;
-            font-weight: 700;
-            font-size: 22px;
-            color: var(--accent);
-        }
-
-        .hp-value {
-            text-align: center;
-            color: #fff;
-            font-size: 20px;
-            margin-top: -4px;
-        }
-
-        .radar-wrap {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .radar {
-            width: 220px;
-            height: 220px;
-            display: block;
-        }
-
-        .labels {
-            width: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 22px;
-            margin-left: 6px;
-        }
-
-        .label {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .label .value {
-            color: #fff;
-            font-weight: 800;
-            margin-left: 4px;
-            min-width: 36px;
-            text-align: right;
-            font-size: 16px;
-        }
-
-        .dot {
-            fill: var(--outline);
-        }
-
-        .controls {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            color: #cfe8f7;
-            font-size: 13px;
-        }
-
-        .controls input[type="range"] {
-            width: 160px;
-        }
-
-        @media (max-width:420px) {
-            .card {
-                width: 320px;
-                padding: 12px;
-            }
-
-            .radar {
-                width: 180px;
-                height: 180px;
-            }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Moves Radar</title>
+<style>
+  :root{
+    --bg:#083a63;
+    --accent:#ffcd00;
+    --outline:#ffffff;
+    --fill:#bfe7ff;
+    font-family: Inter, sans-serif;
+  }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: linear-gradient(180deg, var(--bg), #0b3a59 80%);
+    color:var(--outline);
+  }
+  .card{
+    width:320px;
+    padding:16px;
+    border-radius:12px;
+    background: rgba(255,255,255,0.03);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+  }
+  .radar{
+    width:240px;
+    height:240px;
+  }
+  .labels{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    width:100%;
+  }
+  .label{
+    color:var(--accent);
+    font-weight:700;
+    font-size:14px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .label .value{
+    color:#fff;
+    font-weight:800;
+    font-size:16px;
+    margin-left:6px;
+  }
+  .dot{fill:var(--outline);}
+  .controls{
+    margin-top:8px;
+    display:flex;
+    gap:8px;
+    justify-content:center;
+  }
+</style>
 </head>
-
 <body>
-
-    <div class="card" role="region" aria-label="Pokémon stats radar">
-        <div class="stat-header">HP</div>
-        <div class="hp-value" id="hpText">138 / 138</div>
-
-        <div class="radar-wrap">
-            <svg class="radar" viewBox="-120 -120 240 240" id="radarSvg" aria-hidden="false" role="img">
-                <g id="grid" stroke="rgba(255,255,255,0.12)" fill="none" stroke-width="1.5">
-                    <polygon id="hexOuter" points="" stroke-opacity="0.9"></polygon>
-                    <polygon id="hexMid" points="" stroke-opacity="0.7"></polygon>
-                    <polygon id="hexInner" points="" stroke-opacity="0.5"></polygon>
-                </g>
-
-                <g id="axes" stroke="rgba(255,255,255,0.15)" stroke-width="1">
-                </g>
-
-                <g id="backgroundGrid" fill="rgba(191,231,255,0.03)"></g>
-
-                <g id="statsGroup">
-                    <polygon id="statFill" points="" fill="rgba(191,231,255,0.85)" fill-opacity="0.75"
-                        stroke="rgba(255,255,255,0.95)" stroke-width="1.8"></polygon>
-                    <g id="statDots"></g>
-                </g>
-
-                <circle cx="0" cy="0" r="2.5" fill="rgba(255,255,255,0.9)"></circle>
-            </svg>
-
-            <div class="labels" aria-hidden="true">
-                <div style="height:12px;"></div>
-                <div class="label"><span>Sp. Atk</span><span class="value" id="label_spatk">66</span></div>
-                <div class="label" style="margin-left:6px;"><span>Attack</span><span class="value"
-                        id="label_atk">119</span></div>
-                <div class="label" style="margin-left:6px;"><span>Defense</span><span class="value"
-                        id="label_def">80</span></div>
-                <div class="label" style="margin-left:6px;"><span>Speed</span><span class="value"
-                        id="label_spd">76</span></div>
-                <div class="label" style="margin-left:6px;"><span>Sp. Def</span><span class="value"
-                        id="label_spdef">96</span></div>
-                <div class="label" style="margin-left:6px;"><span>HP</span><span class="value" id="label_hp">138</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="controls" aria-hidden="true">
-            <button id="randomBtn">Randomize</button>
-            <button id="demoBtn">Demo values</button>
-        </div>
-    </div>
-
-    <script>
-
-        const svg = document.getElementById('radarSvg');
-        const hexOuter = document.getElementById('hexOuter');
-        const hexMid = document.getElementById('hexMid');
-        const hexInner = document.getElementById('hexInner');
-        const axesGroup = document.getElementById('axes');
-        const statFill = document.getElementById('statFill');
-        const statDots = document.getElementById('statDots');
-
-        const label_hp = document.getElementById('label_hp');
-        const label_atk = document.getElementById('label_atk');
-        const label_def = document.getElementById('label_def');
-        const label_spd = document.getElementById('label_spd');
-        const label_spdef = document.getElementById('label_spdef');
-        const label_spatk = document.getElementById('label_spatk');
-        const hpText = document.getElementById('hpText');
-
-        const config = {
-            size: 100,         // outer radius (in SVG units)
-            rings: 3,          // number of concentric hexagon rings
-            maxStat: 200,      // maximum stat value for scaling (you can change)
-            labels: ['HP', 'Attack', 'Defense', 'Speed', 'Sp. Def', 'Sp. Atk']
-        };
-
-        let stats = [138, 119, 80, 76, 96, 66];
-
-        function pointForIndex(i, r) {
-            const angle = (Math.PI * 2 / 6) * i - Math.PI / 2;
-            const x = Math.cos(angle) * r;
-            const y = Math.sin(angle) * r;
-            return [x, y];
-        }
-
-        function buildGrid() {
-            const ringRadii = [];
-            for (let i = config.rings; i >= 1; i--) {
-                ringRadii.push(config.size * i / config.rings);
-            }
-
-            const polys = [hexOuter, hexMid, hexInner];
-            for (let i = 0; i < polys.length; i++) {
-                const r = ringRadii[i];
-                const pts = [];
-                for (let j = 0; j < 6; j++) {
-                    const p = pointForIndex(j, r);
-                    pts.push(p.join(','));
-                }
-                polys[i].setAttribute('points', pts.join(' '));
-            }
-
-            axesGroup.innerHTML = '';
-            for (let j = 0; j < 6; j++) {
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                const p = pointForIndex(j, config.size);
-                line.setAttribute('x1', 0);
-                line.setAttribute('y1', 0);
-                line.setAttribute('x2', p[0]);
-                line.setAttribute('y2', p[1]);
-                line.setAttribute('stroke-linecap', 'round');
-                axesGroup.appendChild(line);
-            }
-        }
-
-        function renderStats() {
-            const pts = [];
-            const dots = [];
-            for (let i = 0; i < 6; i++) {
-                const val = Math.max(0, Math.min(stats[i], config.maxStat));
-                const r = (val / config.maxStat) * config.size;
-                const p = pointForIndex(i, r);
-                pts.push(p.join(','));
-                dots.push(p);
-            }
-
-            statFill.setAttribute('points', pts.join(' '));
-
-            statDots.innerHTML = '';
-            for (const d of dots) {
-                const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                c.setAttribute('cx', d[0]);
-                c.setAttribute('cy', d[1]);
-                c.setAttribute('r', 3.2);
-                c.setAttribute('class', 'dot');
-                statDots.appendChild(c);
-            }
-
-            label_hp.textContent = stats[0];
-            label_atk.textContent = stats[1];
-            label_def.textContent = stats[2];
-            label_spd.textContent = stats[3];
-            label_spdef.textContent = stats[4];
-            label_spatk.textContent = stats[5];
-
-            hpText.textContent = `${stats[0]} / ${stats[0]}`;
-        }
-
-        function setStats(input) {
-
-            if (Array.isArray(input) && input.length >= 6) {
-                stats = input.slice(0, 6).map(Number);
-            } else if (typeof input === 'object' && input !== null) {
-                // map friendly keys to positions
-                const map = {
-                    hp: 0, attack: 1, def: 2, speed: 3, spdef: 4, spatk: 5,
-                    'sp.atk': 5, 'sp.def': 4, 'spatk': 5, 'spdef': 4
-                };
-                const next = stats.slice();
-                for (const k in input) {
-                    const idx = map[k.toLowerCase()];
-                    if (typeof idx === 'number') next[idx] = Number(input[k]);
-                }
-                stats = next;
-            } else {
-                console.warn('Unsupported stats input', input);
-                return;
-            }
-            renderStats();
-        }
-
-        document.getElementById('randomBtn').addEventListener('click', () => {
-            const arr = Array.from({ length: 6 }, () => Math.floor(Math.random() * config.maxStat));
-            setStats(arr);
-        });
-        document.getElementById('demoBtn').addEventListener('click', () => {
-            setStats([138, 119, 80, 76, 96, 66]);
-        });
-
-        buildGrid();
-        renderStats();
-
-    </script>
-
+<div class="card">
+  <svg class="radar" viewBox="-120 -120 240 240" id="radarSvg">
+    <g id="grid" stroke="rgba(255,255,255,0.15)" fill="none">
+      <polygon id="outer"></polygon>
+      <polygon id="mid"></polygon>
+      <polygon id="inner"></polygon>
+    </g>
+    <g id="axes" stroke="rgba(255,255,255,0.2)"></g>
+    <polygon id="statFill" fill="rgba(191,231,255,0.85)" stroke="rgba(255,255,255,0.95)" stroke-width="2"></polygon>
+    <g id="statDots"></g>
+    <circle cx="0" cy="0" r="2.5" fill="rgba(255,255,255,0.9)"></circle>
+  </svg>
+  <div class="labels">
+    <div class="label">Move 1 <span class="value" id="m1">0</span></div>
+    <div class="label">Move 2 <span class="value" id="m2">0</span></div>
+    <div class="label">Move 3 <span class="value" id="m3">0</span></div>
+    <div class="label">Move 4 <span class="value" id="m4">0</span></div>
+  </div>
+  <div class="controls">
+    <button id="randomBtn">Randomize</button>
+  </div>
+</div>
+<script>
+const outer=document.getElementById('outer')
+const mid=document.getElementById('mid')
+const inner=document.getElementById('inner')
+const axes=document.getElementById('axes')
+const statFill=document.getElementById('statFill')
+const statDots=document.getElementById('statDots')
+const vals=[m1,m2,m3,m4]
+const cfg={size:100,rings:3,max:4}
+let stats=[2.5,1.2,3.4,0.8]
+function point(i,r){const a=(Math.PI*2/4)*i-Math.PI/2;return[Math.cos(a)*r,Math.sin(a)*r]}
+function buildGrid(){const rings=[cfg.size,cfg.size*2/3,cfg.size/3];[outer,mid,inner].forEach((poly,idx)=>{const r=rings[idx];const pts=[];for(let j=0;j<4;j++)pts.push(point(j,r).join(','));poly.setAttribute('points',pts.join(' '))});axes.innerHTML='';for(let j=0;j<4;j++){const l=document.createElementNS('http://www.w3.org/2000/svg','line');const p=point(j,cfg.size);l.setAttribute('x1',0);l.setAttribute('y1',0);l.setAttribute('x2',p[0]);l.setAttribute('y2',p[1]);axes.appendChild(l)}} 
+function render(){const pts=[];statDots.innerHTML='';for(let i=0;i<4;i++){const v=Math.max(0,Math.min(stats[i],cfg.max));const r=(v/cfg.max)*cfg.size;const p=point(i,r);pts.push(p.join(','));const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',p[0]);c.setAttribute('cy',p[1]);c.setAttribute('r',3);c.setAttribute('class','dot');statDots.appendChild(c);vals[i].textContent=v.toFixed(1)}statFill.setAttribute('points',pts.join(' '))}
+function setStats(a){stats=a.map(Number);render()}
+document.getElementById('randomBtn').onclick=()=>{setStats(Array.from({length:4},()=>Math.random()*cfg.max))}
+buildGrid();render()
+</script>
 </body>
-
 </html>
