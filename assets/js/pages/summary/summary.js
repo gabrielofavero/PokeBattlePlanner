@@ -1,8 +1,8 @@
-import { stopPixiApp } from "../support/lava-background.js";
-import { loadMovesRadar } from "../ui/moves-radar.js";
-import { setActivePage } from "../app.js";
-import { PARTY } from "./party.js";
-import { selectItem } from "../ui/navigation/navigation.js";
+import { stopPixiApp } from "../../ui/lava-background.js";
+import { loadMovesRadar } from "./modules/moves-radar.js";
+import { setActivePage } from "../../app.js";
+import { PARTY } from "../main/modules/party.js";
+import { selectItem } from "../../ui/navigation/navigation.js";
 
 const INFO_ICON = {
     icon: document.querySelector('.summary-icon.info'),

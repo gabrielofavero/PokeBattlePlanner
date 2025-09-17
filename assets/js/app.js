@@ -1,10 +1,10 @@
-import { loadPokemonParty } from "./pages/party.js";
-import { loadSummaryListeners } from "./pages/summary.js";
+import { loadPokemonParty } from "./pages/main/modules/party.js";
+import { loadSummaryListeners } from "./pages/summary/summary.js";
 import { getJson } from "./support/data.js";
-import { loadLavaBackground } from "./support/lava-background.js";
+import { loadLavaBackground } from "./ui/lava-background.js";
 import { loadGamepadListeners } from "./ui/navigation/gamepad.js";
 import { loadNavigation } from "./ui/navigation/keyboard-mouse.js";
-import { loadSearchBars, resetSearchBars } from "./ui/search-bar.js";
+import { loadSearchBars, resetSearchBars } from "./pages/main/modules/search-bar.js";
 
 export var POKEMONS;
 export var MOVES;

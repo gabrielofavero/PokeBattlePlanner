@@ -1,10 +1,10 @@
-import { MOVES, POKEMONS, TYPES } from "../app.js";
+import { MOVES, POKEMONS, TYPES } from "../../../app.js";
 import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.js";
-import { CURRENT_MOVES, getSearchPartyMoves, getSearchPartyPokemon } from "../pages/party.js";
+import { CURRENT_MOVES, getSearchPartyMoves, getSearchPartyPokemon } from "./party.js";
 import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
 import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
-import { firstCharToUppercase } from "../support/data.js";
-import { loadTypeContentBanners } from "./banners.js";
+import { firstCharToUppercase } from "../../../support/data.js";
+import { loadTypeContentBanners } from "../../../ui/banners.js";
 
 const SINGLE_SEARCH_BARS = [SEARCH_POKEMON, SEARCH_SINGLE_TYPE, getSearchPartyPokemon(), ...getSearchPartyMoves()];
 const MULTI_SEARCH_BARS = [[SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2]]

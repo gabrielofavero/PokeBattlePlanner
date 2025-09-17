@@ -1,10 +1,9 @@
-import { setActivePage } from "../app.js";
-import { closeContextMenu, openContextMenu } from "../ui/context-menu.js";
-import { goToPageWithId } from "../ui/navigation/keyboard-mouse.js";
-import { selectItem } from "../ui/navigation/navigation.js";
-import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../ui/search-bar.js";
-import { RATINGS, getPokemonSpriteSrc } from "./pokemon.js";
-import { openSummary } from "./summary.js";
+import { setActivePage } from "../../../app.js";
+import { selectItem } from "../../../ui/navigation/navigation.js";
+import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "./search-bar.js";
+import { RATINGS, getPokemonSpriteSrc } from "../pages/pokemon.js";
+import { openSummary } from "../../summary/summary.js";
+import { goToMainPage, openContextMenu, closeContextMenu } from "../main.js";
 
 export var PARTY = [];
 var CURRENT_PARTY_INDEX = -1;
@@ -91,13 +90,13 @@ function returnToPokemonSearch() {
     closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
     clearParty();
     CURRENT_PARTY_INDEX = -1;
-    goToPageWithId('pokemon-search-container');
+    goToMainPage('pokemon-search-container');
 }
 
 function editPokemon() {
     setActivePage('edit-pokemon');
     loadPartyData();
-    goToPageWithId('edit-party-container');
+    goToMainPage('edit-party-container');
     closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
 }
 

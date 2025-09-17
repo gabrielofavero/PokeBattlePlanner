@@ -1,7 +1,7 @@
-import { TYPES, SINGLE_TYPES } from "../app.js";
-import { firstCharToUppercase } from "../support/data.js";
-import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../ui/search-bar.js";
+import { TYPES, SINGLE_TYPES } from "../../../app.js";
+import { firstCharToUppercase } from "../../../support/data.js";
+import { loadTypeContentBanners } from "../../../ui/banners.js";
+import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../modules/search-bar.js";
 
 export const SEARCH_SINGLE_TYPE = {
     content: document.getElementById('single-type-search-content'),

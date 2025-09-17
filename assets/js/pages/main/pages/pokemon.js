@@ -1,5 +1,5 @@
-import { POKEMONS } from "../app.js";
-import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../ui/search-bar.js";
+import { POKEMONS } from "../../../app.js";
+import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../modules/search-bar.js";
 import { loadMultiTypeResults } from "./multi-types.js";
 
 var POKEMON;

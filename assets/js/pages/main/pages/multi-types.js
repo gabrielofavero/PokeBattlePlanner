@@ -1,7 +1,7 @@
-import { MULTI_TYPES, TYPES } from "../app.js";
-import { firstCharToUppercase } from "../support/data.js";
-import { loadTypeContentBanners } from "../ui/banners.js";
-import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../ui/search-bar.js";
+import { MULTI_TYPES, TYPES } from "../../../app.js";
+import { firstCharToUppercase } from "../../../support/data.js";
+import { loadTypeContentBanners } from "../../../ui/banners.js";
+import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../modules/search-bar.js";
 
 const SEARCH_TYPES = ['', '']
 

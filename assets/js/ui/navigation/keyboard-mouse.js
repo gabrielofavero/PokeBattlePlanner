@@ -1,7 +1,6 @@
-import { ACTIVE_PAGE, setActivePage } from "../../app.js";
-import { summaryMoveLeft, summaryMoveRight } from "../../pages/summary.js";
-
-const PAGES = document.querySelectorAll('.content');
+import { ACTIVE_PAGE } from "../../app.js";
+import { loadNextTopBarItem, selectTopBarItem } from "../../pages/main/main.js";
+import { summaryMoveLeft, summaryMoveRight } from "../../pages/summary/summary.js";
 
 // Loaders
 export function loadNavigation() {
@@ -46,38 +45,6 @@ function loadKeyDownSumamry(e) {
             summaryMoveLeft();
         }
     }
-}
-
-export function loadNextTopBarItem() {
-    const selected = document.querySelector(".top-bar-item.selected");
-    let next = selected?.nextElementSibling;
-    if (!next || !next.classList.contains("top-bar-item")) {
-        next = document.querySelectorAll('.top-bar-item')[0];
-    }
-    selectTopBarItem(next);
-}
-
-export function goToPage(page) {
-    for (const content of PAGES) {
-        content.style.display = "none";
-    }
-    page.style.display = 'flex';
-}
-
-export function goToPageWithId(id) {
-    const page = document.getElementById(id);
-    goToPage(page);
-}
-
-function selectTopBarItem(item) {
-    if (!item) return;
-
-    document.querySelectorAll(".top-bar-item").forEach(i => i.classList.remove("selected"));
-    item.classList.add("selected");
-
-    // loadDefaultBackgroundColor();
-    setActivePage('main');
-    goToPage(document.getElementById(item.getAttribute("to-show")));
 }
 
 
