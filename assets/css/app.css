@@ -90,6 +90,9 @@ canvas {
 
 .icon-box {
   position: relative;
+}
+
+.icon-box.divided {
   padding-right: 16px;
   margin-right: 16px;
   padding-top: 2px;
@@ -101,7 +104,7 @@ canvas {
   height: 24px;
 }
 
-.icon-box::after {
+.icon-box.divided::after {
   content: "";
   position: absolute;
   top: 0;
@@ -726,7 +729,32 @@ input::placeholder {
   height: 50px;
   width: 100%;
   border-bottom: 4px solid var(--selected-color);
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
 }
+
+.controler-box {
+  height: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.controler-box:hover {
+  color: var(--hover-color);
+}
+
+.controler-box .icon {
+  margin-top: 6px;
+}
+
+.controler-box .icon:hover {
+  fill: var(--hover-color);
+}
+
 
 /* Summary Page */
 

@@ -52,7 +52,7 @@
 <body>
   <div class="page" id="main-page">
     <div class="top-bar">
-      <div class="icon-box">
+      <div class="icon-box divided">
         <svg class="icon x-button" id="next-top-bar-item">
           <use href="#x-button-icon" />
         </svg>
@@ -66,7 +66,7 @@
       <div class="column">
         <div id="party-box">
           <div class="pill-container">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <svg class="icon">
                 <use href="#pokeball-icon" />
               </svg>
@@ -142,7 +142,7 @@
 
       <div class="column" id="pokemon-search-content">
         <div class="button-box">
-          <div class="icon-box">
+          <div class="icon-box divided">
             <svg class="icon">
               <use href="#search-icon" />
             </svg>
@@ -196,7 +196,7 @@
     <div id="single-type-search-container" class="content" style="display: none">
       <div class="column" id="single-type-search-content">
         <div class="button-box">
-          <div class="icon-box">
+          <div class="icon-box divided">
             <svg class="icon">
               <use href="#search-icon" />
             </svg>
@@ -257,7 +257,7 @@
       <div class="column" id="multi-type-search-content">
         <div class="multi-button-box">
           <div class="button-box">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <svg class="icon">
                 <use href="#search-icon" />
               </svg>
@@ -267,7 +267,7 @@
           <div class="search-suggestions type-1"></div>
 
           <div class="button-box">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <svg class="icon">
                 <use href="#search-icon" />
               </svg>
@@ -318,7 +318,7 @@
       <div class="column">
         <div id="party-pokemon-content">
           <div class="button-box large">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <div class="search-text">Pokémon Species</div>
             </div>
             <input type="text" class="clear-input" placeholder="-">
@@ -327,7 +327,7 @@
         </div>
         <div id="party-move-1-content">
           <div class="button-box large">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <div class="search-text" move="1">Move 1</div>
             </div>
             <input type="text" class="clear-input" data-move="1" placeholder="-">
@@ -336,7 +336,7 @@
         </div>
         <div id="party-move-2-content">
           <div class="button-box large">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <div class="search-text">Move 2</div>
             </div>
             <input type="text" class="clear-input" data-move="2" placeholder="-">
@@ -345,7 +345,7 @@
         </div>
         <div id="party-move-3-content">
           <div class="button-box large">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <div class="search-text">Move 3</div>
             </div>
             <input type="text" class="clear-input" data-move="3" placeholder="-">
@@ -354,7 +354,7 @@
         </div>
         <div id="party-move-4-content">
           <div class="button-box large">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <div class="search-text">Move 4</div>
             </div>
             <input type="text" class="clear-input" data-move="4" placeholder="-">
@@ -364,7 +364,7 @@
 
         <div class="flex">
           <div class="button-box small clickable" id="cancel-edit-pokemon">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <svg class="icon">
                 <use href="#cancel-icon" />
               </svg>
@@ -372,7 +372,7 @@
             <div class="button-text">Cancel</div>
           </div>
           <div class="button-box small clickable" id="delete-edit-pokemon">
-            <div class="icon-box">
+            <div class="icon-box divided">
               <svg class="icon">
                 <use href="#delete-icon" />
               </svg>
@@ -382,7 +382,7 @@
         </div>
 
         <div class="button-box small clickable" id="save-edit-pokemon">
-          <div class="icon-box">
+          <div class="icon-box divided">
             <svg class="icon">
               <use href="#save-icon" />
             </svg>
@@ -393,7 +393,22 @@
     </div>
 
     <div class="footer">
-
+      <div class="controler-box" id="back-main" style="display: none">
+        <div class="icon-box">
+          <svg class="icon b-button" id="confirm-main">
+            <use href="#b-button-icon" />
+          </svg>
+        </div>
+        Back
+      </div>
+      <div class="controler-box" id="confirm-main">
+        <div class="icon-box">
+          <svg class="icon a-button">
+            <use href="#a-button-icon" />
+          </svg>
+        </div>
+        Confirm
+      </div>
     </div>
   </div>
 

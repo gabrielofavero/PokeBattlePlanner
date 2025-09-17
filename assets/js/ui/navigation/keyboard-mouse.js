@@ -1,4 +1,4 @@
-import { ACTIVE_PAGE } from "../../app.js";
+import { ACTIVE_PAGE, setActivePage } from "../../app.js";
 import { summaryMoveLeft, summaryMoveRight } from "../../pages/summary.js";
 
 const PAGES = document.querySelectorAll('.content');
@@ -76,6 +76,7 @@ function selectTopBarItem(item) {
     item.classList.add("selected");
 
     // loadDefaultBackgroundColor();
+    setActivePage('main');
     goToPage(document.getElementById(item.getAttribute("to-show")));
 }
 
