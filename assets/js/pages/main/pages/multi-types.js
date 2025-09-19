@@ -93,29 +93,42 @@ function getMultiTypeResult(types, pokemons) {
 
 function buildTypeEffectiveness(rawData, pokemons) {
     const map = rawData.reduce((acc, value, i) => {
-        const multiplier = String(value);
-        if (!acc[multiplier]) acc[multiplier] = [];
-        acc[multiplier].push(TYPES[i]);
-        return acc;
+      const multiplier = String(value);
+      if (!acc[multiplier]) acc[multiplier] = [];
+      acc[multiplier].push(TYPES[i]);
+      return acc;
     }, {});
-
-    const result = {
-        from: {
-            "4": map["4"] || [],
-            "2": map["2"] || [],
-            "0.5": map["0.5"] || [],
-            "0.25": map["0.25"] || [],
-        },
-        immune_to: map["0"] || [],
-        battle_with: [],
-        dont_battle_with: [],
+  
+    const from = {
+      "4": map["4"] || [],
+      "2": map["2"] || [],
+      "0.5": map["0.5"] || [],
+      "0.25": map["0.25"] || [],
     };
+  
+    const immune_to = map["0"] || [];
+    const remainingPokemons = [...pokemons];
+    const battleRec = recommendBattleWith(from["4"], from["2"], remainingPokemons);
 
-    result.battle_with = recommendBattleWith(result.from["4"], result.from["2"], pokemons);
-    result.dont_battle_with = recommendDontBattleWith(result.immune_to, result.from["0.25"], result.from["0.5"], pokemons);
-
-    return result;
-}
+    const usedIds = new Set(battleRec.result.map((p) => p.pokemon?.id));
+    const filteredPokemons = remainingPokemons.filter(
+      (p) => !usedIds.has(p.pokemon?.id)
+    );
+  
+    const dontBattleRec = recommendDontBattleWith(
+      immune_to,
+      from["0.25"],
+      from["0.5"],
+      filteredPokemons
+    );
+  
+    return {
+      from,
+      immune_to,
+      battle_with: battleRec,
+      dont_battle_with: dontBattleRec,
+    };
+  }  
 
 function recommendBattleWith(bestTypes, goodTypes, pokemons) {
     const priorityTypes = bestTypes.length > 0 ? bestTypes : goodTypes;
