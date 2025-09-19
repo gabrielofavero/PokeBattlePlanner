@@ -1,7 +1,8 @@
 import { MULTI_TYPES, TYPES } from "../../../app.js";
 import { firstCharToUppercase } from "../../../support/data.js";
-import { loadTypeContentBanners } from "../../../ui/banners.js";
+import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
 import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../modules/search-bar.js";
+import { setPokemonImgContainers } from "./pokemon.js";
 
 const SEARCH_TYPES = ['', '']
 
@@ -22,14 +23,14 @@ export const SEARCH_MULTI_TYPE_2 = {
 function searchBarAction(input, option) {
     input.value = firstCharToUppercase(option);
     const idSplit = input.id.split("-");
-    const j = parseInt(idSplit[idSplit.length-1]);
+    const j = parseInt(idSplit[idSplit.length - 1]);
 
     const type = input.value.toLowerCase();
     const content = document.getElementById('multi-type-search-content');
-    const searchBox = content.getElementsByClassName("button-box")[j-1];
+    const searchBox = content.getElementsByClassName("button-box")[j - 1];
     const results = content.querySelector('.search-result');
     const suggestions = content.querySelector(`.search-suggestions.type-${j}`);
-    
+
     suggestions.style.display = 'none';
 
     if (!TYPES.includes(type)) {
@@ -48,46 +49,110 @@ function searchBarAction(input, option) {
     }
 }
 
-export function loadMultiTypeResults(searchTypes = SEARCH_TYPES, idPrefix = 'multi-type-result') {
-    const multiType = searchTypes.join('_');
-    const rawData = MULTI_TYPES?.[multiType];
-
-    if (!rawData) {
-        console.log(`Data could not be found for types "${searchTypes.join(' and ')}"`)
-    }
-
-    const data = getMultiData(rawData);
-
-    for (let i = 0; i < data.length; i++) {
-        const target = document.getElementById(`${idPrefix}-${i + 1}`);
-        loadTypeContentBanners(target, data[i])
-    }
-}
-
-function getMultiData(rawData) {
-    const multiDataMap = getMultiDataMap(rawData);
-    return [
-        multiDataMap['2'] || [],
-        multiDataMap['4'] || [],
-        multiDataMap['½'] || [],
-        multiDataMap['¼'] || [],
-        multiDataMap['0'] || [],
-    ]
-}
-
-function getMultiDataMap(rawData) {
-    return rawData.reduce((accumulator, value, i) => {
-        const key = String(value);
-        if (!accumulator[key]) accumulator[key] = [];
-        accumulator[key].push(TYPES[i]);
-        return accumulator;
-    }, {});
-}
-
 function getType1Options(value) {
     return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value)
 }
 
 function getType2Options(value) {
     return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value)
+}
+
+export function loadMultiTypeResults(searchTypes = SEARCH_TYPES, idPrefix = 'multi-type-result', pokemons = []) {
+    const result = getMultiTypeResult(searchTypes, pokemons);
+    const data = [
+        result.from?.['4'],
+        result.from?.['2'],
+        result.from?.['0.5'],
+        result.from?.['0.25'],
+        result.immune_to,
+        result.battle_with,
+        result.dont_battle_with
+    ];
+
+    for (let i = 0; i < data.length; i++) {
+        const target = document.getElementById(`${idPrefix}-${i + 1}`);
+        if (data[i]?.isPokemon) {
+            setPokemonImgContainers(target, data[i].result);
+        } else {
+            setTypeBannersWithoutLogo(target, data[i]?.result || data[i]);
+        }
+    }
+}
+
+function getMultiTypeResult(types, pokemons) {
+    const key = types.join('_');
+    const rawData = MULTI_TYPES?.[key];
+
+    if (!rawData) {
+        console.warn(`Data could not be found for types "${types.join(', ')}".`);
+        return null;
+    }
+
+    return buildTypeEffectiveness(rawData, pokemons);
+}
+
+function buildTypeEffectiveness(rawData, pokemons) {
+    const map = rawData.reduce((acc, value, i) => {
+        const multiplier = String(value);
+        if (!acc[multiplier]) acc[multiplier] = [];
+        acc[multiplier].push(TYPES[i]);
+        return acc;
+    }, {});
+
+    const result = {
+        from: {
+            "4": map["4"] || [],
+            "2": map["2"] || [],
+            "0.5": map["0.5"] || [],
+            "0.25": map["0.25"] || [],
+        },
+        immune_to: map["0"] || [],
+        battle_with: [],
+        dont_battle_with: [],
+    };
+
+    result.battle_with = recommendBattleWith(result.from["4"], result.from["2"], pokemons);
+    result.dont_battle_with = recommendDontBattleWith(result.immune_to, result.from["0.25"], result.from["0.5"], pokemons);
+
+    return result;
+}
+
+function recommendBattleWith(bestTypes, goodTypes, pokemons) {
+    const priorityTypes = bestTypes.length > 0 ? bestTypes : goodTypes;
+    if (pokemons.length === 0) return getBattleRecommendationObject(false, priorityTypes);
+    if (priorityTypes.length === 0) return getBattleRecommendationObject(true, []);
+
+    const matched = matchPokemonsByTypesOrMoves(pokemons, priorityTypes);
+    return getBattleRecommendationObject(true, matched);
+}
+
+function recommendDontBattleWith(immuneTypes, resistTypes, weakTypes, pokemons) {
+    const priorityTypes = [
+        ...immuneTypes,
+        ...(resistTypes.length > 0 ? resistTypes : weakTypes),
+    ];
+    if (pokemons.length === 0) return getBattleRecommendationObject(false, priorityTypes);
+    if (priorityTypes.length === 0) return getBattleRecommendationObject(true, []);
+
+    const matched = matchPokemonsByTypesOrMoves(pokemons, priorityTypes);
+    return getBattleRecommendationObject(true, matched);
+}
+
+function matchPokemonsByTypesOrMoves(pokemons, targetTypes) {
+    return pokemons.filter((p) => {
+        // Safeguard: invalid structure
+        if (!p || !p.pokemon || !Array.isArray(p.moves)) return false;
+
+        const types = Array.isArray(p.pokemon.types) ? p.pokemon.types : [];
+        const moveTypes = p.moves.map((m) => m.type).filter(Boolean);
+
+        // If no moves are registered, fallback to Pokémon base types
+        const effectiveTypes = moveTypes.length > 0 ? moveTypes : types;
+
+        return effectiveTypes.some((t) => targetTypes.includes(t));
+    });
+}
+
+function getBattleRecommendationObject(isPokemon, result) {
+    return { isPokemon, result };
 }

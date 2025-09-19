@@ -1,6 +1,7 @@
 import { POKEMONS } from "../../../app.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../modules/search-bar.js";
 import { loadMultiTypeResults } from "./multi-types.js";
+import { PARTY } from "../modules/party.js";
 
 var POKEMON;
 
@@ -50,8 +51,12 @@ function searchBarAction(input, option) {
     }
 
     addPokemonToSearchBox(searchBox, POKEMON)
-    loadMultiTypeResults(POKEMON.types, 'pokemon-result');
+    loadMultiTypeResults(POKEMON.types, 'pokemon-result', PARTY);
     results.classList.remove('hidden');
+}
+
+export function getPokemonImgContainer(pokemon) {
+    return `<div class="img-container"><img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div>`
 }
 
 export function getPokemonSpriteSrc(pokemon) {
@@ -64,4 +69,11 @@ export function getPokemonSpriteAlt(pokemon) {
 
 function findPokemonByTitle(title) {
     return POKEMONS.find(pokemon => pokemon.title.toLowerCase() === title.toLowerCase()) || null;
+}
+
+export function setPokemonImgContainers(target, partyPokemons) {
+    target.innerHTML = '';
+    for (const partyPokemon of partyPokemons) {
+        target.innerHTML += getPokemonImgContainer(partyPokemon.pokemon);
+    }
 }

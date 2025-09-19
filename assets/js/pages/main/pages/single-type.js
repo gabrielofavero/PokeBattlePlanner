@@ -1,6 +1,6 @@
 import { TYPES, SINGLE_TYPES } from "../../../app.js";
 import { firstCharToUppercase } from "../../../support/data.js";
-import { loadTypeContentBanners } from "../../../ui/banners.js";
+import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../modules/search-bar.js";
 
 export const SEARCH_SINGLE_TYPE = {
@@ -10,6 +10,10 @@ export const SEARCH_SINGLE_TYPE = {
     action: searchBarAction
 }
 
+export const SINGLE_TYPE_RESULT = {
+
+}
+
 
 function searchBarAction(input, option) {
     const type = option.toLowerCase();
@@ -17,10 +21,10 @@ function searchBarAction(input, option) {
     const searchBox = content.querySelector(".button-box");
     const results = content.querySelector('.search-result');
     const suggestions = content.querySelector(".search-suggestions");
-    
+
     input.value = firstCharToUppercase(option);
     suggestions.style.display = 'none';
-    
+
     if (!TYPES.includes(type)) {
         input.value = '';
         results.classList.add('hidden');
@@ -34,19 +38,38 @@ function searchBarAction(input, option) {
 }
 
 function loadSingleTypeResults(type) {
+    const result = getSingleTypeResult(type);
     const data = [
-        SINGLE_TYPES?.[type]?.to?.['2'],
-        SINGLE_TYPES?.[type]?.from?.['0.5'],
-        SINGLE_TYPES?.[type]?.to?.['0.5'],
-        SINGLE_TYPES?.[type]?.from?.['2'],
-        SINGLE_TYPES?.[type]?.cant_damage,
-        SINGLE_TYPES?.[type]?.immune_to,
-        SINGLE_TYPES?.[type]?.best_against,
-        SINGLE_TYPES?.[type]?.worst_against
+        result.from?.['2'],
+        result.to?.['0.5'],
+        result.from?.['0.5'],
+        result.to?.['2'],
+        result.cant_damage,
+        result.immune_to,
+        result.battle_with,
+        result.dont_battle_with
     ]
 
     for (let i = 0; i < data.length; i++) {
         const target = document.getElementById(`single-type-result-${i + 1}`);
-        loadTypeContentBanners(target, data[i])
+        setTypeBannersWithoutLogo(target, data[i])
+    }
+}
+
+export function getSingleTypeResult(type) {
+    const result = SINGLE_TYPES?.[type];
+    return {
+        from: {
+            "2": result?.to?.['2'],
+            "0.5": result?.from?.['0.5']
+        },
+        to: {
+            "0.5": result?.to?.['0.5'],
+            "2": result?.from?.['2'],
+        },
+        cant_damage: result?.cant_damage,
+        immune_to: result?.immune_to,
+        battle_with: result?.worst_against,
+        dont_battle_with: result?.best_against
     }
 }

@@ -1,10 +1,10 @@
 import { MOVES, POKEMONS, TYPES } from "../../../app.js";
 import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.js";
 import { CURRENT_MOVES, getSearchPartyMoves, getSearchPartyPokemon } from "./party.js";
-import { SEARCH_POKEMON, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
+import { SEARCH_POKEMON, getPokemonImgContainer, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
 import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
 import { firstCharToUppercase } from "../../../support/data.js";
-import { loadTypeContentBanners } from "../../../ui/banners.js";
+import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
 
 const SINGLE_SEARCH_BARS = [SEARCH_POKEMON, SEARCH_SINGLE_TYPE, getSearchPartyPokemon(), ...getSearchPartyMoves()];
 const MULTI_SEARCH_BARS = [[SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2]]
@@ -98,7 +98,7 @@ export function getPokemonOption(pokemon) {
     const item = document.createElement('div');
     const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
     item.className = 'search-suggestion-item pokemon';
-    item.innerHTML = `<div class="img-container"><img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div> ${titleBox}`;
+    item.innerHTML = `${getPokemonImgContainer(pokemon)} ${titleBox}`;
     return item;
 }
 
@@ -208,7 +208,7 @@ export function addPokemonToSearchBox(searchBox, pokemon) {
     subtitle.textContent = pokemon.subtitle;
     subtitle.style.display = '';
 
-    loadTypeContentBanners(types, pokemon.types);
+    setTypeBannersWithoutLogo(types, pokemon.types);
     types.style.display = '';
 }
 
