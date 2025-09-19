@@ -276,6 +276,9 @@ input::placeholder {
   justify-content: center;
   width: 80px;
 }
+.img-container img {
+  max-height: 75px;
+}
 .search-suggestion-item.pokemon img,
 .icon-box img {
   max-height: 50px;
