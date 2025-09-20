@@ -1,6 +1,6 @@
-import { PAGES, setActivePage } from "../../app.js";
 import { stopPixiApp } from "../../ui/lava-background.js";
 import { selectItem } from "../../ui/navigation/navigation.js";
+import { PAGES, setActivePage } from "../../ui/navigation/pages.js";
 import { PARTY } from "../main/modules/party.js";
 import { loadMovesRadar } from "./modules/moves-radar.js";
 
@@ -20,7 +20,12 @@ const SUMMARY_PARTY_DIVS = Array.from(document.querySelectorAll('.summary-party-
 
 const TOP_MENU_ICONS = [INFO_ICON, MOVES_ICON]
 
-export function loadSummaryListeners() {
+export function loadSummaryPage() {
+    loadSummaryListeners();
+}
+
+
+function loadSummaryListeners() {
     for (const icon of TOP_MENU_ICONS) {
         icon.icon.addEventListener('click', icon.action);
     }

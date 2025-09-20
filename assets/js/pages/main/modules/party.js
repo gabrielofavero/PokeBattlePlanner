@@ -1,5 +1,5 @@
-import { PAGES, setActivePage } from "../../../app.js";
 import { selectItem, showBack, showConfirm } from "../../../ui/navigation/navigation.js";
+import { PAGES, setActivePage } from "../../../ui/navigation/pages.js";
 import { openSummary } from "../../summary/summary.js";
 import { closeContextMenu, goToMainPage, openContextMenu } from "../main.js";
 import { RATINGS, getPokemonSpriteSrc } from "../pages/pokemon.js";
@@ -11,7 +11,6 @@ var CURRENT_POKEMON = {};
 export var CURRENT_MOVES = [];
 
 const PARTY_BOXES = document.getElementsByClassName('party-pokemon');
-const CONTEXT_MENU = document.getElementById('party-box').querySelector('.context-menu');
 
 // Loaders
 export function loadPokemonParty() {
@@ -28,7 +27,7 @@ function loadPokemonPartiesListeners() {
     document.getElementById('edit-pokemon').addEventListener('click', editPokemon);
     document.getElementById('check-summary').addEventListener('click', () => openSummary(CURRENT_PARTY_INDEX));
     document.getElementById('release-pokemon').addEventListener('click', releasePokemon);
-    document.getElementById('never-mind').addEventListener('click', () => closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]));
+    document.getElementById('never-mind').addEventListener('click', closeContextMenu);
 
     document.getElementById('delete-edit-pokemon').addEventListener('click', deletePartyInputs);
 
@@ -37,7 +36,7 @@ function loadPokemonPartiesListeners() {
             loadCurrentPokemon(partyBox);
             selectItem(CURRENT_PARTY_INDEX, PARTY_BOXES);
             if (isPartyEmpty()) editPokemon()
-            else openContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
+            else openContextMenu(PARTY_BOXES[CURRENT_PARTY_INDEX]);
         });
     }
 }
@@ -90,7 +89,7 @@ function loadPartyData() {
 }
 
 export function returnToPokemonSearch() {
-    closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
+    closeContextMenu();
     clearParty();
     CURRENT_PARTY_INDEX = -1;
     goToMainPage('pokemon-search-container');
@@ -103,7 +102,7 @@ function editPokemon() {
 
     loadPartyData();
     goToMainPage('edit-party-container');
-    closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
+    closeContextMenu();
 }
 
 

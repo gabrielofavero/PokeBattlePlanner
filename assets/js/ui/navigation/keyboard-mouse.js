@@ -1,16 +1,10 @@
-import { ACTIVE_PAGE } from "../../app.js";
 import { loadNextTopBarItem, selectTopBarItem } from "../../pages/main/main.js";
 import { summaryMoveLeft, summaryMoveRight } from "../../pages/summary/summary.js";
 import { backAction, confirmAction } from "./navigation.js";
+import { ACTIVE_PAGE } from "./pages.js";
 
 // Loaders
-export function loadNavigation() {
-    loadMouseActions();
-    loadKeyDownActions();
-}
-
-// Actions
-function loadMouseActions() {
+export function loadMouseListeners() {
     document.getElementById('confirm-main').addEventListener('click', confirmAction);
     document.getElementById('back-main').addEventListener('click', backAction);
 
@@ -20,7 +14,7 @@ function loadMouseActions() {
     document.getElementById('next-top-bar-item').addEventListener("click", loadNextTopBarItem);
 }
 
-function loadKeyDownActions() {
+export function loadKeyboardListeners() {
     document.addEventListener("keydown", e => {
         if (isTyping()) return;
         switch (ACTIVE_PAGE) {

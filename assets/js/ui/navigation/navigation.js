@@ -1,6 +1,15 @@
-import { ACTIVE_PAGE, PAGES } from "../../app.js";
 import { selectTopBarItem } from "../../pages/main/main.js";
 import { returnToPokemonSearch, savePokemon } from "../../pages/main/modules/party.js";
+import { loadGamepadListeners } from "./gamepad.js";
+import { loadKeyboardListeners, loadMouseListeners } from "./keyboard-mouse.js";
+import { ACTIVE_PAGE, PAGES } from "./pages.js";
+
+
+export function loadNavigation() {
+    loadKeyboardListeners();
+    loadMouseListeners();
+    loadGamepadListeners();
+}
 
 export function selectItem(index, arr) {
     for (let i = 0; i < arr.length; i++) {

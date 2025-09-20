@@ -1,7 +1,20 @@
-import { PAGES, setActivePage } from "../../app.js";
+import { loadLavaBackground } from "../../ui/lava-background.js";
 import { hideBack, showConfirm } from "../../ui/navigation/navigation.js";
+import { PAGES, setActivePage } from "../../ui/navigation/pages.js";
+import { loadPokemonParty } from "./modules/party.js";
+import { loadSearchBars, resetSearchBars } from "./modules/search-bar.js";
 
 const CONTENT_SUBPAGES = document.querySelectorAll('.content');
+export const CONTEXT_MENU = document.getElementById('party-box').querySelector('.context-menu');
+let OUTSIDE_CLICK_LISTENER;
+
+// Loaders
+export function loadMainPage() {
+    loadLavaBackground();
+    resetSearchBars();
+    loadSearchBars();
+    loadPokemonParty();
+}
 
 // Top Bar
 export function selectTopBarItem(item) {
@@ -37,16 +50,39 @@ export function goToMainPage(page) {
 }
 
 // Context Menu
-export function openContextMenu(contextMenu, toOpen) {
-    toOpen.classList.add('selected');
-    contextMenu.style.display = '';
-}
 
-export function closeContextMenu(contextMenu, toClose) {
-    if (!toClose) {
-        return;
+function contextMenuClickAction(e) {
+    if (!CONTEXT_MENU.contains(e.target) && !getSelectedContextMenuItem().contains(e.target)) {
+        closeContextMenu();
     }
-    toClose.classList.remove('selected');
-    contextMenu.style.display = 'none';
 }
 
+function getSelectedContextMenuItem() {
+    return document.querySelector('.party-pokemon.selected');
+}
+
+export function openContextMenu() {
+    const toOpen = getSelectedContextMenuItem();
+    if (!toOpen) return;
+
+    toOpen.classList.add('selected');
+    CONTEXT_MENU.style.display = '';
+
+    OUTSIDE_CLICK_LISTENER = (e) => contextMenuClickAction(e);
+    setTimeout(() => {
+        document.addEventListener('click', OUTSIDE_CLICK_LISTENER);
+    }, 0);
+}
+
+export function closeContextMenu() {
+    const toClose = getSelectedContextMenuItem();
+    if (!toClose) return;
+
+    toClose.classList.remove('selected');
+    CONTEXT_MENU.style.display = 'none';
+
+    if (OUTSIDE_CLICK_LISTENER) {
+        document.removeEventListener('click', OUTSIDE_CLICK_LISTENER);
+        OUTSIDE_CLICK_LISTENER = null;
+    }
+}

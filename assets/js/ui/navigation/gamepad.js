@@ -1,6 +1,6 @@
-import { ACTIVE_PAGE } from "../../app.js";
-import { summaryMoveDown, summaryMoveLeft, summaryMoveRight, summaryMoveUp } from "../../pages/summary/summary.js";
 import { loadNextTopBarItem } from "../../pages/main/main.js";
+import { summaryMoveDown, summaryMoveLeft, summaryMoveRight, summaryMoveUp } from "../../pages/summary/summary.js";
+import { ACTIVE_PAGE } from "./pages.js";
 
 var GAMEPAD_MAP = ['A', 'B', 'X', 'Y'];
 const DPAD_MAP = {
