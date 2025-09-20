@@ -1,10 +1,10 @@
 import { loadPokemonParty } from "./pages/main/modules/party.js";
+import { loadSearchBars, resetSearchBars } from "./pages/main/modules/search-bar.js";
 import { loadSummaryListeners } from "./pages/summary/summary.js";
 import { getJson } from "./support/data.js";
 import { loadLavaBackground } from "./ui/lava-background.js";
 import { loadGamepadListeners } from "./ui/navigation/gamepad.js";
 import { loadNavigation } from "./ui/navigation/keyboard-mouse.js";
-import { loadSearchBars, resetSearchBars } from "./pages/main/modules/search-bar.js";
 
 export var POKEMONS;
 export var MOVES;
@@ -14,6 +14,11 @@ export var SINGLE_TYPES;
 export var MULTI_TYPES;
 
 export var ACTIVE_PAGE = 'main';
+export const PAGES = {
+  MAIN: 'main',
+  EDIT_POKEMON: 'edit-pokemon',
+  SUMMARY: 'summary'
+}
 
 document.addEventListener("DOMContentLoaded", async function () {
   const success = await loadExternalData();
@@ -50,5 +55,10 @@ async function loadExternalData() {
 }
 
 export function setActivePage(value) {
-  ACTIVE_PAGE = value;
+  const acceptedValues = Object.values(PAGES);
+  if (acceptedValues.includes(value)) {
+    ACTIVE_PAGE = value;
+  } else {
+    console.warn(`Invalid page value: ${value}. Accepted values are: ${acceptedValues.join(", ")}`);
+  }
 }

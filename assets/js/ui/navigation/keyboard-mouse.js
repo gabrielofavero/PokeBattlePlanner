@@ -1,6 +1,7 @@
 import { ACTIVE_PAGE } from "../../app.js";
 import { loadNextTopBarItem, selectTopBarItem } from "../../pages/main/main.js";
 import { summaryMoveLeft, summaryMoveRight } from "../../pages/summary/summary.js";
+import { backAction, confirmAction } from "./navigation.js";
 
 // Loaders
 export function loadNavigation() {
@@ -10,6 +11,9 @@ export function loadNavigation() {
 
 // Actions
 function loadMouseActions() {
+    document.getElementById('confirm-main').addEventListener('click', confirmAction);
+    document.getElementById('back-main').addEventListener('click', backAction);
+
     document.querySelectorAll(".top-bar-item").forEach(item => {
         item.addEventListener("click", () => selectTopBarItem(item));
     });

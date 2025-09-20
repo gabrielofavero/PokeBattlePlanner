@@ -1,8 +1,8 @@
+import { PAGES, setActivePage } from "../../app.js";
 import { stopPixiApp } from "../../ui/lava-background.js";
-import { loadMovesRadar } from "./modules/moves-radar.js";
-import { setActivePage } from "../../app.js";
-import { PARTY } from "../main/modules/party.js";
 import { selectItem } from "../../ui/navigation/navigation.js";
+import { PARTY } from "../main/modules/party.js";
+import { loadMovesRadar } from "./modules/moves-radar.js";
 
 const INFO_ICON = {
     icon: document.querySelector('.summary-icon.info'),
@@ -36,8 +36,8 @@ export function loadSummaryListeners() {
 }
 
 
-export function openSummary(index=0) {
-    setActivePage('summary');
+export function openSummary(index = 0) {
+    setActivePage(PAGES.SUMMARY);
     stopPixiApp();
     document.body.style.background = "linear-gradient(to top right, #015dba, #002c59)";
     document.getElementById('main-page').style.display = 'none';
@@ -77,10 +77,10 @@ function loadMovesInfo() {
 
 // Menu Navigation
 
-function summaryHorizontalMove(direction='right') {
+function summaryHorizontalMove(direction = 'right') {
     const currentIndex = TOP_MENU_ICONS.findIndex(el =>
         el.icon.classList.contains('selected')
-      );
+    );
     const newIndex = direction == 'right' ? currentIndex + 1 : currentIndex - 1;
     TOP_MENU_ICONS[getNextActionIndex(newIndex, TOP_MENU_ICONS.length)].action();
 }
@@ -100,7 +100,7 @@ function loadPokemonSummary(summaryPokemon, direction) {
     newIndex = getNextActionIndex(newIndex, PARTY.length);
 
     selectItem(newIndex, SUMMARY_PARTY_DIVS);
-    
+
     console.log(PARTY[newIndex]);
     loadSummaryData(newIndex);
     loadMovesRadar();

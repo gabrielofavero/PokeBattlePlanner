@@ -1,13 +1,13 @@
 import { MOVES, POKEMONS, TYPES } from "../../../app.js";
-import { SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2 } from "../pages/multi-types.js";
-import { CURRENT_MOVES, getSearchPartyMoves, getSearchPartyPokemon } from "./party.js";
-import { SEARCH_POKEMON, getPokemonImgContainer, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
-import { SEARCH_SINGLE_TYPE } from "../pages/single-type.js";
 import { firstCharToUppercase } from "../../../support/data.js";
 import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
+import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../pages/multi-types.js";
+import { getPokemonImgContainer, getPokemonSearchBar, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../pages/pokemon.js";
+import { getSingleTypeSearchBar } from "../pages/single-type.js";
+import { CURRENT_MOVES, getPartyMovesSearchBar, getPartySearchBar } from "./party.js";
 
-const SINGLE_SEARCH_BARS = [SEARCH_POKEMON, SEARCH_SINGLE_TYPE, getSearchPartyPokemon(), ...getSearchPartyMoves()];
-const MULTI_SEARCH_BARS = [[SEARCH_MULTI_TYPE_1, SEARCH_MULTI_TYPE_2]]
+const SINGLE_SEARCH_BARS = [getPokemonSearchBar(), getSingleTypeSearchBar(), getPartySearchBar(), ...getPartyMovesSearchBar()];
+const MULTI_SEARCH_BARS = [[SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2]]
 
 // Loaders
 export function loadSearchBars() {
@@ -19,7 +19,7 @@ export function loadSearchBars() {
     for (const multiBar of MULTI_SEARCH_BARS) {
         for (let j = 1; j <= multiBar.length; j++) {
             const searchBar = multiBar[j - 1];
-            const input = getInput(searchBar, j-1);
+            const input = getInput(searchBar, j - 1);
             input.addEventListener('input', () => loadSuggestions(searchBar, j));
         }
     }

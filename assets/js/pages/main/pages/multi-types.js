@@ -6,14 +6,14 @@ import { setPokemonImgContainers } from "./pokemon.js";
 
 const SEARCH_TYPES = ['', '']
 
-export const SEARCH_MULTI_TYPE_1 = {
+export const SEARCH_BAR_MULTI_TYPE_1 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType1Options,
     option: getTypeOption,
     action: searchBarAction
 }
 
-export const SEARCH_MULTI_TYPE_2 = {
+export const SEARCH_BAR_MULTI_TYPE_2 = {
     content: document.getElementById('multi-type-search-content'),
     options: getType2Options,
     option: getTypeOption,
@@ -50,11 +50,11 @@ function searchBarAction(input, option) {
 }
 
 function getType1Options(value) {
-    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_2.content.querySelectorAll('input')[1].value)
+    return getFilteredTypeOptions(value, SEARCH_BAR_MULTI_TYPE_2.content.querySelectorAll('input')[1].value)
 }
 
 function getType2Options(value) {
-    return getFilteredTypeOptions(value, SEARCH_MULTI_TYPE_1.content.querySelectorAll('input')[0].value)
+    return getFilteredTypeOptions(value, SEARCH_BAR_MULTI_TYPE_1.content.querySelectorAll('input')[0].value)
 }
 
 export function loadMultiTypeResults(searchTypes = SEARCH_TYPES, idPrefix = 'multi-type-result', pokemons = []) {
@@ -93,42 +93,42 @@ function getMultiTypeResult(types, pokemons) {
 
 function buildTypeEffectiveness(rawData, pokemons) {
     const map = rawData.reduce((acc, value, i) => {
-      const multiplier = String(value);
-      if (!acc[multiplier]) acc[multiplier] = [];
-      acc[multiplier].push(TYPES[i]);
-      return acc;
+        const multiplier = String(value);
+        if (!acc[multiplier]) acc[multiplier] = [];
+        acc[multiplier].push(TYPES[i]);
+        return acc;
     }, {});
-  
+
     const from = {
-      "4": map["4"] || [],
-      "2": map["2"] || [],
-      "0.5": map["0.5"] || [],
-      "0.25": map["0.25"] || [],
+        "4": map["4"] || [],
+        "2": map["2"] || [],
+        "0.5": map["0.5"] || [],
+        "0.25": map["0.25"] || [],
     };
-  
+
     const immune_to = map["0"] || [];
     const remainingPokemons = [...pokemons];
     const battleRec = recommendBattleWith(from["4"], from["2"], remainingPokemons);
 
     const usedIds = new Set(battleRec.result.map((p) => p.pokemon?.id));
     const filteredPokemons = remainingPokemons.filter(
-      (p) => !usedIds.has(p.pokemon?.id)
+        (p) => !usedIds.has(p.pokemon?.id)
     );
-  
+
     const dontBattleRec = recommendDontBattleWith(
-      immune_to,
-      from["0.25"],
-      from["0.5"],
-      filteredPokemons
+        immune_to,
+        from["0.25"],
+        from["0.5"],
+        filteredPokemons
     );
-  
+
     return {
-      from,
-      immune_to,
-      battle_with: battleRec,
-      dont_battle_with: dontBattleRec,
+        from,
+        immune_to,
+        battle_with: battleRec,
+        dont_battle_with: dontBattleRec,
     };
-  }  
+}
 
 function recommendBattleWith(bestTypes, goodTypes, pokemons) {
     const priorityTypes = bestTypes.length > 0 ? bestTypes : goodTypes;

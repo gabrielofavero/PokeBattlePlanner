@@ -1,7 +1,7 @@
 import { POKEMONS } from "../../../app.js";
+import { PARTY } from "../modules/party.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../modules/search-bar.js";
 import { loadMultiTypeResults } from "./multi-types.js";
-import { PARTY } from "../modules/party.js";
 
 var POKEMON;
 
@@ -21,11 +21,13 @@ export const EFFECTIVINESS = {
     "¼": "very-weak"
 }
 
-export const SEARCH_POKEMON = {
-    content: document.getElementById('pokemon-search-content'),
-    options: getPokemonOptions,
-    option: getPokemonOption,
-    action: searchBarAction
+export function getPokemonSearchBar() {
+    return {
+        content: document.getElementById('pokemon-search-content'),
+        options: getPokemonOptions,
+        option: getPokemonOption,
+        action: searchBarAction
+    }
 }
 
 function searchBarAction(input, option) {

@@ -1,9 +1,9 @@
-import { setActivePage } from "../../../app.js";
-import { selectItem } from "../../../ui/navigation/navigation.js";
-import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "./search-bar.js";
-import { RATINGS, getPokemonSpriteSrc } from "../pages/pokemon.js";
+import { PAGES, setActivePage } from "../../../app.js";
+import { selectItem, showBack, showConfirm } from "../../../ui/navigation/navigation.js";
 import { openSummary } from "../../summary/summary.js";
-import { goToMainPage, openContextMenu, closeContextMenu } from "../main.js";
+import { closeContextMenu, goToMainPage, openContextMenu } from "../main.js";
+import { RATINGS, getPokemonSpriteSrc } from "../pages/pokemon.js";
+import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "./search-bar.js";
 
 export var PARTY = [];
 var CURRENT_PARTY_INDEX = -1;
@@ -27,22 +27,25 @@ export function loadPokemonParty() {
 function loadPokemonPartiesListeners() {
     document.getElementById('edit-pokemon').addEventListener('click', editPokemon);
     document.getElementById('check-summary').addEventListener('click', () => openSummary(CURRENT_PARTY_INDEX));
-    document.getElementById('release-pokemon').addEventListener('click', () => savePokemon(true));
+    document.getElementById('release-pokemon').addEventListener('click', releasePokemon);
     document.getElementById('never-mind').addEventListener('click', () => closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]));
 
-    document.getElementById('cancel-edit-pokemon').addEventListener('click', returnToPokemonSearch);
-    document.getElementById('save-edit-pokemon').addEventListener('click', () => savePokemon(false));
     document.getElementById('delete-edit-pokemon').addEventListener('click', deletePartyInputs);
-
 
     for (const partyBox of PARTY_BOXES) {
         partyBox.addEventListener("click", () => {
-            CURRENT_PARTY_INDEX = parseInt(partyBox.getAttribute("party-number")) - 1;
+            loadCurrentPokemon(partyBox);
             selectItem(CURRENT_PARTY_INDEX, PARTY_BOXES);
             if (isPartyEmpty()) editPokemon()
             else openContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
         });
     }
+}
+
+function loadCurrentPokemon(partyBox) {
+    CURRENT_PARTY_INDEX = parseInt(partyBox.getAttribute("party-number")) - 1;
+    CURRENT_POKEMON = PARTY[CURRENT_PARTY_INDEX]?.pokemon || {};
+    CURRENT_MOVES = PARTY[CURRENT_PARTY_INDEX]?.moves || [];
 }
 
 function loadPartyPokemonsHTML() {
@@ -86,7 +89,7 @@ function loadPartyData() {
     }
 }
 
-function returnToPokemonSearch() {
+export function returnToPokemonSearch() {
     closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
     clearParty();
     CURRENT_PARTY_INDEX = -1;
@@ -94,7 +97,10 @@ function returnToPokemonSearch() {
 }
 
 function editPokemon() {
-    setActivePage('edit-pokemon');
+    setActivePage(PAGES.EDIT_POKEMON);
+    showConfirm();
+    showBack();
+
     loadPartyData();
     goToMainPage('edit-party-container');
     closeContextMenu(CONTEXT_MENU, PARTY_BOXES[CURRENT_PARTY_INDEX]);
@@ -102,7 +108,7 @@ function editPokemon() {
 
 
 // Getters
-export function getSearchPartyPokemon() {
+export function getPartySearchBar() {
     return {
         content: document.getElementById('party-pokemon-content'),
         options: getPokemonOptions,
@@ -112,7 +118,7 @@ export function getSearchPartyPokemon() {
 }
 
 
-export function getSearchPartyMoves() {
+export function getPartyMovesSearchBar() {
     return [
         getSearchPartyMove(1),
         getSearchPartyMove(2),
@@ -158,24 +164,29 @@ function clearParty() {
     deletePartyInputs();
 }
 
-function savePokemon(toDelete = false) {
-    const isEmpty = toDelete || (Object.keys(CURRENT_POKEMON).length == 0 && CURRENT_MOVES.length == 0);
-
-    if (isEmpty) {
-        if (!confirm("Do you really want to release this Pokémon?")) {
-            return;
-        }
-    }
-
-    PARTY[CURRENT_PARTY_INDEX] = {
-        pokemon: isEmpty ? {} : CURRENT_POKEMON,
-        moves: isEmpty ? [] : CURRENT_MOVES
-    }
-
+function backToMain() {
     localStorage.setItem('party', JSON.stringify(PARTY));
-
     loadPartyPokemonsHTML();
     returnToPokemonSearch();
+}
+
+function releasePokemon() {
+    if (!confirm("Do you really want to release this Pokémon?")) {
+        return;
+    }
+    PARTY[CURRENT_PARTY_INDEX] = {
+        pokemon: {},
+        moves: []
+    }
+    backToMain();
+}
+
+export function savePokemon() {
+    PARTY[CURRENT_PARTY_INDEX] = {
+        pokemon: CURRENT_POKEMON,
+        moves: CURRENT_MOVES
+    }
+    backToMain();
 }
 
 function deletePartyInputs() {

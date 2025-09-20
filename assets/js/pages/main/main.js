@@ -1,7 +1,7 @@
-import { setActivePage } from "../../app.js";
+import { PAGES, setActivePage } from "../../app.js";
+import { hideBack, showConfirm } from "../../ui/navigation/navigation.js";
 
-
-const PAGES = document.querySelectorAll('.content');
+const CONTENT_SUBPAGES = document.querySelectorAll('.content');
 
 // Top Bar
 export function selectTopBarItem(item) {
@@ -10,8 +10,10 @@ export function selectTopBarItem(item) {
     document.querySelectorAll(".top-bar-item").forEach(i => i.classList.remove("selected"));
     item.classList.add("selected");
 
-    // loadDefaultBackgroundColor();
-    setActivePage('main');
+    setActivePage(PAGES.MAIN);
+    showConfirm();
+    hideBack();
+
     goToMainPage(document.getElementById(item.getAttribute("to-show")));
 }
 
@@ -28,7 +30,7 @@ export function goToMainPage(page) {
     if (typeof page === "string") {
         page = document.getElementById(page);
     }
-    for (const content of PAGES) {
+    for (const content of CONTENT_SUBPAGES) {
         content.style.display = "none";
     }
     page.style.display = 'flex';

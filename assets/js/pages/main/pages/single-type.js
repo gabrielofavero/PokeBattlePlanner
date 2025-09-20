@@ -1,19 +1,18 @@
-import { TYPES, SINGLE_TYPES } from "../../../app.js";
+import { SINGLE_TYPES, TYPES } from "../../../app.js";
 import { firstCharToUppercase } from "../../../support/data.js";
 import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../modules/search-bar.js";
 
-export const SEARCH_SINGLE_TYPE = {
-    content: document.getElementById('single-type-search-content'),
-    options: getTypeOptions,
-    option: getTypeOption,
-    action: searchBarAction
+export const SINGLE_TYPE_RESULT = {}
+
+export function getSingleTypeSearchBar() {
+    return {
+        content: document.getElementById('single-type-search-content'),
+        options: getTypeOptions,
+        option: getTypeOption,
+        action: searchBarAction
+    }
 }
-
-export const SINGLE_TYPE_RESULT = {
-
-}
-
 
 function searchBarAction(input, option) {
     const type = option.toLowerCase();
