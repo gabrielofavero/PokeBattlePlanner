@@ -2,8 +2,8 @@ import { selectItem, showBack, showConfirm } from "../../../ui/navigation/naviga
 import { PAGES, setActivePage } from "../../../ui/navigation/pages.js";
 import { openSummary } from "../../summary/summary.js";
 import { closeContextMenu, goToMainPage, openContextMenu } from "../main.js";
-import { RATINGS, getPokemonSpriteSrc } from "../pages/pokemon.js";
-import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "./search-bar.js";
+import { RATINGS, getPokemonSpriteSrc } from "./pokemon.js";
+import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../support/search-bar.js";
 
 export var PARTY = [];
 var CURRENT_PARTY_INDEX = -1;

@@ -1,5 +1,6 @@
 import { loadNextTopBarItem, selectTopBarItem } from "../../pages/main/main.js";
-import { summaryMoveLeft, summaryMoveRight } from "../../pages/summary/summary.js";
+import { loadMainKeyboardAction } from "../../pages/main/support/navigation.js";
+import { loadSummaryKeyboardAction } from "../../pages/summary/support/navigation.js";
 import { backAction, confirmAction } from "./navigation.js";
 import { ACTIVE_PAGE } from "./pages.js";
 
@@ -19,32 +20,13 @@ export function loadKeyboardListeners() {
         if (isTyping()) return;
         switch (ACTIVE_PAGE) {
             case 'main':
-                loadKeyDownMain(e);
+                loadMainKeyboardAction(e);
                 break;
             case 'summary':
-                loadKeyDownSumamry(e);
+                loadSummaryKeyboardAction(e);
         }
     });
 }
-
-function loadKeyDownMain(e) {
-    switch (e.key.toLowerCase()) {
-        case "x":
-            loadNextTopBarItem();
-    }
-}
-
-function loadKeyDownSumamry(e) {
-    switch (e.key.toLowerCase()) {
-        case "arrowright":
-            summaryMoveRight();
-            break;
-        case "arrowleft": {
-            summaryMoveLeft();
-        }
-    }
-}
-
 
 // Validators
 function isTyping() {
@@ -55,7 +37,3 @@ function isTyping() {
         active.isContentEditable
     );
 }
-
-
-
-

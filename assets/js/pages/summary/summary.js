@@ -3,6 +3,7 @@ import { selectItem } from "../../ui/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../ui/navigation/pages.js";
 import { PARTY } from "../main/modules/party.js";
 import { loadMovesRadar } from "./modules/moves-radar.js";
+import { loadSummaryNavigationListeners } from "./support/navigation.js";
 
 const INFO_ICON = {
     icon: document.querySelector('.summary-icon.info'),
@@ -34,10 +35,7 @@ function loadSummaryListeners() {
         summaryPokemon.addEventListener('click', () => loadPokemonSummary(summaryPokemon))
     }
 
-    document.querySelector('.summary-top-menu .summary-icon.arrow.left').addEventListener('click', summaryMoveLeft);
-    document.querySelector('.summary-top-menu .summary-icon.arrow.right').addEventListener('click', summaryMoveRight);
-    document.querySelector('.summary-party-pokemons .summary-icon.arrow.up').addEventListener('click', summaryMoveUp);
-    document.querySelector('.summary-party-pokemons .summary-icon.arrow.down').addEventListener('click', summaryMoveDown);
+    loadSummaryNavigationListeners();
 }
 
 
@@ -57,7 +55,6 @@ function loadSummaryData() {
 
 
 // Menu Actions
-
 function loadTopMenuItem(index) {
     for (let i = 0; i < TOP_MENU_ICONS.length; i++) {
         const icon = TOP_MENU_ICONS[i];
@@ -80,26 +77,8 @@ function loadMovesInfo() {
     loadMovesRadar();
 }
 
-// Menu Navigation
-
-function summaryHorizontalMove(direction = 'right') {
-    const currentIndex = TOP_MENU_ICONS.findIndex(el =>
-        el.icon.classList.contains('selected')
-    );
-    const newIndex = direction == 'right' ? currentIndex + 1 : currentIndex - 1;
-    TOP_MENU_ICONS[getNextActionIndex(newIndex, TOP_MENU_ICONS.length)].action();
-}
-
-export function summaryMoveRight() {
-    summaryHorizontalMove();
-}
-
-export function summaryMoveLeft() {
-    summaryHorizontalMove('left');
-}
-
 // Party Actions
-function loadPokemonSummary(summaryPokemon, direction) {
+export function loadPokemonSummary(summaryPokemon, direction) {
     const currentIndex = parseInt(summaryPokemon.getAttribute('party-number')) - 1;
     let newIndex = !direction ? currentIndex : direction == 'up' ? currentIndex - 1 : currentIndex + 1;
     newIndex = getNextActionIndex(newIndex, PARTY.length);
@@ -111,30 +90,14 @@ function loadPokemonSummary(summaryPokemon, direction) {
     loadMovesRadar();
 }
 
-// Party Navigation
-export function summaryMoveUp() {
-    summaryVerticalMove('up');
-}
-
-export function summaryMoveDown() {
-    summaryVerticalMove('down');
-}
-
-function summaryVerticalMove(direction) {
-    const summaryPokemon = document.querySelector('.summary-party-pokemon.selected');
-    loadPokemonSummary(summaryPokemon, direction)
-}
-
 
 // Helpers
-function getNextActionIndex(index, arrLength) {
+export function getNextActionIndex(index, arrLength) {
     if (index == arrLength) {
         return 0;
     }
-
     if (index < 0) {
         return arrLength - 1;
     }
-
     return index;
 }

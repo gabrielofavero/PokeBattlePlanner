@@ -1,7 +1,7 @@
 import { SINGLE_TYPES, TYPES } from "../../../app.js";
 import { firstCharToUppercase } from "../../../support/data.js";
 import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
-import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../modules/search-bar.js";
+import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../support/search-bar.js";
 
 export const SINGLE_TYPE_RESULT = {}
 

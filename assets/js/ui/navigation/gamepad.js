@@ -1,5 +1,5 @@
-import { loadNextTopBarItem } from "../../pages/main/main.js";
-import { summaryMoveDown, summaryMoveLeft, summaryMoveRight, summaryMoveUp } from "../../pages/summary/summary.js";
+import { loadMainGamepadAction } from "../../pages/main/support/navigation.js";
+import { loadSummaryGamepadAction } from "../../pages/summary/support/navigation.js";
 import { ACTIVE_PAGE } from "./pages.js";
 
 var GAMEPAD_MAP = ['A', 'B', 'X', 'Y'];
@@ -76,6 +76,7 @@ function listenToGamepad(index) {
     }
     update();
 }
+
 function detectController(id) {
     id = id.toLowerCase();
     if (id.includes("xbox")) return "Xbox";
@@ -86,23 +87,12 @@ function detectController(id) {
 }
 
 function loadGamepadButtonPressing(button) {
-    switch (button) {
-        case "X":
-        case "SQUARE":
-            if (ACTIVE_PAGE == 'main') loadNextTopBarItem();
+    switch (ACTIVE_PAGE) {
+        case 'main':
+            loadMainGamepadAction(button);
             break;
-        case "UP":
-            if (ACTIVE_PAGE == 'summary') summaryMoveUp();
-            break;
-        case "DOWN":
-            if (ACTIVE_PAGE == 'summary') summaryMoveDown();
-            break;
-        case "LEFT":
-            if (ACTIVE_PAGE == 'summary') summaryMoveLeft();
-            break;
-        case "RIGHT":
-            if (ACTIVE_PAGE == 'summary') summaryMoveRight();
-            break;
+        case 'summary':
+            loadSummaryGamepadAction(button);
     }
 }
 

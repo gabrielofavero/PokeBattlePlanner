@@ -2,7 +2,7 @@ import { loadLavaBackground } from "../../ui/lava-background.js";
 import { hideBack, showConfirm } from "../../ui/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../ui/navigation/pages.js";
 import { loadPokemonParty } from "./modules/party.js";
-import { loadSearchBars, resetSearchBars } from "./modules/search-bar.js";
+import { loadSearchBars, resetSearchBars } from "./support/search-bar.js";
 
 const CONTENT_SUBPAGES = document.querySelectorAll('.content');
 export const CONTEXT_MENU = document.getElementById('party-box').querySelector('.context-menu');

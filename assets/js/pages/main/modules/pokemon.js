@@ -1,6 +1,6 @@
 import { POKEMONS } from "../../../app.js";
-import { PARTY } from "../modules/party.js";
-import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../modules/search-bar.js";
+import { PARTY } from "./party.js";
+import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../support/search-bar.js";
 import { loadMultiTypeResults } from "./multi-types.js";
 
 var POKEMON;
