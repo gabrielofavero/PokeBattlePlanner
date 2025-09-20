@@ -19,7 +19,7 @@ const MOVES_ICON = {
 
 const SUMMARY_PARTY_DIVS = Array.from(document.querySelectorAll('.summary-party-pokemon'));
 
-const TOP_MENU_ICONS = [INFO_ICON, MOVES_ICON]
+export const TOP_MENU_ICONS = [INFO_ICON, MOVES_ICON]
 
 export function loadSummaryPage() {
     loadSummaryListeners();
@@ -38,13 +38,12 @@ function loadSummaryListeners() {
     loadSummaryNavigationListeners();
 }
 
-
 export function openSummary(index = 0) {
     setActivePage(PAGES.SUMMARY);
     stopPixiApp();
     document.body.style.background = "linear-gradient(to top right, #015dba, #002c59)";
-    document.getElementById('main-page').style.display = 'none';
-    document.getElementById('summary-page').style.display = '';
+    document.getElementById('main').style.display = 'none';
+    document.getElementById('summary').style.display = '';
     const partyPokemon = SUMMARY_PARTY_DIVS[index];
     loadPokemonSummary(partyPokemon);
 }
@@ -52,7 +51,6 @@ export function openSummary(index = 0) {
 function loadSummaryData() {
 
 }
-
 
 // Menu Actions
 function loadTopMenuItem(index) {

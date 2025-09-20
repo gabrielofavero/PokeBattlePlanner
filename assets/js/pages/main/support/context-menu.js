@@ -28,7 +28,7 @@ export function closeContextMenu() {
 }
 
 function contextMenuClickAction(e) {
-    if (!CONTEXT_MENU.contains(e.target) && !getSelectedContextMenuItem().contains(e.target)) {
+    if (!CONTEXT_MENU.contains(e.target) && !getSelectedContextMenuItem()?.contains(e.target)) {
         closeContextMenu();
     }
 }

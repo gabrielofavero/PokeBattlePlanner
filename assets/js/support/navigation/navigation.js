@@ -1,6 +1,4 @@
-import { mainBackAction, mainConfirmAction } from "../../pages/main/main.js";
-import { returnToPokemonSearch } from "../../pages/main/modules/party-management/party.js";
-import { selectTopBarItem } from "../../pages/main/support/top-bar.js";
+import { goToMainPage, mainBackAction, mainConfirmAction } from "../../pages/main/main.js";
 import { loadGamepadListeners } from "./gamepad.js";
 import { loadKeyboardListeners, loadMouseListeners } from "./keyboard-mouse.js";
 import { ACTIVE_PAGE, PAGES } from "./pages.js";
@@ -21,14 +19,6 @@ export function selectItem(index, arr) {
             div.classList.remove('selected');
         }
     }
-}
-
-export function goToPage(pageID) {
-    const pages = document.querySelectorAll('.page');
-    for (const page of pages) {
-        page.style.display = 'none';
-    }
-    document.getElementById(pageID).style.display = '';
 }
 
 function toggleDisplay(type, display) {
@@ -70,7 +60,6 @@ export function backAction() {
             mainBackAction();
             return;
         case (PAGES.SUMMARY):
-            goToPage('main');
-            selectTopBarItem(document.querySelectorAll('.top-bar-item')[0]);
+            goToMainPage();
     }
 }

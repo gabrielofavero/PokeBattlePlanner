@@ -23,3 +23,8 @@ export function loadNextTopBarItem() {
     }
     selectTopBarItem(next);
 }
+
+export function goToFirstTopBarItem() {
+    const first = document.querySelectorAll('.top-bar-item')[0];
+    selectTopBarItem(first);
+}

@@ -108,3 +108,7 @@ export function stopPixiApp() {
   PIXI_APP.destroy(true, { children: true, texture: true, baseTexture: true });
   orbs.length = 0;
 }
+
+export function isPixiAppRunning() {
+  return PIXI_APP.ticker.started;
+}

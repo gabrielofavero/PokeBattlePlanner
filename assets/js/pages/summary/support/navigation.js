@@ -1,4 +1,4 @@
-import { getNextActionIndex, loadPokemonSummary } from "../summary.js";
+import { TOP_MENU_ICONS, getNextActionIndex, loadPokemonSummary } from "../summary.js";
 
 export function loadSummaryKeyboardAction(e) {
     switch (e.key.toLowerCase()) {
@@ -24,6 +24,10 @@ export function loadSummaryGamepadAction(button) {
             break;
         case "RIGHT":
             summaryMoveRight();
+            break;
+        case "B":
+        case "CIRCLE":
+            loadNextTopBarItem();
             break;
     }
 
