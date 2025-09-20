@@ -1,6 +1,7 @@
 import { loadLavaBackground } from "../../support/lava-background.js";
 import { IS_EDITING_POKEMON, backToMain, savePokemon } from "./modules/party-management/edit-party-pokemon.js";
 import { loadPokemonParty } from "./modules/party-management/party.js";
+import { loadMainNavigationListeners } from "./support/navigation.js";
 import { loadSearchBars, resetSearchBars } from "./support/search-bar.js";
 
 const CONTENT_SUBPAGES = document.querySelectorAll('.content');
@@ -11,6 +12,7 @@ export function loadMainPage() {
     resetSearchBars();
     loadSearchBars();
     loadPokemonParty();
+    loadMainNavigationListeners();
 }
 
 export function goToMainPage(page) {

@@ -1,4 +1,4 @@
-import { stopPixiApp } from "../../support/lava-background.js";
+import { pauseLavaBackground, resumeLavaBackground } from "../../support/lava-background.js";
 import { selectItem } from "../../support/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../support/navigation/pages.js";
 import { PARTY } from "../main/modules/party-management/party.js";
@@ -23,6 +23,7 @@ export const TOP_MENU_ICONS = [INFO_ICON, MOVES_ICON]
 
 export function loadSummaryPage() {
     loadSummaryListeners();
+    loadSummaryNavigationListeners();
 }
 
 
@@ -34,18 +35,23 @@ function loadSummaryListeners() {
     for (const summaryPokemon of SUMMARY_PARTY_DIVS) {
         summaryPokemon.addEventListener('click', () => loadPokemonSummary(summaryPokemon))
     }
-
-    loadSummaryNavigationListeners();
 }
 
 export function openSummary(index = 0) {
+    pauseLavaBackground();
     setActivePage(PAGES.SUMMARY);
-    stopPixiApp();
     document.body.style.background = "linear-gradient(to top right, #015dba, #002c59)";
     document.getElementById('main').style.display = 'none';
     document.getElementById('summary').style.display = '';
     const partyPokemon = SUMMARY_PARTY_DIVS[index];
     loadPokemonSummary(partyPokemon);
+}
+
+export function closeSummary() {
+    resumeLavaBackground();
+    document.getElementById('summary').style.display = 'none';
+    document.getElementById('main').style.display = '';
+    setActivePage(PAGES.MAIN);
 }
 
 function loadSummaryData() {

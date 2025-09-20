@@ -79,16 +79,16 @@ export function loadLavaBackground() {
   });
 }
 
-export function stopPixiApp() {
-  if (PIXI_APP.view && PIXI_APP.view.parentNode) {
-    PIXI_APP.view.parentNode.removeChild(PIXI_APP.view);
+export function pauseLavaBackground() {
+  if (PIXI_APP.view) {
+    PIXI_APP.view.style.display = "none"; // hide canvas
   }
-  PIXI_APP.ticker.stop();
-  PIXI_APP.stage.removeChildren();
-  PIXI_APP.destroy(true, { children: true, texture: true, baseTexture: true });
-  orbs.length = 0;
+  PIXI_APP.ticker.stop(); // freeze orbs
 }
 
-export function isPixiAppRunning() {
-  return PIXI_APP.ticker.started;
+export function resumeLavaBackground() {
+  if (PIXI_APP.view) {
+    PIXI_APP.view.style.display = ""; // show canvas again
+  }
+  PIXI_APP.ticker.start(); // resume orbs
 }

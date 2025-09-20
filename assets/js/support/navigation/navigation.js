@@ -1,12 +1,10 @@
 import { goToMainPage, mainBackAction, mainConfirmAction } from "../../pages/main/main.js";
 import { loadGamepadListeners } from "./gamepad.js";
-import { loadKeyboardListeners, loadMouseListeners } from "./keyboard-mouse.js";
+import { loadKeyboardListeners } from "./keyboard-mouse.js";
 import { ACTIVE_PAGE, PAGES } from "./pages.js";
-
 
 export function loadNavigation() {
     loadKeyboardListeners();
-    loadMouseListeners();
     loadGamepadListeners();
 }
 

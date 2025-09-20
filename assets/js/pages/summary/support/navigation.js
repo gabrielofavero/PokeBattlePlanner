@@ -1,4 +1,4 @@
-import { TOP_MENU_ICONS, getNextActionIndex, loadPokemonSummary } from "../summary.js";
+import { TOP_MENU_ICONS, closeSummary, getNextActionIndex, loadPokemonSummary } from "../summary.js";
 
 export function loadSummaryKeyboardAction(e) {
     switch (e.key.toLowerCase()) {
@@ -34,6 +34,8 @@ export function loadSummaryGamepadAction(button) {
 }
 
 export function loadSummaryNavigationListeners() {
+    document.getElementById('back-summary').addEventListener('click', closeSummary);
+
     document.querySelector('.summary-top-menu .summary-icon.arrow.left').addEventListener('click', summaryMoveLeft);
     document.querySelector('.summary-top-menu .summary-icon.arrow.right').addEventListener('click', summaryMoveRight);
     document.querySelector('.summary-party-pokemons .summary-icon.arrow.up').addEventListener('click', summaryMoveUp);
