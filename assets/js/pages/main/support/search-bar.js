@@ -1,10 +1,10 @@
 import { MOVES, POKEMONS, TYPES } from "../../../app.js";
 import { firstCharToUppercase } from "../../../support/data.js";
-import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
-import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/multi-types.js";
-import { getPokemonImgContainer, getPokemonSearchBar, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../modules/pokemon.js";
-import { getSingleTypeSearchBar } from "../modules/single-type.js";
-import { CURRENT_MOVES, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party.js";
+import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
+import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/calculators/multi-types.js";
+import { getPokemonImgContainer, getPokemonSearchBar, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../modules/calculators/pokemon.js";
+import { getSingleTypeSearchBar } from "../modules/calculators/single-type.js";
+import { CURRENT_MOVES, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
 
 const SINGLE_SEARCH_BARS = [getPokemonSearchBar(), getSingleTypeSearchBar(), getPartySearchBar(), ...getPartyMovesSearchBar()];
 const MULTI_SEARCH_BARS = [[SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2]]

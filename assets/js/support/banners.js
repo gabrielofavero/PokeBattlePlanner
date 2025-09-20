@@ -12,7 +12,6 @@ export function setTypeBannersWithoutLogo(target, types) {
     }
 }
 
-
 function getTypeBannerWithoutLogo(type) {
     const classType = type == 'N/A' ? 'none' : type;
     const div = document.createElement('div');

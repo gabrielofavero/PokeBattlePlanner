@@ -1,5 +1,5 @@
-import { loadNextTopBarItem, selectTopBarItem } from "../../pages/main/main.js";
 import { loadMainKeyboardAction } from "../../pages/main/support/navigation.js";
+import { loadNextTopBarItem, selectTopBarItem } from "../../pages/main/support/top-bar.js";
 import { loadSummaryKeyboardAction } from "../../pages/summary/support/navigation.js";
 import { backAction, confirmAction } from "./navigation.js";
 import { ACTIVE_PAGE } from "./pages.js";

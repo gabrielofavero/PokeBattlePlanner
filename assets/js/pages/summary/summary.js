@@ -1,7 +1,7 @@
-import { stopPixiApp } from "../../ui/lava-background.js";
-import { selectItem } from "../../ui/navigation/navigation.js";
-import { PAGES, setActivePage } from "../../ui/navigation/pages.js";
-import { PARTY } from "../main/modules/party.js";
+import { stopPixiApp } from "../../support/lava-background.js";
+import { selectItem } from "../../support/navigation/navigation.js";
+import { PAGES, setActivePage } from "../../support/navigation/pages.js";
+import { PARTY } from "../main/modules/party-management/party.js";
 import { loadMovesRadar } from "./modules/moves-radar.js";
 import { loadSummaryNavigationListeners } from "./support/navigation.js";
 

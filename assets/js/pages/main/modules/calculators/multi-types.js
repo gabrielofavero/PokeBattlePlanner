@@ -1,7 +1,7 @@
-import { MULTI_TYPES, TYPES } from "../../../app.js";
-import { firstCharToUppercase } from "../../../support/data.js";
-import { setTypeBannersWithoutLogo } from "../../../ui/banners.js";
-import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../support/search-bar.js";
+import { MULTI_TYPES, TYPES } from "../../../../app.js";
+import { firstCharToUppercase } from "../../../../support/data.js";
+import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
+import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../../support/search-bar.js";
 import { setPokemonImgContainers } from "./pokemon.js";
 
 const SEARCH_TYPES = ['', '']

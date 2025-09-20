@@ -1,4 +1,4 @@
-import { loadNextTopBarItem } from "../main.js";
+import { loadNextTopBarItem } from "./top-bar.js";
 
 export function loadMainKeyboardAction(e) {
     switch (e.key.toLowerCase()) {

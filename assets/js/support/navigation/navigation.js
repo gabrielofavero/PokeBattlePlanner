@@ -1,5 +1,6 @@
-import { selectTopBarItem } from "../../pages/main/main.js";
-import { returnToPokemonSearch, savePokemon } from "../../pages/main/modules/party.js";
+import { mainBackAction, mainConfirmAction } from "../../pages/main/main.js";
+import { returnToPokemonSearch } from "../../pages/main/modules/party-management/party.js";
+import { selectTopBarItem } from "../../pages/main/support/top-bar.js";
 import { loadGamepadListeners } from "./gamepad.js";
 import { loadKeyboardListeners, loadMouseListeners } from "./keyboard-mouse.js";
 import { ACTIVE_PAGE, PAGES } from "./pages.js";
@@ -58,16 +59,15 @@ export function hideBack() {
 
 export function confirmAction() {
     switch (ACTIVE_PAGE) {
-        case (PAGES.EDIT_POKEMON):
-            savePokemon();
-            return;
+        case (PAGES.MAIN):
+            mainConfirmAction();
     }
 }
 
 export function backAction() {
     switch (ACTIVE_PAGE) {
-        case (PAGES.EDIT_POKEMON):
-            returnToPokemonSearch();
+        case (PAGES.MAIN):
+            mainBackAction();
             return;
         case (PAGES.SUMMARY):
             goToPage('main');

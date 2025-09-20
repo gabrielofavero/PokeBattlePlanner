@@ -1,7 +1,6 @@
 export var ACTIVE_PAGE = 'main';
 export const PAGES = {
     MAIN: 'main',
-    EDIT_POKEMON: 'edit-pokemon',
     SUMMARY: 'summary'
 }
 

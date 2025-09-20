@@ -1,7 +1,7 @@
 import { loadMainPage } from "./pages/main/main.js";
 import { loadSummaryPage } from "./pages/summary/summary.js";
 import { getJson } from "./support/data.js";
-import { loadNavigation } from "./ui/navigation/navigation.js";
+import { loadNavigation } from "./support/navigation/navigation.js";
 
 export var POKEMONS;
 export var MOVES;

@@ -1,12 +1,9 @@
-import { loadLavaBackground } from "../../ui/lava-background.js";
-import { hideBack, showConfirm } from "../../ui/navigation/navigation.js";
-import { PAGES, setActivePage } from "../../ui/navigation/pages.js";
-import { loadPokemonParty } from "./modules/party.js";
+import { loadLavaBackground } from "../../support/lava-background.js";
+import { IS_EDITING_POKEMON, backToMain, savePokemon } from "./modules/party-management/edit-party-pokemon.js";
+import { loadPokemonParty } from "./modules/party-management/party.js";
 import { loadSearchBars, resetSearchBars } from "./support/search-bar.js";
 
 const CONTENT_SUBPAGES = document.querySelectorAll('.content');
-export const CONTEXT_MENU = document.getElementById('party-box').querySelector('.context-menu');
-let OUTSIDE_CLICK_LISTENER;
 
 // Loaders
 export function loadMainPage() {
@@ -14,29 +11,6 @@ export function loadMainPage() {
     resetSearchBars();
     loadSearchBars();
     loadPokemonParty();
-}
-
-// Top Bar
-export function selectTopBarItem(item) {
-    if (!item) return;
-
-    document.querySelectorAll(".top-bar-item").forEach(i => i.classList.remove("selected"));
-    item.classList.add("selected");
-
-    setActivePage(PAGES.MAIN);
-    showConfirm();
-    hideBack();
-
-    goToMainPage(document.getElementById(item.getAttribute("to-show")));
-}
-
-export function loadNextTopBarItem() {
-    const selected = document.querySelector(".top-bar-item.selected");
-    let next = selected?.nextElementSibling;
-    if (!next || !next.classList.contains("top-bar-item")) {
-        next = document.querySelectorAll('.top-bar-item')[0];
-    }
-    selectTopBarItem(next);
 }
 
 export function goToMainPage(page) {
@@ -49,40 +23,14 @@ export function goToMainPage(page) {
     page.style.display = 'flex';
 }
 
-// Context Menu
-
-function contextMenuClickAction(e) {
-    if (!CONTEXT_MENU.contains(e.target) && !getSelectedContextMenuItem().contains(e.target)) {
-        closeContextMenu();
+export function mainConfirmAction() {
+    if (IS_EDITING_POKEMON) {
+        savePokemon();
     }
 }
 
-function getSelectedContextMenuItem() {
-    return document.querySelector('.party-pokemon.selected');
-}
-
-export function openContextMenu() {
-    const toOpen = getSelectedContextMenuItem();
-    if (!toOpen) return;
-
-    toOpen.classList.add('selected');
-    CONTEXT_MENU.style.display = '';
-
-    OUTSIDE_CLICK_LISTENER = (e) => contextMenuClickAction(e);
-    setTimeout(() => {
-        document.addEventListener('click', OUTSIDE_CLICK_LISTENER);
-    }, 0);
-}
-
-export function closeContextMenu() {
-    const toClose = getSelectedContextMenuItem();
-    if (!toClose) return;
-
-    toClose.classList.remove('selected');
-    CONTEXT_MENU.style.display = 'none';
-
-    if (OUTSIDE_CLICK_LISTENER) {
-        document.removeEventListener('click', OUTSIDE_CLICK_LISTENER);
-        OUTSIDE_CLICK_LISTENER = null;
+export function mainBackAction() {
+    if (IS_EDITING_POKEMON) {
+        backToMain();
     }
 }
