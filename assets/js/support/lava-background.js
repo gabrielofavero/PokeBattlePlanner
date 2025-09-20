@@ -79,26 +79,6 @@ export function loadLavaBackground() {
   });
 }
 
-export function loadDefaultBackground() {
-  changeBackground(0x12a8b8);
-  changeOrbColor(0x27e0b6);
-}
-
-export function loadBlueBackground() {
-  changeBackground(0x002c5b);
-  changeOrbColor(0x005ab8);
-}
-
-function changeBackground(hex) {
-  PIXI_APP.renderer.background.color = hex;
-}
-
-function changeOrbColor(hex) {
-  for (let orb of orbs) {
-    orb.tint = hex;
-  }
-}
-
 export function stopPixiApp() {
   if (PIXI_APP.view && PIXI_APP.view.parentNode) {
     PIXI_APP.view.parentNode.removeChild(PIXI_APP.view);
