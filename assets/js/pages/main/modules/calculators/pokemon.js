@@ -65,8 +65,12 @@ export function getPokemonSpriteSrc(pokemon) {
     return `./assets/img/pokemons/sprites/${pokemon.hrefIcon}.png`
 }
 
+export function getPokemonArtworkSrc(pokemon) {
+    return `./assets/img/pokemons/artworks/${String(pokemon.id).padStart(3, "0")}.png`
+}
+
 export function getPokemonSpriteAlt(pokemon) {
-    return `${pokemon.title}: ${pokemon.subtitle}`
+    return `${pokemon.title}${pokemon.subtitle ? ' : ' + pokemon.subtitle : ''}`;
 }
 
 function findPokemonByTitle(title) {

@@ -1,4 +1,4 @@
-import { TOP_MENU_ICONS, closeSummary, getNextActionIndex, loadPokemonSummary } from "../summary.js";
+import { TOP_MENU_ICONS, closeSummary, getNextActionIndex, loadPokemonSummaryByIndex } from "../summary.js";
 
 export function loadSummaryKeyboardAction(e) {
     switch (e.key.toLowerCase()) {
@@ -60,7 +60,7 @@ function summaryMoveRight() {
 
 function summaryVerticalMove(direction) {
     const summaryPokemon = document.querySelector('.summary-party-pokemon.selected');
-    loadPokemonSummary(summaryPokemon, direction)
+    navigateToPokemonSummary(summaryPokemon, direction)
 }
 
 function summaryHorizontalMove(direction = 'right') {
@@ -69,4 +69,11 @@ function summaryHorizontalMove(direction = 'right') {
     );
     const newIndex = direction == 'right' ? currentIndex + 1 : currentIndex - 1;
     TOP_MENU_ICONS[getNextActionIndex(newIndex, TOP_MENU_ICONS.length)].action();
+}
+
+function navigateToPokemonSummary(partyPokemonDiv, direction) {
+    const currentIndex = parseInt(partyPokemonDiv.getAttribute('party-number')) - 1;
+    let newIndex = !direction ? currentIndex : direction == 'up' ? currentIndex - 1 : currentIndex + 1;
+    newIndex = getNextActionIndex(newIndex, PARTY.length);
+    loadPokemonSummaryByIndex(newIndex);
 }

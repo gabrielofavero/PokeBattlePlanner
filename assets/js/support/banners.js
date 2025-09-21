@@ -12,6 +12,20 @@ export function setTypeBannersWithoutLogo(target, types) {
     }
 }
 
+export function setTypeBannersMini(target, types) {
+    target.innerHTML = '';
+    let innerHTML = '';
+    for (const type of types) {
+        innerHTML += `
+        <div class="type-banner mini ${type}">
+            <svg class="summary-type-icon">
+                <use href="#type-${type}-icon" />
+            </svg>
+        </div>`
+    }
+    target.innerHTML = innerHTML;
+}
+
 function getTypeBannerWithoutLogo(type) {
     const classType = type == 'N/A' ? 'none' : type;
     const div = document.createElement('div');

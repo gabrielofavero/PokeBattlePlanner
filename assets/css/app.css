@@ -830,6 +830,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .summary-party-pokemon img {
@@ -902,7 +903,7 @@ input::placeholder {
   height: 400px;
 }
 
-.summary-pokemon-preview-type {
+.summary-pokemon-preview-types {
   height: 40px;
   background: rgba(14, 41, 73, 0.5);
   border-bottom-left-radius: var(--default-border-radius);
@@ -911,6 +912,7 @@ input::placeholder {
   align-items: center;
   justify-content: flex-end;
   padding: 0px 8px;
+  gap: 8px;
 }
 
 .summary-info {

@@ -1,9 +1,12 @@
+import { setTypeBannersMini } from "../../support/banners.js";
 import { pauseLavaBackground, resumeLavaBackground } from "../../support/lava-background.js";
 import { selectItem } from "../../support/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../support/navigation/pages.js";
+import { getPokemonArtworkSrc, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../main/modules/calculators/pokemon.js";
 import { PARTY } from "../main/modules/party-management/party.js";
 import { loadMovesRadar } from "./modules/moves-radar.js";
 import { loadSummaryNavigationListeners } from "./support/navigation.js";
+import { loadMovesInfo, loadSummaryInfo } from "./support/top-menu.js";
 
 const INFO_ICON = {
     icon: document.querySelector('.summary-icon.info'),
@@ -32,8 +35,8 @@ function loadSummaryListeners() {
         icon.icon.addEventListener('click', icon.action);
     }
 
-    for (const summaryPokemon of SUMMARY_PARTY_DIVS) {
-        summaryPokemon.addEventListener('click', () => loadPokemonSummary(summaryPokemon))
+    for (const partyPokemonDiv of SUMMARY_PARTY_DIVS) {
+        partyPokemonDiv.addEventListener('click', () => loadPokemonSummary(partyPokemonDiv))
     }
 }
 
@@ -43,8 +46,9 @@ export function openSummary(index = 0) {
     document.body.style.background = "linear-gradient(to top right, #015dba, #002c59)";
     document.getElementById('main').style.display = 'none';
     document.getElementById('summary').style.display = '';
-    const partyPokemon = SUMMARY_PARTY_DIVS[index];
-    loadPokemonSummary(partyPokemon);
+    const partyPokemonDiv = SUMMARY_PARTY_DIVS[index];
+    loadPartyImages();
+    loadPokemonSummary(partyPokemonDiv);
 }
 
 export function closeSummary() {
@@ -54,44 +58,58 @@ export function closeSummary() {
     setActivePage(PAGES.MAIN);
 }
 
-function loadSummaryData() {
+// Load Data
 
-}
+function loadPartyImages() {
+    for (const div of SUMMARY_PARTY_DIVS) {
+        const i = parseInt(div.getAttribute('party-number')) - 1;
+        const noPokemon = Object.keys(PARTY[i].pokemon).length === 0;
 
-// Menu Actions
-function loadTopMenuItem(index) {
-    for (let i = 0; i < TOP_MENU_ICONS.length; i++) {
-        const icon = TOP_MENU_ICONS[i];
-        if (i === index) {
-            icon.content.style.display = ''
-            icon.icon.classList.add('selected');
-        } else {
-            icon.content.style.display = 'none'
-            icon.icon.classList.remove('selected');
-        }
+        const img = div.querySelector('img');
+        img.src = noPokemon ? '' : getPokemonSpriteSrc(PARTY[i].pokemon);
+        img.alt = noPokemon ? '' : getPokemonSpriteAlt(PARTY[i].pokemon);
     }
 }
 
-function loadSummaryInfo() {
-    loadTopMenuItem(0);
+function loadPokemonSummary(partyPokemonDiv) {
+    const i = parseInt(partyPokemonDiv.getAttribute('party-number')) - 1;
+    loadPokemonSummaryByIndex(i);
 }
 
-function loadMovesInfo() {
-    loadTopMenuItem(1);
+export function loadPokemonSummaryByIndex(i) {
+    selectItem(i, SUMMARY_PARTY_DIVS);
+    loadSummaryData(i);
     loadMovesRadar();
 }
 
-// Party Actions
-export function loadPokemonSummary(summaryPokemon, direction) {
-    const currentIndex = parseInt(summaryPokemon.getAttribute('party-number')) - 1;
-    let newIndex = !direction ? currentIndex : direction == 'up' ? currentIndex - 1 : currentIndex + 1;
-    newIndex = getNextActionIndex(newIndex, PARTY.length);
+function loadSummaryData(index) {
+    const pokemon = PARTY[index].pokemon;
+    if (Object.keys(pokemon).length === 0) {
+        return;
+    }
+    loadPreviewData(pokemon);
+    loadSummaryInfoData(pokemon);
+}
 
-    selectItem(newIndex, SUMMARY_PARTY_DIVS);
+function loadPreviewData(pokemon) {
+    const previewImg = document.querySelector('.summary-pokemon-preview-pokemon img');
+    previewImg.src = getPokemonArtworkSrc(pokemon);
+    previewImg.alt = getPokemonSpriteAlt(pokemon);
 
-    console.log(PARTY[newIndex]);
-    loadSummaryData(newIndex);
-    loadMovesRadar();
+    document.querySelector('.summary-pokemon-preview-title .title').textContent = pokemon.title;
+    
+    const typeMini = document.querySelector('.summary-pokemon-preview-types');
+    setTypeBannersMini(typeMini, pokemon.types);
+}
+
+function loadSummaryInfoData(pokemon) {
+    const summaryInfo = document.querySelector('.summary-info');
+
+    getDescription('name').textContent = pokemon.title;
+
+    function getDescription(className) {
+        return summaryInfo.querySelector(`.${className}`).querySelector('.summary-info-row-description');
+    }
 }
 
 
