@@ -34,7 +34,7 @@ function loadPokemonPartiesListeners() {
         partyBox.addEventListener("click", () => {
             loadCurrentPokemon(partyBox);
             selectItem(CURRENT_PARTY_INDEX, PARTY_BOXES);
-            if (isPartyEmpty()) editPokemon()
+            if (isPartyEmpty()) goToEditPokemonPage()
             else openContextMenu(PARTY_BOXES[CURRENT_PARTY_INDEX]);
         });
     }

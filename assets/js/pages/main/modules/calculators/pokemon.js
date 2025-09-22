@@ -62,11 +62,13 @@ export function getPokemonImgContainer(pokemon) {
 }
 
 export function getPokemonSpriteSrc(pokemon) {
-    return `./assets/img/pokemons/sprites/${pokemon.hrefIcon}.png`
+    const pathFile = (pokemon.missingSprite && pokemon.missingArtwork) ? 'artworks/unknown' : pokemon.missingSprite ? `artworks/${pokemon.id}` : `sprites/${pokemon.id}`;
+    return `./assets/img/pokemons/${pathFile}.png`
 }
 
 export function getPokemonArtworkSrc(pokemon) {
-    return `./assets/img/pokemons/artworks/${String(pokemon.id).padStart(3, "0")}.png`
+    const file = pokemon.missingArtwork ? 'unknown' : pokemon.id;
+    return `./assets/img/pokemons/artworks/${file}.png`
 }
 
 export function getPokemonSpriteAlt(pokemon) {
