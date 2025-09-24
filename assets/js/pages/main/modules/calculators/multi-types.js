@@ -1,5 +1,5 @@
-import { MULTI_TYPES, TYPES } from "../../../../app.js";
-import { firstCharToUppercase } from "../../../../support/data.js";
+import { MULTI_TYPES } from "../../../../app.js";
+import { firstCharToUppercase, TYPES } from "../../../../support/data.js";
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../../support/search-bar.js";
 import { setPokemonImgContainers } from "./pokemon.js";
@@ -33,7 +33,7 @@ function searchBarAction(input, option) {
 
     suggestions.style.display = 'none';
 
-    if (!TYPES.includes(type)) {
+    if (!findTypeByName(type)) {
         SEARCH_TYPES[j - 1] = '';
         input.value = '';
         results.classList.add('hidden');
@@ -92,13 +92,6 @@ function getMultiTypeResult(types, pokemons) {
 }
 
 function buildTypeEffectiveness(rawData, pokemons) {
-    const map = rawData.reduce((acc, value, i) => {
-        const multiplier = String(value);
-        if (!acc[multiplier]) acc[multiplier] = [];
-        acc[multiplier].push(TYPES[i]);
-        return acc;
-    }, {});
-
     const from = {
         "4": map["4"] || [],
         "2": map["2"] || [],

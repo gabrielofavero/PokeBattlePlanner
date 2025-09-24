@@ -7,7 +7,7 @@ export function setTypeBannersWithoutLogo(target, types) {
     }
 
     for (const type of types) {
-        const div = getTypeBannerWithoutLogo(type.type.name);
+        const div = getTypeBannerWithoutLogo(type.name);
         target.append(div);
     }
 }
@@ -17,19 +17,19 @@ export function setTypeBannersMini(target, types) {
     let innerHTML = '';
     for (const type of types) {
         innerHTML += `
-        <div class="type-banner mini ${type}">
+        <div class="type-banner mini ${type.name}">
             <svg class="summary-type-icon">
-                <use href="#type-${type}-icon" />
+                <use href="#type-${type.name}-icon" />
             </svg>
         </div>`
     }
     target.innerHTML = innerHTML;
 }
 
-function getTypeBannerWithoutLogo(type) {
-    const classType = type == 'N/A' ? 'none' : type;
+function getTypeBannerWithoutLogo(typeName) {
+    const classType = typeName == 'N/A' ? 'none' : typeName;
     const div = document.createElement('div');
     div.classList.add('type-banner', classType);
-    div.textContent = type;
+    div.textContent = typeName;
     return div;
 }

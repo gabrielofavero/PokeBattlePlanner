@@ -1,5 +1,5 @@
 export var POKEMONS;
-var TYPES;
+export var TYPES;
 
 const BLOCKED_TYPES = ['stellar', 'unknown', 'shadow'];
 
@@ -75,15 +75,34 @@ export async function fetchFullPath(fullPath) {
 }
 
 export async function getPokemonData(pokemon) {
+    const start = new Date().getTime();
     const cachedData = localStorage.getItem(`pokemon-${pokemon.name}`);
     if (cachedData) {
         return JSON.parse(cachedData);
     }
     const pokemonData = await fetchFullPath(pokemon.url);
+    const end = new Date().getTime();
+    console.log(`Loaded data for ${pokemon.name} in ${(end - start) / 1000} seconds.`);
     localStorage.setItem(`pokemon-${pokemon.name}`, JSON.stringify(pokemonData));
     return pokemonData;
 }
 
+export function findTypeByName(typeName) {
+    return TYPES.find(t => t.name === typeName);
+}
+
+export async function getTypeData(type) {
+    const start = new Date().getTime();
+    const cachedData = localStorage.getItem(`type-${type.name}`);
+    if (cachedData) {
+        return JSON.parse(cachedData);
+    }
+    const typeData = await fetchFullPath(type.url);
+    const end = new Date().getTime();
+    console.log(`Loaded data for type ${type.name} in ${(end - start) / 1000} seconds.`);
+    localStorage.setItem(`type-${type.name}`, JSON.stringify(typeData));
+    return typeData;
+}
 
 // Objects
 export async function getJson(path) {

@@ -1,6 +1,5 @@
-import { SINGLE_TYPES, TYPES } from "../../../../app.js";
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
-import { fetchFullPath, firstCharToUppercase } from "../../../../support/data.js";
+import { fetchFullPath, firstCharToUppercase, findTypeByName, getTypeData, TYPES } from "../../../../support/data.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
 
 export const SINGLE_TYPE_RESULT = {}
@@ -14,40 +13,40 @@ export function getSingleTypeSearchBar() {
     }
 }
 
-async function searchBarAction(input, option) {
-    const type = option.toLowerCase();
+async function searchBarAction(input, type) {
     const content = document.getElementById('single-type-search-content');
     const searchBox = content.querySelector(".button-box");
     const results = content.querySelector('.search-result');
     const suggestions = content.querySelector(".search-suggestions");
 
-    input.value = firstCharToUppercase(option);
-    suggestions.style.display = 'none';
-
-    if (!TYPES.includes(type)) {
+    if (!type || !findTypeByName(type.name)) {
         input.value = '';
         results.classList.add('hidden');
         return;
     }
 
+    input.value = firstCharToUppercase(type.name);
+    suggestions.style.display = 'none';
+
     addTypeToSearchBox(searchBox, type);
-    loadSingleTypeResults(type)
+    await loadSingleTypeResults(type)
 
     results.classList.remove('hidden');
-    console.log(await fetchFullPath(`https://pokeapi.co/api/v2/type/${type}`));
 }
 
-function loadSingleTypeResults(type) {
-    const result = getSingleTypeResult(type);
+async function loadSingleTypeResults(type) {
+    const typeData = await getTypeData(type);
+    const scores = getSingleTypeScores(typeData);
+
     const data = [
-        result.from?.['2'],
-        result.to?.['0.5'],
-        result.from?.['0.5'],
-        result.to?.['2'],
-        result.cant_damage,
-        result.immune_to,
-        result.battle_with,
-        result.dont_battle_with
+        typeData.damage_relations.double_damage_from,
+        typeData.damage_relations.half_damage_to,
+        typeData.damage_relations.half_damage_from,
+        typeData.damage_relations.double_damage_to,
+        typeData.damage_relations.no_damage_to,
+        typeData.damage_relations.no_damage_from,
+        scores.best.map(s => s.type),
+        scores.worst.map(s => s.type)
     ]
 
     for (let i = 0; i < data.length; i++) {
@@ -56,20 +55,48 @@ function loadSingleTypeResults(type) {
     }
 }
 
-export function getSingleTypeResult(type) {
-    const result = SINGLE_TYPES?.[type];
-    return {
-        from: {
-            "2": result?.to?.['2'],
-            "0.5": result?.from?.['0.5']
-        },
-        to: {
-            "0.5": result?.to?.['0.5'],
-            "2": result?.from?.['2'],
-        },
-        cant_damage: result?.cant_damage,
-        immune_to: result?.immune_to,
-        battle_with: result?.worst_against,
-        dont_battle_with: result?.best_against
+export function getSingleTypeScores(typeData) {
+    const relations = typeData.damage_relations;
+
+    function getTypeScore(typeName) {
+        let attackMultiplier = 1;
+        if (relations.double_damage_from.some(t => t.name === typeName)) attackMultiplier = 2;
+        else if (relations.half_damage_from.some(t => t.name === typeName)) attackMultiplier = 0.5;
+        else if (relations.no_damage_from.some(t => t.name === typeName)) attackMultiplier = 0;
+
+        let defenseMultiplier = 1;
+        if (relations.double_damage_to.some(t => t.name === typeName)) defenseMultiplier = 2;
+        else if (relations.half_damage_to.some(t => t.name === typeName)) defenseMultiplier = 0.5;
+        else if (relations.no_damage_to.some(t => t.name === typeName)) defenseMultiplier = 0;
+
+        return attackMultiplier * (defenseMultiplier === 0 ? Infinity : 1 / defenseMultiplier);
     }
+
+    function getTopN(arr, n) {
+        const unique = [];
+        for (const item of arr) {
+            if (!unique.some(u => u.score === item.score)) {
+                unique.push(item);
+            }
+            if (unique.length >= n) break;
+        }
+        return unique;
+    }
+
+    const result = TYPES.map(type => ({
+        type: type,
+        score: getTypeScore(type.name)
+    }));
+
+    result.sort((a, b) => a.score - b.score);
+
+    const filtered = result.filter(r => r.score !== 1);
+
+    const worstCandidates = filtered.filter(r => r.score < 1);
+    const bestCandidates = filtered.filter(r => r.score > 1);
+
+    const worst = getTopN(worstCandidates, 3);
+    const best = getTopN([...bestCandidates].reverse(), 3);
+
+    return { best, worst };
 }

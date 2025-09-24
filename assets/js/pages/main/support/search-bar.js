@@ -1,6 +1,6 @@
-import { MOVES, TYPES } from "../../../app.js";
+import { MOVES } from "../../../app.js";
 import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
-import { POKEMONS, decodeTitle, firstCharToUppercase } from "../../../support/data.js";
+import { POKEMONS, TYPES, decodeTitle, firstCharToUppercase } from "../../../support/data.js";
 import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/calculators/multi-types.js";
 import { getPokemonSearchBar, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../modules/calculators/pokemon.js";
 import { getSingleTypeSearchBar } from "../modules/calculators/single-type.js";
@@ -106,10 +106,10 @@ export function getPokemonOption(pokemon) {
 
 export function getTypeOptions(value) {
     const options = TYPES.filter(type =>
-        type.toLowerCase().includes(value.toLowerCase())
+        type.name.toLowerCase().includes(value.toLowerCase())
     );
 
-    options.sort((a, b) => a.localeCompare(b));
+    options.sort((a, b) => a.name.localeCompare(b.name));
     return options;
 }
 
@@ -122,7 +122,8 @@ export function getFilteredTypeOptions(value, exclude) {
 export function getTypeOption(type) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item type';
-    item.innerHTML = `<svg class="icon ${type}"><use href="#type-${type}-icon" /></svg> ${firstCharToUppercase(type)}`;
+    const href = document.getElementById(`type-${type.name}-icon`) ? `#type-${type.name}-icon` : '#pokeball-icon';
+    item.innerHTML = `<svg class="icon ${type.name}"><use href="${href}" /></svg> ${firstCharToUppercase(type.name)}`;
     return item;
 }
 
@@ -175,7 +176,7 @@ export function clearSearchBox(searchBox) {
     searchBox.classList.remove('pokemon')
     searchBox.classList.remove('type')
     for (const type of TYPES) {
-        searchBox.classList.remove(type);
+        searchBox.classList.remove(type.name);
     }
 
     if (img) {
@@ -213,9 +214,9 @@ export function addPokemonToSearchBox(searchBox, pokemonData) {
 export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
-    input.value = type;
+    input.value = type.name;
     input.classList.add('title');
-    icon.setAttribute('class', `icon type ${type}`);
-    icon.innerHTML = `<use href="#type-${type}-icon"/>`;
-    searchBox.classList = `button-box type ${type}`;
+    icon.setAttribute('class', `icon type ${type.name}`);
+    icon.innerHTML = `<use href="#type-${type.name}-icon"/>`;
+    searchBox.classList = `button-box type ${type.name}`;
 }
