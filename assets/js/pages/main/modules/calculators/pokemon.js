@@ -1,9 +1,5 @@
-import { POKEMONS } from "../../../../app.js";
-import { PARTY } from "../party-management/party.js";
+import { POKEMONS, decodeTitle, getPokemonData } from "../../../../support/data.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
-import { loadMultiTypeResults } from "./multi-types.js";
-
-var POKEMON;
 
 export const RATINGS = {
     "very-strong": "Very Strong",
@@ -30,40 +26,49 @@ export function getPokemonSearchBar() {
     }
 }
 
-function searchBarAction(input, option) {
-    POKEMON = option;
-    input.value = POKEMON?.title || '';
-    const title = input.value;
-
-    if (!POKEMON || title != POKEMON.title) {
-        POKEMON = findPokemonByTitle(title);
-        input.value = POKEMON.title
+async function searchBarAction(input, pokemon) {
+    if (!pokemon || Object.keys(pokemon).length === 0) {
+        pokemon = findPokemonByTitle(title);
     }
 
     const content = document.getElementById('pokemon-search-content');
-    const searchBox = content.querySelector(".button-box");
     const results = content.querySelector('.search-result');
+
+    if (!pokemon || Object.keys(pokemon).length === 0) {
+        results.classList.add('hidden');
+    }
+
+    input.value = pokemon?.name ? decodeTitle(pokemon.name) : '';
+    const title = input.value;
+
+
+    const searchBox = content.querySelector(".button-box");
     const suggestions = content.querySelector(".search-suggestions");
 
     suggestions.style.display = 'none';
 
-    if (POKEMON == null) {
-        results.classList.add('hidden');
-        return;
-    }
+    const pokemonData = await getPokemonData(pokemon);
 
-    addPokemonToSearchBox(searchBox, POKEMON)
-    loadMultiTypeResults(POKEMON.types, 'pokemon-result', PARTY);
+    addPokemonToSearchBox(searchBox, pokemonData)
+    // loadMultiTypeResults(pokemon.types, 'pokemon-result', PARTY);
+
     results.classList.remove('hidden');
+}
+
+export function getPokemonTitle(pokemon) {
+    return decodeTitle(pokemon.name);
 }
 
 export function getPokemonImgContainer(pokemon) {
     return `<div class="img-container"><img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div>`
 }
 
-export function getPokemonSpriteSrc(pokemon) {
-    const pathFile = (pokemon.missingSprite && pokemon.missingArtwork) ? 'artworks/unknown' : pokemon.missingSprite ? `artworks/${pokemon.id}` : `sprites/${pokemon.id}`;
-    return `./assets/img/pokemons/${pathFile}.png`
+export function getPokemonShowdownSrc(pokemonData) {
+    return pokemonData.sprites.other.showdown.front_default || getPokemonSpriteSrc(pokemonData);
+}
+
+export function getPokemonSpriteSrc(pokemonData) {
+    return pokemonData.sprites.front_default;
 }
 
 export function getPokemonArtworkSrc(pokemon) {
@@ -71,12 +76,12 @@ export function getPokemonArtworkSrc(pokemon) {
     return `./assets/img/pokemons/artworks/${file}.png`
 }
 
-export function getPokemonSpriteAlt(pokemon) {
-    return `${pokemon.title}${pokemon.subtitle ? ' : ' + pokemon.subtitle : ''}`;
+export function getPokemonSpriteAlt(pokemonData) {
+    return decodeTitle(pokemonData.name);
 }
 
 function findPokemonByTitle(title) {
-    return POKEMONS.find(pokemon => pokemon.title.toLowerCase() === title.toLowerCase()) || null;
+    return POKEMONS.find(pokemon => decodeTitle(pokemon.name).toLowerCase() === title.toLowerCase()) || null;
 }
 
 export function setPokemonImgContainers(target, partyPokemons) {

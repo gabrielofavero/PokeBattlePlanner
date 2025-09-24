@@ -35,9 +35,6 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 
 ### Pending
 
-- ⚔️ **E004:** Implement Pokémon Type Calculator
-  - 🏆 **F009:** [E004] Create elements for party view
-  - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
 - 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
 - 🏆 **F012:** Add full keyboard support
 - 🏆 **F013:** Add full controller support
@@ -46,6 +43,7 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - ⚔️ **E005:** Add mobile responsiveness
 - ⚔️ **E006:** Add theme support + Legends ZA theme
 - 📈 **I004:** Animations overhaul
+- ⚔️ **E006:** Fetch data via PokéAPI instead of local data
 
 ### Done
 
@@ -65,3 +63,6 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
   - 🏆 **F007:** [E004] Implement type calculator
   - 🏆 **F008:** [E004] Implement Pokémon + Moves registration
 - 🏆 **F016:** Trim sprites + add alt pokemon image
+- ⚔️ **E004:** Implement Pokémon Type Calculator
+  - 🏆 **F009:** [E004] Create elements for party view
+  - 🏆 **F010:** [E004] Implement Pokémon + Move calculator

@@ -170,7 +170,7 @@ canvas {
   background: rgba(255, 204, 0, 0.2)
 }
 
-/* Button Box */
+/* Button Box & Select */
 
 .button-box {
   padding: 0.5em 1em;
@@ -185,6 +185,19 @@ canvas {
   color: white;
   font-family: "Roboto", sans-serif;
   font-size: 24px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  cursor: pointer;
+}
+
+.select .title {
+  flex: 1;
+  text-align: center;
 }
 
 .button-box {
@@ -455,7 +468,7 @@ input::placeholder {
   padding: 8px;
   cursor: pointer;
   transition: background 0.2s;
-  height: 76px;
+  height: 30px;
 }
 
 .search-suggestion-item:hover {
@@ -471,6 +484,11 @@ input::placeholder {
   align-items: center;
   justify-content: center;
   width: 80px;
+}
+
+.search-suggestion-item.pokemon {
+  text-align: center;
+  justify-content: center;
 }
 
 .search-suggestion-item.pokemon img,

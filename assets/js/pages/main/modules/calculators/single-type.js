@@ -1,6 +1,6 @@
 import { SINGLE_TYPES, TYPES } from "../../../../app.js";
-import { firstCharToUppercase } from "../../../../support/data.js";
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
+import { fetchFullPath, firstCharToUppercase } from "../../../../support/data.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
 
 export const SINGLE_TYPE_RESULT = {}
@@ -14,7 +14,7 @@ export function getSingleTypeSearchBar() {
     }
 }
 
-function searchBarAction(input, option) {
+async function searchBarAction(input, option) {
     const type = option.toLowerCase();
     const content = document.getElementById('single-type-search-content');
     const searchBox = content.querySelector(".button-box");
@@ -34,6 +34,7 @@ function searchBarAction(input, option) {
     loadSingleTypeResults(type)
 
     results.classList.remove('hidden');
+    console.log(await fetchFullPath(`https://pokeapi.co/api/v2/type/${type}`));
 }
 
 function loadSingleTypeResults(type) {

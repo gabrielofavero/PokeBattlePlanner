@@ -7,7 +7,7 @@ export function setTypeBannersWithoutLogo(target, types) {
     }
 
     for (const type of types) {
-        const div = getTypeBannerWithoutLogo(type);
+        const div = getTypeBannerWithoutLogo(type.type.name);
         target.append(div);
     }
 }

@@ -1,8 +1,8 @@
-import { MOVES, POKEMONS, TYPES } from "../../../app.js";
-import { firstCharToUppercase } from "../../../support/data.js";
+import { MOVES, TYPES } from "../../../app.js";
 import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
+import { POKEMONS, decodeTitle, firstCharToUppercase } from "../../../support/data.js";
 import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/calculators/multi-types.js";
-import { getPokemonImgContainer, getPokemonSearchBar, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../modules/calculators/pokemon.js";
+import { getPokemonSearchBar, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../modules/calculators/pokemon.js";
 import { getSingleTypeSearchBar } from "../modules/calculators/single-type.js";
 import { CURRENT_MOVES, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
 
@@ -26,7 +26,7 @@ export function loadSearchBars() {
 }
 
 function loadSuggestions(searchBar, j = 1) {
-    const searchBox = searchBar.content.getElementsByClassName("button-box")[j - 1];
+    const searchBox = searchBar.content.querySelectorAll(".button-box.search-bar")[j - 1];
     const input = searchBox.querySelector('input');
     const suggestions = searchBar.content.getElementsByClassName("search-suggestions")[j - 1];
     const results = searchBar.content.querySelector('.search-result');
@@ -59,10 +59,10 @@ function loadSuggestions(searchBar, j = 1) {
     }
 
     // Hide when clicking outside
-    document.addEventListener("click", function hideOnClickOutside(e) {
+    document.addEventListener("click", function hideOnClickOutsideSearchBar(e) {
         if (!input.contains(e.target) && !suggestions.contains(e.target)) {
             suggestions.style.display = 'none';
-            document.removeEventListener("click", hideOnClickOutside); // cleanup
+            document.removeEventListener("click", hideOnClickOutsideSearchBar); // cleanup
         }
     });
 }
@@ -73,32 +73,34 @@ function getInput(searchBar, index = 0) {
 }
 
 export function getPokemonOptions(value) {
-    const options = POKEMONS.filter(opt => {
-        return opt.title.toLowerCase().includes(value) || opt.subtitle.toLowerCase().includes(value);
-    });
+    const search = value.toLowerCase();
+
+    let options = POKEMONS.filter(pokemon =>
+        decodeTitle(pokemon.name).toLowerCase().includes(search)
+    );
 
     options.sort((a, b) => {
-        const aTitle = a.title.toLowerCase();
-        const bTitle = b.title.toLowerCase();
+        const aName = decodeTitle(a.name).toLowerCase();
+        const bName = decodeTitle(b.name).toLowerCase();
 
-        if (aTitle === value) return -1;
-        if (bTitle === value) return 1;
+        if (aName === search && bName !== search) return -1;
+        if (bName === search && aName !== search) return 1;
 
-        const aSub = a.subtitle.toLowerCase();
-        const bSub = b.subtitle.toLowerCase();
-        if (aSub === value) return -1;
-        if (bSub === value) return 1;
+        const aStarts = aName.startsWith(search);
+        const bStarts = bName.startsWith(search);
+        if (aStarts && !bStarts) return -1;
+        if (bStarts && !aStarts) return 1;
 
-        return 0;
+        return aName.localeCompare(bName);
     });
+
     return options;
 }
 
 export function getPokemonOption(pokemon) {
     const item = document.createElement('div');
-    const titleBox = `<div class="flex-column"><span>${pokemon.title}</span><span class="pokemon-variant">${pokemon.subtitle}</span></div>`;
     item.className = 'search-suggestion-item pokemon';
-    item.innerHTML = `${getPokemonImgContainer(pokemon)} ${titleBox}`;
+    item.textContent = decodeTitle(pokemon.name);
     return item;
 }
 
@@ -190,25 +192,21 @@ export function clearSearchBox(searchBox) {
     }
 }
 
-export function addPokemonToSearchBox(searchBox, pokemon) {
+export function addPokemonToSearchBox(searchBox, pokemonData) {
     const icon = searchBox.querySelector('.icon');
     const img = searchBox.querySelector('img');
 
-    const subtitle = searchBox.querySelector('.pokemon-variant');
     const types = searchBox.querySelector('.result-types');
 
     icon.style.display = 'none';
 
-    img.src = getPokemonSpriteSrc(pokemon);
-    img.alt = getPokemonSpriteAlt(pokemon);
+    img.src = getPokemonShowdownSrc(pokemonData);
+    img.alt = getPokemonSpriteAlt(pokemonData);
     img.style.display = ''
 
     searchBox.classList = `button-box pokemon`;
 
-    subtitle.textContent = pokemon.subtitle;
-    subtitle.style.display = '';
-
-    setTypeBannersWithoutLogo(types, pokemon.types);
+    setTypeBannersWithoutLogo(types, pokemonData.types);
     types.style.display = '';
 }
 
@@ -220,11 +218,4 @@ export function addTypeToSearchBox(searchBox, type) {
     icon.setAttribute('class', `icon type ${type}`);
     icon.innerHTML = `<use href="#type-${type}-icon"/>`;
     searchBox.classList = `button-box type ${type}`;
-}
-
-export function onChangeWithResults(searchBar) {
-    const results = searchBar.content.querySelector('.search-result');
-    if (!results.classList.contains('hidden')) {
-        return;
-    }
 }

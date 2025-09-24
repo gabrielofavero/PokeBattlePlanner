@@ -1,3 +1,6 @@
+import { loadMovesRadar } from "../modules/moves-radar.js";
+import { TOP_MENU_ICONS } from "../summary.js";
+
 export function loadSummaryInfo() {
     loadTopMenuItem(0);
 }
