@@ -1,8 +1,9 @@
 import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
-import { POKEMONS, TYPES, getMoves, getName, getPokemonData } from "../../../support/data.js";
-import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/calculators/multi-types.js";
-import { getPokemonSearchBar, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../modules/calculators/pokemon.js";
-import { getSingleTypeSearchBar } from "../modules/calculators/single-type.js";
+import { POKEMONS, TYPES, getObjectName } from "../../../support/data/data.js";
+import { getPokemonData, getPokemonMoves, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../../../support/data/pokemon.js";
+import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/searches/multi-type-search.js";
+import { getPokemonSearchBar } from "../modules/searches/pokemon-search.js";
+import { getSingleTypeSearchBar } from "../modules/searches/single-type-search.js";
 import { CURRENT_MOVES, CURRENT_POKEMON, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
 
 const SINGLE_SEARCH_BARS = [getPokemonSearchBar(), getSingleTypeSearchBar(), getPartySearchBar(), ...getPartyMovesSearchBar()];
@@ -75,12 +76,12 @@ export function getPokemonOptions(value) {
     const search = value.toLowerCase();
 
     let options = POKEMONS.filter(pokemon =>
-        getName(pokemon).toLowerCase().includes(search)
+        getObjectName(pokemon).toLowerCase().includes(search)
     );
 
     options.sort((a, b) => {
-        const aName = getName(a).toLowerCase();
-        const bName = getName(b).toLowerCase();
+        const aName = getObjectName(a).toLowerCase();
+        const bName = getObjectName(b).toLowerCase();
 
         if (aName === search && bName !== search) return -1;
         if (bName === search && aName !== search) return 1;
@@ -99,22 +100,22 @@ export function getPokemonOptions(value) {
 export function getPokemonOption(pokemon) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item pokemon';
-    item.textContent = getName(pokemon);
+    item.textContent = getObjectName(pokemon);
     return item;
 }
 
 export function getTypeOptions(value) {
     const options = TYPES.filter(type =>
-        getName(type).toLowerCase().includes(value.toLowerCase())
+        getObjectName(type).toLowerCase().includes(value.toLowerCase())
     );
 
-    options.sort((a, b) => getName(a).localeCompare(getName(b)));
+    options.sort((a, b) => getObjectName(a).localeCompare(getObjectName(b)));
     return options;
 }
 
 export function getFilteredTypeOptions(value, excludeName) {
     return getTypeOptions(value).filter(type =>
-        getName(type).toLowerCase() !== (excludeName?.toLowerCase() ?? "")
+        getObjectName(type).toLowerCase() !== (excludeName?.toLowerCase() ?? "")
     );
 }
 
@@ -124,28 +125,29 @@ export async function getMoveOptions(value) {
     }
 
     const pokemonData = await getPokemonData(CURRENT_POKEMON);
-    const options = getMoves(pokemonData).filter(pokeMove => {
+    const options = getPokemonMoves(pokemonData).filter(pokeMove => {
         return (
-            getName(pokeMove).toLowerCase().includes(value.toLowerCase())
-            && !CURRENT_MOVES.map(e => getName(e).toLowerCase()).includes(getName(pokeMove).toLowerCase())
+            getObjectName(pokeMove).toLowerCase().includes(value.toLowerCase())
+            && !CURRENT_MOVES.map(e => getObjectName(e).toLowerCase()).includes(getObjectName(pokeMove).toLowerCase())
         );
     });
 
-    options.sort((a, b) => getName(a).localeCompare(getName(b)));
+    options.sort((a, b) => getObjectName(a).localeCompare(getObjectName(b)));
     return options;
 }
 
 export function getTypeOption(type) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item type';
-    item.textContent = getName(type);
+    const href = document.getElementById(`type-${type.name}-icon`) ? `#type-${type.name}-icon` : '#pokeball-icon';
+    item.innerHTML = `<svg class="icon ${type.name}"><use href="${href}" /></svg> ${getObjectName(type)}`;
     return item;
 }
 
 export function getMoveOption(move) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item type';
-    item.textContent = getName(move);
+    item.textContent = getObjectName(move);
     return item;
 }
 
@@ -215,10 +217,10 @@ export function addPokemonToSearchBox(searchBox, pokemonData) {
 export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
-    const name = getName(type);
+    const name = type.name;
     input.value = name;
     input.classList.add('title');
     icon.setAttribute('class', `icon type ${name}`);
     icon.innerHTML = `<use href="#type-${name}-icon"/>`;
-    searchBox.classList = `button-box type ${name}`;
+    searchBox.classList = `button-box search-bar type ${name}`;
 }

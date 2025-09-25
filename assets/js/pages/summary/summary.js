@@ -1,9 +1,8 @@
 import { setTypeBannersMini } from "../../support/banners.js";
-import { getPokemonData } from "../../support/data.js";
+import { getPokemonArtworkSrc, getPokemonData, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../../support/data/pokemon.js";
 import { pauseLavaBackground, resumeLavaBackground } from "../../support/lava-background.js";
 import { selectItem } from "../../support/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../support/navigation/pages.js";
-import { getPokemonArtworkSrc, getPokemonSpriteAlt, getPokemonSpriteSrc } from "../main/modules/calculators/pokemon.js";
 import { PARTY } from "../main/modules/party-management/party.js";
 import { loadMovesRadar } from "./modules/moves-radar.js";
 import { loadSummaryNavigationListeners } from "./support/navigation.js";

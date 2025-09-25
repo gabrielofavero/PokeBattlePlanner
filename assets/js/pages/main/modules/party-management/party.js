@@ -1,11 +1,12 @@
-import { decodeTitle, getMoveData, getName, getPokemonData } from "../../../../support/data.js";
+import { decodeTitle, getObjectName } from "../../../../support/data/data.js";
 import { selectItem } from "../../../../support/navigation/navigation.js";
 import { openSummary } from "../../../summary/summary.js";
 import { goToMainPage } from "../../main.js";
 import { closeContextMenu, openContextMenu } from "../../support/context-menu.js";
 import { getMoveOption, getMoveOptions, getTypeOption, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
-import { RATINGS, getPokemonSpriteSrc } from "../calculators/pokemon.js";
-import { backToMain, deletePartyInputs, goToEditPokemonPage } from "../../../edit-pokemon/edit-pokemon.js";
+import { RATINGS } from "../searches/pokemon-search.js";
+import { backToMain, deletePartyInputs, goToEditPokemonPage, setParty } from "../../../edit-pokemon/edit-pokemon.js";
+import { getPokemonData, getPokemonMoveData, getPokemonSpriteSrc } from "../../../../support/data/pokemon.js";
 
 export var PARTY = [];
 export var CURRENT_PARTY_INDEX = -1;
@@ -71,7 +72,7 @@ export async function loadPartyPokemonsHTML() {
         partyText.style.display = isEmpty ? 'none' : '';
         partyImg.style.display = isEmpty ? 'none' : '';
 
-        partyName.textContent = isEmpty ? '' : getName(PARTY[i].pokemon);
+        partyName.textContent = isEmpty ? '' : getObjectName(PARTY[i].pokemon);
 
         for (const rating in RATINGS) {
             partyPill.classList.remove(rating);
@@ -125,12 +126,6 @@ function getSearchPartyMove(j) {
     }
 }
 
-// Setters
-export function setParty(index, pokemon = {}, moves = []) {
-    PARTY[index] = { pokemon, moves };
-    localStorage.setItem('party', JSON.stringify(PARTY));
-}
-
 function initParty() {
     for (let i = 1; i <= 6; i++) {
         PARTY.push({
@@ -142,7 +137,7 @@ function initParty() {
 
 function searchBarPokemonAction(input, pokemon) {
     CURRENT_POKEMON = pokemon || {};
-    input.value = getName(CURRENT_POKEMON);
+    input.value = getObjectName(CURRENT_POKEMON);
 
     if (Object.keys(CURRENT_POKEMON).length === 0) {
         return
@@ -159,11 +154,11 @@ function searchBarPokemonAction(input, pokemon) {
 
 function searchBarMoveAction(input, move) {
     const j = input.getAttribute('data-move');
-    CURRENT_MOVES[j - 1] = move;
-    input.value = getName(CURRENT_MOVES[j - 1]);
+    CURRENT_MOVES[j - 1] = move.move;
+    input.value = getObjectName(CURRENT_MOVES[j - 1]);
 
     // Pre-cache data
-    getMoveData(CURRENT_MOVES[j - 1]);
+    getPokemonMoveData(CURRENT_MOVES[j - 1]);
 }
 
 export function clearParty() {

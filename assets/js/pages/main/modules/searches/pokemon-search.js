@@ -1,4 +1,6 @@
-import { POKEMONS, decodeTitle, getName, getPokemonData } from "../../../../support/data.js";
+import { POKEMONS, decodeTitle, getObjectName } from "../../../../support/data/data.js";
+import { findPokemonByTitle, getPokemonData } from "../../../../support/data/pokemon.js";
+import { getCombinedTypes } from "../../../../support/data/type.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 
 export const RATINGS = {
@@ -38,7 +40,7 @@ async function searchBarAction(input, pokemon) {
         results.classList.add('hidden');
     }
 
-    input.value = getName(pokemon);
+    input.value = getObjectName(pokemon);
     const title = input.value;
 
 
@@ -50,43 +52,27 @@ async function searchBarAction(input, pokemon) {
     const pokemonData = await getPokemonData(pokemon);
 
     addPokemonToSearchBox(searchBox, pokemonData)
-    // loadMultiTypeResults(pokemon.types, 'pokemon-result', PARTY);
+    loadPokemonResult(pokemon.types, 'pokemon-result', PARTY);
 
     results.classList.remove('hidden');
 }
 
-export function getPokemonTitle(pokemon) {
-    return decodeTitle(pokemon);
-}
+async function loadPokemonResult(types) {
+    const combinedTypes = await getCombinedTypes(types[0], types[1]);
 
-export function getPokemonImgContainer(pokemon) {
-    return `<div class="img-container"><img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div>`
-}
+    const data = [
+        combinedTypes['4'],
+        combinedTypes['2'],
+        combinedTypes['0.5'],
+        combinedTypes['0.25'],
+    ];
 
-export function getPokemonShowdownSrc(pokemonData) {
-    return pokemonData.sprites.other.showdown.front_default || getPokemonSpriteSrc(pokemonData);
-}
-
-export function getPokemonSpriteSrc(pokemonData) {
-    return pokemonData.sprites.front_default;
-}
-
-export function getPokemonArtworkSrc(pokemon) {
-    const file = pokemon.missingArtwork ? 'unknown' : pokemon.id;
-    return `./assets/img/pokemons/artworks/${file}.png`
-}
-
-export function getPokemonSpriteAlt(pokemonData) {
-    return getName(pokemonData);
-}
-
-function findPokemonByTitle(title) {
-    return POKEMONS.find(pokemon => getName(pokemon).toLowerCase() === title.toLowerCase()) || null;
-}
-
-export function setPokemonImgContainers(target, partyPokemons) {
-    target.innerHTML = '';
-    for (const partyPokemon of partyPokemons) {
-        target.innerHTML += getPokemonImgContainer(partyPokemon.pokemon);
+    for (let i = 0; i < data.length; i++) {
+        const target = document.getElementById(`pokemon-result-${i + 1}`);
+        if (data[i]?.isPokemon) {
+            setPokemonImgContainers(target, data[i].result);
+        } else {
+            setTypeBannersWithoutLogo(target, data[i]?.result || data[i]);
+        }
     }
 }
