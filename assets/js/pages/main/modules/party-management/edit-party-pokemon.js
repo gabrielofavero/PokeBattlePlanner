@@ -36,13 +36,13 @@ function loadPartyData() {
     for (let j = 1; j <= 4; j++) {
         const moveContent = document.getElementById(`party-move-${j}-content`);
         const move = PARTY[CURRENT_PARTY_INDEX]?.moves[j - 1];
-        moveContent.querySelector('input').value = move?.name || '';
+        moveContent.querySelector('input').value = getName(move) || '';
     }
 }
 
-export function savePokemon() {
+export async function savePokemon() {
     setParty(CURRENT_PARTY_INDEX, CURRENT_POKEMON, CURRENT_MOVES);
-    loadPartyPokemonsHTML();
+    await loadPartyPokemonsHTML();
     backToMain();
 }
 

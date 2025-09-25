@@ -208,10 +208,6 @@ canvas {
   width: 500px;
 }
 
-.button-box.large input {
-  text-align: start;
-}
-
 .button-box.small {
   width: 222px;
 }
@@ -465,18 +461,15 @@ input::placeholder {
 .search-suggestion-item {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 8px;
   cursor: pointer;
   transition: background 0.2s;
-  height: 30px;
+  height: 50px;
 }
 
 .search-suggestion-item:hover {
   background: rgba(238, 209, 43, 0.1)
-}
-
-.search-suggestion-item.type {
-  height: 50px;
 }
 
 .img-container {
@@ -486,9 +479,8 @@ input::placeholder {
   width: 80px;
 }
 
-.search-suggestion-item.pokemon {
-  text-align: center;
-  justify-content: center;
+.img-container img {
+  max-height: 100px;
 }
 
 .search-suggestion-item.pokemon img,

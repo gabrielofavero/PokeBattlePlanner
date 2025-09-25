@@ -1,4 +1,4 @@
-import { POKEMONS, decodeTitle, getPokemonData } from "../../../../support/data.js";
+import { POKEMONS, decodeTitle, getName, getPokemonData } from "../../../../support/data.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 
 export const RATINGS = {
@@ -38,7 +38,7 @@ async function searchBarAction(input, pokemon) {
         results.classList.add('hidden');
     }
 
-    input.value = pokemon?.name ? decodeTitle(pokemon.name) : '';
+    input.value = getName(pokemon);
     const title = input.value;
 
 
@@ -56,7 +56,7 @@ async function searchBarAction(input, pokemon) {
 }
 
 export function getPokemonTitle(pokemon) {
-    return decodeTitle(pokemon.name);
+    return decodeTitle(pokemon);
 }
 
 export function getPokemonImgContainer(pokemon) {
@@ -64,11 +64,11 @@ export function getPokemonImgContainer(pokemon) {
 }
 
 export function getPokemonShowdownSrc(pokemonData) {
-    return pokemonData.sprites.other.showdown.front_default || getPokemonSpriteSrc(pokemonData);
+    return pokemonData.sprites.other.showdown.front_default || pokemonData.sprites.front_default;;
 }
 
 export function getPokemonSpriteSrc(pokemonData) {
-    return pokemonData.sprites.front_default;
+    return pokemonData.sprites.other.home.front_default
 }
 
 export function getPokemonArtworkSrc(pokemon) {
@@ -77,11 +77,11 @@ export function getPokemonArtworkSrc(pokemon) {
 }
 
 export function getPokemonSpriteAlt(pokemonData) {
-    return decodeTitle(pokemonData.name);
+    return getName(pokemonData);
 }
 
 function findPokemonByTitle(title) {
-    return POKEMONS.find(pokemon => decodeTitle(pokemon.name).toLowerCase() === title.toLowerCase()) || null;
+    return POKEMONS.find(pokemon => getName(pokemon).toLowerCase() === title.toLowerCase()) || null;
 }
 
 export function setPokemonImgContainers(target, partyPokemons) {

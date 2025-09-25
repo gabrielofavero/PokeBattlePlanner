@@ -1,10 +1,9 @@
-import { MOVES } from "../../../app.js";
 import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
-import { POKEMONS, TYPES, decodeTitle, firstCharToUppercase } from "../../../support/data.js";
+import { POKEMONS, TYPES, getName, getPokemonData } from "../../../support/data.js";
 import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/calculators/multi-types.js";
 import { getPokemonSearchBar, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../modules/calculators/pokemon.js";
 import { getSingleTypeSearchBar } from "../modules/calculators/single-type.js";
-import { CURRENT_MOVES, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
+import { CURRENT_MOVES, CURRENT_POKEMON, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
 
 const SINGLE_SEARCH_BARS = [getPokemonSearchBar(), getSingleTypeSearchBar(), getPartySearchBar(), ...getPartyMovesSearchBar()];
 const MULTI_SEARCH_BARS = [[SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2]]
@@ -25,7 +24,7 @@ export function loadSearchBars() {
     }
 }
 
-function loadSuggestions(searchBar, j = 1) {
+async function loadSuggestions(searchBar, j = 1) {
     const searchBox = searchBar.content.querySelectorAll(".button-box.search-bar")[j - 1];
     const input = searchBox.querySelector('input');
     const suggestions = searchBar.content.getElementsByClassName("search-suggestions")[j - 1];
@@ -40,7 +39,7 @@ function loadSuggestions(searchBar, j = 1) {
     clearSearchBox(searchBox);
 
     if (value.length >= 2) {
-        const options = searchBar.options(value);
+        const options = await searchBar.options(value);
         if (options.length > 0) {
             options.forEach(option => {
                 const div = searchBar.option(option);
@@ -76,12 +75,12 @@ export function getPokemonOptions(value) {
     const search = value.toLowerCase();
 
     let options = POKEMONS.filter(pokemon =>
-        decodeTitle(pokemon.name).toLowerCase().includes(search)
+        getName(pokemon).toLowerCase().includes(search)
     );
 
     options.sort((a, b) => {
-        const aName = decodeTitle(a.name).toLowerCase();
-        const bName = decodeTitle(b.name).toLowerCase();
+        const aName = getName(a).toLowerCase();
+        const bName = getName(b).toLowerCase();
 
         if (aName === search && bName !== search) return -1;
         if (bName === search && aName !== search) return 1;
@@ -100,51 +99,53 @@ export function getPokemonOptions(value) {
 export function getPokemonOption(pokemon) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item pokemon';
-    item.textContent = decodeTitle(pokemon.name);
+    item.textContent = getName(pokemon);
     return item;
 }
 
 export function getTypeOptions(value) {
     const options = TYPES.filter(type =>
-        type.name.toLowerCase().includes(value.toLowerCase())
+        getName(type).toLowerCase().includes(value.toLowerCase())
     );
 
-    options.sort((a, b) => a.name.localeCompare(b.name));
+    options.sort((a, b) => getName(a).localeCompare(getName(b)));
     return options;
 }
 
-export function getFilteredTypeOptions(value, exclude) {
+export function getFilteredTypeOptions(value, excludeName) {
     return getTypeOptions(value).filter(type =>
-        type.toLowerCase() !== (exclude?.toLowerCase() ?? "")
+        getName(type).toLowerCase() !== (excludeName?.toLowerCase() ?? "")
     );
+}
+
+export async function getMoveOptions(value) {
+    if (Object.keys(CURRENT_POKEMON).length === 0) {
+        return [];
+    }
+
+    const pokemonData = await getPokemonData(CURRENT_POKEMON);
+    const options = pokemonData.moves.filter(pokeMove => {
+        return (
+            getName(pokeMove).toLowerCase().includes(value.toLowerCase())
+            && !CURRENT_MOVES.map(e => getName(e).toLowerCase()).includes(getName(pokeMove).toLowerCase())
+        );
+    });
+
+    options.sort((a, b) => getName(a).localeCompare(getName(b)));
+    return options;
 }
 
 export function getTypeOption(type) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item type';
-    const href = document.getElementById(`type-${type.name}-icon`) ? `#type-${type.name}-icon` : '#pokeball-icon';
-    item.innerHTML = `<svg class="icon ${type.name}"><use href="${href}" /></svg> ${firstCharToUppercase(type.name)}`;
+    item.textContent = getName(type);
     return item;
-}
-
-export function getMoveOptions(value) {
-    const exclude = CURRENT_MOVES.map(move => move?.name).filter(Boolean);
-
-    const options = MOVES.filter(move => {
-        return (
-            move.name.toLowerCase().includes(value.toLowerCase()) &&
-            !exclude.map(e => e.toLowerCase()).includes(move.name.toLowerCase())
-        );
-    });
-
-    options.sort((a, b) => a.name.localeCompare(b.name));
-    return options;
 }
 
 export function getMoveOption(move) {
     const item = document.createElement('div');
     item.className = 'search-suggestion-item type';
-    item.innerHTML = `<svg class="icon ${move.type}"><use href="#type-${move.type}-icon" /></svg> ${move.name}`;
+    item.textContent = getName(move);
     return item;
 }
 
@@ -214,9 +215,10 @@ export function addPokemonToSearchBox(searchBox, pokemonData) {
 export function addTypeToSearchBox(searchBox, type) {
     const icon = searchBox.querySelector('.icon');
     const input = searchBox.querySelector('input');
-    input.value = type.name;
+    const name = getName(type);
+    input.value = name;
     input.classList.add('title');
-    icon.setAttribute('class', `icon type ${type.name}`);
-    icon.innerHTML = `<use href="#type-${type.name}-icon"/>`;
-    searchBox.classList = `button-box type ${type.name}`;
+    icon.setAttribute('class', `icon type ${name}`);
+    icon.innerHTML = `<use href="#type-${name}-icon"/>`;
+    searchBox.classList = `button-box type ${name}`;
 }

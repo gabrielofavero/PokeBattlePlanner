@@ -47,7 +47,7 @@ async function loadTypes() {
     while (!finished) {
         const data = await fetchFullPath(path);
         for (const result of data.results) {
-            if (BLOCKED_TYPES.includes(result.name)) {
+            if (BLOCKED_TYPES.includes(getName(result))) {
                 continue;
             }
             TYPES.push(result);
@@ -74,34 +74,38 @@ export async function fetchFullPath(fullPath) {
     }
 }
 
-export async function getPokemonData(pokemon) {
+async function getData(type, obj) {
     const start = new Date().getTime();
-    const cachedData = localStorage.getItem(`pokemon-${pokemon.name}`);
+    const key = `${type}-${getName(obj)}`;
+    const cachedData = localStorage.getItem(key);
+    
     if (cachedData) {
         return JSON.parse(cachedData);
     }
-    const pokemonData = await fetchFullPath(pokemon.url);
+
+    const data = await fetchFullPath(obj.url);
+    
     const end = new Date().getTime();
-    console.log(`Loaded data for ${pokemon.name} in ${(end - start) / 1000} seconds.`);
-    localStorage.setItem(`pokemon-${pokemon.name}`, JSON.stringify(pokemonData));
-    return pokemonData;
+    console.log(`Loaded data for ${getName(obj)} in ${(end - start) / 1000} seconds.`);
+    
+    localStorage.setItem(key, JSON.stringify(data));
+    return data;
+}
+
+export async function getPokemonData(pokemon) {
+    return await getData('pokemon', pokemon);
 }
 
 export function findTypeByName(typeName) {
-    return TYPES.find(t => t.name === typeName);
+    return TYPES.find(t => getName(t).toLowerCase() === typeName.toLowerCase());
 }
 
 export async function getTypeData(type) {
-    const start = new Date().getTime();
-    const cachedData = localStorage.getItem(`type-${type.name}`);
-    if (cachedData) {
-        return JSON.parse(cachedData);
-    }
-    const typeData = await fetchFullPath(type.url);
-    const end = new Date().getTime();
-    console.log(`Loaded data for type ${type.name} in ${(end - start) / 1000} seconds.`);
-    localStorage.setItem(`type-${type.name}`, JSON.stringify(typeData));
-    return typeData;
+    return await getData('type', type);
+}
+
+export async function getMoveData(move) {
+    return await getData('move', move);
 }
 
 // Objects
@@ -121,4 +125,8 @@ export function firstCharToUppercase(value) {
 
 export function decodeTitle(title) {
     return title.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+}
+
+export function getName(objData) {
+    return decodeTitle(objData?.move?.name ?? objData?.name ?? "");
 }

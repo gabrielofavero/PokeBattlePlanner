@@ -1,3 +1,5 @@
+import { getName } from "./data.js";
+
 export function setTypeBannersWithoutLogo(target, types) {
     target.innerHTML = '';
 
@@ -7,7 +9,7 @@ export function setTypeBannersWithoutLogo(target, types) {
     }
 
     for (const type of types) {
-        const div = getTypeBannerWithoutLogo(type.name);
+        const div = getTypeBannerWithoutLogo(getName(type).toLowerCase());
         target.append(div);
     }
 }
@@ -17,9 +19,9 @@ export function setTypeBannersMini(target, types) {
     let innerHTML = '';
     for (const type of types) {
         innerHTML += `
-        <div class="type-banner mini ${type.name}">
+        <div class="type-banner mini ${getName(type).toLowerCase()}">
             <svg class="summary-type-icon">
-                <use href="#type-${type.name}-icon" />
+                <use href="#type-${getName(type).toLowerCase()}-icon" />
             </svg>
         </div>`
     }

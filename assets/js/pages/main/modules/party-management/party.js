@@ -1,8 +1,9 @@
+import { decodeTitle, getName, getPokemonData } from "../../../../support/data.js";
 import { selectItem } from "../../../../support/navigation/navigation.js";
 import { openSummary } from "../../../summary/summary.js";
 import { goToMainPage } from "../../main.js";
 import { closeContextMenu, openContextMenu } from "../../support/context-menu.js";
-import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
+import { getMoveOption, getMoveOptions, getTypeOption, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 import { RATINGS, getPokemonSpriteSrc } from "../calculators/pokemon.js";
 import { backToMain, deletePartyInputs, goToEditPokemonPage } from "./edit-party-pokemon.js";
 
@@ -14,14 +15,14 @@ export var CURRENT_MOVES = [];
 const PARTY_BOXES = document.getElementsByClassName('party-pokemon');
 
 // Loaders
-export function loadPokemonParty() {
+export async function loadPokemonParty() {
     initParty();
     const data = localStorage.getItem('party');
     if (data) {
         PARTY = JSON.parse(data);
     }
     loadPokemonPartiesListeners();
-    loadPartyPokemonsHTML();
+    await loadPartyPokemonsHTML();
 }
 
 function loadPokemonPartiesListeners() {
@@ -38,6 +39,17 @@ function loadPokemonPartiesListeners() {
             else openContextMenu(PARTY_BOXES[CURRENT_PARTY_INDEX]);
         });
     }
+
+    for (const moveBox of getPartyMovesSearchBar()) {
+        const input = moveBox.content.querySelector('input');
+        input.addEventListener('focus', () => {
+            if (Object.keys(CURRENT_POKEMON).length === 0) {
+                input.placeholder = "Select a Pokémon first";
+                input.blur();
+                return;
+            }
+        });
+    }
 }
 
 function loadCurrentPokemon(partyBox) {
@@ -46,7 +58,7 @@ function loadCurrentPokemon(partyBox) {
     CURRENT_MOVES = PARTY[CURRENT_PARTY_INDEX]?.moves || [];
 }
 
-export function loadPartyPokemonsHTML() {
+export async function loadPartyPokemonsHTML() {
     for (let i = 0; i < 6; i++) {
         const partyMember = PARTY_BOXES[i];
         const partyText = partyMember.querySelector('.party-text');
@@ -59,7 +71,7 @@ export function loadPartyPokemonsHTML() {
         partyText.style.display = isEmpty ? 'none' : '';
         partyImg.style.display = isEmpty ? 'none' : '';
 
-        partyName.textContent = isEmpty ? '' : PARTY[i].pokemon.title;
+        partyName.textContent = isEmpty ? '' : getName(PARTY[i].pokemon);
 
         for (const rating in RATINGS) {
             partyPill.classList.remove(rating);
@@ -68,8 +80,12 @@ export function loadPartyPokemonsHTML() {
         partyPill.style.display = 'none';
 
         // To-Do: add rating here
+        if (Object.keys(PARTY[i].pokemon).length === 0) {
+            continue;
+        }
 
-        partyImg.querySelector('img').src = isEmpty ? '' : getPokemonSpriteSrc(PARTY[i].pokemon)
+        const pokemonData = await getPokemonData(PARTY[i].pokemon);
+        partyImg.querySelector('img').src = isEmpty ? '' : getPokemonSpriteSrc(pokemonData)
     }
 }
 
@@ -110,7 +126,7 @@ function getSearchPartyMove(j) {
 }
 
 // Setters
-export function setParty(index, pokemon={}, moves=[]) {
+export function setParty(index, pokemon = {}, moves = []) {
     PARTY[index] = { pokemon, moves };
     localStorage.setItem('party', JSON.stringify(PARTY));
 }
@@ -125,14 +141,23 @@ function initParty() {
 }
 
 function searchBarPokemonAction(input, pokemon) {
-    CURRENT_POKEMON = pokemon;
-    input.value = CURRENT_POKEMON.title;
+    CURRENT_POKEMON = pokemon || {};
+    input.value = getName(CURRENT_POKEMON);
+
+    if (Object.keys(CURRENT_POKEMON).length === 0) {
+        return
+    }
+
+    for (const moveBox of getPartyMovesSearchBar()) {
+        const input = moveBox.content.querySelector('input');
+        input.placeholder = "-";
+    }
 }
 
 function searchBarMoveAction(input, move) {
     const j = input.getAttribute('data-move');
     CURRENT_MOVES[j - 1] = move;
-    input.value = CURRENT_MOVES[j - 1].name;
+    input.value = getName(CURRENT_MOVES[j - 1]);
 }
 
 export function clearParty() {
@@ -141,12 +166,12 @@ export function clearParty() {
     deletePartyInputs();
 }
 
-function releasePokemon() {
+async function releasePokemon() {
     if (!confirm("Do you really want to release this Pokémon?")) {
         return;
     }
     setParty(CURRENT_PARTY_INDEX);
-    loadPartyPokemonsHTML();
+    await loadPartyPokemonsHTML();
     backToMain();
 }
 

@@ -1,5 +1,5 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
-import { fetchFullPath, firstCharToUppercase, findTypeByName, getTypeData, TYPES } from "../../../../support/data.js";
+import { fetchFullPath, firstCharToUppercase, findTypeByName, getTypeData, TYPES, getName } from "../../../../support/data.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
 
 export const SINGLE_TYPE_RESULT = {}
@@ -18,14 +18,15 @@ async function searchBarAction(input, type) {
     const searchBox = content.querySelector(".button-box");
     const results = content.querySelector('.search-result');
     const suggestions = content.querySelector(".search-suggestions");
+    const name = getName(type).toLowerCase();
 
-    if (!type || !findTypeByName(type.name)) {
+    if (!type || !findTypeByName(name)) {
         input.value = '';
         results.classList.add('hidden');
         return;
     }
 
-    input.value = firstCharToUppercase(type.name);
+    input.value = name;
     suggestions.style.display = 'none';
 
     addTypeToSearchBox(searchBox, type);
@@ -59,15 +60,16 @@ export function getSingleTypeScores(typeData) {
     const relations = typeData.damage_relations;
 
     function getTypeScore(typeName) {
+        const lower = typeName.toLowerCase();
         let attackMultiplier = 1;
-        if (relations.double_damage_from.some(t => t.name === typeName)) attackMultiplier = 2;
-        else if (relations.half_damage_from.some(t => t.name === typeName)) attackMultiplier = 0.5;
-        else if (relations.no_damage_from.some(t => t.name === typeName)) attackMultiplier = 0;
+        if (relations.double_damage_from.some(t => getName(t).toLowerCase() === lower)) attackMultiplier = 2;
+        else if (relations.half_damage_from.some(t => getName(t).toLowerCase() === lower)) attackMultiplier = 0.5;
+        else if (relations.no_damage_from.some(t => getName(t).toLowerCase() === lower)) attackMultiplier = 0;
 
         let defenseMultiplier = 1;
-        if (relations.double_damage_to.some(t => t.name === typeName)) defenseMultiplier = 2;
-        else if (relations.half_damage_to.some(t => t.name === typeName)) defenseMultiplier = 0.5;
-        else if (relations.no_damage_to.some(t => t.name === typeName)) defenseMultiplier = 0;
+        if (relations.double_damage_to.some(t => getName(t).toLowerCase() === lower)) defenseMultiplier = 2;
+        else if (relations.half_damage_to.some(t => getName(t).toLowerCase() === lower)) defenseMultiplier = 0.5;
+        else if (relations.no_damage_to.some(t => getName(t).toLowerCase() === lower)) defenseMultiplier = 0;
 
         return attackMultiplier * (defenseMultiplier === 0 ? Infinity : 1 / defenseMultiplier);
     }
@@ -85,7 +87,7 @@ export function getSingleTypeScores(typeData) {
 
     const result = TYPES.map(type => ({
         type: type,
-        score: getTypeScore(type.name)
+        score: getTypeScore(getName(type))
     }));
 
     result.sort((a, b) => a.score - b.score);
