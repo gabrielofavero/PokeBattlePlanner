@@ -104,6 +104,11 @@ export async function getTypeData(type) {
     return await getData('type', type);
 }
 
+export function getMoves(pokemonData) {
+    const moves = pokemonData?.moves ?? [];
+    return moves.map(m => m.move);
+}
+
 export async function getMoveData(move) {
     return await getData('move', move);
 }
@@ -128,5 +133,5 @@ export function decodeTitle(title) {
 }
 
 export function getName(objData) {
-    return decodeTitle(objData?.move?.name ?? objData?.name ?? "");
+    return decodeTitle(objData?.name ?? "");
 }

@@ -1,11 +1,11 @@
-import { decodeTitle, getName, getPokemonData } from "../../../../support/data.js";
+import { decodeTitle, getMoveData, getName, getPokemonData } from "../../../../support/data.js";
 import { selectItem } from "../../../../support/navigation/navigation.js";
 import { openSummary } from "../../../summary/summary.js";
 import { goToMainPage } from "../../main.js";
 import { closeContextMenu, openContextMenu } from "../../support/context-menu.js";
 import { getMoveOption, getMoveOptions, getTypeOption, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 import { RATINGS, getPokemonSpriteSrc } from "../calculators/pokemon.js";
-import { backToMain, deletePartyInputs, goToEditPokemonPage } from "./edit-party-pokemon.js";
+import { backToMain, deletePartyInputs, goToEditPokemonPage } from "../../../edit-pokemon/edit-pokemon.js";
 
 export var PARTY = [];
 export var CURRENT_PARTY_INDEX = -1;
@@ -152,12 +152,18 @@ function searchBarPokemonAction(input, pokemon) {
         const input = moveBox.content.querySelector('input');
         input.placeholder = "-";
     }
+
+    // Pre-cache data
+    getPokemonData(CURRENT_POKEMON);
 }
 
 function searchBarMoveAction(input, move) {
     const j = input.getAttribute('data-move');
     CURRENT_MOVES[j - 1] = move;
     input.value = getName(CURRENT_MOVES[j - 1]);
+
+    // Pre-cache data
+    getMoveData(CURRENT_MOVES[j - 1]);
 }
 
 export function clearParty() {

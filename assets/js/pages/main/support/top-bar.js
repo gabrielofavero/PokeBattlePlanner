@@ -1,4 +1,4 @@
-import { hideBack, showConfirm } from "../../../support/navigation/navigation.js";
+import { hideBack, hideY, showConfirm } from "../../../support/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../../support/navigation/pages.js";
 import { goToMainPage } from "../main.js";
 
@@ -11,6 +11,7 @@ export function selectTopBarItem(item) {
     setActivePage(PAGES.MAIN);
     showConfirm();
     hideBack();
+    hideY();
 
     goToMainPage(document.getElementById(item.getAttribute("to-show")));
 }

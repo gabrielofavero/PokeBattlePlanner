@@ -64,11 +64,11 @@ export function getPokemonImgContainer(pokemon) {
 }
 
 export function getPokemonShowdownSrc(pokemonData) {
-    return pokemonData.sprites.other.showdown.front_default || pokemonData.sprites.front_default;;
+    return pokemonData.sprites.other.showdown.front_default || getPokemonSpriteSrc(pokemonData);
 }
 
 export function getPokemonSpriteSrc(pokemonData) {
-    return pokemonData.sprites.other.home.front_default
+    return pokemonData.sprites.front_default;
 }
 
 export function getPokemonArtworkSrc(pokemon) {

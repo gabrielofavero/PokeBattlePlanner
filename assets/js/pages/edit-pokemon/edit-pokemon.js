@@ -1,19 +1,16 @@
-import { hideBack, showBack, showConfirm } from "../../../../support/navigation/navigation.js";
-import { goToMainPage } from "../../main.js";
-import { closeContextMenu } from "../../support/context-menu.js";
-import { CURRENT_MOVES, CURRENT_PARTY_INDEX, CURRENT_POKEMON, PARTY, clearParty, isPartyEmpty, loadPartyPokemonsHTML, returnToPokemonSearch, setParty } from "./party.js";
+import { getName } from "../../support/data.js";
+import { hideBack, hideY, showBack, showConfirm, showY } from "../../support/navigation/navigation.js";
+import { goToMainPage } from "../main/main.js";
+import { closeContextMenu } from "../main/support/context-menu.js";
+import { CURRENT_MOVES, CURRENT_PARTY_INDEX, CURRENT_POKEMON, PARTY, clearParty, isPartyEmpty, loadPartyPokemonsHTML, returnToPokemonSearch, setParty } from "../main/modules/party-management/party.js";
 
 export var IS_EDITING_POKEMON = false;
-
-
-export function loadEditPokemonListeners() {
-    document.getElementById('delete-edit-pokemon').addEventListener('click', deletePartyInputs);
-}
 
 export function goToEditPokemonPage() {
     IS_EDITING_POKEMON = true;
     showConfirm();
     showBack();
+    showY();
 
     loadPartyData();
     goToMainPage('edit-party-container');
@@ -51,4 +48,5 @@ export function backToMain() {
     returnToPokemonSearch();
     showConfirm();
     hideBack();
+    hideY()
 }

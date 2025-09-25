@@ -1,4 +1,5 @@
 import { setTypeBannersMini } from "../../support/banners.js";
+import { getPokemonData } from "../../support/data.js";
 import { pauseLavaBackground, resumeLavaBackground } from "../../support/lava-background.js";
 import { selectItem } from "../../support/navigation/navigation.js";
 import { PAGES, setActivePage } from "../../support/navigation/pages.js";
@@ -40,7 +41,7 @@ function loadSummaryListeners() {
     }
 }
 
-export function openSummary(index = 0) {
+export async function openSummary(index = 0) {
     pauseLavaBackground();
     setActivePage(PAGES.SUMMARY);
     document.body.style.background = "linear-gradient(to top right, #015dba, #002c59)";
@@ -60,14 +61,20 @@ export function closeSummary() {
 
 // Load Data
 
-function loadPartyImages() {
+async function loadPartyImages() {
     for (const div of SUMMARY_PARTY_DIVS) {
         const i = parseInt(div.getAttribute('party-number')) - 1;
         const noPokemon = Object.keys(PARTY[i].pokemon).length === 0;
-
         const img = div.querySelector('img');
-        img.src = noPokemon ? '' : getPokemonSpriteSrc(PARTY[i].pokemon);
-        img.alt = noPokemon ? '' : getPokemonSpriteAlt(PARTY[i].pokemon);
+
+        if (noPokemon) {
+            img.src = '';
+            img.alt = '';
+        }
+
+        const pokemonData = await getPokemonData(PARTY[i].pokemon);
+        img.src = noPokemon ? '' : getPokemonSpriteSrc(pokemonData);
+        img.alt = noPokemon ? '' : getPokemonSpriteAlt(pokemonData);
     }
 }
 

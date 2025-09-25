@@ -1,5 +1,5 @@
 import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
-import { POKEMONS, TYPES, getName, getPokemonData } from "../../../support/data.js";
+import { POKEMONS, TYPES, getMoves, getName, getPokemonData } from "../../../support/data.js";
 import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/calculators/multi-types.js";
 import { getPokemonSearchBar, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../modules/calculators/pokemon.js";
 import { getSingleTypeSearchBar } from "../modules/calculators/single-type.js";
@@ -124,7 +124,7 @@ export async function getMoveOptions(value) {
     }
 
     const pokemonData = await getPokemonData(CURRENT_POKEMON);
-    const options = pokemonData.moves.filter(pokeMove => {
+    const options = getMoves(pokemonData).filter(pokeMove => {
         return (
             getName(pokeMove).toLowerCase().includes(value.toLowerCase())
             && !CURRENT_MOVES.map(e => getName(e).toLowerCase()).includes(getName(pokeMove).toLowerCase())

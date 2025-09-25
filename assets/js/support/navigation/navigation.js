@@ -1,4 +1,4 @@
-import { goToMainPage, mainBackAction, mainConfirmAction } from "../../pages/main/main.js";
+import { clearConfirmAction, goToMainPage, mainBackAction, mainConfirmAction } from "../../pages/main/main.js";
 import { loadGamepadListeners } from "./gamepad.js";
 import { loadKeyboardListeners } from "./keyboard-mouse.js";
 import { ACTIVE_PAGE, PAGES } from "./pages.js";
@@ -45,19 +45,10 @@ export function hideBack() {
     toggleDisplay('back', 'none')
 }
 
-export function confirmAction() {
-    switch (ACTIVE_PAGE) {
-        case (PAGES.MAIN):
-            mainConfirmAction();
-    }
+export function showY() {
+    toggleDisplay('y', '')
 }
 
-export function backAction() {
-    switch (ACTIVE_PAGE) {
-        case (PAGES.MAIN):
-            mainBackAction();
-            return;
-        case (PAGES.SUMMARY):
-            goToMainPage();
-    }
+export function hideY() {
+    toggleDisplay('y', 'none')
 }

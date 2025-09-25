@@ -1,6 +1,6 @@
 import { loadLavaBackground } from "../../support/lava-background.js";
-import { IS_EDITING_POKEMON, backToMain, savePokemon } from "./modules/party-management/edit-party-pokemon.js";
-import { loadPokemonParty } from "./modules/party-management/party.js";
+import { IS_EDITING_POKEMON, backToMain, savePokemon } from "../edit-pokemon/edit-pokemon.js";
+import { clearParty, loadPokemonParty } from "./modules/party-management/party.js";
 import { loadMainNavigationListeners } from "./support/navigation.js";
 import { loadSearchBars, resetSearchBars } from "./support/search-bar.js";
 
@@ -34,5 +34,11 @@ export function mainConfirmAction() {
 export function mainBackAction() {
     if (IS_EDITING_POKEMON) {
         backToMain();
+    }
+}
+
+export function clearConfirmAction() {
+    if (IS_EDITING_POKEMON) {
+        clearParty();
     }
 }
