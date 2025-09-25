@@ -764,7 +764,8 @@ input::placeholder {
   margin-top: 6px;
 }
 
-.controler-box .icon:hover {
+.controler-box:hover .icon,
+#next-top-bar-item:hover {
   fill: var(--hover-color);
 }
 
