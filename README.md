@@ -1,18 +1,18 @@
 # Pokémon Battle Planner
 
-This little project came to life because I got tired of relying on charts to figure out which Pokémon I should use in important battles.
+This little project was born out of my own frustration. I got tired of flipping through charts just to figure out which Pokémon I should use in important battles, so I figured: Why not making a website for it? 👀
 
-The idea is simple: search for a type to see which matchups work best, or search for a Pokémon and we’ll pull up its stats for you. You can even add your current party, and we’ll highlight your strongest and weakest options for that fight!
+The idea is simple: Search for a type and see which matchups give you the edge. Search for a Pokémon and you'll get its stats right away. You can even add your current party and instantly see which ones are your strongest and weakest picks for the fight.
 
-Just keep in mind, this tool has its limits. It doesn’t consider Pokémon levels or the opponent’s moves. Think of it as a helper, not a miracle worker.
+One quick note before you dive in: This tool is faaar from perfect. It won't account for Pokémon levels, IVs, or the opponent's moves. Think of it as a handy assistant, not a magic all-in-one planner.
 
 ## Attributions
 
-This web app was developed by Gabriel Fávero (that’s me!). You can find my LinkedIn here, take a look at my other projects here, and get in touch with me here.
+This web app was developed by Gabriel Fávero (that's me!). You can find my LinkedIn here, take a look at my other projects here, and get in touch with me here.
 
-Of course, I didn’t do everything on my own. Here's a list of the assets I used to bring this project to life:
+Of course, I didn't do everything on my own. Here's a list of the assets I used to bring this project to life:
 
-- **Data**: [pokemondb](https://pokemondb.net/)
+- **Data**: The A-M-A-Z-I-N-G [PokéAPI](https://pokeapi.co/)
 - **Lava background**: [Nathan Long](https://codepen.io/nathanlong)
 - **Pokémon images**: [Official Pokémon assets](https://www.pokemon.com/us/pokedex)
 - **Xbox / Switch icons**: [Wikimedia](https://commons.wikimedia.org/wiki/File:Xbox_Certified_controller.svg)
@@ -22,7 +22,7 @@ Of course, I didn’t do everything on my own. Here's a list of the assets I use
 
 ## Usage
 
-You are free to use this app and it’s assets as you wish. Just don’t forget to credit me and the other contributors.
+You are free to use this app and it's assets as you wish. Just don't forget to credit me and the other contributors.
 
 ## Tasks
 
@@ -30,12 +30,11 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
-| 🏆: Feature     | F019   | 11   | 8       |
+| 🏆: Feature     | F020   | 11   | 9       |
 | 📈: Improvement | I006   | 3    | 3       |
 
 ### Pending
 
-- 🐞 **B001:** Fix edge cases for pokemon/type searchs
 - 📈 **I005:** Improve recommendations
 - 📈 **I006:** Improve recommendations
 - 🏆 **F017:** Make accordions for results
@@ -44,6 +43,7 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - 🏆 **F012:** Add full keyboard support
 - 🏆 **F013:** Add full controller support
 - ⚔️ **E005:** Add mobile responsiveness
+- 🏆 **F020:** Add option to import/export party
 - 🏆 **F014:** Add cursor (similar to Pokémon Violet)
 - 🏆 **F015:** Add floating elements (Pokémon, cursor)
 - 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
@@ -72,3 +72,4 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
   - 🏆 **F009:** [E004] Create elements for party view
   - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
 - ⚔️ **E006:** Fetch data via PokéAPI instead of local data
+- 🐞 **B001:** Fix edge cases for pokemon/type searchs
