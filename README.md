@@ -30,12 +30,13 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
-| 🏆: Feature     | F020   | 11   | 9       |
+| 🏆: Feature     | F021   | 12   | 9       |
 | 📈: Improvement | I005   | 3    | 2       |
 
 ### Pending
 
-- 🏆 **F017:** Make accordions for results
+- 🏆 **F017:** Increase stats for multi types and pokemons
+- 🏆 **F021:** Make accordions for results
 - 📈 **I005:** Improve recommendations
 - 🏆 **F018:** Finish summary data load
 - 🏆 **F019:** Make ranking banners for party pokemons

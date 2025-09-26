@@ -61,8 +61,9 @@ function getType2Options(value) {
 }
 
 async function loadMultiTypeResult(types) {
-    const combinedTypes = await getCombinedTypes(types[0], types[1]);
-    const scores = getTypeMultiScores(combinedTypes);
-    const data = getMultiTypeResultArray(combinedTypes, scores);
+    const combinedTypesFrom = await getCombinedTypes(types[0], types[1]);
+    const combinedTypesTo = await getCombinedTypes(types[0], types[1], "to");
+    const scores = getTypeMultiScores(combinedTypesFrom, combinedTypesTo);
+    const data = getMultiTypeResultArray(combinedTypesFrom, combinedTypesTo, scores);
     setSearchResult(data, 'multi-type-result', setTypeBannersWithoutLogo);
 }

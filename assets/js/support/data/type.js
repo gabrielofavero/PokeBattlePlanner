@@ -43,14 +43,14 @@ export async function getTypeData(type) {
     return await getObjectData('type', type);
 }
 
-export async function getCombinedTypes(type1, type2) {
+export async function getCombinedTypes(type1, type2, direction = "from") {
     const [typeData1, typeData2] = await Promise.all([
         getTypeData(type1),
         getTypeData(type2)
     ]);
 
-    const multiplier1 = getAllTypeMultipliers(typeData1);
-    const multiplier2 = getAllTypeMultipliers(typeData2);
+    const multiplier1 = getAllTypeMultipliers(typeData1, direction);
+    const multiplier2 = getAllTypeMultipliers(typeData2, direction);
 
     const result = {};
     [4, 2, 1, 0.5, 0.25, 0].forEach(m => result[m] = []);
@@ -88,33 +88,47 @@ export function getSingleTypeMultipliers(typeData) {
     }));
 }
 
-function getTypeMultiplier(typeData, typeAgainst) {
+function getTypeMultiplier(typeData, typeAgainst, direction) {
     if (!typeData || !typeAgainst) return 1;
     const relations = typeData.damage_relations;
-    if (relations.double_damage_from.some(t => getObjectName(t) === getObjectName(typeAgainst))) {
+
+    const doubleKey = direction === "from" ? "double_damage_from" : "double_damage_to";
+    const halfKey   = direction === "from" ? "half_damage_from"   : "half_damage_to";
+    const noneKey   = direction === "from" ? "no_damage_from"     : "no_damage_to";
+
+    if (relations[doubleKey].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
         return 2;
     }
-    if (relations.half_damage_from.some(t => getObjectName(t) === getObjectName(typeAgainst))) {
+    if (relations[halfKey].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
         return 0.5;
     }
-    if (relations.no_damage_from.some(t => getObjectName(t) === getObjectName(typeAgainst))) {
+    if (relations[noneKey].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
         return 0;
     }
     return 1;
 }
 
-function getAllTypeMultipliers(typeData) {
+function getAllTypeMultipliers(typeData, direction) {
     const result = {};
     for (const type of cloneObject(TYPES)) {
-        const multiplier = getTypeMultiplier(typeData, type);
+        const multiplier = getTypeMultiplier(typeData, type, direction);
         result[type.name] = multiplier;
     }
     return result;
 }
 
 // Multi Scores
-export function getTypeMultiScores(combinedTypes, multipliers = getMultiTypeMultipliers(combinedTypes)) {
-    return getBestAndWorstCandidates(multipliers)
+export function getTypeMultiScores(combinedTypesFrom, combinedTypesTo) {
+    const multipliers = TYPES.map(type => {
+        const offense = getCombinedTypeMultiplier(combinedTypesTo, type);
+        const defense = getCombinedTypeMultiplier(combinedTypesFrom, type);
+
+        const score = offense / defense; 
+
+        return { type, offense, defense, score };
+    });
+
+    return getBestAndWorstCandidates(multipliers);
 }
 
 export function getMultiTypeMultipliers(combinedTypes) {
@@ -124,15 +138,11 @@ export function getMultiTypeMultipliers(combinedTypes) {
     }));
 }
 
-export function getBestAndWorstCandidates(obj) {
-    obj.sort((a, b) => a.multiplier - b.multiplier);
-    const filtered = obj.filter(r => r.multiplier !== 1);
+export function getBestAndWorstCandidates(arr) {
+    const sorted = [...arr].sort((a, b) => b.score - a.score);
 
-    const worstCandidates = filtered.filter(r => r.multiplier < 1);
-    const bestCandidates = filtered.filter(r => r.multiplier > 1);
-
-    const worst = getTopN(worstCandidates, 3);
-    const best = getTopN([...bestCandidates].reverse(), 3);
+    const best = getTopN(sorted, 3);
+    const worst = getTopN([...sorted].reverse(), 3);
 
     return { best, worst };
 }
@@ -159,15 +169,20 @@ export function getSingleTypeResultArray(typeData, scores) {
     ]
 }
 
-export function getMultiTypeResultArray(combinedTypes, scores) {
+export function getMultiTypeResultArray(combinedTypesFrom, combinedTypesTo, scores) {
     return [
-        combinedTypes['4'],
-        combinedTypes['2'],
-        combinedTypes['0.5'],
-        combinedTypes['0.25'],
-        combinedTypes['0'],
         scores.best.map(s => s.type),
-        scores.worst.map(s => s.type)
+        scores.worst.map(s => s.type),
+        combinedTypesFrom['4'],
+        combinedTypesFrom['2'],
+        combinedTypesFrom['0.5'],
+        combinedTypesFrom['0.25'],
+        combinedTypesFrom['0'],
+        combinedTypesTo['4'],
+        combinedTypesTo['2'],
+        combinedTypesTo['0.5'],
+        combinedTypesTo['0.25'],
+        combinedTypesTo['0'],
     ];
 }
 
