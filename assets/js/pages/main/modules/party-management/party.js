@@ -1,12 +1,11 @@
-import { decodeTitle, getObjectName } from "../../../../support/data/data.js";
+import { getObjectName } from "../../../../support/data/data.js";
+import { getPokemonData, getPokemonMoveData, getPokemonSpriteSrc, isPartyMemberEmpty } from "../../../../support/data/pokemon.js";
 import { selectItem } from "../../../../support/navigation/navigation.js";
+import { backToMain, deletePartyInputs, goToEditPokemonPage, setParty } from "../../../edit-pokemon/edit-pokemon.js";
 import { openSummary } from "../../../summary/summary.js";
 import { goToMainPage } from "../../main.js";
 import { closeContextMenu, openContextMenu } from "../../support/context-menu.js";
-import { getMoveOption, getMoveOptions, getTypeOption, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
-import { RATINGS } from "../searches/pokemon-search.js";
-import { backToMain, deletePartyInputs, goToEditPokemonPage, setParty } from "../../../edit-pokemon/edit-pokemon.js";
-import { getPokemonData, getPokemonMoveData, getPokemonSpriteSrc } from "../../../../support/data/pokemon.js";
+import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 
 export var PARTY = [];
 export var CURRENT_PARTY_INDEX = -1;
@@ -36,7 +35,7 @@ function loadPokemonPartiesListeners() {
         partyBox.addEventListener("click", () => {
             loadCurrentPokemon(partyBox);
             selectItem(CURRENT_PARTY_INDEX, PARTY_BOXES);
-            if (isPartyEmpty()) goToEditPokemonPage()
+            if (isPartyMemberEmpty()) goToEditPokemonPage()
             else openContextMenu(PARTY_BOXES[CURRENT_PARTY_INDEX]);
         });
     }
@@ -67,16 +66,16 @@ export async function loadPartyPokemonsHTML() {
         const partyName = partyText.querySelector('.party-name');
         const partyImg = partyMember.querySelector('.party-img');
 
-        const isEmpty = isPartyEmpty(i);
+        const isEmpty = isPartyMemberEmpty(i);
 
         partyText.style.display = isEmpty ? 'none' : '';
         partyImg.style.display = isEmpty ? 'none' : '';
 
         partyName.textContent = isEmpty ? '' : getObjectName(PARTY[i].pokemon);
 
-        for (const rating in RATINGS) {
-            partyPill.classList.remove(rating);
-        }
+        // for (const rating in RATINGS) {
+        //     partyPill.classList.remove(rating);
+        // }
 
         partyPill.style.display = 'none';
 
@@ -178,7 +177,3 @@ async function releasePokemon() {
 
 
 // Validators
-export function isPartyEmpty(i = CURRENT_PARTY_INDEX) {
-    const party = PARTY[i];
-    return (!party || (party.moves.length == 0 && Object.keys(party.pokemon).length == 0));
-}

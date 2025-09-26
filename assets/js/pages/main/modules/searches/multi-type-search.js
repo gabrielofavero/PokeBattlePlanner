@@ -1,7 +1,6 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { getObjectName, setSearchResult } from "../../../../support/data/data.js";
-import { setPokemonImgContainers } from "../../../../support/data/pokemon.js";
-import { findTypeByName, getCombinedTypes } from "../../../../support/data/type.js";
+import { findTypeByName, getCombinedTypes, getMultiTypeResultArray, getTypeMultiScores } from "../../../../support/data/type.js";
 import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../../support/search-bar.js";
 
 export const SEARCH_BAR_MULTI_TYPE_1 = {
@@ -63,16 +62,7 @@ function getType2Options(value) {
 
 async function loadMultiTypeResult(types) {
     const combinedTypes = await getCombinedTypes(types[0], types[1]);
-    const scores = getMultiBestAndWorstScores(combinedTypes);
-
-    const data = [
-        combinedTypes['4'],
-        combinedTypes['2'],
-        combinedTypes['0.5'],
-        combinedTypes['0.25'],
-        scores.best.map(s => s.type),
-        scores.worst.map(s => s.type)
-    ];
-
-    setSearchResult(data, 'multi-type-result', setPokemonImgContainers);
+    const scores = getTypeMultiScores(combinedTypes);
+    const data = getMultiTypeResultArray(combinedTypes, scores);
+    setSearchResult(data, 'multi-type-result', setTypeBannersWithoutLogo);
 }

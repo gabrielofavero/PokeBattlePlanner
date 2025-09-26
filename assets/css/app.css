@@ -502,11 +502,6 @@ input::placeholder {
   border-radius: 8px;
 }
 
-.pokemon-variant {
-  font-size: 18px;
-  color: rgb(214, 214, 214)
-}
-
 /* Search Results */
 
 .grid-container {

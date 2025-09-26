@@ -1,6 +1,6 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { getObjectName, setSearchResult } from "../../../../support/data/data.js";
-import { findTypeByName, getSingleBestAndWorstScores, getTypeData } from "../../../../support/data/type.js";
+import { findTypeByName, getTypeSingleScores, getTypeData, getSingleTypeResultArray } from "../../../../support/data/type.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
 
 export const SINGLE_TYPE_RESULT = {}
@@ -37,18 +37,7 @@ async function searchBarAction(input, type) {
 
 async function loadSingleTypeResult(type) {
     const typeData = await getTypeData(type);
-    const scores = getSingleBestAndWorstScores(typeData);
-
-    const data = [
-        typeData.damage_relations.double_damage_from,
-        typeData.damage_relations.half_damage_to,
-        typeData.damage_relations.half_damage_from,
-        typeData.damage_relations.double_damage_to,
-        typeData.damage_relations.no_damage_to,
-        typeData.damage_relations.no_damage_from,
-        scores.best.map(s => s.type),
-        scores.worst.map(s => s.type)
-    ]
-
+    const scores = getTypeSingleScores(typeData);
+    const data = getSingleTypeResultArray(typeData, scores);
     setSearchResult(data, 'single-type-result', setTypeBannersWithoutLogo);
 }

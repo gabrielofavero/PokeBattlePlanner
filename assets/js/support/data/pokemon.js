@@ -1,4 +1,6 @@
-import { fetchFullPath, getObjectData } from "./data.js";
+import { CURRENT_PARTY_INDEX, PARTY } from "../../pages/main/modules/party-management/party.js";
+import { cloneObject, fetchFullPath, getObjectData, getObjectName } from "./data.js";
+import { getBestAndWorstCandidates, getMultiTypeResultArray, getMultiplier } from "./type.js";
 
 export var POKEMONS;
 
@@ -70,4 +72,111 @@ export function setPokemonImgContainers(target, partyPokemons) {
     for (const partyPokemon of partyPokemons) {
         target.innerHTML += getPokemonImgContainer(partyPokemon.pokemon);
     }
+}
+
+// Party
+export function isPartyEmpty() {
+    let empty = true;
+    for (let i = 0; i < PARTY.length; i++) {
+        if (!isPartyMemberEmpty(i)) {
+            empty = false;
+            break;
+        }
+    }
+    return empty;
+}
+
+export function isPartyMemberEmpty(i = CURRENT_PARTY_INDEX) {
+    const party = PARTY[i];
+    return (!party || Object.keys(party.pokemon).length == 0);
+}
+
+export function isPartyPokemonEmpty(index) {
+    const party = PARTY[index];
+    return (!party || Object.keys(party.pokemon).length == 0);
+}
+
+export function isPartyMovesEmpty(index) {
+    const party = PARTY[index];
+    return (!party || party.moves.length == 0);
+}
+
+export async function getPokemonPartyScores(multipliers) {
+    const best = [];
+    const worst = [];
+
+    if (isPartyEmpty()) {
+        return { best, worst };
+    }
+
+    const party = [];
+    for (let i = 0; i < PARTY.length; i++) {
+        if (isPartyPokemonEmpty(i)) {
+            continue;
+        }
+        const partyMember = {
+            pokemon: await getPokemonData(PARTY[i].pokemon),
+            moves: PARTY[i].moves,
+            multiplier: 1,
+        };
+        const types = await getPartyMemberTypes(partyMember);
+        let multiplier = 1;
+        for (const type of types) {
+            multiplier *= getMultiplier(multipliers, type);
+        }
+        partyMember.multiplier = multiplier;
+        party.push(partyMember);
+    }
+
+    return getBestAndWorstCandidates(party);
+}
+
+async function getPartyMemberTypes(partyMember) {
+    const types = [];
+
+    if (partyMember.moves.length === 0) {
+        types.push(...await getPokemonTypes(partyMember.pokemon));
+    } else {
+        for (const move of partyMember.moves) {
+            const offensiveType = await getOffensiveType(move);
+            if (!offensiveType) {
+                continue;
+            }
+            types.push(offensiveType);
+        }
+    }
+    return types;
+}
+
+export async function getPokemonTypes(pokemonData) {
+    return pokemonData.types.map(t => t.type);
+}
+
+export async function getOffensiveType(move) {
+    const moveData = await getPokemonMoveData(move);
+    return moveData.power ? moveData.type : null;
+}
+
+export function getPokemonResultArray(combinedTypes, scores, isSingleType) {
+    if (isSingleType) {
+        return [
+            [],
+            combinedTypes.damage_relations.double_damage_from,
+            combinedTypes.damage_relations.half_damage_from,
+            [],
+            combinedTypes.damage_relations.no_damage_from,
+            scores.best,
+            scores.worst
+        ];
+    }
+
+    return [
+        combinedTypes['4'],
+        combinedTypes['2'],
+        combinedTypes['0.5'],
+        combinedTypes['0.25'],
+        combinedTypes['0'],
+        scores.best,
+        scores.worst
+    ];
 }

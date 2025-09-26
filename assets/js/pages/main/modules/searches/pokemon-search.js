@@ -1,23 +1,8 @@
-import { POKEMONS, decodeTitle, getObjectName } from "../../../../support/data/data.js";
-import { findPokemonByTitle, getPokemonData } from "../../../../support/data/pokemon.js";
-import { getCombinedTypes } from "../../../../support/data/type.js";
+import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
+import { getObjectName, setSearchResult } from "../../../../support/data/data.js";
+import { findPokemonByTitle, getPokemonData, getPokemonPartyScores, getPokemonResultArray, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
+import { getCombinedTypes, getMultiTypeMultipliers, getSingleTypeMultipliers, getTypeData, getTypeMultiScores, getTypeSingleScores } from "../../../../support/data/type.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
-
-export const RATINGS = {
-    "very-strong": "Very Strong",
-    "strong": "Strong",
-    "neutral": "Neutral",
-    "weak": "Weak",
-    "very-weak": "Very Weak",
-}
-
-export const EFFECTIVINESS = {
-    "4": "very-strong",
-    "2": "strong",
-    "1": "neutral",
-    "½": "weak",
-    "¼": "very-weak"
-}
 
 export function getPokemonSearchBar() {
     return {
@@ -30,7 +15,7 @@ export function getPokemonSearchBar() {
 
 async function searchBarAction(input, pokemon) {
     if (!pokemon || Object.keys(pokemon).length === 0) {
-        pokemon = findPokemonByTitle(title);
+        pokemon = findPokemonByTitle(input.value);
     }
 
     const content = document.getElementById('pokemon-search-content');
@@ -38,11 +23,11 @@ async function searchBarAction(input, pokemon) {
 
     if (!pokemon || Object.keys(pokemon).length === 0) {
         results.classList.add('hidden');
+        input.value = '';
+        return;
     }
 
     input.value = getObjectName(pokemon);
-    const title = input.value;
-
 
     const searchBox = content.querySelector(".button-box");
     const suggestions = content.querySelector(".search-suggestions");
@@ -50,29 +35,32 @@ async function searchBarAction(input, pokemon) {
     suggestions.style.display = 'none';
 
     const pokemonData = await getPokemonData(pokemon);
+    const types = pokemonData.types.map(t => t.type);
 
     addPokemonToSearchBox(searchBox, pokemonData)
-    loadPokemonResult(pokemon.types, 'pokemon-result', PARTY);
+    await loadPokemonResult(types);
 
     results.classList.remove('hidden');
 }
 
 async function loadPokemonResult(types) {
-    const combinedTypes = await getCombinedTypes(types[0], types[1]);
+    const isSingleType = types.length === 1;
+    const isPartyPresent = !isPartyEmpty();
 
-    const data = [
-        combinedTypes['4'],
-        combinedTypes['2'],
-        combinedTypes['0.5'],
-        combinedTypes['0.25'],
-    ];
+    const combinedTypes = isSingleType ? await getTypeData(types[0]) : await getCombinedTypes(types[0], types[1]);
+    const multipliers = isSingleType ? getSingleTypeMultipliers(combinedTypes) : getMultiTypeMultipliers(combinedTypes);
+    const scores = isPartyPresent ? await getPokemonPartyScores(multipliers) : isSingleType ? getTypeSingleScores(combinedTypes, multipliers) : getTypeMultiScores(combinedTypes, multipliers);
+    const data = getPokemonResultArray(combinedTypes, scores, isSingleType);
+    const action = pokemonResultAction;
 
-    for (let i = 0; i < data.length; i++) {
-        const target = document.getElementById(`pokemon-result-${i + 1}`);
-        if (data[i]?.isPokemon) {
-            setPokemonImgContainers(target, data[i].result);
-        } else {
-            setTypeBannersWithoutLogo(target, data[i]?.result || data[i]);
-        }
+    setSearchResult(data, 'pokemon-result', action);
+}
+
+function pokemonResultAction(target, arr) {
+    if (arr[0]?.pokemon) {
+        setPokemonImgContainers(target, arr);
+    } else {
+        setTypeBannersWithoutLogo(target, arr);
     }
 }
+

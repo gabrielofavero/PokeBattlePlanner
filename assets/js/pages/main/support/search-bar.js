@@ -1,10 +1,12 @@
 import { setTypeBannersWithoutLogo } from "../../../support/banners.js";
-import { POKEMONS, TYPES, getObjectName } from "../../../support/data/data.js";
+import { getObjectName } from "../../../support/data/data.js";
+import { TYPES } from "../../../support/data/type.js";
+import { POKEMONS } from "../../../support/data/pokemon.js";
 import { getPokemonData, getPokemonMoves, getPokemonShowdownSrc, getPokemonSpriteAlt } from "../../../support/data/pokemon.js";
+import { CURRENT_MOVES, CURRENT_POKEMON, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
 import { SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2 } from "../modules/searches/multi-type-search.js";
 import { getPokemonSearchBar } from "../modules/searches/pokemon-search.js";
 import { getSingleTypeSearchBar } from "../modules/searches/single-type-search.js";
-import { CURRENT_MOVES, CURRENT_POKEMON, getPartyMovesSearchBar, getPartySearchBar } from "../modules/party-management/party.js";
 
 const SINGLE_SEARCH_BARS = [getPokemonSearchBar(), getSingleTypeSearchBar(), getPartySearchBar(), ...getPartyMovesSearchBar()];
 const MULTI_SEARCH_BARS = [[SEARCH_BAR_MULTI_TYPE_1, SEARCH_BAR_MULTI_TYPE_2]]
@@ -190,8 +192,6 @@ export function clearSearchBox(searchBox) {
         if (icon) {
             icon.style.display = '';
         }
-
-        searchBox.querySelector('.pokemon-variant').style.display = 'none';
         searchBox.querySelector('.result-types').style.display = 'none';
     }
 }
@@ -208,7 +208,7 @@ export function addPokemonToSearchBox(searchBox, pokemonData) {
     img.alt = getPokemonSpriteAlt(pokemonData);
     img.style.display = ''
 
-    searchBox.classList = `button-box pokemon`;
+    searchBox.classList = `button-box search-bar pokemon`;
 
     setTypeBannersWithoutLogo(types, pokemonData.types);
     types.style.display = '';
