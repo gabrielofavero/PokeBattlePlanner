@@ -35,15 +35,17 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 
 ### Pending
 
-- 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
+- 📈 **I005:** Improve recommendations
+- 🏆 **F017:** Make accordions for results
+- 🏆 **F018:** Finish summary data load
 - 🏆 **F012:** Add full keyboard support
 - 🏆 **F013:** Add full controller support
+- ⚔️ **E005:** Add mobile responsiveness
 - 🏆 **F014:** Add cursor (similar to Pokémon Violet)
 - 🏆 **F015:** Add floating elements (Pokémon, cursor)
-- ⚔️ **E005:** Add mobile responsiveness
+- 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
 - ⚔️ **E006:** Add theme support + Legends ZA theme
 - 📈 **I004:** Animations overhaul
-- ⚔️ **E006:** Fetch data via PokéAPI instead of local data
 
 ### Done
 
@@ -66,3 +68,4 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 - ⚔️ **E004:** Implement Pokémon Type Calculator
   - 🏆 **F009:** [E004] Create elements for party view
   - 🏆 **F010:** [E004] Implement Pokémon + Move calculator
+- ⚔️ **E006:** Fetch data via PokéAPI instead of local data
