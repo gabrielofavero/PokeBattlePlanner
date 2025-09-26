@@ -28,23 +28,26 @@ You are free to use this app and it’s assets as you wish. Just don’t forget 
 
 | Type            | Latest | Done | Pending |
 | --------------- | ------ | ---- | ------- |
-| ⚔️: Epic      | E006   | 3    | 3       |
-| 🐞: Bug         | B000   | 0    | 0       |
-| 🏆: Feature     | F016   | 9    | 5       |
-| 📈: Improvement | I004   | 3    | 1       |
+| ⚔️: Epic        | E007   | 5    | 2       |
+| 🐞: Bug         | B001   | 0    | 1       |
+| 🏆: Feature     | F019   | 11   | 8       |
+| 📈: Improvement | I006   | 3    | 3       |
 
 ### Pending
 
+- 🐞 **B001:** Fix edge cases for pokemon/type searchs
 - 📈 **I005:** Improve recommendations
+- 📈 **I006:** Improve recommendations
 - 🏆 **F017:** Make accordions for results
 - 🏆 **F018:** Finish summary data load
+- 🏆 **F019:** Make ranking banners for party pokemons
 - 🏆 **F012:** Add full keyboard support
 - 🏆 **F013:** Add full controller support
 - ⚔️ **E005:** Add mobile responsiveness
 - 🏆 **F014:** Add cursor (similar to Pokémon Violet)
 - 🏆 **F015:** Add floating elements (Pokémon, cursor)
 - 🏆 **F011:** Add dynamic colors to lava background (similar to Pokémon Violet)
-- ⚔️ **E006:** Add theme support + Legends ZA theme
+- ⚔️ **E007:** Add theme support + Legends ZA theme
 - 📈 **I004:** Animations overhaul
 
 ### Done
