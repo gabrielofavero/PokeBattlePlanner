@@ -1,8 +1,11 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
-import { getObjectName, setSearchResult } from "../../../../support/data/data.js";
+import { cloneObject, getObjectName } from "../../../../support/data/data.js";
 import { findPokemonByTitle, getPokemonData, getPokemonPartyScores, getPokemonResultArray, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
-import { getCombinedTypes, getMultiTypeMultipliers, getSingleTypeMultipliers, getTypeData, getTypeMultiScores, getTypeSingleScores } from "../../../../support/data/type.js";
+import { LABELS, setSearchResult } from "../../../../support/data/search-result.js";
+import { getMultiTypeMultipliers, getSingleTypeMultipliers, getTypeData, getTypeMultiScores, getTypeSingleScores } from "../../../../support/data/type.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
+import { MULTI_TYPE_RESULT_PROPERTIES } from "./multi-type-search.js";
+import { SINGLE_TYPE_RESULT_PROPERTIES } from "./single-type-search.js";
 
 export function getPokemonSearchBar() {
     return {
@@ -47,13 +50,42 @@ async function loadPokemonResult(types) {
     const isSingleType = types.length === 1;
     const isPartyPresent = !isPartyEmpty();
 
-    const combinedTypes = isSingleType ? await getTypeData(types[0]) : await getCombinedTypes(types[0], types[1]);
-    const multipliers = isSingleType ? getSingleTypeMultipliers(combinedTypes) : getMultiTypeMultipliers(combinedTypes);
-    const scores = isPartyPresent ? await getPokemonPartyScores(multipliers) : isSingleType ? getTypeSingleScores(combinedTypes, multipliers) : getTypeMultiScores(combinedTypes, multipliers);
+    const combinedTypes = await getCombinedTypes(types, isSingleType);
+    const multipliers = getMultipliers(combinedTypes, isSingleType);
+    const scores = await getScores(combinedTypes, multipliers, isSingleType, isPartyPresent);
+
     const data = getPokemonResultArray(combinedTypes, scores, isSingleType);
+    const properties = getPokemonResultProperties(isSingleType, isPartyPresent);
     const action = pokemonResultAction;
 
-    setSearchResult(data, 'pokemon-result', action);
+    setSearchResult(data, properties, action);
+}
+
+async function getCombinedTypes(types, isSingleType) {
+    return isSingleType ? await getTypeData(types) : await getCombinedTypes(types[0], types[1]);
+}
+
+function getMultipliers(combinedTypes, isSingleType) {
+    return isSingleType ? getSingleTypeMultipliers(combinedTypes) : getMultiTypeMultipliers(combinedTypes);
+}
+
+async function getScores(combinedTypes, multipliers, isSingleType, isPartyPresent) {
+    if (isPartyPresent) {
+        return await getPokemonPartyScores(multipliers);
+    }
+    return isSingleType ? getTypeSingleScores(combinedTypes, multipliers) : getTypeMultiScores(combinedTypes, multipliers);
+}
+
+function getPokemonResultProperties(isSingleType, isPartyPresent) {
+    const properties = isSingleType ? cloneObject(SINGLE_TYPE_RESULT_PROPERTIES) : cloneObject(MULTI_TYPE_RESULT_PROPERTIES);
+    properties.id = 'pokemon-result';
+
+    if (isPartyPresent) {
+        properties.data[0].label = LABELS.bestPokemons;
+        properties.data[1].label = LABELS.worstPokemons;
+    }
+
+    return properties;
 }
 
 function pokemonResultAction(target, arr) {

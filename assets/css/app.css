@@ -543,6 +543,9 @@ input::placeholder {
 }
 
 .grid-item.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--content-overlay);
   height: auto;
 }

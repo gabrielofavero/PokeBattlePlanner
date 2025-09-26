@@ -66,11 +66,3 @@ export function firstCharToUppercase(value) {
 export function decodeTitle(title) {
     return title.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
 }
-
-// Search Result
-export function setSearchResult(data, targetPrefix, action) {
-    for (let i = 0; i < data.length; i++) {
-        const target = document.getElementById(`${targetPrefix}-${i + 1}`);
-        action(target, data[i]);
-    }
-}

@@ -1,5 +1,6 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
-import { getObjectName, setSearchResult } from "../../../../support/data/data.js";
+import { getObjectName } from "../../../../support/data/data.js";
+import { getGridProperties, getIndicatorProperties, GRID_TYPES, INDICATORS, LABELS, setSearchResult } from "../../../../support/data/search-result.js";
 import { findTypeByName, getCombinedTypes, getMultiTypeResultArray, getTypeMultiScores } from "../../../../support/data/type.js";
 import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../../support/search-bar.js";
 
@@ -15,6 +16,67 @@ export const SEARCH_BAR_MULTI_TYPE_2 = {
     options: getType2Options,
     option: getTypeOption,
     action: searchBarAction
+}
+
+export const MULTI_TYPE_RESULT_PROPERTIES = {
+    id: 'multi-type-result',
+    data: [{
+        grid: getGridProperties(GRID_TYPES.RESULT),
+        label: LABELS.bestTypes
+    },
+    {
+        grid: getGridProperties(GRID_TYPES.RESULT),
+        label: LABELS.worstTypes
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['4'], true),
+        label: LABELS.from
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['2'], true),
+        label: LABELS.from
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['0.5'], false),
+        label: LABELS.from
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['0.25'], false),
+        label: LABELS.from
+    },
+    {
+        grid: getGridProperties(GRID_TYPES.HIGHLIGHT, true),
+        label: LABELS.immuneTo
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['0.25'], true),
+        label: LABELS.to
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['0.5'], true),
+        label: LABELS.to
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['2'], false),
+        label: LABELS.to
+    },
+    {
+        grid: getGridProperties(),
+        indicator: getIndicatorProperties(INDICATORS['4'], false),
+        label: LABELS.to
+    },
+    {
+        grid: getGridProperties(GRID_TYPES.HIGHLIGHT, true),
+        label: LABELS.cantDamage
+    },
+    ]
 }
 
 function searchBarAction(input, type) {
@@ -65,5 +127,5 @@ async function loadMultiTypeResult(types) {
     const combinedTypesTo = await getCombinedTypes(types[0], types[1], "to");
     const scores = getTypeMultiScores(combinedTypesFrom, combinedTypesTo);
     const data = getMultiTypeResultArray(combinedTypesFrom, combinedTypesTo, scores);
-    setSearchResult(data, 'multi-type-result', setTypeBannersWithoutLogo);
+    setSearchResult(data, MULTI_TYPE_RESULT_PROPERTIES, setTypeBannersWithoutLogo);
 }
