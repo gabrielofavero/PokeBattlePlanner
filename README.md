@@ -31,13 +31,12 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
 | 🏆: Feature     | F020   | 11   | 9       |
-| 📈: Improvement | I006   | 3    | 3       |
+| 📈: Improvement | I005   | 3    | 2       |
 
 ### Pending
 
-- 📈 **I005:** Improve recommendations
-- 📈 **I006:** Improve recommendations
 - 🏆 **F017:** Make accordions for results
+- 📈 **I005:** Improve recommendations
 - 🏆 **F018:** Finish summary data load
 - 🏆 **F019:** Make ranking banners for party pokemons
 - 🏆 **F012:** Add full keyboard support
