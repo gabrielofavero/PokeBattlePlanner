@@ -153,7 +153,7 @@ function searchBarPokemonAction(input, pokemon) {
 
 function searchBarMoveAction(input, move) {
     const j = input.getAttribute('data-move');
-    CURRENT_MOVES[j - 1] = move.move;
+    CURRENT_MOVES[j - 1] = move;
     input.value = getObjectName(CURRENT_MOVES[j - 1]);
 
     // Pre-cache data
