@@ -1,8 +1,8 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { cloneObject, getObjectName } from "../../../../support/data/data.js";
-import { findPokemonByTitle, getPokemonData, getPokemonPartyScores, getPokemonResultArray, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
-import { LABELS, setSearchResult } from "../../../../support/data/search-result.js";
-import { getMultiTypeMultipliers, getSingleTypeMultipliers, getTypeData, getTypeMultiScores, getTypeSingleScores } from "../../../../support/data/type.js";
+import { findPokemonByTitle, getMultiTypePartyScores, getPokemonData, getPokemonResultArray, getSingleTypePartyScores, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
+import { LABELS, openFirstAccordion, setSearchResult } from "../../../../support/data/search-result.js";
+import { getCombinedTypes, getTypeData, getTypeMultiScores, getTypeSingleScores } from "../../../../support/data/type.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 import { MULTI_TYPE_RESULT_PROPERTIES } from "./multi-type-search.js";
 import { SINGLE_TYPE_RESULT_PROPERTIES } from "./single-type-search.js";
@@ -22,10 +22,10 @@ async function searchBarAction(input, pokemon) {
     }
 
     const content = document.getElementById('pokemon-search-content');
-    const results = content.querySelector('.search-result');
+    const result = content.querySelector('.search-result');
 
     if (!pokemon || Object.keys(pokemon).length === 0) {
-        results.classList.add('hidden');
+        result.classList.add('hidden');
         input.value = '';
         return;
     }
@@ -43,16 +43,16 @@ async function searchBarAction(input, pokemon) {
     addPokemonToSearchBox(searchBox, pokemonData)
     await loadPokemonResult(types);
 
-    results.classList.remove('hidden');
+    result.classList.remove('hidden');
+    openFirstAccordion(result);
 }
 
 async function loadPokemonResult(types) {
     const isSingleType = types.length === 1;
     const isPartyPresent = !isPartyEmpty();
 
-    const combinedTypes = await getCombinedTypes(types, isSingleType);
-    const multipliers = getMultipliers(combinedTypes, isSingleType);
-    const scores = await getScores(combinedTypes, multipliers, isSingleType, isPartyPresent);
+    const combinedTypes = await getCombinedPokemonTypes(types, isSingleType);
+    const scores = await getPartyScores(combinedTypes, isSingleType, isPartyPresent);
 
     const data = getPokemonResultArray(combinedTypes, scores, isSingleType);
     const properties = getPokemonResultProperties(isSingleType, isPartyPresent);
@@ -61,19 +61,22 @@ async function loadPokemonResult(types) {
     setSearchResult(data, properties, action);
 }
 
-async function getCombinedTypes(types, isSingleType) {
-    return isSingleType ? await getTypeData(types) : await getCombinedTypes(types[0], types[1]);
-}
-
-function getMultipliers(combinedTypes, isSingleType) {
-    return isSingleType ? getSingleTypeMultipliers(combinedTypes) : getMultiTypeMultipliers(combinedTypes);
-}
-
-async function getScores(combinedTypes, multipliers, isSingleType, isPartyPresent) {
-    if (isPartyPresent) {
-        return await getPokemonPartyScores(multipliers);
+async function getCombinedPokemonTypes(types, isSingleType) {
+    if (isSingleType) {
+        return await getTypeData(types[0]);
+    } else {
+        const from = await getCombinedTypes(types[0], types[1]);
+        const to = await getCombinedTypes(types[0], types[1], "to");
+        return { from, to}
     }
-    return isSingleType ? getTypeSingleScores(combinedTypes, multipliers) : getTypeMultiScores(combinedTypes, multipliers);
+}
+
+async function getPartyScores(combinedTypes, isSingleType, isPartyPresent) {
+    if (isSingleType) {
+        return await getSingleTypePartyScores(combinedTypes, isPartyPresent);
+    } else {
+        return await getMultiTypePartyScores(combinedTypes.from, combinedTypes.to, isPartyPresent);
+    }
 }
 
 function getPokemonResultProperties(isSingleType, isPartyPresent) {

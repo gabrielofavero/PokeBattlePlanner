@@ -1,6 +1,6 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { getObjectName } from "../../../../support/data/data.js";
-import { getGridProperties, getIndicatorProperties, GRID_TYPES, INDICATORS, LABELS, setSearchResult } from "../../../../support/data/search-result.js";
+import { getGridProperties, getIndicatorProperties, GRID_TYPES, INDICATORS, LABELS, openFirstAccordion, setSearchResult } from "../../../../support/data/search-result.js";
 import { findTypeByName, getCombinedTypes, getMultiTypeResultArray, getTypeMultiScores } from "../../../../support/data/type.js";
 import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../../support/search-bar.js";
 
@@ -20,6 +20,22 @@ export const SEARCH_BAR_MULTI_TYPE_2 = {
 
 export const MULTI_TYPE_RESULT_PROPERTIES = {
     id: 'multi-type-result',
+    accordionSections: [
+        {
+            label: LABELS.recommendations,
+            start: 1,
+            end: 2,
+            hideLabel: false
+        }, {
+            label: LABELS.from,
+            start: 3,
+            end: 7
+        },
+        {
+            label: LABELS.to,
+            start: 8,
+            end: 12
+        }],
     data: [{
         grid: getGridProperties(GRID_TYPES.RESULT),
         label: LABELS.bestTypes
@@ -105,6 +121,7 @@ function searchBarAction(input, type) {
     if (types[0] && types[1]) {
         loadMultiTypeResult(types);
         result.classList.remove('hidden');
+        openFirstAccordion(result);
     }
 }
 

@@ -1,11 +1,27 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { getObjectName } from "../../../../support/data/data.js";
+import { GRID_TYPES, INDICATORS, LABELS, getGridProperties, getIndicatorProperties, openFirstAccordion, setSearchResult } from "../../../../support/data/search-result.js";
 import { findTypeByName, getSingleTypeResultArray, getTypeData, getTypeSingleScores } from "../../../../support/data/type.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
-import { getGridProperties, getIndicatorProperties, GRID_TYPES, INDICATORS, LABELS, setSearchResult } from "../../../../support/data/search-result.js";
 
 export const SINGLE_TYPE_RESULT_PROPERTIES = {
     id: 'single-type-result',
+    accordionSections: [{
+        label: LABELS.recommendations,
+        start: 1,
+        end: 2,
+        hideLabel: false
+    },
+    {
+        label: LABELS.from,
+        start: 3,
+        end: 5
+    },
+    {
+        label: LABELS.to,
+        start: 6,
+        end: 8
+    }],
     data: [{
         grid: getGridProperties(GRID_TYPES.RESULT),
         label: LABELS.bestTypes
@@ -21,13 +37,17 @@ export const SINGLE_TYPE_RESULT_PROPERTIES = {
     },
     {
         grid: getGridProperties(),
-        indicator: getIndicatorProperties(INDICATORS['0.5'], true),
-        label: LABELS.to
+        indicator: getIndicatorProperties(INDICATORS['0.5'], false),
+        label: LABELS.from
+    },
+    {
+        grid: getGridProperties(GRID_TYPES.HIGHLIGHT, true),
+        label: LABELS.immuneTo
     },
     {
         grid: getGridProperties(),
-        indicator: getIndicatorProperties(INDICATORS['0.5'], false),
-        label: LABELS.from
+        indicator: getIndicatorProperties(INDICATORS['0.5'], true),
+        label: LABELS.to
     },
     {
         grid: getGridProperties(),
@@ -35,12 +55,8 @@ export const SINGLE_TYPE_RESULT_PROPERTIES = {
         label: LABELS.to
     },
     {
-        grid: getGridProperties(GRID_TYPES.HIGHLIGHT),
+        grid: getGridProperties(GRID_TYPES.HIGHLIGHT, true),
         label: LABELS.cantDamage
-    },
-    {
-        grid: getGridProperties(GRID_TYPES.HIGHLIGHT),
-        label: LABELS.immuneTo
     }]
 }
 
@@ -72,6 +88,7 @@ async function searchBarAction(input, type) {
     await loadSingleTypeResult(type)
 
     result.classList.remove('hidden');
+    openFirstAccordion(result);
 }
 
 async function loadSingleTypeResult(type) {

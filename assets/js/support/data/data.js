@@ -1,8 +1,13 @@
 import { loadPokemons } from "./pokemon.js";
 import { loadTypes } from "./type.js";
 
+const DB_NAME = "PokeCache";
+const STORE_NAME = "cache";
+const DB_VERSION = 1;
+
 // Data
 export async function loadExternalData() {
+    openDB();
     loadPokemons();
     loadTypes();
 }
@@ -18,22 +23,63 @@ export async function fetchFullPath(fullPath) {
     }
 }
 
+// Database
+function openDB() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                db.createObjectStore(STORE_NAME);
+            }
+        };
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+    });
+}
+
+export async function getDB(key) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, "readonly");
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.get(key);
+
+        req.onsuccess = () => resolve(req.result ?? null);
+        req.onerror = () => reject(req.error);
+    });
+}
+
+export async function setDB(key, value) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        const store = tx.objectStore(STORE_NAME);
+        const req = store.put(value, key);
+
+        req.onsuccess = () => resolve(true);
+        req.onerror = () => reject(req.error);
+    });
+}
+
 // Objects
 export async function getObjectData(prefix, obj) {
     const start = new Date().getTime();
-    const key = `${prefix}-${getObjectName(obj)}`;
-    const cachedData = localStorage.getItem(key);
-    
+    const key = `${prefix}-${obj.name}`;
+    const cachedData = await getDB(key);
+
     if (cachedData) {
-        return JSON.parse(cachedData);
+        return cachedData;
     }
 
     const data = await fetchFullPath(obj.url);
-    
+
     const end = new Date().getTime();
     console.log(`Loaded data for ${getObjectName(obj)} in ${(end - start) / 1000} seconds.`);
-    
-    localStorage.setItem(key, JSON.stringify(data));
+
+    await setDB(key, data);
     return data;
 }
 

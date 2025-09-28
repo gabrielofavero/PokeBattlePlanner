@@ -1,16 +1,17 @@
-import { cloneObject, fetchFullPath, getObjectData, getObjectName, getTopN } from "./data.js";
+import { cloneObject, fetchFullPath, getDB, getObjectData, getObjectName, getTopN, setDB } from "./data.js";
 
 export var TYPES;
 
 const BLOCKED_TYPES = ['stellar', 'unknown', 'shadow'];
 
 export async function loadTypes() {
-    const types = localStorage.getItem('types');
+    const types = await getDB('types');
 
     if (types) {
-        TYPES = JSON.parse(types);
+        TYPES = types;
         return;
     }
+
     let start = new Date().getTime();
     TYPES = [];
     let finished = false
@@ -18,7 +19,7 @@ export async function loadTypes() {
     while (!finished) {
         const data = await fetchFullPath(path);
         for (const result of data.results) {
-            if (BLOCKED_TYPES.includes(getObjectName(result))) {
+            if (BLOCKED_TYPES.includes(result.name)) {
                 continue;
             }
             TYPES.push(result);
@@ -31,7 +32,7 @@ export async function loadTypes() {
         }
     }
 
-    localStorage.setItem('types', JSON.stringify(TYPES));
+    await setDB('types', TYPES);
 }
 
 export function findTypeByName(typeName) {
@@ -67,44 +68,47 @@ export async function getCombinedTypes(type1, type2, direction = "from") {
 }
 
 // Single Scores
-export function getTypeSingleScores(typeData, multipliers = getSingleTypeMultipliers(typeData)) {
-    multipliers.sort((a, b) => a.multiplier - b.multiplier);
+export function getTypeSingleScores(typeData) {
+    const multipliers = getTypeSingleMultipliers(typeData);
+    const filtered = multipliers.filter(m => m.score !== 1);
 
-    const filtered = multipliers.filter(r => r.multiplier !== 1);
-
-    const worstCandidates = filtered.filter(r => r.multiplier < 1);
-    const bestCandidates = filtered.filter(r => r.multiplier > 1);
-
-    const worst = getTopN(worstCandidates, 3);
-    const best = getTopN([...bestCandidates].reverse(), 3);
+    const best = getBestTypeCandidates(filtered).slice(0, 3);
+    const worst = getWorstTypeCandidates(filtered).slice(0, 3);
 
     return { best, worst };
 }
 
-export function getSingleTypeMultipliers(typeData) {
-    return TYPES.map(type => ({
-        type: type,
-        multiplier: getTypeMultiplier(typeData, type)
-    }));
+export function getBestTypeCandidates(multipliers) {
+    return multipliers.filter(m => m.score > 1)
+        .sort((a, b) => b.score - a.score)
 }
 
-function getTypeMultiplier(typeData, typeAgainst, direction) {
+export function getWorstTypeCandidates(multipliers) {
+    return multipliers.filter(m => m.score < 1)
+        .sort((a, b) => a.score - b.score)
+}
+
+export function getTypeSingleMultipliers(typeData) {
+    return TYPES.map(type => {
+        const offense = getTypeMultiplier(typeData, type, "from");
+        const defense = getTypeMultiplier(typeData, type, "to");
+        const score = offense / defense;
+        return { type, offense, defense, score };
+    });
+}
+
+export function getTypeMultiplier(typeData, typeAgainst, direction) {
     if (!typeData || !typeAgainst) return 1;
     const relations = typeData.damage_relations;
-
     const doubleKey = direction === "from" ? "double_damage_from" : "double_damage_to";
-    const halfKey   = direction === "from" ? "half_damage_from"   : "half_damage_to";
-    const noneKey   = direction === "from" ? "no_damage_from"     : "no_damage_to";
+    const halfKey = direction === "from" ? "half_damage_from" : "half_damage_to";
+    const noneKey = direction === "from" ? "no_damage_from" : "no_damage_to";
 
-    if (relations[doubleKey].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
-        return 2;
-    }
-    if (relations[halfKey].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
-        return 0.5;
-    }
-    if (relations[noneKey].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
-        return 0;
-    }
+    const targetName = getObjectName(typeAgainst);
+
+    if (relations[noneKey].some(t => getObjectName(t) === targetName)) return 0;
+    if (relations[doubleKey].some(t => getObjectName(t) === targetName)) return 2;
+    if (relations[halfKey].some(t => getObjectName(t) === targetName)) return 0.5;
     return 1;
 }
 
@@ -119,35 +123,30 @@ function getAllTypeMultipliers(typeData, direction) {
 
 // Multi Scores
 export function getTypeMultiScores(combinedTypesFrom, combinedTypesTo) {
-    const multipliers = TYPES.map(type => {
-        const offense = getCombinedTypeMultiplier(combinedTypesTo, type);
-        const defense = getCombinedTypeMultiplier(combinedTypesFrom, type);
-
-        const score = offense / defense; 
-
-        return { type, offense, defense, score };
-    });
-
+    const multipliers = getMultiTypeMultipliers(combinedTypesFrom, combinedTypesTo);
     return getBestAndWorstCandidates(multipliers);
 }
 
-export function getMultiTypeMultipliers(combinedTypes) {
-    return TYPES.map(type => ({
-        type: type,
-        multiplier: getCombinedTypeMultiplier(combinedTypes, type)
-    }));
+export function getMultiTypeMultipliers(combinedTypesFrom, combinedTypesTo) {
+    return TYPES.map(type => {
+        const offense = getCombinedTypeMultiplier(combinedTypesTo, type);
+        const defense = getCombinedTypeMultiplier(combinedTypesFrom, type);
+        const score = defense / offense;
+        return { type, offense, defense, score };
+    });
 }
 
 export function getBestAndWorstCandidates(arr) {
-    const sorted = [...arr].sort((a, b) => b.score - a.score);
+    const totalBest = arr.filter(x => x.score > 1).sort((a, b) => b.score - a.score);
+    const totalWorst = arr.filter(x => x.score < 1).sort((a, b) => a.score - b.score);
 
-    const best = getTopN(sorted, 3);
-    const worst = getTopN([...sorted].reverse(), 3);
+    const best = getTopN(totalBest, 3);
+    const worst = getTopN(totalWorst, 3);
 
     return { best, worst };
 }
 
-function getCombinedTypeMultiplier(combinedTypes, typeAgainst) {
+export function getCombinedTypeMultiplier(combinedTypes, typeAgainst) {
     for (const key of Object.keys(combinedTypes)) {
         if (combinedTypes[key].some(t => getObjectName(t) === getObjectName(typeAgainst))) {
             return parseFloat(key);
@@ -156,23 +155,23 @@ function getCombinedTypeMultiplier(combinedTypes, typeAgainst) {
     return 1;
 }
 
-export function getSingleTypeResultArray(typeData, scores) {
+export function getSingleTypeResultArray(typeData, scores, isPokemon = false) {
     return [
+        getBestScore(scores, isPokemon),
+        getWorstScore(scores, isPokemon),
         typeData.damage_relations.double_damage_from,
-        typeData.damage_relations.half_damage_to,
         typeData.damage_relations.half_damage_from,
-        typeData.damage_relations.double_damage_to,
-        typeData.damage_relations.no_damage_to,
         typeData.damage_relations.no_damage_from,
-        scores.best.map(s => s.type),
-        scores.worst.map(s => s.type)
+        typeData.damage_relations.half_damage_to,
+        typeData.damage_relations.double_damage_to,
+        typeData.damage_relations.no_damage_to
     ]
 }
 
-export function getMultiTypeResultArray(combinedTypesFrom, combinedTypesTo, scores) {
+export function getMultiTypeResultArray(combinedTypesFrom, combinedTypesTo, scores, isPokemon = false) {
     return [
-        scores.best.map(s => s.type),
-        scores.worst.map(s => s.type),
+        getBestScore(scores, isPokemon),
+        getWorstScore(scores, isPokemon),
         combinedTypesFrom['4'],
         combinedTypesFrom['2'],
         combinedTypesFrom['0.5'],
@@ -186,6 +185,14 @@ export function getMultiTypeResultArray(combinedTypesFrom, combinedTypesTo, scor
     ];
 }
 
+function getBestScore(scores, isPokemon) {
+    return isPokemon ? scores.best : scores.best.map(s => s.type);
+}
+
+function getWorstScore(scores, isPokemon) {
+    return isPokemon ? scores.worst : scores.worst.map(s => s.type);
+}
+
 export async function getOffensiveType(move) {
     const moveData = await getPokemonMoveData(move);
     return moveData.power ? moveData.type : null;
@@ -193,5 +200,5 @@ export async function getOffensiveType(move) {
 
 export function getMultiplier(multipliers, type) {
     const score = multipliers.find(s => getObjectName(s.type) === getObjectName(type));
-    return score ? score.multiplier : 1;
+    return score ? score.score : 1;
 }

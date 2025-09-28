@@ -1,5 +1,5 @@
-import { getObjectName } from "../../../../support/data/data.js";
-import { getPokemonData, getPokemonMoveData, getPokemonSpriteSrc, isPartyMemberEmpty } from "../../../../support/data/pokemon.js";
+import { getDB, getObjectName } from "../../../../support/data/data.js";
+import { getPokemonData, getPokemonMoveData, getPokemonShowdownSrc, getPokemonSpriteSrc, isPartyMemberEmpty } from "../../../../support/data/pokemon.js";
 import { selectItem } from "../../../../support/navigation/navigation.js";
 import { backToMain, deletePartyInputs, goToEditPokemonPage, setParty } from "../../../edit-pokemon/edit-pokemon.js";
 import { openSummary } from "../../../summary/summary.js";
@@ -16,11 +16,12 @@ const PARTY_BOXES = document.getElementsByClassName('party-pokemon');
 
 // Loaders
 export async function loadPokemonParty() {
-    initParty();
-    const data = localStorage.getItem('party');
-    if (data) {
-        PARTY = JSON.parse(data);
+    PARTY = await getDB('party') || [];
+
+    if (PARTY.length === 0) {
+        initEmptyParty();
     }
+
     loadPokemonPartiesListeners();
     await loadPartyPokemonsHTML();
 }
@@ -85,7 +86,7 @@ export async function loadPartyPokemonsHTML() {
         }
 
         const pokemonData = await getPokemonData(PARTY[i].pokemon);
-        partyImg.querySelector('img').src = isEmpty ? '' : getPokemonSpriteSrc(pokemonData)
+        partyImg.querySelector('img').src = isEmpty ? '' : getPokemonShowdownSrc(pokemonData)
     }
 }
 
@@ -125,11 +126,11 @@ function getSearchPartyMove(j) {
     }
 }
 
-function initParty() {
+function initEmptyParty() {
     for (let i = 1; i <= 6; i++) {
         PARTY.push({
             pokemon: {},
-            moves: CURRENT_MOVES
+            moves: []
         });
     }
 }

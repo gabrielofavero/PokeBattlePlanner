@@ -1,4 +1,4 @@
-import { getObjectName } from "../../support/data/data.js";
+import { getObjectName, setDB } from "../../support/data/data.js";
 import { isPartyEmpty } from "../../support/data/pokemon.js";
 import { hideBack, hideY, showBack, showConfirm, showY } from "../../support/navigation/navigation.js";
 import { goToMainPage } from "../main/main.js";
@@ -53,7 +53,7 @@ export function backToMain() {
     hideY()
 }
 
-export function setParty(index, pokemon = {}, moves = []) {
+export async function setParty(index, pokemon = {}, moves = []) {
     PARTY[index] = { pokemon, moves };
-    localStorage.setItem('party', JSON.stringify(PARTY));
+    await setDB('party', PARTY);
 }
