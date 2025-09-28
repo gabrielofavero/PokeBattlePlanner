@@ -1,6 +1,7 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
+import { openFirstAccordion } from "../../../../support/components/accordion.js";
 import { getObjectName } from "../../../../support/data/data.js";
-import { GRID_TYPES, INDICATORS, LABELS, getGridProperties, getIndicatorProperties, openFirstAccordion, setSearchResult } from "../../../../support/data/search-result.js";
+import { GRID_TYPES, INDICATORS, LABELS, getGridProperties, getIndicatorProperties, setSearchResult } from "../../../../support/data/search-result.js";
 import { findTypeByName, getSingleTypeResultArray, getTypeData, getTypeSingleScores } from "../../../../support/data/type.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
 

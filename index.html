@@ -63,19 +63,22 @@
     </div>
 
     <div id="pokemon-search-container" class="content">
-      <div class="column">
+      <div class="column" id="party-column">
         <div id="party-box">
-          <div class="pill-container">
+          <div class="pill-container" id="party-box-header">
             <div class="icon-box divided">
               <svg class="icon">
                 <use href="#pokeball-icon" />
               </svg>
             </div>
-            <div class="button-item">
-              <div id="current-party">Current Party</div>
+            <div id="current-party">Current Party</div>
+            <div class="icon-box" id="party-box-chevron" style="display: none">
+              <svg class="icon">
+                <use href="#chevron-icon"></use>
+              </svg>
             </div>
           </div>
-          <div class="party-pokemons">
+          <div class="party-pokemons" id="party-box-content">
             <div class="party-pokemon fade" party-number="1">
               <div class="party-text" style="display: none">
                 <div class="party-pill weak"></div>
@@ -203,7 +206,7 @@
 
     <div id="edit-party-container" class="content" style="display: none">
       <div class="column">
-        <div id="party-pokemon-content">
+        <div id="party-pokemon-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Pokémon Species</div>
@@ -212,7 +215,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-1-content">
+        <div id="party-move-1-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text" move="1">Move 1</div>
@@ -221,7 +224,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-2-content">
+        <div id="party-move-2-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Move 2</div>
@@ -230,7 +233,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-3-content">
+        <div id="party-move-3-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Move 3</div>
@@ -239,7 +242,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-4-content">
+        <div id="party-move-4-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Move 4</div>

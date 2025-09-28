@@ -1,7 +1,8 @@
 import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
+import { openFirstAccordion } from "../../../../support/components/accordion.js";
 import { cloneObject, getObjectName } from "../../../../support/data/data.js";
 import { findPokemonByTitle, getMultiTypePartyScores, getPokemonData, getPokemonResultArray, getSingleTypePartyScores, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
-import { LABELS, openFirstAccordion, setSearchResult } from "../../../../support/data/search-result.js";
+import { LABELS, setSearchResult } from "../../../../support/data/search-result.js";
 import { getCombinedTypes, getTypeData } from "../../../../support/data/type.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 import { MULTI_TYPE_RESULT_PROPERTIES } from "./multi-type-search.js";
