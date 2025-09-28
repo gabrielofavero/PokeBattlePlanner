@@ -30,13 +30,11 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
-| 🏆: Feature     | F021   | 13   | 8       |
-| 📈: Improvement | I005   | 3    | 2       |
+| 🏆: Feature     | F021   | 14   | 7       |
+| 📈: Improvement | I005   | 4    | 1       |
 
 ### Pending
 
-- 🏆 **F021:** Make accordions for results
-- 📈 **I005:** Improve recommendations
 - 🏆 **F018:** Finish summary data load
 - 🏆 **F019:** Make ranking banners for party pokemons
 - 🏆 **F012:** Add full keyboard support
@@ -73,3 +71,5 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 - ⚔️ **E006:** Fetch data via PokéAPI instead of local data
 - 🐞 **B001:** Fix edge cases for pokemon/type searchs
 - 🏆 **F017:** Increase stats for multi types and pokemons
+- 🏆 **F021:** Make accordions for results
+- 📈 **I005:** Improve recommendations

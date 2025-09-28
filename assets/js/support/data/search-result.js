@@ -1,3 +1,5 @@
+import { setTypeBannersMini } from "../banners.js";
+
 export const INDICATORS = {
     "4": {
         value: '4×',
@@ -41,6 +43,7 @@ export function setSearchResult(data, properties, action) {
         const target = document.getElementById(`${properties.id}-${i + 1}`);
         action(target, data[i]);
     }
+    buildAccordionPreviews(document.getElementById(properties.id));
 }
 
 export function buildSearchResult(properties) {
@@ -68,9 +71,20 @@ function buildSearchResultWithAccordion(target, properties) {
         header.className = 'accordion-header';
         const headerLabel = document.createElement('span');
         headerLabel.textContent = section.label;
+
+        const headerIcons = document.createElement('div');
+        headerIcons.className = 'accordion-header-icons';
+
+        const preview = document.createElement('div');
+        preview.className = 'accordion-preview';
+
         const headerChevron = getChevron();
+        headerIcons.appendChild(preview);
+        headerIcons.appendChild(headerChevron);
+
         header.appendChild(headerLabel);
-        header.appendChild(headerChevron);
+        header.appendChild(headerIcons);
+
         loadAccordionListener(header);
 
         const content = document.createElement('div');
@@ -257,4 +271,26 @@ function getChevron() {
     iconBox.appendChild(svg);
 
     return iconBox;
+}
+
+function buildAccordionPreviews(target) {
+    const accordions = target.querySelectorAll('.accordion-item');
+    for (const accordion of accordions) {
+        const gridItems = accordion.querySelectorAll('.grid-item');
+        for (const gridItem of gridItems) {
+            if (!gridItem) {
+                continue;
+            }
+
+            if (gridItem.classList.contains('result') || gridItem.querySelector('.positive')) {
+                const types = Array.from(gridItem.querySelectorAll('.type-banner')).map(b => b.classList[1]).filter(c => c !== 'none');
+                if (types.length === 0) {
+                    continue;
+                }
+                const preview = accordion.querySelector('.accordion-preview');
+                setTypeBannersMini(preview, types);
+                break;
+            }
+        }
+    }
 }

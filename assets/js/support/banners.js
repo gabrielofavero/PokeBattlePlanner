@@ -15,16 +15,22 @@ export function setTypeBannersWithoutLogo(target, types) {
 
 export function setTypeBannersMini(target, types) {
     target.innerHTML = '';
-    let innerHTML = '';
+
     for (const type of types) {
-        innerHTML += `
-        <div class="type-banner mini ${type.name.toLowerCase()}">
-            <svg class="summary-type-icon">
-                <use href="#type-${type.name.toLowerCase()}-icon" />
-            </svg>
-        </div>`
+        const name = type?.name || type;
+        const div = document.createElement('div');
+        div.classList.add('type-banner', 'mini', name);
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('summary-type-icon');
+
+        const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+        use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', `#type-${name}-icon`);
+
+        svg.appendChild(use);
+        div.appendChild(svg);
+        target.appendChild(div);
     }
-    target.innerHTML = innerHTML;
 }
 
 function getTypeBannerWithoutLogo(typeName) {

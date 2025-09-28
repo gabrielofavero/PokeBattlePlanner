@@ -2,7 +2,7 @@ import { setTypeBannersWithoutLogo } from "../../../../support/banners.js";
 import { cloneObject, getObjectName } from "../../../../support/data/data.js";
 import { findPokemonByTitle, getMultiTypePartyScores, getPokemonData, getPokemonResultArray, getSingleTypePartyScores, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
 import { LABELS, openFirstAccordion, setSearchResult } from "../../../../support/data/search-result.js";
-import { getCombinedTypes, getTypeData, getTypeMultiScores, getTypeSingleScores } from "../../../../support/data/type.js";
+import { getCombinedTypes, getTypeData } from "../../../../support/data/type.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 import { MULTI_TYPE_RESULT_PROPERTIES } from "./multi-type-search.js";
 import { SINGLE_TYPE_RESULT_PROPERTIES } from "./single-type-search.js";
@@ -67,7 +67,7 @@ async function getCombinedPokemonTypes(types, isSingleType) {
     } else {
         const from = await getCombinedTypes(types[0], types[1]);
         const to = await getCombinedTypes(types[0], types[1], "to");
-        return { from, to}
+        return { from, to }
     }
 }
 

@@ -673,6 +673,17 @@ input::placeholder {
   transform: rotate(180deg);
 }
 
+.accordion-header-icons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.accordion-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Type/Damage Banner */
 
 .type-banner,
