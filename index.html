@@ -63,19 +63,22 @@
     </div>
 
     <div id="pokemon-search-container" class="content">
-      <div class="column">
+      <div class="column" id="party-column">
         <div id="party-box">
-          <div class="pill-container">
+          <div class="pill-container" id="party-box-header">
             <div class="icon-box divided">
               <svg class="icon">
                 <use href="#pokeball-icon" />
               </svg>
             </div>
-            <div class="button-item">
-              <div id="current-party">Current Party</div>
+            <div id="current-party">Current Party</div>
+            <div class="icon-box" id="party-box-chevron" style="display: none">
+              <svg class="icon">
+                <use href="#chevron-icon"></use>
+              </svg>
             </div>
           </div>
-          <div class="party-pokemons">
+          <div class="party-pokemons" id="party-box-content">
             <div class="party-pokemon fade" party-number="1">
               <div class="party-text" style="display: none">
                 <div class="party-pill weak"></div>
@@ -154,53 +157,11 @@
           </div>
         </div>
         <div class="search-suggestions"></div>
-
-        <div class="search-result grid-container fade hidden">
-          <div class="grid-item flex">
-            <div class="positive">4×</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="pokemon-result-1"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="positive">2×</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="pokemon-result-2"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="negative fraction">½</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="pokemon-result-3"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="negative fraction">¼</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="pokemon-result-4"></div>
-            </div>
-          </div>
-          <div class="grid-item highlight full">
-            <div class="result-title">Immune to:</div>
-            <div class="result-types" id="pokemon-result-5"></div>
-          </div>
-          <div class="grid-item result">
-            <div class="result-title">Battle with:</div>
-            <div class="result-types" id="pokemon-result-6"></div>
-          </div>
-          <div class="grid-item result">
-            <div class="result-title">Don't battle with:</div>
-            <div class="result-types" id="pokemon-result-7"></div>
-          </div>
-        </div>
+        <div class="search-result grid-container fade hidden" id="pokemon-result"></div>
       </div>
     </div>
 
-    <div id="single-type-search-container" class="content" style="display: none">
+    <div class="content" id="single-type-search-container" style="display: none">
       <div class="column" id="single-type-search-content">
         <div class="button-box search-bar">
           <div class="icon-box divided">
@@ -211,52 +172,7 @@
           <input id="search-single-type" type="text" class="clear-input" placeholder="Enemy Type">
         </div>
         <div class="search-suggestions"></div>
-        <div class="search-result grid-container fade hidden">
-          <div class="grid-item flex">
-            <div class="positive">2×</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="single-type-result-1"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="positive fraction">½</div>
-            <div class="types">
-              <div class="result-title">Damage to:</div>
-              <div class="result-types" id="single-type-result-2"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="negative fraction">½</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="single-type-result-3"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="negative">2×</div>
-            <div class="types">
-              <div class="result-title">Damage to:</div>
-              <div class="result-types" id="single-type-result-4"></div>
-            </div>
-          </div>
-          <div class="grid-item highlight">
-            <div class="result-title">Can't damage:</div>
-            <div class="result-types" id="single-type-result-5"></div>
-          </div>
-          <div class="grid-item highlight">
-            <div class="result-title">Immune to:</div>
-            <div class="result-types" id="single-type-result-6"></div>
-          </div>
-          <div class="grid-item result">
-            <div class="result-title">Battle with:</div>
-            <div class="result-types" id="single-type-result-7"></div>
-          </div>
-          <div class="grid-item result">
-            <div class="result-title">Don't battle with:</div>
-            <div class="result-types" id="single-type-result-8"></div>
-          </div>
-        </div>
+        <div class="search-result grid-container fade hidden" id="single-type-result"></div>
       </div>
     </div>
 
@@ -284,54 +200,13 @@
           <div class="search-suggestions type-2"></div>
         </div>
 
-        <div class="search-result grid-container fade hidden">
-          <div class="grid-item flex">
-            <div class="positive">4×</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="multi-type-result-1"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="positive">2×</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="multi-type-result-2"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="negative fraction">½</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="multi-type-result-3"></div>
-            </div>
-          </div>
-          <div class="grid-item flex">
-            <div class="negative fraction">¼</div>
-            <div class="types">
-              <div class="result-title">Damage from:</div>
-              <div class="result-types" id="multi-type-result-4"></div>
-            </div>
-          </div>
-          <div class="grid-item highlight full">
-            <div class="result-title">Immune to:</div>
-            <div class="result-types" id="multi-type-result-5"></div>
-          </div>
-          <div class="grid-item result">
-            <div class="result-title">Battle with:</div>
-            <div class="result-types" id="multi-type-result-6"></div>
-          </div>
-          <div class="grid-item result">
-            <div class="result-title">Don't battle with:</div>
-            <div class="result-types" id="multi-type-result-7"></div>
-          </div>
-        </div>
+        <div class="search-result grid-container fade hidden" id="multi-type-result"></div>
       </div>
     </div>
 
     <div id="edit-party-container" class="content" style="display: none">
       <div class="column">
-        <div id="party-pokemon-content">
+        <div id="party-pokemon-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Pokémon Species</div>
@@ -340,7 +215,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-1-content">
+        <div id="party-move-1-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text" move="1">Move 1</div>
@@ -349,7 +224,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-2-content">
+        <div id="party-move-2-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Move 2</div>
@@ -358,7 +233,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-3-content">
+        <div id="party-move-3-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Move 3</div>
@@ -367,7 +242,7 @@
           </div>
           <div class="search-suggestions large"></div>
         </div>
-        <div id="party-move-4-content">
+        <div id="party-move-4-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
               <div class="search-text">Move 4</div>

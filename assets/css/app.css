@@ -184,7 +184,6 @@ canvas {
   width: 300px;
   color: white;
   font-family: "Roboto", sans-serif;
-  font-size: 24px;
 }
 
 .select {
@@ -377,6 +376,7 @@ canvas {
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 8px;
 }
 
 .multi-button-box {
@@ -504,7 +504,8 @@ input::placeholder {
 
 /* Search Results */
 
-.grid-container {
+.grid-container,
+.search-result .accordion-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   /* 2 columns */
@@ -513,9 +514,13 @@ input::placeholder {
 }
 
 .grid-item {
-  width: 420px;
+  width: 400px;
   padding: 1em;
   border-radius: var(--default-border-radius);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background: var(--content-overlay);
 }
 
 .grid-item.full {
@@ -525,10 +530,6 @@ input::placeholder {
 
 .grid-item.full.title .icon {
   height: 38px;
-}
-
-.grid-item {
-  background: var(--content-overlay);
 }
 
 .grid-item.highlight {
@@ -543,6 +544,9 @@ input::placeholder {
 }
 
 .grid-item.result {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   background: var(--content-overlay);
   height: auto;
 }
@@ -552,15 +556,8 @@ input::placeholder {
   text-align: center;
 }
 
-.grid-item.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.grid-item.flex .negative,
-.grid-item.flex .positive {
+.grid-item .negative,
+.grid-item .positive {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -569,24 +566,36 @@ input::placeholder {
   height: 75px;
   width: 75px;
   text-align: center;
-  font-size: 24px;
 }
 
-.grid-item.flex .fraction {
+.grid-item .fraction {
   font-size: 32px;
 }
 
 .grid-item .types {
-  width: 350px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
-.grid-item.flex .negative,
+.grid-item .types.no-label {
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-item.result .types {
+  gap: 16px;
+}
+
+.grid-item .negative,
 .damage-banner.negative {
   background: #fcb4b4;
   color: var(--damage-banner-text-color);
 }
 
-.grid-item.flex .positive,
+.grid-item .positive,
 .damage-banner.positive {
   background: #a2ffcc;
   color: var(--damage-banner-text-color);
@@ -595,7 +604,6 @@ input::placeholder {
 .result-types {
   display: flex;
   gap: 8px;
-  margin-top: 0.5em;
   text-transform: uppercase;
   flex-wrap: wrap;
   font-weight: var(--bold-font-weight);
@@ -609,6 +617,69 @@ input::placeholder {
 
 .grid-item.highlight .result-title {
   white-space: nowrap;
+}
+
+/* Grid Item Accordion */
+.accordion {
+  overflow: hidden;
+}
+
+.accordion-item {
+  grid-column: span 2;
+  width: auto;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--content-overlay);
+  cursor: pointer;
+  padding: 12px 1em;
+  font-weight: bold;
+  border-top-left-radius: var(--default-border-radius);
+  border-top-right-radius: var(--default-border-radius);
+  border-bottom-left-radius: var(--default-border-radius);
+  border-bottom-right-radius: var(--default-border-radius);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 0px;
+  padding: 0px 12px;
+  border-bottom-left-radius: var(--default-border-radius);
+  border-bottom-right-radius: var(--default-border-radius);
+}
+
+.accordion-content.open {
+  padding: 12px;
+}
+
+.accordion-content.open .grid-item.full {
+  grid-column: span 2;
+  width: auto;
+}
+
+.accordion-header .icon-box .icon {
+  transition: transform 0.3s ease;
+}
+
+.accordion-header.open .icon-box .icon {
+  transform: rotate(180deg);
+}
+
+.accordion-header-icons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.accordion-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* Type/Damage Banner */
@@ -1074,4 +1145,271 @@ input::placeholder {
 
 .summary-icon.arrow.left {
   transform: rotate(270deg);
+}
+
+
+/* Responsiviness */
+
+@media (max-width: 1350px) {
+  .party-name,
+  .party-text,
+  #current-party {
+    display: none !important;
+  }
+
+  #current-party {
+    justify-content: center;
+  }
+
+  #party-box .icon-box.divided {
+    display: flex;
+    padding-right: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+  }
+
+  #party-box .icon-box.divided::after {
+    width: 0;
+    height: 0;
+  }
+
+  #party-box .pill-container {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .party-pokemon {
+    width: 100px;
+    padding: 0px;
+  }
+
+  .context-menu {
+    transform: translate(120px, -660px);
+  }
+}
+
+@media (max-width: 1130px) {
+  .grid-item {
+    width: 300px;
+  }
+}
+
+@media (max-width: 940px) {
+  .grid-item {
+    width: 250px;
+  }
+}
+
+@media (max-width: 830px) {
+  .grid-item {
+    grid-column: span 2;
+    width: auto;
+  }
+}
+
+@media (max-width: 660px) {
+  .top-bar .icon-box {
+    display: none
+  }
+
+  .top-bar {
+    width: 500px;
+  }
+
+  .accordion-item {
+    width: 100%;
+  }
+
+  .content {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+@media (max-width: 575px) {
+  .body,
+  .type-banner.title,
+  .type-banner,
+  .damage-banner,
+  .grid-item .fraction,
+  .result-title,
+  top-bar-item,
+  span {
+    font-size: 20px !important;
+  }
+
+  .content {
+    padding: 2em 8px;
+  }
+  
+  .grid-item .negative,
+  .grid-item .positive {
+    height: 60px;
+    width: 60px;
+    font-size: 18px;
+}
+
+.grid-item .fraction {
+    font-size: 24px;
+}
+  
+  .button-box.search-bar {
+    width: calc(100% - 2em);
+  }
+
+  .top-bar {
+    width: 420px;
+  }
+
+  .top-bar-item {
+    margin-right: 1em
+  };
+
+  #pokemon-search-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .party-box {
+    width: 100%;
+  }
+
+  #party-column {
+    width: 100%;
+    max-width: 424.333px;
+  }
+
+  #party-box-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+
+  #current-party {
+    display: block !important;
+  }
+
+  #party-box .icon-box.divided::after {
+    width: 1.5px;
+    height: 29px;
+  }
+
+  #party-box .icon-box.divided {
+    padding-right: 16px;
+    margin-right: 16px;
+    padding-top: 2px;
+  }
+
+  .top-bar .icon-box {
+    display: block
+  }
+
+  .top-bar-item {
+    display: none;
+  }
+  
+  .top-bar-item.selected {
+    display: block;
+  }
+
+  .top-bar {
+    width: 210px;
+  }
+
+  .multi-button-box {
+    flex-direction: column;
+  }
+
+  .search-suggestions.type-2 {
+    transform: translateY(153px);
+  }
+
+  #pokemon-search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .search-pokemon-container .result-types {
+    flex-direction: column;
+    width: auto;;
+  }
+
+  .button-box.search-bar.pokemon {
+    padding: 8px
+  }
+
+  .button-box.search-bar.pokemon .icon-box.divided{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 150px; */
+  }
+
+  .button-box.search-bar.pokemon .icon-box.divided img{
+    max-height: 100px;
+  }
+
+  #pokemon-search-content .icon-box.divided::after {
+    width: 1.5px;
+    height: 100px;
+  }
+
+  .search-pokemon-container{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-box input {
+    width: 100%;
+  }
+
+  .context-menu {
+    transform: translate(150px, -236px);
+    backdrop-filter: blur(12px);
+  }
+
+  #edit-party-container .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .edit-party-item input {
+    width: calc(100% - 100px) !important
+  }
+
+  .edit-party-item {
+    width: 100%;
+  }
+
+  .button-box.large input {
+    width: auto;
+  }
+
+  .button-box.large {
+    width: auto;
+  }
+
+  .button-box .icon-box .search-text {
+    width: 100px;
+  }
+
+  .controler-box {
+    margin-right: 0px;
+  }
+
+  .controler-box:last-child {
+    margin-right: 8px;
+  }
 }

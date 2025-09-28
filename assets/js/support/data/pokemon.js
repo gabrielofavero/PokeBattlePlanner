@@ -1,16 +1,17 @@
 import { CURRENT_PARTY_INDEX, PARTY } from "../../pages/main/modules/party-management/party.js";
-import { cloneObject, fetchFullPath, getObjectData, getObjectName } from "./data.js";
-import { getBestAndWorstCandidates, getMultiTypeResultArray, getMultiplier } from "./type.js";
+import { fetchFullPath, getDB, getObjectData, getObjectName, setDB } from "./data.js";
+import { getBestAndWorstCandidates, getMultiTypeMultipliers, getMultiTypeResultArray, getMultiplier, getSingleTypeResultArray, getTypeSingleMultipliers, getTypeSingleScores } from "./type.js";
 
 export var POKEMONS;
 
 export async function loadPokemons() {
-    const pokemons = localStorage.getItem('pokemons');
+    const pokemons = await getDB('pokemons');
 
     if (pokemons) {
-        POKEMONS = JSON.parse(pokemons);
+        POKEMONS = pokemons;
         return;
     }
+
     let start = new Date().getTime();
     POKEMONS = [];
     let finished = false
@@ -26,7 +27,7 @@ export async function loadPokemons() {
         }
     }
 
-    localStorage.setItem('pokemons', JSON.stringify(POKEMONS));
+    await setDB('pokemons', POKEMONS);
 }
 
 export async function getPokemonData(pokemon) {
@@ -43,7 +44,7 @@ export async function getPokemonMoveData(move) {
 }
 
 function getPokemonImgContainer(pokemon) {
-    return `<div class="img-container"><img src="${getPokemonSpriteSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div>`
+    return `<div class="img-container"><img src="${getPokemonShowdownSrc(pokemon)}" alt="${getPokemonSpriteAlt(pokemon)}"></div>`
 }
 
 export function getPokemonShowdownSrc(pokemonData) {
@@ -54,9 +55,8 @@ export function getPokemonSpriteSrc(pokemonData) {
     return pokemonData.sprites.front_default;
 }
 
-export function getPokemonArtworkSrc(pokemon) {
-    const file = pokemon.missingArtwork ? 'unknown' : pokemon.id;
-    return `./assets/img/pokemons/artworks/${file}.png`
+export function getPokemonArtworkSrc(pokemonData) {
+    return pokemonData.sprites.other['official-artwork'].front_default;
 }
 
 export function getPokemonSpriteAlt(pokemonData) {
@@ -101,30 +101,44 @@ export function isPartyMovesEmpty(index) {
     return (!party || party.moves.length == 0);
 }
 
-export async function getPokemonPartyScores(multipliers) {
-    const best = [];
-    const worst = [];
-
-    if (isPartyEmpty()) {
-        return { best, worst };
+export async function getSingleTypePartyScores(typeData, isPartyPresent) {
+    if (!isPartyPresent) {
+        return getTypeSingleScores(typeData);
     }
+    const multipliers = getTypeSingleMultipliers(typeData);
+    return await getPartyScores(multipliers);
+}
 
+export async function getMultiTypePartyScores(combinedTypesFrom, combinedTypesTo, isPartyPresent) {
+    if (!isPartyPresent) {
+        return getTypeMultiScores(combinedTypesFrom, combinedTypesTo);
+    }
+    const multipliers = getMultiTypeMultipliers(combinedTypesFrom, combinedTypesTo);
+    return await getPartyScores(multipliers);
+}
+
+async function getPartyScores(multipliers) {
     const party = [];
+
     for (let i = 0; i < PARTY.length; i++) {
         if (isPartyPokemonEmpty(i)) {
             continue;
         }
+
         const partyMember = {
             pokemon: await getPokemonData(PARTY[i].pokemon),
             moves: PARTY[i].moves,
-            multiplier: 1,
+            score: 1,
         };
+
         const types = await getPartyMemberTypes(partyMember);
-        let multiplier = 1;
+
+        let score = 1;
         for (const type of types) {
-            multiplier *= getMultiplier(multipliers, type);
+            score *= getMultiplier(multipliers, type);
         }
-        partyMember.multiplier = multiplier;
+
+        partyMember.score = score;
         party.push(partyMember);
     }
 
@@ -159,24 +173,7 @@ export async function getOffensiveType(move) {
 
 export function getPokemonResultArray(combinedTypes, scores, isSingleType) {
     if (isSingleType) {
-        return [
-            [],
-            combinedTypes.damage_relations.double_damage_from,
-            combinedTypes.damage_relations.half_damage_from,
-            [],
-            combinedTypes.damage_relations.no_damage_from,
-            scores.best,
-            scores.worst
-        ];
+        return getSingleTypeResultArray(combinedTypes, scores, true);
     }
-
-    return [
-        combinedTypes['4'],
-        combinedTypes['2'],
-        combinedTypes['0.5'],
-        combinedTypes['0.25'],
-        combinedTypes['0'],
-        scores.best,
-        scores.worst
-    ];
+    return getMultiTypeResultArray(combinedTypes.from, combinedTypes.to, scores, true);
 }
