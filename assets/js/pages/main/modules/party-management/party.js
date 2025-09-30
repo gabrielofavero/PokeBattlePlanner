@@ -86,7 +86,7 @@ export async function loadPartyPokemonsHTML() {
         }
 
         const pokemonData = await getPokemonData(PARTY[i].pokemon);
-        partyImg.querySelector('img').src = isEmpty ? '' : getPokemonShowdownSrc(pokemonData)
+        partyImg.querySelector('img').src = isEmpty ? '' : getPokemonSpriteSrc(pokemonData)
     }
 }
 

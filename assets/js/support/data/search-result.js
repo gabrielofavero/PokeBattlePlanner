@@ -35,7 +35,7 @@ export const LABELS = {
     worstTypes: 'Worst types:',
     bestPokemons: 'Best pokémons:',
     worstPokemons: 'Worst pokémons:',
-    recommendations: 'Recommendations:'
+    recommendations: 'Top picks:'
 }
 
 export function setSearchResult(data, properties, action) {

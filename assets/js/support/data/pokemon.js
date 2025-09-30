@@ -1,6 +1,6 @@
 import { CURRENT_PARTY_INDEX, PARTY } from "../../pages/main/modules/party-management/party.js";
 import { fetchFullPath, getDB, getObjectData, getObjectName, setDB } from "./data.js";
-import { getBestAndWorstCandidates, getMultiTypeMultipliers, getMultiTypeResultArray, getMultiplier, getSingleTypeResultArray, getTypeSingleMultipliers, getTypeSingleScores } from "./type.js";
+import { getBestAndWorstCandidates, getMultiTypeMultipliers, getMultiTypeResultArray, getMultiplier, getSingleTypeResultArray, getTypeMultiScores, getTypeSingleMultipliers, getTypeSingleScores } from "./type.js";
 
 export var POKEMONS;
 
