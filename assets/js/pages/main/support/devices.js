@@ -1,14 +1,17 @@
 import { loadAccordionListenerAction } from "../../../support/components/accordion.JS";
 
 // Example: listen for when viewport goes below 768px
-const mediaQuery = window.matchMedia("(max-width: 575px)");
+const MOBILE_WIDTH = 640;
+const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`);
 var IS_MOBILE = false;
+
 
 export function loadDeviceResponsiviness() {
     mediaQuery.addEventListener("change", handleViewportChange);
-    
-    handleViewportChange(mediaQuery);
     loadPartyListener();
+    
+    IS_MOBILE = window.innerWidth <= MOBILE_WIDTH;
+    loadLayout();
 }
 
 function handleViewportChange(e) {
@@ -22,13 +25,8 @@ function handleViewportChange(e) {
 
 function loadLayout() {
     loadPartyLayout();
-
-    const searchText = document.getElementById('party-pokemon-content').querySelector('.search-text');
-    if (IS_MOBILE) {
-        searchText.textContent = "Species";
-    } else {
-        searchText.textContent = "Pokémon Species";
-    }
+    loadPartyPokemonContentLayout();
+    loadTopBarIconsLayout();
 }
 
 function loadPartyListener() {
@@ -62,4 +60,19 @@ function loadPartyLayout() {
         const content = header.nextElementSibling;
         content.style.maxHeight = null;
     }
+}
+
+function loadPartyPokemonContentLayout() {
+    const searchText = document.getElementById('party-pokemon-content').querySelector('.search-text');
+    if (IS_MOBILE) {
+        searchText.textContent = "Species";
+    } else {
+        searchText.textContent = "Pokémon Species";
+    }
+}
+
+function loadTopBarIconsLayout() {
+    const nextTopBarItem = document.getElementById('next-top-bar-item');
+    const use = nextTopBarItem.querySelector('use');
+    use.href.baseVal = IS_MOBILE ? '#menu-icon' : '#x-button-icon';
 }
