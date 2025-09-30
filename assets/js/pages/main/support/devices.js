@@ -1,4 +1,4 @@
-import { loadAccordionListenerAction } from "../../../support/components/accordion.JS";
+import { loadAccordionListenerAction } from "../../../support/components/accordion.js";
 
 // Example: listen for when viewport goes below 768px
 const MOBILE_WIDTH = 640;
