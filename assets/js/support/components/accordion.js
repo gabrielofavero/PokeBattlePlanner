@@ -7,12 +7,13 @@ export function loadAccordionListenerAction(header) {
     if (content.style.maxHeight) {
         closeAccordion(header, content);
     } else {
-        const items = header.parentElement.querySelectorAll(".accordion-item");
+        const items = document.querySelectorAll(".accordion-content");
         if (items.length > 1) {
             items.forEach(item => {
-                const otherHeader = item.firstChild;
-                const otherContent = otherHeader.nextElementSibling;
-                closeAccordion(otherHeader, otherContent);
+                if (item !== content) {
+                    const itemHeader = item.previousElementSibling;
+                    closeAccordion(itemHeader, item);
+                }
             });
         }
         openAccordion(header, content);

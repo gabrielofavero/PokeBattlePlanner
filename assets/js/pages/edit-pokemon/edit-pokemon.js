@@ -1,6 +1,6 @@
 import { getObjectName, setDB } from "../../support/data/data.js";
 import { isPartyEmpty } from "../../support/data/pokemon.js";
-import { hideBack, hideY, showBack, showConfirm, showY } from "../../support/navigation/navigation.js";
+import { hideBack, hideConfirm, hideY, showBack, showConfirm, showY } from "../../support/navigation/navigation.js";
 import { goToMainPage } from "../main/main.js";
 import { CURRENT_MOVES, CURRENT_PARTY_INDEX, CURRENT_POKEMON, PARTY, clearParty, loadPartyPokemonsHTML, returnToPokemonSearch } from "../main/modules/party-management/party.js";
 import { closeContextMenu } from "../main/support/context-menu.js";
@@ -48,7 +48,7 @@ export async function savePokemon() {
 export function backToMain() {
     IS_EDITING_POKEMON = false;
     returnToPokemonSearch();
-    showConfirm();
+    hideConfirm();
     hideBack();
     hideY()
 }

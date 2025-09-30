@@ -30,7 +30,7 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
-| 🏆: Feature     | F021   | 14   | 7       |
+| 🏆: Feature     | F023   | 15   | 8       |
 | 📈: Improvement | I005   | 4    | 1       |
 
 ### Pending
@@ -40,6 +40,7 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 - 🏆 **F012:** Add full keyboard support
 - 🏆 **F013:** Add full controller support
 - ⚔️ **E005:** Add mobile responsiveness
+  - 🏆 **F023:** [E005] Mobile Responsiviness: Summary
 - 🏆 **F020:** Add option to import/export party
 - 🏆 **F014:** Add cursor (similar to Pokémon Violet)
 - 🏆 **F015:** Add floating elements (Pokémon, cursor)
@@ -73,3 +74,5 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 - 🏆 **F017:** Increase stats for multi types and pokemons
 - 🏆 **F021:** Make accordions for results
 - 📈 **I005:** Improve recommendations
+- ⚔️ **E005:** Add mobile responsiveness
+  - 🏆 **F022:** [E005] Mobile Responsiviness: Main
