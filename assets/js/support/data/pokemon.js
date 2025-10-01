@@ -1,5 +1,5 @@
 import { CURRENT_PARTY_INDEX, PARTY } from "../../pages/main/modules/party-management/party.js";
-import { fetchFullPath, getDB, getObjectData, getObjectName, setDB } from "./data.js";
+import { DEFAULT_DATA_LIMIT, getAllData, getDB, getObjectData, getObjectName, setDB } from "./data.js";
 import { getBestAndWorstCandidates, getMultiTypeMultipliers, getMultiTypeResultArray, getMultiplier, getSingleTypeResultArray, getTypeMultiScores, getTypeSingleMultipliers, getTypeSingleScores } from "./type.js";
 
 export var POKEMONS;
@@ -12,22 +12,12 @@ export async function loadPokemons() {
         return;
     }
 
-    let start = new Date().getTime();
-    POKEMONS = [];
-    let finished = false
-    let path = 'https://pokeapi.co/api/v2/pokemon'
-    while (!finished) {
-        const data = await fetchFullPath(path);
-        POKEMONS.push(...data.results);
-        path = data.next;
-        if (!path) {
-            finished = true;
-            let end = new Date().getTime();
-            console.log(`Loaded ${POKEMONS.length} Pokemons in ${(end - start) / 1000} seconds.`);
-        }
-    }
-
+    POKEMONS = await getAllData(getPokemonPath, 'Pokémons');
     await setDB('pokemons', POKEMONS);
+}
+
+function getPokemonPath(offset = 0, dataLimit = DEFAULT_DATA_LIMIT) {
+    return `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${dataLimit}`
 }
 
 export async function getPokemonData(pokemon) {
@@ -115,7 +105,7 @@ export async function getMultiTypePartyScores(combinedTypesFrom, combinedTypesTo
     }
 
     const multipliers = getMultiTypeMultipliers(combinedTypesFrom, combinedTypesTo);
-    const partyScores =  await getPartyScores(multipliers);
+    const partyScores = await getPartyScores(multipliers);
 
     if (partyScores.best.length === 0 && partyScores.worst.length === 0) {
         return getTypeMultiScores(combinedTypesFrom, combinedTypesTo);

@@ -1,7 +1,6 @@
-import { cloneObject, fetchFullPath, getDB, getObjectData, getObjectName, getTopN, setDB } from "./data.js";
+import { DEFAULT_DATA_LIMIT, cloneObject, getAllData, getDB, getObjectData, getObjectName, getTopN, setDB } from "./data.js";
 
 export var TYPES;
-
 const BLOCKED_TYPES = ['stellar', 'unknown', 'shadow'];
 
 export async function loadTypes() {
@@ -12,27 +11,12 @@ export async function loadTypes() {
         return;
     }
 
-    let start = new Date().getTime();
-    TYPES = [];
-    let finished = false
-    let path = 'https://pokeapi.co/api/v2/type'
-    while (!finished) {
-        const data = await fetchFullPath(path);
-        for (const result of data.results) {
-            if (BLOCKED_TYPES.includes(result.name)) {
-                continue;
-            }
-            TYPES.push(result);
-        }
-        path = data.next;
-        if (!path) {
-            finished = true;
-            let end = new Date().getTime();
-            console.log(`Loaded ${TYPES.length} Types in ${(end - start) / 1000} seconds.`);
-        }
-    }
-
+    TYPES = await getAllData(getTypesPath, 'Types', BLOCKED_TYPES);
     await setDB('types', TYPES);
+}
+
+function getTypesPath(offset = 0, dataLimit = DEFAULT_DATA_LIMIT) {
+    return `https://pokeapi.co/api/v2/type?offset=${offset}&limit=${dataLimit}`
 }
 
 export function findTypeByName(typeName) {

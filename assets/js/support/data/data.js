@@ -1,16 +1,24 @@
+import { stopLoading, updateLoadingMessage } from "../navigation/pages.js";
 import { loadPokemons } from "./pokemon.js";
 import { loadTypes } from "./type.js";
 
 const DB_NAME = "PokeCache";
 const STORE_NAME = "cache";
 const DB_VERSION = 1;
+export const DEFAULT_DATA_LIMIT = 5000;
 
 // Data
 export async function loadExternalData() {
     openDB();
-    loadPokemons();
-    loadTypes();
-}
+  
+    updateLoadingMessage(`Fetching necessary data`);
+    await Promise.all([
+      loadPokemons(),
+      loadTypes()
+    ]);
+  
+    stopLoading();
+  }
 
 export async function fetchFullPath(fullPath) {
     try {
@@ -21,6 +29,36 @@ export async function fetchFullPath(fullPath) {
     } catch (err) {
         console.error('Request failed:', err);
     }
+}
+
+export async function getAllData(pathFunction, pluralTitle, nameRestictions = []) {
+    let start = new Date().getTime();
+    const result = [];
+    
+    const path = pathFunction();
+    const data = await getData(path, nameRestictions);
+    result.push(...data.results);
+
+    if (data.count > DEFAULT_DATA_LIMIT) {
+        const remainingPath = pathFunction(DEFAULT_DATA_LIMIT, data.count - DEFAULT_DATA_LIMIT);
+        const remainingData = await getData(remainingPath, nameRestictions);
+        result.push(...remainingData.results);
+    }
+   
+    let end = new Date().getTime();
+    console.log(`Loaded ${result.length} ${pluralTitle} in ${(end - start) / 1000} seconds.`);
+    return result;
+}
+
+async function getData(path, nameRestrictions = []) {
+    const data = await fetchFullPath(path);
+    if (nameRestrictions.length === 0) {
+        return data;
+    }
+    data.results = data.results.filter(
+        result => !nameRestrictions.includes(result.name)
+    );
+    return data;
 }
 
 // Database

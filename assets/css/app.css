@@ -74,8 +74,50 @@ canvas {
 .button-box .icon,
 .party-pokemon,
 .summary-party-pokemon,
-.summary-icon {
+.summary-icon,
+#loading {
   transition: all 0.3s ease-in-out;
+}
+
+/* Loading */
+#loading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loading .loading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  background: var(--content-overlay);
+  width: 400px;
+  padding: 2em;
+  border-radius: var(--default-border-radius);
+}
+
+#loading .message {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+#loading .icon {
+  width: 3em;
+  height: 3em;
+  animation: spin 1.5s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Header */

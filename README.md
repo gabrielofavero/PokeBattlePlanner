@@ -30,12 +30,12 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 | --------------- | ------ | ---- | ------- |
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
-| 🏆: Feature     | F025   | 15   | 10       |
-| 📈: Improvement | I007   | 6    | 1       |
+| 🏆: Feature     | F025   | 14   | 11       |
+| 📈: Improvement | I008   | 7    | 1       |
 
 ### Pending
 
-- 🏆 **F024:** Create loading screen
+- 📈 **I010:** Make pokémon search refresh if party was edited
 - 🏆 **F025:** Create Notification / Pop-up elements
 - ⚔️ **E005:** Add mobile responsiveness
   - 🏆 **F023:** [E005] Mobile Responsiviness: Summary
@@ -79,6 +79,9 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
   - 🏆 **F022:** [E005] Mobile Responsiviness: Main
 - 📈 **I006:** Responsiviness adjustments
 - 📈 **I007:** If no best and worst pokemons, show by type
+- 🏆 **F024:** Create loading screen
+- 📈 **I008:** Reduce first time loading by expanding the data fetch limit
+- 📈 **I009:** Make result accordion not be auto opened when on mobile
 
 ### Discarted
 - 🏆 **F019:** Make ranking banners for party pokemons
