@@ -206,6 +206,11 @@
 
     <div id="edit-party-container" class="content" style="display: none">
       <div class="column">
+        <div class="back-button" id="back-to-search-mobile">
+          <svg class="icon arrow left">
+            <use href="#arrow-icon" />
+          </svg>
+        </div>
         <div id="party-pokemon-content" class="edit-party-item">
           <div class="button-box search-bar large">
             <div class="icon-box divided">
@@ -250,6 +255,25 @@
             <input type="text" class="clear-input" data-move="4" placeholder="-">
           </div>
           <div class="search-suggestions edit-party"></div>
+        </div>
+
+        <div class="multi-button-box mini">
+          <div class="button-box button" id="clear-pokemon-mobile">
+            <div class="icon-box divided">
+              <svg class="icon">
+                <use href="#delete-icon" />
+              </svg>
+            </div>
+            <div class="text">Clear Pokémon</div>
+          </div>
+          <div class="button-box button" id="save-pokemon-mobile">
+            <div class="icon-box divided">
+              <svg class="icon">
+                <use href="#save-icon" />
+              </svg>
+            </div>
+            <div class="text">Save Pokémon</div>
+          </div>
         </div>
       </div>
     </div>

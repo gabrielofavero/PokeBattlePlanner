@@ -9,17 +9,17 @@ var IS_MOBILE = false;
 export function loadDeviceResponsiviness() {
     mediaQuery.addEventListener("change", handleViewportChange);
     loadPartyListener();
-    
+
     IS_MOBILE = window.innerWidth <= MOBILE_WIDTH;
     loadLayout();
 }
 
 function handleViewportChange(e) {
-  if (e.matches) {
-    IS_MOBILE = true
-  } else {
-    IS_MOBILE = false;
-  }
+    if (e.matches) {
+        IS_MOBILE = true
+    } else {
+        IS_MOBILE = false;
+    }
     loadLayout();
 }
 
@@ -27,6 +27,7 @@ function loadLayout() {
     loadPartyLayout();
     loadPartyPokemonContentLayout();
     loadTopBarIconsLayout();
+    loadEditPokemonLayout();
 }
 
 function loadPartyListener() {
@@ -75,4 +76,16 @@ function loadTopBarIconsLayout() {
     const nextTopBarItem = document.getElementById('next-top-bar-item');
     const use = nextTopBarItem.querySelector('use');
     use.href.baseVal = IS_MOBILE ? '#menu-icon' : '#x-button-icon';
+}
+
+function loadEditPokemonLayout() {
+    const items = [
+        document.getElementById('back-to-search-mobile'),
+        document.getElementById('clear-pokemon-mobile'),
+        document.getElementById('save-pokemon-mobile')
+    ];
+
+    for (const item of items) {
+        item.style.display = IS_MOBILE ? 'flex' : 'none';
+    }
 }

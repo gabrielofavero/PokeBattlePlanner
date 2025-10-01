@@ -1,9 +1,9 @@
 import { getDB, getObjectName } from "../../../../support/data/data.js";
-import { getPokemonData, getPokemonMoveData, getPokemonShowdownSrc, getPokemonSpriteSrc, isPartyMemberEmpty } from "../../../../support/data/pokemon.js";
+import { getPokemonData, getPokemonMoveData, getPokemonSpriteSrc, isPartyMemberEmpty } from "../../../../support/data/pokemon.js";
 import { selectItem } from "../../../../support/navigation/navigation.js";
-import { backToMain, deletePartyInputs, goToEditPokemonPage, setParty } from "../../../edit-pokemon/edit-pokemon.js";
+import { backToMain, deletePartyInputs, goToEditPokemonPage, savePokemon, setParty } from "../../../edit-pokemon/edit-pokemon.js";
 import { openSummary } from "../../../summary/summary.js";
-import { goToMainPage } from "../../main.js";
+import { clearConfirmAction, goToMainPage } from "../../main.js";
 import { closeContextMenu, openContextMenu } from "../../support/context-menu.js";
 import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 
@@ -31,6 +31,10 @@ function loadPokemonPartiesListeners() {
     document.getElementById('check-summary').addEventListener('click', () => openSummary(CURRENT_PARTY_INDEX));
     document.getElementById('release-pokemon').addEventListener('click', releasePokemon);
     document.getElementById('never-mind').addEventListener('click', closeContextMenu);
+
+    document.getElementById('back-to-search-mobile').addEventListener('click', returnToPokemonSearch);
+    document.getElementById('clear-pokemon-mobile').addEventListener('click', clearConfirmAction);
+    document.getElementById('save-pokemon-mobile').addEventListener('click', savePokemon);
 
     for (const partyBox of PARTY_BOXES) {
         partyBox.addEventListener("click", () => {
