@@ -18,7 +18,11 @@ export function getPokemonSearchBar() {
     }
 }
 
-async function searchBarAction(input, pokemon) {
+export async function searchBarAction(input = document.getElementById('search-pokemon'), pokemon) {
+    if (!input.value) {
+        return;
+    }    
+
     if (!pokemon || Object.keys(pokemon).length === 0) {
         pokemon = findPokemonByTitle(input.value);
     }

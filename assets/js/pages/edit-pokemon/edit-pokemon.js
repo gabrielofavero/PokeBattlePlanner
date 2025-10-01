@@ -3,6 +3,7 @@ import { isPartyEmpty } from "../../support/data/pokemon.js";
 import { hideBack, hideConfirm, hideY, showBack, showConfirm, showY } from "../../support/navigation/navigation.js";
 import { goToMainPage } from "../main/main.js";
 import { CURRENT_MOVES, CURRENT_PARTY_INDEX, CURRENT_POKEMON, PARTY, clearParty, loadPartyPokemonsHTML, returnToPokemonSearch } from "../main/modules/party-management/party.js";
+import { searchBarAction } from "../main/modules/searches/pokemon-search.js";
 import { closeContextMenu } from "../main/support/context-menu.js";
 
 export var IS_EDITING_POKEMON = false;
@@ -41,6 +42,7 @@ function loadPartyData() {
 
 export async function savePokemon() {
     setParty(CURRENT_PARTY_INDEX, CURRENT_POKEMON, CURRENT_MOVES);
+    searchBarAction();
     await loadPartyPokemonsHTML();
     backToMain();
 }

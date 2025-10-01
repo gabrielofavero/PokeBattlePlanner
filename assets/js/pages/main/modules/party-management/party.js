@@ -6,6 +6,7 @@ import { openSummary } from "../../../summary/summary.js";
 import { clearConfirmAction, goToMainPage } from "../../main.js";
 import { closeContextMenu, openContextMenu } from "../../support/context-menu.js";
 import { getMoveOption, getMoveOptions, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
+import { searchBarAction } from "../searches/pokemon-search.js";
 
 export var PARTY = [];
 export var CURRENT_PARTY_INDEX = -1;
@@ -176,9 +177,7 @@ async function releasePokemon() {
         return;
     }
     setParty(CURRENT_PARTY_INDEX);
+    searchBarAction();
     await loadPartyPokemonsHTML();
     backToMain();
 }
-
-
-// Validators
