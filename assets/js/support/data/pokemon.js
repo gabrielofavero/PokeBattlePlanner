@@ -113,8 +113,15 @@ export async function getMultiTypePartyScores(combinedTypesFrom, combinedTypesTo
     if (!isPartyPresent) {
         return getTypeMultiScores(combinedTypesFrom, combinedTypesTo);
     }
+
     const multipliers = getMultiTypeMultipliers(combinedTypesFrom, combinedTypesTo);
-    return await getPartyScores(multipliers);
+    const partyScores =  await getPartyScores(multipliers);
+
+    if (partyScores.best.length === 0 && partyScores.worst.length === 0) {
+        return getTypeMultiScores(combinedTypesFrom, combinedTypesTo);
+    }
+
+    return partyScores;
 }
 
 async function getPartyScores(multipliers) {

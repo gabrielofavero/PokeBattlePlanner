@@ -31,12 +31,10 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 | ⚔️: Epic        | E007   | 5    | 2       |
 | 🐞: Bug         | B001   | 0    | 1       |
 | 🏆: Feature     | F025   | 15   | 10       |
-| 📈: Improvement | I007   | 4    | 3       |
+| 📈: Improvement | I007   | 6    | 1       |
 
 ### Pending
 
-- 📈 **I006:** Responsiviness adjustments
-- 📈 **I007:** If no best and worst pokemons, show by type
 - 🏆 **F024:** Create loading screen
 - 🏆 **F025:** Create Notification / Pop-up elements
 - ⚔️ **E005:** Add mobile responsiveness
@@ -79,6 +77,8 @@ You are free to use this app and it's assets as you wish. Just don't forget to c
 - 📈 **I005:** Improve recommendations
 - ⚔️ **E005:** Add mobile responsiveness
   - 🏆 **F022:** [E005] Mobile Responsiviness: Main
+- 📈 **I006:** Responsiviness adjustments
+- 📈 **I007:** If no best and worst pokemons, show by type
 
 ### Discarted
 - 🏆 **F019:** Make ranking banners for party pokemons
