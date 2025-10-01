@@ -4,6 +4,7 @@ import { cloneObject, getObjectName } from "../../../../support/data/data.js";
 import { findPokemonByTitle, getMultiTypePartyScores, getPokemonData, getPokemonResultArray, getSingleTypePartyScores, isPartyEmpty, setPokemonImgContainers } from "../../../../support/data/pokemon.js";
 import { LABELS, setSearchResult } from "../../../../support/data/search-result.js";
 import { getCombinedTypes, getTypeData } from "../../../../support/data/type.js";
+import { IS_MOBILE } from "../../support/devices.js";
 import { addPokemonToSearchBox, getPokemonOption, getPokemonOptions } from "../../support/search-bar.js";
 import { MULTI_TYPE_RESULT_PROPERTIES } from "./multi-type-search.js";
 import { SINGLE_TYPE_RESULT_PROPERTIES } from "./single-type-search.js";
@@ -45,7 +46,9 @@ async function searchBarAction(input, pokemon) {
     await loadPokemonResult(types);
 
     result.classList.remove('hidden');
-    openFirstAccordion(result);
+    if (!IS_MOBILE) {
+        openFirstAccordion(result);
+    }
 }
 
 async function loadPokemonResult(types) {

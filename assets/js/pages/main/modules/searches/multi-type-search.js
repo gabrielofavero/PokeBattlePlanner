@@ -3,6 +3,7 @@ import { openFirstAccordion } from "../../../../support/components/accordion.js"
 import { getObjectName } from "../../../../support/data/data.js";
 import { getGridProperties, getIndicatorProperties, GRID_TYPES, INDICATORS, LABELS, setSearchResult } from "../../../../support/data/search-result.js";
 import { findTypeByName, getCombinedTypes, getMultiTypeResultArray, getTypeMultiScores } from "../../../../support/data/type.js";
+import { IS_MOBILE } from "../../support/devices.js";
 import { addTypeToSearchBox, getFilteredTypeOptions, getTypeOption } from "../../support/search-bar.js";
 
 export const SEARCH_BAR_MULTI_TYPE_1 = {
@@ -122,7 +123,9 @@ function searchBarAction(input, type) {
     if (types[0] && types[1]) {
         loadMultiTypeResult(types);
         result.classList.remove('hidden');
-        openFirstAccordion(result);
+        if (!IS_MOBILE) {
+            openFirstAccordion(result);
+        }
     }
 }
 

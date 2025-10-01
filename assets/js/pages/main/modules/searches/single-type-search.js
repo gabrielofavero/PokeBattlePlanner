@@ -3,6 +3,7 @@ import { openFirstAccordion } from "../../../../support/components/accordion.js"
 import { getObjectName } from "../../../../support/data/data.js";
 import { GRID_TYPES, INDICATORS, LABELS, getGridProperties, getIndicatorProperties, setSearchResult } from "../../../../support/data/search-result.js";
 import { findTypeByName, getSingleTypeResultArray, getTypeData, getTypeSingleScores } from "../../../../support/data/type.js";
+import { IS_MOBILE } from "../../support/devices.js";
 import { addTypeToSearchBox, getTypeOption, getTypeOptions } from "../../support/search-bar.js";
 
 export const SINGLE_TYPE_RESULT_PROPERTIES = {
@@ -89,7 +90,9 @@ async function searchBarAction(input, type) {
     await loadSingleTypeResult(type)
 
     result.classList.remove('hidden');
-    openFirstAccordion(result);
+    if (!IS_MOBILE) {
+        openFirstAccordion(result);
+    }
 }
 
 async function loadSingleTypeResult(type) {

@@ -3,7 +3,7 @@ import { loadAccordionListenerAction } from "../../../support/components/accordi
 // Example: listen for when viewport goes below 768px
 const MOBILE_WIDTH = 640;
 const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_WIDTH}px)`);
-var IS_MOBILE = false;
+export var IS_MOBILE = false;
 
 
 export function loadDeviceResponsiviness() {
